@@ -2,6 +2,13 @@
 #include <ClanLib/display.h>
 #include <ClanLib/gl.h>
 #include <ClanLib/application.h>
+#include <string>
+
+extern "C" {
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
 
 class DisplayProgram
 {
@@ -12,8 +19,25 @@ public:
 		CL_SetupDisplay setup_display;
 		CL_SetupGL setup_gl;
 
+		lua_State *L = lua_open();
+
+#if _DEBUG
+		CL_ConsoleWindow console("Debug Console", 80, 160);
+		CL_Console::write_line("Arguments: %1", args.size());
+
+		std::cout << "Arguments: " + args.size();
+
+		for( int i = 0; i < args.size(); i++ )
+		{
+			CL_Console::write( "[%1] = %2\t", i, args[i] );
+		}
+
+		CL_Console::write_line("");
+#endif
+
 		try
 		{
+
 			CL_DisplayWindow window("Hello World", 640, 480);
 
 			CL_GraphicContext gc = window.get_gc();
@@ -46,6 +70,12 @@ public:
 
 			return -1;
 		}
+
+		lua_close(L);
+
+#if _DEBUG
+		console.display_close_message();
+#endif
 
 		return 0;
 	}

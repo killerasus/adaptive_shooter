@@ -1,4 +1,4 @@
-﻿Build started 28/09/2011 05:43:39.
+﻿Build started 10/10/2011 06:09:16.
      1>Project "C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\solution\AIManager\AIManager.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\AIManager.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -9,4 +9,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.39
+Time Elapsed 00:00:00.20
