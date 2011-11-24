@@ -19,7 +19,6 @@ extern "C" {
 #include "lauxlib.h"
 }
 
-static int l_CLconsoleprint (lua_State* L);
-void RegisterLuaCLConsolePrint(lua_State* L);
+int RegisterLuaCLHelper(lua_State* L);
 
 #endif

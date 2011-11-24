@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Script Files">
+      <UniqueIdentifier>{d4bbfa83-f24c-4402-92ce-9d5976b25c70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp">
@@ -26,5 +29,10 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\Scripts\test.lua">
+      <Filter>Script Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

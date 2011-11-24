@@ -14,7 +14,7 @@
 #include <ClanLib/core.h>
 
 /************************************************************************/
-/* Necessary to print to Console, as ClanLib does not offer a           */
+/* Necessary to print to CLConsole, as ClanLib does not offer a         */
 /* standard output													    */
 /************************************************************************/
 static int l_CLconsoleprint (lua_State* L)
@@ -39,11 +39,17 @@ static int l_CLconsoleprint (lua_State* L)
 	return 0;
 }
 
+/* Array of functions to be exposed to Lua */
+static const struct luaL_Reg CLHelper [] = {
+	{"ConsolePrint", l_CLconsoleprint},
+	{NULL,NULL} /* sentinel */
+};
+
 /************************************************************************/
 /* Registers Lua helper functions at a Lua state
 /************************************************************************/
-void RegisterLuaCLConsolePrint(lua_State* L)
+int RegisterLuaCLHelper(lua_State* L)
 {
-	lua_pushcfunction(L, l_CLconsoleprint);
-	lua_setglobal(L, "CLConsolePrint");
+	luaL_register(L, "CL", CLHelper);
+	return 1;
 }

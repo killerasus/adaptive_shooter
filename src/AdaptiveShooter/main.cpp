@@ -37,7 +37,7 @@ public:
 
 		lua_State *L = lua_open();
 		luaL_openlibs(L);
-		RegisterLuaCLConsolePrint(L);
+		RegisterLuaCLHelper(L);
 
 #if _DEBUG
 		CL_ConsoleWindow console("Debug Console", 80, 160);
