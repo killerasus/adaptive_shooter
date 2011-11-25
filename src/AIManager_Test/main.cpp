@@ -10,13 +10,13 @@
 	purpose:	Main for unit testing of AIManager lib
 *********************************************************************/
 
-#include "aimanager.h"
 #include "gtest/gtest.h"
+#include "PlayerModelImpl.h"
 #include "PlayerModelTest.h"
 
 // Tests that the Foo::Bar() method does Abc.
 TEST_F(PlayerModelTest, CompareModels) {
-	EXPECT_EQ(3.0f, model1.Compare(&model2));
+	EXPECT_EQ(3.0f, model1->Compare(model2));
 }
 
 int main(int argc, char **argv) {

@@ -17,11 +17,12 @@
 class PlayerModelImpl : public PlayerModel
 {
 public:
+	PlayerModelImpl();
 	PlayerModelImpl(float valor);
 	~PlayerModelImpl();
 
 	virtual float Compare( PlayerModel* comparable );
-
+	void setValor( float valor );
 protected:
 	
 private:

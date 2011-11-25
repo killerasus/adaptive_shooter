@@ -22,11 +22,13 @@ protected:
 	// is empty.
 
 	PlayerModelTest(){
-
+		model1 = new PlayerModelImpl(5.0f);
+		model2 = new PlayerModelImpl(2.0f);
 	}
 
 	virtual ~PlayerModelTest(){
-
+		delete model1;
+		delete model2;
 	}
 
 	// If the constructor and destructor are not enough for setting up
@@ -41,8 +43,10 @@ protected:
 	}
 
 	// Objects declared here can be used by all tests in the test case for Foo.
-	PlayerModelImpl model1(5.0f);
-	PlayerModelImpl model2(2.0f);
+	PlayerModelImpl* model1;
+	PlayerModelImpl* model2;
+
+private:
 };
 
 #endif
