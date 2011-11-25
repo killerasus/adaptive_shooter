@@ -90,10 +90,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\AIManager\aiagent.cpp" />
     <ClCompile Include="..\..\src\AIManager\aimanager.cpp" />
+    <ClCompile Include="..\..\src\AIManager\playermodel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AIManager\aiagent.h" />
     <ClInclude Include="..\..\src\AIManager\aimanager.h" />
+    <ClInclude Include="..\..\src\AIManager\playermodel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,8 +12,9 @@
 				implemented by the user-programmer and provided via a Lua state
 *********************************************************************/
 
-#include "aiagent.h"
 #include <vector>
+#include "aiagent.h"
+#include "playermodel.h"
 
 extern "C" {
 #include "lua.h"
@@ -33,5 +34,7 @@ protected:
 
 private:
 	lua_State *_luaState;
+	PlayerModel *_currentPlayerModel;
+	std::vector<PlayerModel*> _playerModels;
 	std::vector<AIAgent*> _aiAgents;
 };
