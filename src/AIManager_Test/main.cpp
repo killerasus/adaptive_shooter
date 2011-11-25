@@ -12,6 +12,7 @@
 
 #include "aimanager.h"
 #include "gtest/gtest.h"
+#include "PlayerModelTest.h"
 
 // Tests that the Foo::Bar() method does Abc.
 TEST_F(PlayerModelTest, CompareModels) {

@@ -13,12 +13,10 @@
 #ifndef PLAYERMODELTEST_H
 #define PLAYERMODELTEST_H
 
-#ifndef AIMANAGERTEST_H
-#define AIMANAGERTEST_H
-
+#include "gtest/gtest.h"
 #include "PlayerModelImpl.h"
 
-class PlayerModelTest : public ::testing::Test {
+class PlayerModelTest : public testing::Test {
 protected:
 	// You can remove any or all of the following functions if its body
 	// is empty.
@@ -27,7 +25,7 @@ protected:
 
 	}
 
-	virtual ~AIManagerTest(){
+	virtual ~PlayerModelTest(){
 
 	}
 
@@ -46,8 +44,5 @@ protected:
 	PlayerModelImpl model1(5.0f);
 	PlayerModelImpl model2(2.0f);
 };
-
-#endif
-
 
 #endif

@@ -12,6 +12,11 @@
 
 #include "PlayerModelImpl.h"
 
+PlayerModelImpl::PlayerModelImpl(float valor)
+{
+	_valor = valor;
+}
+
 float PlayerModelImpl::Compare( PlayerModel* comparable )
 {
 	if (comparable)
@@ -22,9 +27,4 @@ float PlayerModelImpl::Compare( PlayerModel* comparable )
 	{
 		return this->_valor;
 	}
-}
-
-PlayerModelImpl::PlayerModelImpl(float valor)
-{
-	_valor = valor;
 }

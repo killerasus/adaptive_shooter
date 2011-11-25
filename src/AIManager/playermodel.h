@@ -10,6 +10,9 @@
 	purpose:	Interface class for player model used in AIManager framework
 *********************************************************************/
 
+#ifndef PLAYERMODEL_H
+#define PLAYERMODEL_H
+
 class PlayerModel
 {
 public:
@@ -19,3 +22,5 @@ protected:
 private:
 
 };
+
+#endif

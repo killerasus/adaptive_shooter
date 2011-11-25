@@ -15,8 +15,9 @@
 
 #include "aimanager.h"
 #include "PlayerModelImpl.h"
+#include "gtest/gtest.h"
 
-class AIManagerTest : public ::testing::Test {
+class AIManagerTest : public testing::Test {
 protected:
 	// You can remove any or all of the following functions if its body
 	// is empty.

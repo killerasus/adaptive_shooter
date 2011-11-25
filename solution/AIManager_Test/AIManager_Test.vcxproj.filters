@@ -18,17 +18,11 @@
     <ClCompile Include="..\..\src\AIManager_Test\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AIManager_Test\AIManagerTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\AIManager_Test\PlayerModelImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AIManager_Test\AIManagerTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\AIManager_Test\PlayerModelImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>

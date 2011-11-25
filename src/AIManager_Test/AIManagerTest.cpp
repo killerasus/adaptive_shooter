@@ -1,6 +1,5 @@
 #include "AIManagerTest.h"
 
-
 AIManagerTest::AIManagerTest()
 {
 
