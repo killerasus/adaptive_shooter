@@ -7,7 +7,7 @@
 	file ext:	h
 	author:		Bruno Baère Pederassi Lomba de Araujo
 	
-	purpose:	Test class for PlayerModelImpl for GTest framework
+	purpose:	Test class (fixture) for PlayerModelImpl for GTest framework
 *********************************************************************/
 
 #ifndef PLAYERMODELTEST_H
@@ -16,6 +16,9 @@
 #include "gtest/gtest.h"
 #include "PlayerModelImpl.h"
 
+/**
+ * Fixture class for Google Test framework
+ */
 class PlayerModelTest : public testing::Test {
 protected:
 	// You can remove any or all of the following functions if its body
@@ -34,13 +37,13 @@ protected:
 	// If the constructor and destructor are not enough for setting up
 	// and cleaning up each test, you can define the following methods:
 
-	virtual void SetUp(){
+	/*virtual void SetUp(){
 
 	}
 
 	virtual void TearDown(){
 
-	}
+	}*/
 
 	// Objects declared here can be used by all tests in the test case for Foo.
 	PlayerModelImpl* model1;

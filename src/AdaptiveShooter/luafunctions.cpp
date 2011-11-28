@@ -13,10 +13,13 @@
 #include "luafunctions.h"
 #include <ClanLib/core.h>
 
-/************************************************************************/
-/* Necessary to print to CLConsole, as ClanLib does not offer a         */
-/* standard output													    */
-/************************************************************************/
+
+/**
+ * Necessary to print to CLConsole, as ClanLib does not offer a 
+ * standard output	
+ * @param	  L		Lua state to register this function
+ * @return	  int	Number of returns, in acccordance to Lua API
+ */
 static int l_CLconsoleprint (lua_State* L)
 {
 	int n = lua_gettop(L);  /* number of arguments */
@@ -45,9 +48,6 @@ static const struct luaL_Reg CLHelper [] = {
 	{NULL,NULL} /* sentinel */
 };
 
-/************************************************************************/
-/* Registers Lua helper functions at a Lua state
-/************************************************************************/
 int RegisterLuaCLHelper(lua_State* L)
 {
 	luaL_register(L, "CL", CLHelper);

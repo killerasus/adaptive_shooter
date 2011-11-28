@@ -12,7 +12,6 @@
 
 #include "PlayerModelImpl.h"
 
-
 PlayerModelImpl::PlayerModelImpl()
 {
 
@@ -27,7 +26,6 @@ PlayerModelImpl::~PlayerModelImpl()
 {
 
 }
-
 
 float PlayerModelImpl::Compare( PlayerModel* comparable )
 {

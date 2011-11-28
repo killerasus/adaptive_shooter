@@ -22,7 +22,7 @@ AIAgent::~AIAgent()
 
 }
 
-void AIAgent::update()
+void AIAgent::updateStats()
 {
 
 }

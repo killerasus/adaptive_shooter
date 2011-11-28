@@ -19,6 +19,13 @@ extern "C" {
 #include "lauxlib.h"
 }
 
+/**
+ * Registers Lua helper functions at a given Lua state under the CL
+ * table.
+ * 
+ * @param	  L		Lua state to register
+ * @return	  int
+ */
 int RegisterLuaCLHelper(lua_State* L);
 
 #endif

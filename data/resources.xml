@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <section name="sprites">
+    <sprite name="boat">
+      <image file="/images/test/example3boat.png">
+        <grid size="159,91" array="4,1" />
+      </image>
+      <animation speed="200" loop="yes" pingpong="no" />
+    </sprite>
+  </section>
+</resources>

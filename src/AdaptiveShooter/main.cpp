@@ -32,6 +32,8 @@ public:
 		CL_SetupCore setup_core;
 		CL_SetupDisplay setup_display;
 		CL_SetupGL setup_gl;
+		CL_ResourceManager resourceManager("../../../../data/resources.xml");
+
 		AIManager* manager;
 		char* text;
 
@@ -61,6 +63,8 @@ public:
 			CL_InputDevice keyboard = window.get_ic().get_keyboard();
 			CL_Font font(gc, "Tahoma", 30);
 
+			CL_Sprite boat_sprite(gc, "sprites/boat", &resourceManager);
+
 #if _DEBUG
 			if (args.size() > 1)
 			{
@@ -76,8 +80,58 @@ public:
 			}
 #endif
 
-			while (!keyboard.get_keycode(CL_KEY_ESCAPE))
+			unsigned int last_time = CL_System::get_time();
+			unsigned int current_time;
+
+			float x(0.0f), y(0.0f);
+			double dt(0.0);
+			bool quit = false;
+			float speed = 50.0f;
+
+			while (!quit)
 			{
+				if(keyboard.get_keycode(CL_KEY_ESCAPE) == true)
+					quit = true;
+
+				current_time = CL_System::get_time();
+				int time_difference = current_time - last_time;
+				if (time_difference > 1000)
+					time_difference = 1000;		// Limit the time difference, if the application was paused (eg, moving the window on WIN32)
+				float time_delta_ms = static_cast<float> (time_difference);
+				last_time = current_time;
+
+				if (keyboard.get_keycode(CL_KEY_LEFT))
+				{
+					x -= speed*time_delta_ms/1000.0f;
+#if _DEBUG
+					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
+#endif
+				}
+
+				if (keyboard.get_keycode(CL_KEY_RIGHT))
+				{
+					x += speed*time_delta_ms/1000.0f;
+#if _DEBUG
+					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
+#endif
+				}
+
+				if (keyboard.get_keycode(CL_KEY_UP))
+				{
+					y -= speed*time_delta_ms/1000.0f;
+#if _DEBUG
+					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
+#endif
+				}
+
+				if (keyboard.get_keycode(CL_KEY_DOWN))
+				{
+					y += speed*time_delta_ms/1000.0f;
+#if _DEBUG
+					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
+#endif
+				}
+
 				gc.clear(CL_Colorf::cadetblue);
 
 				CL_Draw::line(gc, 0, 110, 640, 110, CL_Colorf::yellow);
@@ -86,6 +140,8 @@ public:
 #else
 				font.draw_text(gc, 100, 100, "Hello World!", CL_Colorf::lightseagreen);
 #endif
+				boat_sprite.draw(gc, x, y);
+				boat_sprite.update();
 
 				// Make the stuff visible:
 				window.flip();
@@ -103,6 +159,7 @@ public:
 			CL_ConsoleWindow console("Console", 80, 160);
 			CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
 			console.display_close_message();
+			lua_close(L);
 
 			return -1;
 		}

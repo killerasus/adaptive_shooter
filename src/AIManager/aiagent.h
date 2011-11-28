@@ -15,7 +15,7 @@ class AIAgent
 public:
 	AIAgent();
 	virtual ~AIAgent();
-	virtual void update();
+	virtual void updateStats();
 protected:
 	
 private:
