@@ -86,14 +86,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\data\resources.xml" />
+    <None Include="..\..\data\resources.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="..\..\src\Scripts\test.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

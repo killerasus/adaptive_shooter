@@ -14,32 +14,20 @@
 #include <ClanLib/display.h>
 #include <ClanLib/gl.h>
 #include <ClanLib/application.h>
-#include <string>
-#include "luafunctions.h"	
-#include "AIManager\aimanager.h"
 
-extern "C" {
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
-}
+#include <string>
+
+#include "luafunctions.h"
+#include "GameManager.h"
+#include "TestScene.h"
+
+#include "AIManager\aimanager.h"
 
 class DisplayProgram
 {
 public:
 	static int main(const std::vector<CL_String> &args)
 	{
-		CL_SetupCore setup_core;
-		CL_SetupDisplay setup_display;
-		CL_SetupGL setup_gl;
-		CL_ResourceManager resourceManager("../../../../data/resources.xml");
-
-		AIManager* manager;
-		char* text;
-
-		lua_State *L = lua_open();
-		luaL_openlibs(L);
-		RegisterLuaCLHelper(L);
 
 #if _DEBUG
 		CL_ConsoleWindow console("Debug Console", 80, 160);
@@ -55,122 +43,21 @@ public:
 		CL_Console::write_line("");
 #endif
 
-		try
-		{
-			CL_DisplayWindow window("Hello World", 640, 480);
+		GameManager* manager = GameManager::GetInstance();
+		manager->LoadResource("../../../../data/resources.xml");
 
-			CL_GraphicContext gc = window.get_gc();
-			CL_InputDevice keyboard = window.get_ic().get_keyboard();
-			CL_Font font(gc, "Tahoma", 30);
+		TestScene newScene;
+		manager->PushScene(&newScene);
 
-			CL_Sprite boat_sprite(gc, "sprites/boat", &resourceManager);
+		int ret = manager->Loop();
 
-#if _DEBUG
-			if (args.size() > 1)
-			{
-				if (luaL_dofile(L, args[1].c_str()) == 0)
-				{
-					lua_getglobal(L,"text");
-					text = (char*)lua_tostring(L,-1);
-				}
-			}
-			else
-			{
-				text = "Hello World without Lua script";
-			}
-#endif
-
-			unsigned int last_time = CL_System::get_time();
-			unsigned int current_time;
-
-			float x(0.0f), y(0.0f);
-			double dt(0.0);
-			bool quit = false;
-			float speed = 50.0f;
-
-			while (!quit)
-			{
-				if(keyboard.get_keycode(CL_KEY_ESCAPE) == true)
-					quit = true;
-
-				current_time = CL_System::get_time();
-				int time_difference = current_time - last_time;
-				if (time_difference > 1000)
-					time_difference = 1000;		// Limit the time difference, if the application was paused (eg, moving the window on WIN32)
-				float time_delta_ms = static_cast<float> (time_difference);
-				last_time = current_time;
-
-				if (keyboard.get_keycode(CL_KEY_LEFT))
-				{
-					x -= speed*time_delta_ms/1000.0f;
-#if _DEBUG
-					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
-#endif
-				}
-
-				if (keyboard.get_keycode(CL_KEY_RIGHT))
-				{
-					x += speed*time_delta_ms/1000.0f;
-#if _DEBUG
-					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
-#endif
-				}
-
-				if (keyboard.get_keycode(CL_KEY_UP))
-				{
-					y -= speed*time_delta_ms/1000.0f;
-#if _DEBUG
-					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
-#endif
-				}
-
-				if (keyboard.get_keycode(CL_KEY_DOWN))
-				{
-					y += speed*time_delta_ms/1000.0f;
-#if _DEBUG
-					CL_Console::write_line("time_delta_ms = %1", time_delta_ms);
-#endif
-				}
-
-				gc.clear(CL_Colorf::cadetblue);
-
-				CL_Draw::line(gc, 0, 110, 640, 110, CL_Colorf::yellow);
-#if _DEBUG
-				font.draw_text(gc, 100, 100, text, CL_Colorf::lightseagreen);
-#else
-				font.draw_text(gc, 100, 100, "Hello World!", CL_Colorf::lightseagreen);
-#endif
-				boat_sprite.draw(gc, x, y);
-				boat_sprite.update();
-
-				// Make the stuff visible:
-				window.flip();
-
-				// Read messages from the windowing system message queue, if any are available:
-				CL_KeepAlive::process();
-
-				// Avoid using 100% CPU in the loop:
-				CL_System::sleep(10);
-			}
-		}
-		catch(CL_Exception &exception)
-		{
-			// Create a console window for text-output if not available
-			CL_ConsoleWindow console("Console", 80, 160);
-			CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
-			console.display_close_message();
-			lua_close(L);
-
-			return -1;
-		}
-
-		lua_close(L);
+		delete manager;
 
 #if _DEBUG
 		console.display_close_message();
 #endif
 
-		return 0;
+		return ret;
 	}
 };
 

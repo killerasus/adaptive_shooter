@@ -16,6 +16,12 @@
     <Filter Include="Script Files">
       <UniqueIdentifier>{d4bbfa83-f24c-4402-92ce-9d5976b25c70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{bdfe85c2-2c04-47c5-931a-42f7f8affdea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{0b8b4054-7928-4c6b-82df-c9d0b4cd296b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp">
@@ -24,10 +30,34 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
