@@ -17,7 +17,13 @@
 
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
-#include "ClanLib/gl.h"
+
+#ifdef _GL1
+	#include "ClanLib/gl1.h"
+#else
+	#include "ClanLib/gl.h"
+#endif
+
 #include "Scene.h"
 
 extern "C"
@@ -66,7 +72,11 @@ protected:
 private:
 	CL_SetupCore setup_core;
 	CL_SetupDisplay setup_display;
+#ifdef _GL1
+	CL_SetupGL1 setup_gl;
+#else
 	CL_SetupGL setup_gl;
+#endif // _GL1
 
 	CL_ResourceManager* _resourceManager;
 	CL_DisplayWindow* _window;

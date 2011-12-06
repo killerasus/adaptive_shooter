@@ -34,7 +34,7 @@ void FadingScene::SetBackgroundColor( CL_Color color )
 
 CL_Color FadingScene::GetBackgroundColor()
 {
-
+	return CL_Color(0,0,0);
 }
 
 void FadingScene::draw()
