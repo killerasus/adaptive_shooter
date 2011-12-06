@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classCL__Logger.html" title="Logger interface." alt="" coords="7,32,95,61"/>
+<area shape="rect" id="node3" href="$classCL__ConsoleLogger.html" title="Console logger." alt="" coords="145,5,284,35"/>
+<area shape="rect" id="node5" href="$classCL__FileLogger.html" title="File logger." alt="" coords="160,59,269,88"/>
+</map>

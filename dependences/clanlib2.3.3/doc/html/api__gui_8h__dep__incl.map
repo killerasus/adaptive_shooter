@@ -1,0 +1,28 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$accelerator__key_8h.html" title="accelerator_key.h" alt="" coords="64,237,198,267"/>
+<area shape="rect" id="node7" href="$gui__message_8h.html" title="gui_message.h" alt="" coords="594,83,711,112"/>
+<area shape="rect" id="node10" href="$gui__message__input_8h.html" title="gui_message_input.h" alt="" coords="24,160,182,189"/>
+<area shape="rect" id="node14" href="$gui__message__activation__change_8h.html" title="gui_message_activation_change.h" alt="" coords="206,160,448,189"/>
+<area shape="rect" id="node17" href="$gui__message__close_8h.html" title="gui_message_close.h" alt="" coords="574,160,731,189"/>
+<area shape="rect" id="node20" href="$gui__message__focus__change_8h.html" title="gui_message_focus_change.h" alt="" coords="755,160,968,189"/>
+<area shape="rect" id="node23" href="$gui__message__pointer_8h.html" title="gui_message_pointer.h" alt="" coords="992,160,1163,189"/>
+<area shape="rect" id="node26" href="$gui__message__resize_8h.html" title="gui_message_resize.h" alt="" coords="1187,160,1350,189"/>
+<area shape="rect" id="node31" href="$accelerator__table_8h.html" title="accelerator_table.h" alt="" coords="1347,83,1491,112"/>
+<area shape="rect" id="node33" href="$gui__manager_8h.html" title="gui_manager.h" alt="" coords="1424,160,1542,189"/>
+<area shape="rect" id="node37" href="$gui__component_8h.html" title="gui_component.h" alt="" coords="1960,160,2094,189"/>
+<area shape="rect" id="node42" href="$gui__window__manager_8h.html" title="gui_window_manager.h" alt="" coords="1718,237,1886,267"/>
+<area shape="rect" id="node44" href="$gui__window__manager__direct_8h.html" title="gui_window_manager_direct.h" alt="" coords="1094,315,1307,344"/>
+<area shape="rect" id="node47" href="$gui__window__manager__system_8h.html" title="gui_window_manager_system.h" alt="" coords="1331,315,1555,344"/>
+<area shape="rect" id="node50" href="$gui__window__manager__texture_8h.html" title="gui_window_manager_texture.h" alt="" coords="1579,315,1800,344"/>
+<area shape="rect" id="node53" href="$gui__window__manager__texture__window_8h.html" title="gui_window_manager_texture_window.h" alt="" coords="1875,315,2150,344"/>
+<area shape="rect" id="node58" href="$gui__layout_8h.html" title="gui_layout.h" alt="" coords="2068,83,2167,112"/>
+<area shape="rect" id="node65" href="$gui__component__description_8h.html" title="gui_component_description.h" alt="" coords="2358,237,2568,267"/>
+<area shape="rect" id="node74" href="$gui__theme_8h.html" title="gui_theme.h" alt="" coords="2452,83,2554,112"/>
+<area shape="rect" id="node76" href="$gui__theme__default_8h.html" title="gui_theme_default.h" alt="" coords="2540,160,2692,189"/>
+<area shape="rect" id="node81" href="$gui__theme__part_8h.html" title="gui_theme_part.h" alt="" coords="2694,315,2827,344"/>
+<area shape="rect" id="node84" href="$gui__theme__part__property_8h.html" title="gui_theme_part_property.h" alt="" coords="2767,237,2962,267"/>
+<area shape="rect" id="node92" href="$setup__gui_8h.html" title="setup_gui.h" alt="" coords="2918,83,3014,112"/>
+<area shape="rect" id="node5" href="$gui_8h.html" title="gui.h" alt="" coords="1663,392,1716,421"/>
+<area shape="rect" id="node39" href="$checkbox_8h.html" title="checkbox.h" alt="" coords="1960,237,2054,267"/>
+<area shape="rect" id="node61" href="$gui__layout__corners_8h.html" title="gui_layout_corners.h" alt="" coords="2128,237,2283,267"/>
+</map>

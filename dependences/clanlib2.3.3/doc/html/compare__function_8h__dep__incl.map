@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$texture_8h.html" title="texture.h" alt="" coords="173,83,253,112"/>
+<area shape="rect" id="node7" href="$display_8h.html" title="display.h" alt="" coords="251,237,325,267"/>
+<area shape="rect" id="node16" href="$buffer__control_8h.html" title="buffer_control.h" alt="" coords="507,83,629,112"/>
+<area shape="rect" id="node5" href="$image_8h.html" title="image.h" alt="" coords="5,160,80,189"/>
+<area shape="rect" id="node9" href="$render__buffer_8h.html" title="render_buffer.h" alt="" coords="155,160,272,189"/>
+<area shape="rect" id="node12" href="$shared__gc__data_8h.html" title="shared_gc_data.h" alt="" coords="296,160,432,189"/>
+</map>

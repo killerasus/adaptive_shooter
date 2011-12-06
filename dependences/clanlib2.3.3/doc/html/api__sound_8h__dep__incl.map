@@ -1,0 +1,21 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$soundprovider_8h.html" title="soundprovider.h" alt="" coords="407,83,529,112"/>
+<area shape="rect" id="node20" href="$cd__drive_8h.html" title="cd_drive.h" alt="" coords="835,160,920,189"/>
+<area shape="rect" id="node23" href="$setupsound_8h.html" title="setupsound.h" alt="" coords="944,160,1053,189"/>
+<area shape="rect" id="node26" href="$Sound_2sound_8h.html" title="sound.h" alt="" coords="969,83,1041,112"/>
+<area shape="rect" id="node29" href="$sound__sse_8h.html" title="sound_sse.h" alt="" coords="1065,83,1167,112"/>
+<area shape="rect" id="node32" href="$soundbuffer_8h.html" title="soundbuffer.h" alt="" coords="1179,160,1288,189"/>
+<area shape="rect" id="node35" href="$soundbuffer__session_8h.html" title="soundbuffer_session.h" alt="" coords="1241,83,1407,112"/>
+<area shape="rect" id="node39" href="$soundfilter_8h.html" title="soundfilter.h" alt="" coords="1431,83,1529,112"/>
+<area shape="rect" id="node45" href="$soundformat_8h.html" title="soundformat.h" alt="" coords="1553,83,1668,112"/>
+<area shape="rect" id="node51" href="$soundoutput_8h.html" title="soundoutput.h" alt="" coords="1692,83,1807,112"/>
+<area shape="rect" id="node54" href="$soundoutput__description_8h.html" title="soundoutput_description.h" alt="" coords="1831,83,2023,112"/>
+<area shape="rect" id="node5" href="$soundprovider__mikmod_8h.html" title="soundprovider_mikmod.h" alt="" coords="5,160,189,189"/>
+<area shape="rect" id="node9" href="$soundprovider__raw_8h.html" title="soundprovider_raw.h" alt="" coords="213,160,365,189"/>
+<area shape="rect" id="node11" href="$sound_8h.html" title="sound.h" alt="" coords="1151,237,1223,267"/>
+<area shape="rect" id="node13" href="$soundprovider__recorder_8h.html" title="soundprovider_recorder.h" alt="" coords="440,160,624,189"/>
+<area shape="rect" id="node16" href="$soundprovider__wave_8h.html" title="soundprovider_wave.h" alt="" coords="648,160,811,189"/>
+<area shape="rect" id="node7" href="$mikmod_8h.html" title="mikmod.h" alt="" coords="55,237,140,267"/>
+<area shape="rect" id="node41" href="$echofilter_8h.html" title="echofilter.h" alt="" coords="1413,160,1504,189"/>
+<area shape="rect" id="node47" href="$soundprovider__session_8h.html" title="soundprovider_session.h" alt="" coords="1579,160,1757,189"/>
+</map>
