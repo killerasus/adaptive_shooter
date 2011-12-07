@@ -13,14 +13,28 @@
 #ifndef Scene_h__
 #define Scene_h__
 
+#include "Entity.h"
+#include <vector>
+
 class Scene
 {
 public:
-	virtual void draw() = 0;
-	virtual void update() = 0;
+
+	enum SceneState
+	{
+		SS_RUNNING = 0,
+		SS_COMPLETED
+	};
+
+	virtual void draw();
+	virtual void update();
+	void InsertEntity(Entity* entity);
+	void RemoveEntity(Entity* entity);
+	Entity* GetEntity(unsigned int i);
 
 protected:
-	
+	std::vector< Entity* > _entities;
+	SceneState _state;
 private:
 };
 

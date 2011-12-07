@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{0b8b4054-7928-4c6b-82df-c9d0b4cd296b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{c64e0b98-dc64-4098-9ca3-078f2e687f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{40540c87-bf43-4649-b102-559c1e623581}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp">
@@ -38,6 +44,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\Scene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestEntity.cpp">
+      <Filter>Source Files\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestEntity.h">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

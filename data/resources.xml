@@ -8,4 +8,9 @@
       <animation speed="200" loop="yes" pingpong="no" />
     </sprite>
   </section>
+  <section name="scenes">
+    <sprite name="logo">
+      <image file="/images/test/ludobardos.png"></image>
+    </sprite>
+  </section>
 </resources>

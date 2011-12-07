@@ -20,16 +20,17 @@
 class FadingScene : public Scene
 {
 public:
-	FadingScene();
-	FadingScene(std::string imageResource, float fadein, float fadeout, float waittime);
-	virtual ~FadingScene();
 
-	enum SceneState {
-		FADE_IN = 0,
-		NO_FADE,
-		FADE_OUT,
-		COMPLETED
+	enum FadingMode {
+		FM_NO_FADE = 0,
+		FM_FADE_IN,
+		FM_FADE_OUT,
+		FM_FADE_INOUT
 	};
+
+	FadingScene();
+	FadingScene(float fadein, float fadeout, float waittime, FadingScene::FadingMode mode);
+	virtual ~FadingScene();
 
 	void SetBackgroundColor(CL_Color color);
 	CL_Color GetBackgroundColor();
@@ -39,19 +40,28 @@ public:
 	float GetFadeOutTime();
 	void SetWaitTime(float time_ms);
 	float GetWaitTime();
+	void SetFadeMode(FadingScene::FadingMode mode);
+	FadingScene::FadingMode GetFadeMode();
 
-	virtual void draw();
+	/* overrides */
 	virtual void update();
 
 protected:
+	enum FadingState {
+		FS_FADE_IN = 0,
+		FS_FADE_OUT,
+		FS_WAITING,
+		FS_COMPLETED
+	};
 	
 private:
 	CL_Color _backgroundColor;
-	CL_Sprite* _sprite;
 	float _fadein;
 	float _fadeout;
 	float _waittime;
-	SceneState _state;
+	float _timer;
+	FadingMode _mode;
+	FadingState _fadingState;
 };
 
 #endif // FadingScene_h__
