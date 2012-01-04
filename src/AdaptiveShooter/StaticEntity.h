@@ -3,25 +3,25 @@
 	created:	6:12:2011   19:49
 	filename: 	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\src\AdaptiveShooter\TestEntity.h
 	file path:	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\src\AdaptiveShooter
-	file base:	TestEntity
+	file base:	StaticEntity
 	file ext:	h
 	author:		Bruno Baère Pederassi Lomba de Araujo
 	
 	purpose:	
 *********************************************************************/
 
-#ifndef TestEntity_h__
-#define TestEntity_h__
+#ifndef StaticEntity_h__
+#define StaticEntity_h__
 
 #include "Entity.h"
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 
-class TestEntity : public Entity
+class StaticEntity : public Entity
 {
 public:
-	TestEntity(float x, float y, std::string resource_id);
-	virtual ~TestEntity();
+	StaticEntity(float x, float y, std::string resource_id);
+	virtual ~StaticEntity();
 
 	virtual void draw();
 

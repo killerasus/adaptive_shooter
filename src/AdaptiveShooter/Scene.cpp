@@ -11,6 +11,7 @@
 *********************************************************************/
 
 #include "Scene.h"
+#include "GameManager.h"
 
 void Scene::InsertEntity( Entity* entity)
 {
@@ -53,3 +54,19 @@ void Scene::update()
 	}
 }
 
+Scene* Scene::GetNextScene()
+{
+	return _nextScene;
+}
+
+void Scene::SetNextScene( Scene* next )
+{
+	_nextScene = next;
+}
+
+void Scene::ChangeToNextScene()
+{
+	GameManager* manager = GameManager::GetInstance();
+	manager->PopScene();
+	manager->PushScene(_nextScene);
+}

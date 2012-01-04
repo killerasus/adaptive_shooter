@@ -19,12 +19,12 @@
 #include "luafunctions.h"
 #include "GameManager.h"
 #include "FadingScene.h"
+#include "Menu.h"
 
 #ifdef _DEBUG
 #include "TestScene.h"
-#include "TestEntity.h"
+#include "StaticEntity.h"
 #endif
-
 
 #include "AIManager\aimanager.h"
 
@@ -51,10 +51,18 @@ public:
 		GameManager* manager = GameManager::GetInstance();
 		manager->LoadResource("../../../../data/resources.xml");
 
-		//TestScene newScene;
+		//Splash screen
 		FadingScene newScene(2000.0f, 2000.0f, 4000.0f, FadingScene::FM_FADE_INOUT);
-		TestEntity* newEntity = new TestEntity(0.0f, 0.0f, "scenes/logo");
+		StaticEntity* newEntity = new StaticEntity(0.0f, 0.0f, "scenes/logo");
 		newScene.InsertEntity(newEntity);
+
+		//Menu screen
+		//Menu mainMenu();
+
+		//Test scene
+		TestScene newTest;
+
+		newScene.SetNextScene(&newTest);
 
 		manager->PushScene(&newScene);
 

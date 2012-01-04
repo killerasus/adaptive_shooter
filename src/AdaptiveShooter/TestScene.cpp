@@ -19,6 +19,7 @@ TestScene::TestScene():_x(0.0f),_y(0.0f),_speed(50.0f)
 	CL_GraphicContext gc = manager->GetWindow()->get_gc();
 	_font = new CL_Font(gc, "Tahoma", 30);
 	_boatSprite = new CL_Sprite(gc, "sprites/boat", manager->GetResourceManager());
+	_nextScene = NULL;
 }
 
 TestScene::~TestScene()

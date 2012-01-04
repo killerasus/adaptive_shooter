@@ -21,7 +21,7 @@ GameManager::GameManager():setup_core(),setup_display(),setup_gl()
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
-	_window = new CL_DisplayWindow("Hello World", 640, 480);	
+	_window = new CL_DisplayWindow("Hello World", 640, 480);
 	_quit = false;
 }
 
@@ -80,14 +80,20 @@ void GameManager::PushScene(Scene* scene)
 
 Scene* GameManager::PopScene()
 {
-	Scene* top = _sceneStack.top();
-	_sceneStack.pop();
+	Scene* top = NULL;
+
+	if (!_sceneStack.empty())
+	{
+		top = _sceneStack.top();
+		_sceneStack.pop();
+	}
+
 	return top;
 }
 
 void GameManager::Draw()
 {
-	_window->get_gc().clear(CL_Colorf::cadetblue);
+	_window->get_gc().clear(CL_Colorf::black);
 
 	if (!_sceneStack.empty())
 	{

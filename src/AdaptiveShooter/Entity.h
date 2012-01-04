@@ -7,7 +7,7 @@
 	file ext:	h
 	author:		Bruno Baère Pederassi Lomba de Araujo
 	
-	purpose:	
+	purpose:	Interface for Entity types
 *********************************************************************/
 #ifndef Entity_h__
 #define Entity_h__
@@ -19,7 +19,6 @@ public:
 	virtual void draw() = 0;
 	virtual void update() = 0;
 	virtual void SetAlpha( float alpha ) = 0;
-
 
 protected:
 	

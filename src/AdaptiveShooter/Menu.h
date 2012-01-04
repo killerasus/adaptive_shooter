@@ -14,7 +14,6 @@
 #define Menu_h__
 
 #include "Scene.h"
-#include <vector>
 
 /**
  * Menu is a class for handling menu-like interfaces for changing game options
@@ -24,10 +23,10 @@ class Menu : public Scene
 public:
 	Menu();
 	~Menu();
+
+	virtual void update();
 protected:
-	
 private:
-	
 };
 
 #endif // Menu_h__

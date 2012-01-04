@@ -13,4 +13,9 @@
       <image file="/images/test/ludobardos.png"></image>
     </sprite>
   </section>
+  <section name="menu">
+    <sprite name="background">
+      <image file="/images/test/background_menu.png"></image>
+    </sprite>
+  </section>
 </resources>

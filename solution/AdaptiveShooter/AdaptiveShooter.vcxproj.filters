@@ -28,6 +28,12 @@
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{40540c87-bf43-4649-b102-559c1e623581}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{84619cd6-2f0c-4781-baa4-25cacd35b396}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu">
+      <UniqueIdentifier>{6c774d05-567c-449b-bf65-a09a571bf694}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp">
@@ -48,15 +54,18 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\Scene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AdaptiveShooter\TestEntity.cpp">
+    <ClCompile Include="..\..\src\AdaptiveShooter\Menu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\MenuItem.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\StaticEntity.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h">
@@ -74,7 +83,13 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AdaptiveShooter\TestEntity.h">
+    <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\MenuItem.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>

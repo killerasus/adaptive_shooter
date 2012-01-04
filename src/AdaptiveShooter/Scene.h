@@ -27,14 +27,25 @@ public:
 	};
 
 	virtual void draw();
+
 	virtual void update();
+
 	void InsertEntity(Entity* entity);
+
 	void RemoveEntity(Entity* entity);
+
 	Entity* GetEntity(unsigned int i);
 
+	Scene* GetNextScene();
+
+	void SetNextScene(Scene* next);
+
 protected:
+	void ChangeToNextScene();
+
 	std::vector< Entity* > _entities;
-	SceneState _state;
+	SceneState _sceneState;
+	Scene *_nextScene;
 private:
 };
 

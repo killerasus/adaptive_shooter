@@ -124,8 +124,10 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Menu.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\MenuItem.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Scene.cpp" />
-    <ClCompile Include="..\..\src\AdaptiveShooter\TestEntity.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\StaticEntity.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -134,8 +136,9 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\MenuItem.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h" />
-    <ClInclude Include="..\..\src\AdaptiveShooter\TestEntity.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h" />
   </ItemGroup>
   <ItemGroup>

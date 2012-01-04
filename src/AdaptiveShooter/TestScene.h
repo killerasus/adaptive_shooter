@@ -22,8 +22,8 @@ public:
 	TestScene();
 	virtual ~TestScene();
 
+	/* overrides */
 	virtual void draw();
-
 	virtual void update();
 
 protected:
