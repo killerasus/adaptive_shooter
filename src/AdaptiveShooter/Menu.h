@@ -14,6 +14,7 @@
 #define Menu_h__
 
 #include "Scene.h"
+#include "MenuItem.h"
 
 /**
  * Menu is a class for handling menu-like interfaces for changing game options
@@ -25,8 +26,17 @@ public:
 	~Menu();
 
 	virtual void update();
+	virtual void draw();
+
 protected:
+	void StateDown();
+	void StateUp();
+	void ExecuteState();
+
 private:
+	int _menuState;
+	Entity* _menuPointer;
+	std::vector<MenuItem> _menuItems;
 };
 
 #endif // Menu_h__

@@ -137,7 +137,9 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\MenuItem.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Player.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Shot.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h" />
   </ItemGroup>

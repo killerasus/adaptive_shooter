@@ -34,6 +34,18 @@
     <Filter Include="Source Files\Menu">
       <UniqueIdentifier>{6c774d05-567c-449b-bf65-a09a571bf694}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{44cb24b9-f3c5-4dde-9467-b80b1dea7af1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Control">
+      <UniqueIdentifier>{75c72658-32e2-417c-98f1-99ee0dedbd66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Control">
+      <UniqueIdentifier>{993da5c1-4dc5-4393-b532-d8f9690ce2bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{e92013e9-47df-40b4-9cd6-48cccbfe47b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp">
@@ -91,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h">
       <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Shot.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Player.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
