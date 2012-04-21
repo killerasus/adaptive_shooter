@@ -13,11 +13,28 @@
 #include "GameManager.h"
 #include <string>
 
-MenuItem::MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id):_x(x),_y(y){
+MenuItem::MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id):
+_pos(x,y)
+{
 	CL_ResourceManager *manager = GameManager::GetInstance()->GetResourceManager();
 }
 
 MenuItem::~MenuItem()
 {
 
+}
+
+void MenuItem::draw()
+{
+	_sprite->draw( GameManager::GetInstance()->GetWindow()->get_gc(), _pos.x, _pos.y );
+}
+
+void MenuItem::update()
+{
+	_sprite->update();
+}
+
+void MenuItem::setAlpha( float alpha )
+{
+	_sprite->set_alpha(alpha);
 }

@@ -18,7 +18,7 @@ public:
 
 	virtual void draw() = 0;
 	virtual void update() = 0;
-	virtual void SetAlpha( float alpha ) = 0;
+	virtual void setAlpha( float alpha ) = 0;
 
 protected:
 	

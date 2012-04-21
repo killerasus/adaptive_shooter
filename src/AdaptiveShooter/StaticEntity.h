@@ -27,7 +27,7 @@ public:
 
 	virtual void update();
 
-	virtual void SetAlpha( float alpha );
+	virtual void setAlpha( float alpha );
 
 protected:
 	

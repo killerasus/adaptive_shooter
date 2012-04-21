@@ -28,7 +28,7 @@ StaticEntity::~StaticEntity()
 
 void StaticEntity::draw()
 {
-	_sprite->draw(GameManager::GetInstance()->GetWindow()->get_gc(), _pos.x, _pos.y);
+	_sprite->draw( GameManager::GetInstance()->GetWindow()->get_gc(), _pos.x, _pos.y );
 }
 
 void StaticEntity::update()
@@ -36,7 +36,7 @@ void StaticEntity::update()
 	_sprite->update();
 }
 
-void StaticEntity::SetAlpha( float alpha )
+void StaticEntity::setAlpha( float alpha )
 {
 	_sprite->set_alpha(alpha);
 }
