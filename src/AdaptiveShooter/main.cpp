@@ -21,10 +21,8 @@
 #include "FadingScene.h"
 #include "Menu.h"
 
-#ifdef _DEBUG
 #include "TestScene.h"
 #include "StaticEntity.h"
-#endif
 
 #include "AIManager\aimanager.h"
 
@@ -35,6 +33,7 @@ public:
 	{
 
 #if _DEBUG
+
 		CL_ConsoleWindow console("Debug Console", 80, 160);
 		CL_Console::write_line("Arguments: %1", args.size());
 
