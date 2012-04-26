@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classCL__Rectx.html" title="CL_Rectx\&lt; double \&gt;" alt="" coords="5,101,157,131"/>
-<area shape="rect" id="node7" href="$classCL__Rectx.html" title="CL_Rectx\&lt; float \&gt;" alt="" coords="181,101,317,131"/>
-<area shape="rect" id="node11" href="$classCL__Rectx.html" title="CL_Rectx\&lt; int \&gt;" alt="" coords="341,101,467,131"/>
-<area shape="rect" id="node5" href="$classCL__Rectd.html" title="2D (left,top,right,bottom) rectangle structure &#45; Double" alt="" coords="41,181,121,211"/>
-<area shape="rect" id="node9" href="$classCL__Rectf.html" title="2D (left,top,right,bottom) rectangle structure &#45; Float" alt="" coords="212,181,287,211"/>
-<area shape="rect" id="node13" href="$classCL__Rect.html" title="2D (left,top,right,bottom) rectangle structure &#45; Integer" alt="" coords="368,181,440,211"/>
-</map>

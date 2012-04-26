@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classCL__SoundProvider.html" title="Sound provider." alt="" coords="5,112,144,141"/>
-<area shape="rect" id="node3" href="$classCL__SoundProvider__MikMod.html" title="Module format (.mod, .s3m, .xm, etc) sound provider." alt="" coords="197,5,389,35"/>
-<area shape="rect" id="node5" href="$classCL__SoundProvider__Raw.html" title="Sound provider in a raw PCM format (no header in file)." alt="" coords="208,59,379,88"/>
-<area shape="rect" id="node7" href="$classCL__SoundProvider__Recorder.html" title="Sound provider getting data from a recording device (microphone)." alt="" coords="193,112,393,141"/>
-<area shape="rect" id="node9" href="$classCL__SoundProvider__Vorbis.html" title="Ogg Vorbis format sound provider." alt="" coords="201,165,385,195"/>
-<area shape="rect" id="node11" href="$classCL__SoundProvider__Wave.html" title="Windows WAVE sample format (.wav) sound provider." alt="" coords="204,219,383,248"/>
-</map>

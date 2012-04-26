@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classCL__GUIMessage__ActivationChange.html" title="GUI activation change notification message." alt="" coords="180,5,423,35"/>
-<area shape="rect" id="node5" href="$classCL__GUIMessage__Close.html" title="GUI window close message." alt="" coords="219,59,384,88"/>
-<area shape="rect" id="node7" href="$classCL__GUIMessage__FocusChange.html" title="GUI focus change notification message." alt="" coords="192,112,411,141"/>
-<area shape="rect" id="node9" href="$classCL__GUIMessage__Input.html" title="GUI input message." alt="" coords="220,165,383,195"/>
-<area shape="rect" id="node11" href="$classCL__GUIMessage__Pointer.html" title="GUI mouse pointer change notification message." alt="" coords="213,219,389,248"/>
-<area shape="rect" id="node13" href="$classCL__GUIMessage__Resize.html" title="GUI resize message." alt="" coords="216,272,387,301"/>
-</map>

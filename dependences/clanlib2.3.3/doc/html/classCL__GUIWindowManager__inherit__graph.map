@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classCL__GUIWindowManagerDirect.html" title="Direct window manager." alt="" coords="5,83,213,112"/>
-<area shape="rect" id="node5" href="$classCL__GUIWindowManagerSystem.html" title="System (OS) window manager." alt="" coords="237,83,456,112"/>
-<area shape="rect" id="node7" href="$classCL__GUIWindowManagerTexture.html" title="Texture window manager." alt="" coords="480,83,696,112"/>
-</map>

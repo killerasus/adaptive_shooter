@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classCL__SoundFilter.html" title="Sound Filter Class." alt="" coords="7,59,121,88"/>
-<area shape="rect" id="node3" href="$classCL__EchoFilter.html" title="Echo Filter Class." alt="" coords="193,5,300,35"/>
-<area shape="rect" id="node5" href="$classCL__FadeFilter.html" title="Fade Filter Class." alt="" coords="195,59,299,88"/>
-<area shape="rect" id="node7" href="$classCL__InverseEchoFilter.html" title="Inverse Echo Filter Class." alt="" coords="171,112,323,141"/>
-</map>

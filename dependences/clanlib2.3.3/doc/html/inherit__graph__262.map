@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classCL__OutlineProvider.html" title="Collision detection contour." alt="" coords="7,32,148,61"/>
-<area shape="rect" id="node3" href="$classCL__OutlineProviderBitmap.html" title="Bitmap outline provider." alt="" coords="199,5,385,35"/>
-<area shape="rect" id="node5" href="$classCL__OutlineProviderFile.html" title="File outline provider is used to load precompiled outlines." alt="" coords="211,59,373,88"/>
-</map>

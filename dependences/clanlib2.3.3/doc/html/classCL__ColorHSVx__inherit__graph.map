@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classCL__ColorHSVx.html" title="CL_ColorHSVx\&lt; double \&gt;" alt="" coords="5,101,192,131"/>
-<area shape="rect" id="node7" href="$classCL__ColorHSVx.html" title="CL_ColorHSVx\&lt; float \&gt;" alt="" coords="216,101,387,131"/>
-<area shape="rect" id="node11" href="$classCL__ColorHSVx.html" title="CL_ColorHSVx\&lt; int \&gt;" alt="" coords="411,101,568,131"/>
-<area shape="rect" id="node5" href="$classCL__ColorHSVd.html" title="HSV Color &#45; Double." alt="" coords="41,181,156,211"/>
-<area shape="rect" id="node9" href="$classCL__ColorHSVf.html" title="HSV Color &#45; Float." alt="" coords="247,181,356,211"/>
-<area shape="rect" id="node13" href="$classCL__ColorHSVi.html" title="HSV Color &#45; Integer." alt="" coords="435,181,544,211"/>
-</map>

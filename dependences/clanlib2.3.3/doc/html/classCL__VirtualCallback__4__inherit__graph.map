@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$classCL__VirtualCallback__4__functor.html" title="CL_VirtualCallback_4_functor\&lt; RetVal, Param1, Param2, Param3, Param4 \&gt;" alt="" coords="699,5,1200,35"/>
-<area shape="rect" id="node7" href="$classCL__VirtualCallback__4__member.html" title="CL_VirtualCallback_4_member\&lt; RetVal, Param1, Param2, Param3, Param4 \&gt;" alt="" coords="693,59,1205,88"/>
-<area shape="rect" id="node9" href="$classCL__VirtualCallback__4__member__user.html" title="CL_VirtualCallback_4_member_user\&lt; RetVal, Param1, Param2, Param3, Param4 \&gt;" alt="" coords="676,112,1223,141"/>
-<area shape="rect" id="node11" href="$classCL__VirtualCallback__4__static.html" title="CL_VirtualCallback_4_static\&lt; RetVal, Param1, Param2, Param3, Param4 \&gt;" alt="" coords="703,165,1196,195"/>
-<area shape="rect" id="node13" href="$classCL__VirtualCallback__4__static__user.html" title="CL_VirtualCallback_4_static_user\&lt; RetVal, Param1, Param2, Param3, Param4 \&gt;" alt="" coords="685,219,1213,248"/>
-<area shape="rect" id="node2" href="$classCL__SlotCallback.html" title="CL_SlotCallback" alt="" coords="5,112,128,141"/>
-</map>

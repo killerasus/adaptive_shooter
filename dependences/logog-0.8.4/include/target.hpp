@@ -28,11 +28,15 @@ public :
 
     /** All targets must implement the Output function.  This function outputs the provided string to the
       * output that the target represents.
+      * \return Zero if no error has occurred; an error code (generally propagated 
+      * from the operating system) if an error has occurred.
       */
     virtual int Output( const LOGOG_STRING &data ) = 0;
 
-    /** Receives a topic on behalf of this target.  A mutex prevents race conditions from occuring when multiple
-     * threads attempt to write to this target at the same time.
+    /** Receives a topic on behalf of this target.  A mutex prevents race conditions from occurring when 
+     ** multiple threads attempt to write to this target at the same time.
+     ** \return Zero if no error has occurred; an error code (generally propagated from the operating
+     ** system) if an error has occurred.
      */
     virtual int Receive( const Topic &topic );
 
@@ -95,13 +99,29 @@ public:
     /** Opens the log file on first write. */
     virtual int Open();
 
+	/** This function makes a guess as to the correct BOM for this file, and attempts
+	 ** to write it into the file.  It does this by considering the size of LOGOG_CHAR
+	 ** as well as considering the current endianness of this system.  This guess
+	 ** may be incorrect.
+	 **/
+	virtual void WriteUnicodeBOM();
+
     /** Writes the message to the log file. */
     virtual int Output( const LOGOG_STRING &data );
+
+	/** Should a Unicode BOM be written to the beginning of this log file, if the log file
+	 * was previously empty?  By default a BOM is written to a log file if LOGOG_UNICODE
+	 * is enabled. */
+	bool m_bWriteUnicodeBOM;
 
 protected:
     char *m_pFileName;
     bool m_bFirstTime;
+	bool m_bOpenFailed;
     FILE *m_pFile;
+
+	/** Does the actual fwrite to the file.  Call Output() instead to handle error conditions better. */
+	virtual int InternalOutput( size_t nSize, const LOGOG_CHAR *pData );
 
 private:
     LogFile();

@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classCL__Line3x.html" title="CL_Line3x\&lt; double \&gt;" alt="" coords="5,101,163,131"/>
-<area shape="rect" id="node7" href="$classCL__Line3x.html" title="CL_Line3x\&lt; float \&gt;" alt="" coords="187,101,331,131"/>
-<area shape="rect" id="node11" href="$classCL__Line3x.html" title="CL_Line3x\&lt; int \&gt;" alt="" coords="355,101,485,131"/>
-<area shape="rect" id="node5" href="$classCL__Line3d.html" title="3D line &#45; Double" alt="" coords="41,181,127,211"/>
-<area shape="rect" id="node9" href="$classCL__Line3f.html" title="3D line &#45; Float" alt="" coords="217,181,300,211"/>
-<area shape="rect" id="node13" href="$classCL__Line3.html" title="3D line &#45; Integer" alt="" coords="381,181,459,211"/>
-</map>

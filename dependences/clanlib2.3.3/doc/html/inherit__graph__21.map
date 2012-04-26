@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classCL__Callback__Impl__2.html" title="CL_Callback_Impl_2\&lt; RetVal, P1, P2 \&gt;" alt="" coords="5,112,269,141"/>
-<area shape="rect" id="node3" href="$classCL__Callback__Impl__2__functor.html" title="CL_Callback_Impl_2_functor\&lt; RetVal, P1, P2, Functor \&gt;" alt="" coords="396,5,767,35"/>
-<area shape="rect" id="node5" href="$classCL__Callback__Impl__2__member.html" title="CL_Callback_Impl_2_member\&lt; RetVal, P1, P2, InstanceClass \&gt;" alt="" coords="371,59,792,88"/>
-<area shape="rect" id="node7" href="$classCL__Callback__Impl__2__member__user.html" title="CL_Callback_Impl_2_member_user\&lt; RetVal, P1, P2, InstanceClass, UserData \&gt;" alt="" coords="319,112,844,141"/>
-<area shape="rect" id="node9" href="$classCL__Callback__Impl__2__static.html" title="CL_Callback_Impl_2_static\&lt; RetVal, P1, P2 \&gt;" alt="" coords="428,165,735,195"/>
-<area shape="rect" id="node11" href="$classCL__Callback__Impl__2__static__user.html" title="CL_Callback_Impl_2_static_user\&lt; RetVal, P1, P2, UserData \&gt;" alt="" coords="376,219,787,248"/>
-</map>

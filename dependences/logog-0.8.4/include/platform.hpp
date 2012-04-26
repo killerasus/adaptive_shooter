@@ -44,6 +44,10 @@ extern int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #define LOGOG_USE_TR1 1
 #endif
 
+#ifdef __APPLE__
+#define LOGOG_USE_TR1 1
+#endif
+
 /* If we've recognized it already, it's a relatively modern compiler */
 #if defined( LOGOG_FLAVOR_WINDOWS ) || defined( LOGOG_FLAVOR_POSIX )
 #define LOGOG_HAS_UNORDERED_MAP 1
@@ -62,7 +66,26 @@ extern int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #if _XBOX_VER >= 200
 #include "proprietary/xbox360.hpp"
 #else
-/* Windows */
+/* Windows has been detected. */
+
+/** Microsoft's CRT library has its own leak detection mechanism.  If you don't trust logog's
+ ** LOGOG_LEAK_DETECTION, you can enable LOGOG_LEAK_DETECTION_WINDOWS to enable
+ ** Microsoft's version.  This really doesn't belong in platform.hpp -- feel
+ ** free to refactor this into a Windows-specific header.
+ **/
+#ifdef LOGOG_LEAK_DETECTION_WINDOWS
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif  // _DEBUG
+#endif // LOGOG_LEAK_DETECTION_WINDOWS
+
 #include "windows.h"
 #endif // _XBOX_VER
 #endif // LOGOG_FLAVOR_WINDOWS

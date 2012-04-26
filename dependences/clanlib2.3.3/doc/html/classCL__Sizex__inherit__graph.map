@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classCL__Sizex.html" title="CL_Sizex\&lt; double \&gt;" alt="" coords="5,101,157,131"/>
-<area shape="rect" id="node7" href="$classCL__Sizex.html" title="CL_Sizex\&lt; float \&gt;" alt="" coords="181,101,317,131"/>
-<area shape="rect" id="node11" href="$classCL__Sizex.html" title="CL_Sizex\&lt; int \&gt;" alt="" coords="341,101,467,131"/>
-<area shape="rect" id="node5" href="$classCL__Sized.html" title="2D (width,height) size structure &#45; Double" alt="" coords="41,181,121,211"/>
-<area shape="rect" id="node9" href="$classCL__Sizef.html" title="2D (width,height) size structure &#45; Float" alt="" coords="212,181,287,211"/>
-<area shape="rect" id="node13" href="$classCL__Size.html" title="2D (width,height) size structure &#45; Integer" alt="" coords="368,181,440,211"/>
-</map>

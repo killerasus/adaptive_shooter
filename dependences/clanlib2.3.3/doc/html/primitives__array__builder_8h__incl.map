@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$vertex__array__buffer_8h.html" title="vertex_array_buffer.h" alt="" coords="1405,83,1563,112"/>
-<area shape="rect" id="node7" href="$graphic__context_8h.html" title="graphic_context.h" alt="" coords="1071,160,1207,189"/>
-<area shape="rect" id="node11" href="$color_8h.html" title="../2D/color.h" alt="" coords="1867,237,1965,267"/>
-<area shape="rect" id="node18" href="$texture__format_8h.html" title="../Image/texture_format.h" alt="" coords="1419,237,1605,267"/>
-<area shape="rect" id="node30" href="$primitives__array_8h.html" title="primitives_array.h" alt="" coords="1072,237,1205,267"/>
-<area shape="rect" id="node36" href="$frame__buffer_8h.html" title="frame_buffer.h" alt="" coords="1229,237,1344,267"/>
-</map>
