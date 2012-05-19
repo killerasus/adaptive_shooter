@@ -9,4 +9,65 @@
 	
 	purpose:	Interface class for player model used in AIManager framework
 *********************************************************************/
+#include "playermodel.h"
 
+PlayerModel::PlayerModel()
+{
+
+}
+
+PlayerModel::~PlayerModel()
+{
+
+}
+
+void PlayerModel::initialize()
+{
+	for (unsigned int i = 0; i < _traitValues.size(); i++)
+	{
+		_traitValues[i] = 0.5f;
+	}
+}
+
+std::string PlayerModel::getName()
+{
+	return _name;
+}
+
+void PlayerModel::setName( std::string name )
+{
+	_name = name;
+}
+
+void PlayerModel::updateTrait( unsigned int trait, float observedValue )
+{
+	float currentValue = _traitValues[trait];
+	float delta = observedValue - currentValue;
+	float weightedDelta = _learningRate*delta;
+
+	_traitValues[trait] += weightedDelta;
+}
+
+float PlayerModel::getTrait( unsigned int trait )
+{
+	return _traitValues[trait];
+}
+
+void PlayerModel::setTrait( unsigned int trait, float value )
+{
+	if (value > 0.0f && value <= 1.0f)
+	{
+		_traitValues[trait] = value;
+	}
+	else
+	{
+		if (value > 1.0f)
+		{
+			_traitValues[trait] = 1.0f;
+		}
+		else
+		{
+			_traitValues[trait] = 0.01f;
+		}
+	}
+}

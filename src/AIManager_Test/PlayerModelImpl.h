@@ -21,8 +21,7 @@ public:
 	PlayerModelImpl(float valor);
 	~PlayerModelImpl();
 
-	virtual float Compare( PlayerModel* comparable );
-	void setValor( float valor );
+	virtual float compare( PlayerModel* comparable );
 protected:
 	
 private:

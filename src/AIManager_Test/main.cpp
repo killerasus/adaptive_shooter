@@ -16,7 +16,7 @@
 
 // Tests that the Foo::Bar() method does Abc.
 TEST_F(PlayerModelTest, CompareModels) {
-	EXPECT_EQ(3.0f, model1->Compare(model2));
+	EXPECT_EQ(3.0f, model1->compare(model2));
 }
 
 int main(int argc, char **argv) {
