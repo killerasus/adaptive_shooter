@@ -24,7 +24,7 @@
 #include "TestScene.h"
 #include "StaticEntity.h"
 
-#include "AIManager\aimanager.h"
+#include "AIManager/AIManager.h"
 
 class DisplayProgram
 {

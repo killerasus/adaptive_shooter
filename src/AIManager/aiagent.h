@@ -9,15 +9,19 @@
 	
 	purpose:	AIAgent
 *********************************************************************/
+#ifndef AIAgent_h__
+#define AIAgent_h__
 
 class AIAgent
 {
 public:
 	AIAgent();
 	virtual ~AIAgent();
-	virtual void updateStats();
+	virtual void updateStats() = 0;
 protected:
 	
 private:
 
 };
+
+#endif // AIAgent_h__

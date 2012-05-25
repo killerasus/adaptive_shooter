@@ -10,7 +10,7 @@
 	purpose:	Implementation for AIManager class
 *********************************************************************/
 
-#include "aimanager.h"
+#include "AIManager.h"
 
 AIManager::AIManager(lua_State* L):_luaState(L)
 {
@@ -18,7 +18,6 @@ AIManager::AIManager(lua_State* L):_luaState(L)
 
 AIManager::~AIManager()
 {
-
 }
 
 void AIManager::update()
@@ -34,4 +33,26 @@ void AIManager::SetLuaState( lua_State* L )
 lua_State* AIManager::GetLuaState()
 {
 	return _luaState;
+}
+
+void AIManager::insertAgent( AIAgent* agent )
+{
+	if (agent != NULL)
+	{
+		_aiAgents.push_back( agent );
+	}
+}
+
+bool AIManager::removeAgent( AIAgent* agent )
+{
+	for (std::vector<AIAgent*>::iterator it = _aiAgents.begin(); it != _aiAgents.end(); it++)
+	{
+		if (*it == agent)
+		{
+			_aiAgents.erase( it );
+			return true;
+		}
+	}
+
+	return false;
 }

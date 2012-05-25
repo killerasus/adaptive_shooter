@@ -18,24 +18,24 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\AIManager\aimanager.cpp">
+    <ClCompile Include="..\..\src\AIManager\AIAgent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AIManager\aiagent.cpp">
+    <ClCompile Include="..\..\src\AIManager\AIManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AIManager\playermodel.cpp">
+    <ClCompile Include="..\..\src\AIManager\PlayerModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AIManager\aiagent.h">
+    <ClInclude Include="..\..\src\AIManager\AIAgent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AIManager\aimanager.h">
+    <ClInclude Include="..\..\src\AIManager\AIManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AIManager\playermodel.h">
+    <ClInclude Include="..\..\src\AIManager\PlayerModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

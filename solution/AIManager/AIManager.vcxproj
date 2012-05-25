@@ -129,14 +129,14 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\AIManager\aiagent.cpp" />
-    <ClCompile Include="..\..\src\AIManager\aimanager.cpp" />
-    <ClCompile Include="..\..\src\AIManager\playermodel.cpp" />
+    <ClCompile Include="..\..\src\AIManager\AIAgent.cpp" />
+    <ClCompile Include="..\..\src\AIManager\AIManager.cpp" />
+    <ClCompile Include="..\..\src\AIManager\PlayerModel.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\AIManager\aiagent.h" />
-    <ClInclude Include="..\..\src\AIManager\aimanager.h" />
-    <ClInclude Include="..\..\src\AIManager\playermodel.h" />
+    <ClInclude Include="..\..\src\AIManager\AIAgent.h" />
+    <ClInclude Include="..\..\src\AIManager\AIManager.h" />
+    <ClInclude Include="..\..\src\AIManager\PlayerModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,7 +10,7 @@
 	purpose:	Implementation for AIAgent class
 *********************************************************************/
 
-#include "aiagent.h"
+#include "AIAgent.h"
 
 AIAgent::AIAgent()
 {
@@ -18,11 +18,6 @@ AIAgent::AIAgent()
 }
 
 AIAgent::~AIAgent()
-{
-
-}
-
-void AIAgent::updateStats()
 {
 
 }

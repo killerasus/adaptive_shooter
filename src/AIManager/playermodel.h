@@ -10,8 +10,8 @@
 	purpose:	Interface class for player model used in AIManager framework
 *********************************************************************/
 
-#ifndef PLAYERMODEL_H
-#define PLAYERMODEL_H
+#ifndef PlayerModel_h__
+#define PlayerModel_h__
 
 #include <string>
 #include <vector>
@@ -89,4 +89,4 @@ private:
 	static float _learningRate;
 };
 
-#endif
+#endif // PlayerModel_h__

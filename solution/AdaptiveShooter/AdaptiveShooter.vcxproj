@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\AdaptiveShooter\Enemy.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Enemy.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h" />

@@ -9,7 +9,7 @@
 	
 	purpose:	Interface class for player model used in AIManager framework
 *********************************************************************/
-#include "playermodel.h"
+#include "PlayerModel.h"
 
 PlayerModel::PlayerModel()
 {

@@ -12,7 +12,7 @@
 #ifndef PLAYERMODELIMPL_H
 #define PLAYERMODELIMPL_H
 
-#include "playermodel.h"
+#include "PlayerModel.h"
 
 class PlayerModelImpl : public PlayerModel
 {
