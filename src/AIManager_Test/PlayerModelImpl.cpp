@@ -12,14 +12,14 @@
 
 #include "PlayerModelImpl.h"
 
-PlayerModelImpl::PlayerModelImpl()
+//PlayerModelImpl::PlayerModelImpl()
+//{
+//
+//}
+
+PlayerModelImpl::PlayerModelImpl(float valor, float learningRate) : PlayerModel( TOTAL_STATS, learningRate )
 {
-
-}
-
-PlayerModelImpl::PlayerModelImpl(float valor):_valor(valor)
-{
-
+	setTrait(SHOOTING_RATE, valor);
 }
 
 PlayerModelImpl::~PlayerModelImpl()
@@ -27,19 +27,14 @@ PlayerModelImpl::~PlayerModelImpl()
 
 }
 
-float PlayerModelImpl::Compare( PlayerModel* comparable )
+float PlayerModelImpl::compare( PlayerModel* comparable )
 {
 	if (comparable)
 	{
-		return this->_valor - ((PlayerModelImpl*)comparable)->_valor;
+		return this->getTrait(SHOOTING_RATE) - ((PlayerModelImpl*)comparable)->getTrait(SHOOTING_RATE);
 	} 
 	else
 	{
-		return this->_valor;
+		return this->getTrait(SHOOTING_RATE);
 	}
-}
-
-void PlayerModelImpl::setValor( float valor )
-{
-	_valor = valor;
 }

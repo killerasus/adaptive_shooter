@@ -120,10 +120,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\AIManager_Test\AIAgentImpl.cpp" />
     <ClCompile Include="..\..\src\AIManager_Test\main.cpp" />
     <ClCompile Include="..\..\src\AIManager_Test\PlayerModelImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\AIManager_Test\AIAgentImpl.h" />
+    <ClInclude Include="..\..\src\AIManager_Test\AIAgentTest.h" />
     <ClInclude Include="..\..\src\AIManager_Test\PlayerModelImpl.h" />
     <ClInclude Include="..\..\src\AIManager_Test\PlayerModelTest.h" />
   </ItemGroup>

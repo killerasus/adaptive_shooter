@@ -11,7 +11,7 @@
 *********************************************************************/
 #include "PlayerModel.h"
 
-PlayerModel::PlayerModel()
+PlayerModel::PlayerModel( unsigned int numberOfTraits, float learningRate ):_traitValues( numberOfTraits, 0.5f ), _learningRate( learningRate )
 {
 
 }
@@ -21,7 +21,7 @@ PlayerModel::~PlayerModel()
 
 }
 
-void PlayerModel::initialize()
+void PlayerModel::resetTraits()
 {
 	for (unsigned int i = 0; i < _traitValues.size(); i++)
 	{
@@ -70,4 +70,19 @@ void PlayerModel::setTrait( unsigned int trait, float value )
 			_traitValues[trait] = 0.01f;
 		}
 	}
+}
+
+const unsigned int PlayerModel::getNumberOfTraits() const
+{
+	return _traitValues.size();
+}
+
+void PlayerModel::setLearningRate( float rate )
+{
+	_learningRate = rate;
+}
+
+float PlayerModel::getLearningRate() const
+{
+	return _learningRate;
 }

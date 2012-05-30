@@ -15,15 +15,25 @@
 
 
 #include "AIAgent.h"
+#include "PlayerModel.h"
 
 class AIAgentImpl : public AIAgent
 {
 public:
-	AIAgentImpl();
-	~AIAgentImpl();
+	AIAgentImpl( PlayerModel* player );
+	virtual ~AIAgentImpl();
+
+	virtual void updateStats();
+
+	float getShootingRate();
+
 protected:
 	
 private:
+	PlayerModel* _playerModel;
+	float _shootingRate;
+	float _xSpeed;
+	float _ySpeed;
 };
 
 #endif // AIAgentImpl_h__

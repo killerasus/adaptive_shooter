@@ -20,14 +20,22 @@ class PlayerModel
 {
 public:
 	
-	/** Constructor */
-	PlayerModel();
+	/**
+	 * Constructor
+	 * 
+	 * @param[in]	numberOfTraits	Number of traits to be observed, initialized to 0.5f
+	 * @param[in]	learningRate	Learning rate for the traits
+	 */
+	PlayerModel( unsigned int numberOfTraits, float learningRate );
 
 	/** Destructor */
-	~PlayerModel();
+	virtual ~PlayerModel();
 
-	/** Initializes the model with trait values equal to 0.5, representing lack of knowledge */
-	void initialize();
+	/*
+	 * Resets the model with trait values equal to 0.5, representing lack of knowledge
+	 * (trait may or may not be present)
+	 */
+	void resetTraits();
 
 	/**
 	 * Returns the name of the player model
@@ -68,6 +76,20 @@ public:
 	void setTrait( unsigned int trait, float value );
 
 	/**
+	 * Gets the number of traits observed
+	 * 
+	 * @return	  const unsigned int
+	 */
+	const unsigned int getNumberOfTraits( ) const;
+
+	/**
+	 * Gets the learning rate
+	 * 
+	 * @return	  float
+	 */
+	float getLearningRate( ) const;
+
+	/**
 	 * Sets new learning rate for the player model
 	 * 
 	 * @param	  rate	Value in the range (0..1]
@@ -86,7 +108,7 @@ protected:
 private:
 	std::vector<float> _traitValues;
 	std::string _name;
-	static float _learningRate;
+	float _learningRate;
 };
 
 #endif // PlayerModel_h__

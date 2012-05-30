@@ -25,8 +25,11 @@ protected:
 	// is empty.
 
 	PlayerModelTest(){
-		model1 = new PlayerModelImpl(5.0f);
-		model2 = new PlayerModelImpl(2.0f);
+		model1 = new PlayerModelImpl(3.5f, 1.0f);
+		model2 = new PlayerModelImpl(0.5f, 1.0f);
+
+		model1->setName("Normal");
+		model2->setName("Easy");
 	}
 
 	virtual ~PlayerModelTest(){

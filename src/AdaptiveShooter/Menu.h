@@ -34,7 +34,7 @@ protected:
 	void ExecuteState();
 
 private:
-	int _menuState;
+	unsigned int _menuState;
 	Entity* _menuPointer;
 	std::vector<MenuItem> _menuItems;
 };

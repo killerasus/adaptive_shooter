@@ -17,15 +17,20 @@
 class PlayerModelImpl : public PlayerModel
 {
 public:
-	PlayerModelImpl();
-	PlayerModelImpl(float valor);
-	~PlayerModelImpl();
+
+	enum PMIStats{
+		SHOOTING_RATE = 0,
+		TOTAL_STATS
+	};
+
+	//PlayerModelImpl();
+	PlayerModelImpl(float newValue, float learningRate);
+	virtual ~PlayerModelImpl();
 
 	virtual float compare( PlayerModel* comparable );
 protected:
 	
 private:
-	float _valor;
 };
 
 #endif
