@@ -41,7 +41,7 @@ class GameManager
 {
 public:
 
-	static GameManager* GetInstance();
+	static GameManager* getInstance();
 	virtual ~GameManager();
 
 	/**
@@ -49,60 +49,60 @@ public:
 	 * 
 	 * @return	  int	Loop result. 0 if ok, other in case of error
 	 */
-	int Loop();
+	int loop();
 
-	void LoadResource(std::string resourceFile);
+	void loadResource(std::string resourceFile);
 
-	void CleanUp();
+	void cleanUp();
 
 	/**
 	 * Pushes a scene into stack. Top of the stack scene is rendered and updated.
 	 * 
 	 * @param	  Scene*
 	 */
-	void PushScene(Scene*);
+	void pushScene(Scene*);
 
 	/**
 	 * Pops the scene from the top of the scene stack.
 	 * 
 	 * @return	  Scene*	Scene popped. Null if no scene is in stack.
 	 */
-	Scene* PopScene();
+	Scene* popScene();
 
 	/**
 	 * Gets current game window
 	 * 
 	 * @return	  CL_DisplayWindow*
 	 */
-	CL_DisplayWindow* GetWindow();
+	CL_DisplayWindow* getWindow();
 
 	/**
 	 * Gets resource manager
 	 * 
 	 * @return	  CL_ResourceManager*
 	 */
-	CL_ResourceManager* GetResourceManager();
+	CL_ResourceManager* getResourceManager();
 
 	/**
 	 * Gets current Lua state
 	 * 
 	 * @return	  lua_State*
 	 */
-	lua_State* GetLuaState();
+	lua_State* getLuaState();
 
 	/**
 	 * Sets current Lua state
 	 * 
 	 * @param	  l	Lua state
 	 */
-	void SetLuaState(lua_State* l);
+	void getLuaState(lua_State* l);
 
 	/**
 	 * Gets current loop delta time
 	 * 
 	 * @return	  float	time since last loop in miliseconds
 	 */
-	float GetDeltaTime();
+	float getDeltaTime();
 
 	/**
 	 * Gets Player n
@@ -113,6 +113,13 @@ public:
 	Player* getPlayer(unsigned int n);
 
 	/**
+	 * Setup player n. Call just when GameManager is instanced.
+	 * 
+	 * @param	  n	Number of player, from 0 to max_players - 1
+	 */
+	void setupPlayer(unsigned int n);
+
+	/**
 	 * Gets AIManager for the game
 	 * 
 	 * @return	  AIManager*	Pointer to AIManager object
@@ -121,8 +128,8 @@ public:
 
 protected:
 	GameManager();
-	virtual void Draw();
-	virtual void Update();
+	virtual void draw();
+	virtual void update();
 private:
 	CL_SetupCore setup_core;
 	CL_SetupDisplay setup_display;

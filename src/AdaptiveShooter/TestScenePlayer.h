@@ -14,6 +14,8 @@
 #define TestScenePlayer_h__
 
 #include "Scene.h"
+#include "ClanLib/core.h"
+#include "ClanLib/display.h"
 
 class TestScenePlayer : public Scene
 {
@@ -26,7 +28,7 @@ public:
 	virtual void update();
 
 private:
-
+	CL_Font* _font;
 };
 
 #endif // TestScenePlayer_h__

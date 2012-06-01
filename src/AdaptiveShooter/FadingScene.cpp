@@ -61,14 +61,14 @@ void FadingScene::update()
 {
 	if (_sceneState == SS_COMPLETED)
 	{
-		ChangeToNextScene();
+		changeToNextScene();
 	}
 
 	float alpha = 1;
 
 	if(_fadingState != FS_COMPLETED)
 	{
-		_timer += GameManager::GetInstance()->GetDeltaTime();
+		_timer += GameManager::getInstance()->getDeltaTime();
 
 		switch(_fadingState)
 		{
@@ -117,6 +117,8 @@ void FadingScene::update()
 				}//if
 
 				break;
+			case FS_COMPLETED:
+				//For compiler warnings
 			default:
 				/* default */
 				break;

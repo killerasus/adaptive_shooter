@@ -26,22 +26,25 @@ public:
 		SS_COMPLETED
 	};
 
+	Scene();
+	virtual ~Scene();
+
 	virtual void draw();
 
 	virtual void update();
 
-	void InsertEntity(Entity* entity);
+	void insertEntity(Entity* entity);
 
-	void RemoveEntity(Entity* entity);
+	void removeEntity(Entity* entity);
 
-	Entity* GetEntity(unsigned int i);
+	Entity* getEntity(unsigned int i);
 
-	Scene* GetNextScene();
+	Scene* getNextScene();
 
-	void SetNextScene(Scene* next);
+	void setNextScene(Scene* next);
 
 protected:
-	void ChangeToNextScene();
+	void changeToNextScene();
 
 	std::vector< Entity* > _entities;
 	SceneState _sceneState;

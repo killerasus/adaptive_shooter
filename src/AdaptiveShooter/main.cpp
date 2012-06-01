@@ -22,6 +22,7 @@
 #include "Menu.h"
 
 #include "TestScene.h"
+#include "TestScenePlayer.h"
 #include "StaticEntity.h"
 
 #include "AIManager/AIManager.h"
@@ -29,8 +30,7 @@
 class DisplayProgram
 {
 public:
-	static int main(const std::vector<CL_String> &args)
-	{
+	static int main(const std::vector<CL_String> &args){
 
 #if _DEBUG
 
@@ -47,27 +47,30 @@ public:
 		CL_Console::write_line("");
 #endif
 
-		GameManager* manager = GameManager::GetInstance();
-		manager->LoadResource("../../../../data/resources.xml");
+		GameManager* manager = GameManager::getInstance();
+		manager->loadResource("../../../../data/resources.xml");
+		manager->setupPlayer(0);
 
 		//Splash screen
 		FadingScene newScene(2000.0f, 2000.0f, 4000.0f, FadingScene::FM_FADE_INOUT);
 		StaticEntity* newEntity = new StaticEntity(0.0f, 0.0f, "scenes/logo");
-		newScene.InsertEntity(newEntity);
+		newScene.insertEntity(newEntity);
 
 		//Menu screen
 		//Menu mainMenu();
 
 		//Test scene
-		TestScene newTest;
+		//TestScene newTest;
+		TestScenePlayer* newTest = new TestScenePlayer();
 
-		newScene.SetNextScene(&newTest);
+		newScene.setNextScene(newTest);
 
-		manager->PushScene(&newScene);
+		manager->pushScene(&newScene);
 
-		/*Main game loop*/
-		int ret = manager->Loop();
+		/* Main game loop */
+		int ret = manager->loop();
 
+		delete newTest;
 		delete manager;
 		delete newEntity;
 

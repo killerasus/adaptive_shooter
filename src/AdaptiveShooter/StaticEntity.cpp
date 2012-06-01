@@ -15,11 +15,13 @@
 
 StaticEntity::StaticEntity(float x, float y, std::string resource_id):_pos(x,y)
 {
-	GameManager* manager = GameManager::GetInstance();
-	CL_GraphicContext gc = manager->GetWindow()->get_gc();
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
 
-	_sprite = new CL_Sprite(gc, resource_id, manager->GetResourceManager());
+	_sprite = new CL_Sprite(gc, resource_id, manager->getResourceManager());
 }
+
+
 
 StaticEntity::~StaticEntity()
 {
@@ -28,13 +30,17 @@ StaticEntity::~StaticEntity()
 
 void StaticEntity::draw()
 {
-	_sprite->draw( GameManager::GetInstance()->GetWindow()->get_gc(), _pos.x, _pos.y );
+	_sprite->draw( GameManager::getInstance()->getWindow()->get_gc(), _pos.x, _pos.y );
 }
+
+
 
 void StaticEntity::update()
 {
 	_sprite->update();
 }
+
+
 
 void StaticEntity::setAlpha( float alpha )
 {

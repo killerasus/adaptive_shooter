@@ -13,13 +13,27 @@
 #include "Scene.h"
 #include "GameManager.h"
 
-void Scene::InsertEntity( Entity* entity)
+Scene::Scene()
+{
+
+}
+
+
+
+Scene::~Scene()
+{
+
+}
+
+
+
+void Scene::insertEntity( Entity* entity)
 {
 	_entities.push_back(entity);
 }
 
 
-void Scene::RemoveEntity( Entity* entity )
+void Scene::removeEntity( Entity* entity )
 {
 	for ( std::vector<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
 	{
@@ -33,7 +47,7 @@ void Scene::RemoveEntity( Entity* entity )
 	return;
 }
 
-Entity* Scene::GetEntity( unsigned int i )
+Entity* Scene::getEntity( unsigned int i )
 {
 	return _entities.at(i);
 }
@@ -54,19 +68,19 @@ void Scene::update()
 	}
 }
 
-Scene* Scene::GetNextScene()
+Scene* Scene::getNextScene()
 {
 	return _nextScene;
 }
 
-void Scene::SetNextScene( Scene* next )
+void Scene::setNextScene( Scene* next )
 {
 	_nextScene = next;
 }
 
-void Scene::ChangeToNextScene()
+void Scene::changeToNextScene()
 {
-	GameManager* manager = GameManager::GetInstance();
-	manager->PopScene();
-	manager->PushScene(_nextScene);
+	GameManager* manager = GameManager::getInstance();
+	manager->popScene();
+	manager->pushScene(_nextScene);
 }

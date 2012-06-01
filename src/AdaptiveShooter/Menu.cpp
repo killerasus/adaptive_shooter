@@ -38,7 +38,7 @@ void Menu::update()
 	}
 
 	//Insert code for menu state transition
-	CL_InputContext ic = GameManager::GetInstance()->GetWindow()->get_ic();
+	CL_InputContext ic = GameManager::getInstance()->getWindow()->get_ic();
 	CL_InputDevice keyboard = ic.get_keyboard();
 	CL_InputDevice joystick = ic.get_joystick();
 

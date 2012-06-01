@@ -15,10 +15,10 @@
 
 TestScene::TestScene():_x(0.0f),_y(0.0f),_speed(50.0f)
 {
-	GameManager* manager = GameManager::GetInstance();
-	CL_GraphicContext gc = manager->GetWindow()->get_gc();
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_font = new CL_Font(gc, "Tahoma", 30);
-	_boatSprite = new CL_Sprite(gc, "sprites/boat", manager->GetResourceManager());
+	_boatSprite = new CL_Sprite(gc, "sprites/boat", manager->getResourceManager());
 	_nextScene = NULL;
 }
 
@@ -30,7 +30,7 @@ TestScene::~TestScene()
 
 void TestScene::draw()
 {
-	CL_GraphicContext gc = GameManager::GetInstance()->GetWindow()->get_gc();
+	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	CL_Draw::line(gc, 0, 110, 640, 110, CL_Colorf::yellow);
 	_font->draw_text(gc, 100, 100, "Hello World!", CL_Colorf::lightseagreen);
 	_boatSprite->draw(gc, _x, _y);
@@ -38,8 +38,8 @@ void TestScene::draw()
 
 void TestScene::update()
 {
-	CL_InputDevice keyboard = GameManager::GetInstance()->GetWindow()->get_ic().get_keyboard();
-	float dt = GameManager::GetInstance()->GetDeltaTime();
+	CL_InputDevice keyboard = GameManager::getInstance()->getWindow()->get_ic().get_keyboard();
+	float dt = GameManager::getInstance()->getDeltaTime();
 
 	if (keyboard.get_keycode(CL_KEY_LEFT))
 	{

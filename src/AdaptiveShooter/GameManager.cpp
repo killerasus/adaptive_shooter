@@ -12,6 +12,7 @@
 
 #include "GameManager.h"
 #include "luafunctions.h"
+#include "PlayerModelImpl.h"
 
 GameManager* GameManager::_instance = 0;
 
@@ -25,25 +26,26 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl()
 	_quit = false;
 
 	_aiManager = new AIManager(L);
+	//_player = new Player("sprites/boat", new PlayerModelImpl(0.3f), 0.0f, 0.0f, 50.0f, 50.0f);
 }
 
 
 
 GameManager::~GameManager()
 {
-	CleanUp();
+	cleanUp();
 }
 
 
 
-void GameManager::LoadResource( std::string resourceFile )
+void GameManager::loadResource( std::string resourceFile )
 {
 	_resourceManager = new CL_ResourceManager(resourceFile);
 }
 
 
 
-int GameManager::Loop()
+int GameManager::loop()
 {
 	try
 	{
@@ -56,8 +58,8 @@ int GameManager::Loop()
 				_quit = true;
 #endif
 
-			Update();
-			Draw();
+			update();
+			draw();
 
 			// Read messages from the windowing system message queue, if any are available:
 			CL_KeepAlive::process();
@@ -73,7 +75,7 @@ int GameManager::Loop()
 		CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
 		console.display_close_message();
 		
-		CleanUp();
+		cleanUp();
 
 		return -1;
 	}
@@ -83,14 +85,14 @@ int GameManager::Loop()
 
 
 
-void GameManager::PushScene(Scene* scene)
+void GameManager::pushScene(Scene* scene)
 {
 	_sceneStack.push(scene);
 }
 
 
 
-Scene* GameManager::PopScene()
+Scene* GameManager::popScene()
 {
 	Scene* top = NULL;
 
@@ -105,7 +107,7 @@ Scene* GameManager::PopScene()
 
 
 
-void GameManager::Draw()
+void GameManager::draw()
 {
 	_window->get_gc().clear(CL_Colorf::black);
 
@@ -120,10 +122,10 @@ void GameManager::Draw()
 
 
 
-void GameManager::Update()
+void GameManager::update()
 {
 	_current_time = CL_System::get_time();
-	int time_difference = _current_time - _last_time;
+	unsigned int time_difference = _current_time - _last_time;
 	if (time_difference > 1000)
 		time_difference = 1000;		// Limit the time difference, if the application was paused (eg, moving the window on WIN32)
 	_time_delta_ms = static_cast<float> (time_difference);
@@ -142,46 +144,47 @@ void GameManager::Update()
 
 
 
-GameManager* GameManager::GetInstance()
+GameManager* GameManager::getInstance()
 {
 	if(_instance == 0)
 	{
 		_instance = new GameManager();
 	}
+
 	return _instance;
 }
 
 
 
-CL_DisplayWindow* GameManager::GetWindow()
+CL_DisplayWindow* GameManager::getWindow()
 {
 	return _window;
 }
 
 
 
-CL_ResourceManager* GameManager::GetResourceManager()
+CL_ResourceManager* GameManager::getResourceManager()
 {
 	return _resourceManager;
 }
 
 
 
-float GameManager::GetDeltaTime()
+float GameManager::getDeltaTime()
 {
 	return _time_delta_ms;
 }
 
 
 
-lua_State* GameManager::GetLuaState()
+lua_State* GameManager::getLuaState()
 {
 	return L;
 }
 
 
 
-void GameManager::SetLuaState( lua_State* l )
+void GameManager::getLuaState( lua_State* l )
 {
 	if (L != NULL)
 	{
@@ -193,7 +196,7 @@ void GameManager::SetLuaState( lua_State* l )
 
 
 
-void GameManager::CleanUp()
+void GameManager::cleanUp()
 {
 	delete _aiManager;
 
@@ -201,9 +204,9 @@ void GameManager::CleanUp()
 
 	L = NULL;
 
+	/** @TODO: Check if there is memory leak */
 	/*while(!_sceneStack.empty())
 	{
-		delete _sceneStack.top();
 		_sceneStack.pop();
 	}*/
 
@@ -217,6 +220,13 @@ void GameManager::CleanUp()
 Player* GameManager::getPlayer( unsigned int n )
 {
 	return _player;
+}
+
+
+
+void GameManager::setupPlayer( unsigned int n )
+{
+	_player = new Player("sprites/boat", new PlayerModelImpl(0.3f), 0.0f, 0.0f, 50.0f, 50.0f, n, 3);
 }
 
 

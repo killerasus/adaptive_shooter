@@ -11,3 +11,23 @@
 *********************************************************************/
 
 #include "PlayerModelImpl.h"
+
+PlayerModelImpl::PlayerModelImpl( float learningRate ) : PlayerModel(TRAITS_SIZE, learningRate)
+{
+	resetTraits();
+}
+
+
+
+PlayerModelImpl::~PlayerModelImpl()
+{
+
+}
+
+
+
+/** @TODO: Implementar */
+float PlayerModelImpl::compare( PlayerModel* comparable )
+{
+	return 0.0f;
+}

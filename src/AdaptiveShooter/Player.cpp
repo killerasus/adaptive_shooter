@@ -11,20 +11,23 @@
 *********************************************************************/
 
 #include "Player.h"
+#include "PlayerModelImpl.h"
 #include "GameManager.h"
 
-Player::Player( std::string sprite, PlayerModel* model, float x, float y, float speedX, float speedY )
-	: _position(x, y), _speed(speedX, speedY)
+Player::Player( std::string sprite, PlayerModel* model, float x, float y, float speedX, float speedY, unsigned int number,
+	unsigned int lives = 2 )
+	: _playerNumber(number), _lives(lives), _model(model), _position(x, y), _speed(speedX, speedY)
 {
-	GameManager* manager = GameManager::GetInstance();
-	CL_GraphicContext gc = manager->GetWindow()->get_gc();
-	_currentSprite = new CL_Sprite(gc, sprite, manager->GetResourceManager());
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
+	_currentSprite = new CL_Sprite(gc, sprite, manager->getResourceManager());
 }
 
 
 
 Player::~Player()
 {
+	delete _model;
 	delete _currentSprite;
 }
 
@@ -32,8 +35,8 @@ Player::~Player()
 
 void Player::draw()
 {
-	GameManager* manager = GameManager::GetInstance();
-	CL_GraphicContext gc = manager->GetWindow()->get_gc();
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite->draw(gc, _position.x, _position.y);
 }
 
@@ -41,15 +44,12 @@ void Player::draw()
 
 void Player::update()
 {
-	CL_InputDevice keyboard = GameManager::GetInstance()->GetWindow()->get_ic().get_keyboard();
-	float dt = GameManager::GetInstance()->GetDeltaTime();
+	CL_InputDevice keyboard = GameManager::getInstance()->getWindow()->get_ic().get_keyboard();
+	float dt = GameManager::getInstance()->getDeltaTime();
 
 	if (keyboard.get_keycode(CL_KEY_LEFT))
 	{
 		_position.x -= _speed.x * dt/1000.0f;
-//#if _DEBUG
-//		CL_Console::write_line("time_delta_ms = %1", dt);
-//#endif
 	}
 
 	if (keyboard.get_keycode(CL_KEY_RIGHT))

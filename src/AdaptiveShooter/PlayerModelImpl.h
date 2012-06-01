@@ -13,7 +13,7 @@
 #ifndef PlayerModelImpl_h__
 #define PlayerModelImpl_h__
 
-#include "AIManager/playermodel.h"
+#include "AIManager/PlayerModel.h"
 
 class PlayerModelImpl : public PlayerModel
 {
@@ -21,12 +21,18 @@ public:
 
 	enum PlayerTraits
 	{
-		TOTAL_TRAITS
+		ACCURACY,
+		ENEMIES_WASTED_WAVE,
+		ENEMIES_WASTED_TOTAL,
+		LIVES_VARIATION,
+		TRAITS_SIZE
 	};
 
-	PlayerModelImpl();
-	~PlayerModelImpl();
-protected:
+	PlayerModelImpl(float learningrate);
+
+	virtual ~PlayerModelImpl();
+
+	virtual float compare( PlayerModel* comparable );
 	
 private:
 };

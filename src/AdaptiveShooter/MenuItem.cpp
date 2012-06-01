@@ -16,23 +16,31 @@
 MenuItem::MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id):
 _pos(x,y)
 {
-	CL_ResourceManager *manager = GameManager::GetInstance()->GetResourceManager();
+	CL_ResourceManager *manager = GameManager::getInstance()->getResourceManager();
 }
+
+
 
 MenuItem::~MenuItem()
 {
 
 }
 
+
+
 void MenuItem::draw()
 {
-	_sprite->draw( GameManager::GetInstance()->GetWindow()->get_gc(), _pos.x, _pos.y );
+	_sprite->draw( GameManager::getInstance()->getWindow()->get_gc(), _pos.x, _pos.y );
 }
+
+
 
 void MenuItem::update()
 {
 	_sprite->update();
 }
+
+
 
 void MenuItem::setAlpha( float alpha )
 {
