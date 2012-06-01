@@ -25,7 +25,8 @@
 #endif
 
 #include "Scene.h"
-#include "AIManager.h"
+#include "AIManager/AIManager.h"
+#include "Player.h"
 
 extern "C"
 {
@@ -103,6 +104,21 @@ public:
 	 */
 	float GetDeltaTime();
 
+	/**
+	 * Gets Player n
+	 * 
+	 * @param	  n			Number of the player, from 0 to max_players - 1
+	 * @return	  Player*	Pointer to player, null if not instanced
+	 */
+	Player* getPlayer(unsigned int n);
+
+	/**
+	 * Gets AIManager for the game
+	 * 
+	 * @return	  AIManager*	Pointer to AIManager object
+	 */
+	AIManager* getAIManager();
+
 protected:
 	GameManager();
 	virtual void Draw();
@@ -127,7 +143,8 @@ private:
 	float _time_delta_ms;
 
 	std::stack<Scene*> _sceneStack;
-	AIManager _aiManager;
+	AIManager* _aiManager;
+	Player* _player;
 
 	static GameManager* _instance;
 };

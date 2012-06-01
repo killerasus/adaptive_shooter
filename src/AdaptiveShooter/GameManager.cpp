@@ -15,7 +15,7 @@
 
 GameManager* GameManager::_instance = 0;
 
-GameManager::GameManager():setup_core(),setup_display(),setup_gl()
+GameManager::GameManager(): setup_core(), setup_display(), setup_gl()
 {
 	L = lua_open();
 	luaL_openlibs(L);
@@ -23,17 +23,25 @@ GameManager::GameManager():setup_core(),setup_display(),setup_gl()
 
 	_window = new CL_DisplayWindow("Hello World", 640, 480);
 	_quit = false;
+
+	_aiManager = new AIManager(L);
 }
+
+
 
 GameManager::~GameManager()
 {
 	CleanUp();
 }
 
+
+
 void GameManager::LoadResource( std::string resourceFile )
 {
 	_resourceManager = new CL_ResourceManager(resourceFile);
 }
+
+
 
 int GameManager::Loop()
 {
@@ -73,10 +81,14 @@ int GameManager::Loop()
 	return 0;
 }
 
+
+
 void GameManager::PushScene(Scene* scene)
 {
 	_sceneStack.push(scene);
 }
+
+
 
 Scene* GameManager::PopScene()
 {
@@ -91,6 +103,8 @@ Scene* GameManager::PopScene()
 	return top;
 }
 
+
+
 void GameManager::Draw()
 {
 	_window->get_gc().clear(CL_Colorf::black);
@@ -103,6 +117,8 @@ void GameManager::Draw()
 	// Make the stuff visible:
 	_window->flip();
 }
+
+
 
 void GameManager::Update()
 {
@@ -124,6 +140,8 @@ void GameManager::Update()
 	}
 }
 
+
+
 GameManager* GameManager::GetInstance()
 {
 	if(_instance == 0)
@@ -133,25 +151,35 @@ GameManager* GameManager::GetInstance()
 	return _instance;
 }
 
+
+
 CL_DisplayWindow* GameManager::GetWindow()
 {
 	return _window;
 }
+
+
 
 CL_ResourceManager* GameManager::GetResourceManager()
 {
 	return _resourceManager;
 }
 
+
+
 float GameManager::GetDeltaTime()
 {
 	return _time_delta_ms;
 }
 
+
+
 lua_State* GameManager::GetLuaState()
 {
 	return L;
 }
+
+
 
 void GameManager::SetLuaState( lua_State* l )
 {
@@ -163,8 +191,12 @@ void GameManager::SetLuaState( lua_State* l )
 	L = l;
 }
 
+
+
 void GameManager::CleanUp()
 {
+	delete _aiManager;
+
 	lua_close(L);
 
 	L = NULL;
@@ -177,4 +209,19 @@ void GameManager::CleanUp()
 
 	delete _window;
 	_window = NULL;
+}
+
+
+
+/** @TODO: Rewrite when more players are supported*/
+Player* GameManager::getPlayer( unsigned int n )
+{
+	return _player;
+}
+
+
+
+AIManager* GameManager::getAIManager()
+{
+	return _aiManager;
 }

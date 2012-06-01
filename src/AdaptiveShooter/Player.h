@@ -106,7 +106,7 @@ public:
 	 * 
 	 * @param	  pos
 	 */
-	void setPosition(CL_Vec2f& pos) const;
+	void setPosition(CL_Vec2f& pos);
 
 	/**
 	 * Gets player speed vector

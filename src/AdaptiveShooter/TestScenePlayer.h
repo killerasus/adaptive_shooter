@@ -25,6 +25,8 @@ public:
 
 	virtual void update();
 
+private:
+
 };
 
 #endif // TestScenePlayer_h__

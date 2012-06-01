@@ -142,7 +142,7 @@ CL_Vec2f Player::getPosition() const
 
 
 
-void Player::setPosition( CL_Vec2f& pos ) const
+void Player::setPosition( CL_Vec2f& pos )
 {
 	_position.x = pos.x;
 	_position.y = pos.y;
