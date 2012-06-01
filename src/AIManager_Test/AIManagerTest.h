@@ -13,7 +13,8 @@
 #ifndef AIMANAGERTEST_H
 #define AIMANAGERTEST_H
 
-#include "aimanager.h"
+#include "AIManager.h"
+#include "AIAgentImpl.h"
 #include "PlayerModelImpl.h"
 #include "gtest/gtest.h"
 
@@ -22,20 +23,29 @@ protected:
 	// You can remove any or all of the following functions if its body
 	// is empty.
 
-	AIManagerTest();
-	virtual ~AIManagerTest();
+	AIManagerTest(){
+		_manager = new AIManager( NULL );
+		_model1 = new PlayerModelImpl(0.3f, 0.3f);
+		_agent1 = new AIAgentImpl(_model1);
+		_agent2 = new AIAgentImpl(_model1);
+		_agent3 = new AIAgentImpl(_model1);
+	}
 
-	// If the constructor and destructor are not enough for setting up
-	// and cleaning up each test, you can define the following methods:
-
-	virtual void SetUp();
-
-	virtual void TearDown();
+	virtual ~AIManagerTest()
+	{
+		delete _agent3;
+		delete _agent2;
+		delete _agent1;
+		delete _model1;
+		delete _manager;
+	}
 
 	// Objects declared here can be used by all tests in the test case for Foo.
 	AIManager* _manager;
-	PlayerModelImpl model1(5.0f);
-	PlayerModelImpl model2(2.0f);
+	AIAgentImpl* _agent1;
+	AIAgentImpl* _agent2;
+	AIAgentImpl* _agent3;
+	PlayerModelImpl* _model1;
 };
 
 #endif

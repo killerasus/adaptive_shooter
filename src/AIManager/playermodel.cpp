@@ -43,9 +43,14 @@ void PlayerModel::updateTrait( unsigned int trait, float observedValue )
 {
 	float currentValue = _traitValues[trait];
 	float delta = observedValue - currentValue;
-	float weightedDelta = _learningRate*delta;
+	float weightedDelta = _learningRate * delta;
 
 	_traitValues[trait] += weightedDelta;
+
+	if(_traitValues[trait] > 1.0f)
+	{
+		_traitValues[trait] = 1.0f;
+	}
 }
 
 float PlayerModel::getTrait( unsigned int trait )
@@ -55,7 +60,8 @@ float PlayerModel::getTrait( unsigned int trait )
 
 void PlayerModel::setTrait( unsigned int trait, float value )
 {
-	if (value > 0.0f && value <= 1.0f)
+	// Trimming the value to range.
+	if (value >= 0.0f && value <= 1.0f)
 	{
 		_traitValues[trait] = value;
 	}
@@ -67,7 +73,7 @@ void PlayerModel::setTrait( unsigned int trait, float value )
 		}
 		else
 		{
-			_traitValues[trait] = 0.01f;
+			_traitValues[trait] = 0.0f;
 		}
 	}
 }

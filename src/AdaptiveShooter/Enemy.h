@@ -22,7 +22,7 @@ class Enemy : public AIAgent, Entity
 {
 public:
 	Enemy();
-	~Enemy();
+	virtual ~Enemy();
 
 	virtual void draw();
 

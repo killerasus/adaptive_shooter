@@ -69,6 +69,14 @@ public:
 	 * @return	  bool	True if agent was found and removed, false otherwise
 	 */
 	bool removeAgent( AIAgent* agent );
+
+	
+	/**
+	 * Gets the number of agents in the agents control list
+	 * 
+	 * @return	  unsigned int
+	 */
+	unsigned int getNumberofAgents() const;
 protected:
 
 private:

@@ -127,6 +127,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\AIManager_Test\AIAgentImpl.h" />
     <ClInclude Include="..\..\src\AIManager_Test\AIAgentTest.h" />
+    <ClInclude Include="..\..\src\AIManager_Test\AIManagerTest.h" />
     <ClInclude Include="..\..\src\AIManager_Test\PlayerModelImpl.h" />
     <ClInclude Include="..\..\src\AIManager_Test\PlayerModelTest.h" />
   </ItemGroup>

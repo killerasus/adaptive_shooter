@@ -56,3 +56,8 @@ bool AIManager::removeAgent( AIAgent* agent )
 
 	return false;
 }
+
+unsigned int AIManager::getNumberofAgents() const
+{
+	return _aiAgents.size();
+}

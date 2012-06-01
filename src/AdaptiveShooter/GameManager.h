@@ -25,6 +25,7 @@
 #endif
 
 #include "Scene.h"
+#include "AIManager.h"
 
 extern "C"
 {
@@ -50,12 +51,49 @@ public:
 	int Loop();
 
 	void LoadResource(std::string resourceFile);
+
 	void CleanUp();
+
+	/**
+	 * Pushes a scene into stack. Top of the stack scene is rendered and updated.
+	 * 
+	 * @param	  Scene*
+	 */
 	void PushScene(Scene*);
+
+	/**
+	 * Pops the scene from the top of the scene stack.
+	 * 
+	 * @return	  Scene*	Scene popped. Null if no scene is in stack.
+	 */
 	Scene* PopScene();
+
+	/**
+	 * Gets current game window
+	 * 
+	 * @return	  CL_DisplayWindow*
+	 */
 	CL_DisplayWindow* GetWindow();
+
+	/**
+	 * Gets resource manager
+	 * 
+	 * @return	  CL_ResourceManager*
+	 */
 	CL_ResourceManager* GetResourceManager();
+
+	/**
+	 * Gets current Lua state
+	 * 
+	 * @return	  lua_State*
+	 */
 	lua_State* GetLuaState();
+
+	/**
+	 * Sets current Lua state
+	 * 
+	 * @param	  l	Lua state
+	 */
 	void SetLuaState(lua_State* l);
 
 	/**
@@ -89,6 +127,7 @@ private:
 	float _time_delta_ms;
 
 	std::stack<Scene*> _sceneStack;
+	AIManager _aiManager;
 
 	static GameManager* _instance;
 };
