@@ -38,10 +38,12 @@ void AIManager::SetLuaState( lua_State* L )
 
 
 
-lua_State* AIManager::GetLuaState()
+lua_State* AIManager::GetLuaState() const
 {
 	return _luaState;
 }
+
+
 
 void AIManager::insertAgent( AIAgent* agent )
 {
