@@ -53,7 +53,7 @@ public:
 	 * 
 	 * @return	  lua_State*	Current Lua state
 	 */
-	lua_State* GetLuaState();
+	lua_State* GetLuaState() const;
 
 	/**
 	 * Inserts a new AIAgent in the agents control list
@@ -77,6 +77,21 @@ public:
 	 * @return	  unsigned int
 	 */
 	unsigned int getNumberofAgents() const;
+
+	/**
+	 * Sets the current player model
+	 *
+	 * @param[in]	model	Pointer to player model to be observed
+	 */
+	void setCurrentPlayerModel( PlayerModel* model );
+
+	/**
+	 * Returns the current player model observed
+	 *
+	 * @return	PlayerModel*	Pointer to current player model observed
+	 */
+	PlayerModel* getCurrentPlayerModel() const;
+
 protected:
 
 private:
@@ -84,6 +99,7 @@ private:
 	PlayerModel *_currentObservedPlayerModel;
 	std::vector<PlayerModel*> _playerModels;
 	std::vector<AIAgent*> _aiAgents;
+	float _tolerance;
 };
 
 #endif // AIManager_h__

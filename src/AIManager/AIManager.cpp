@@ -16,19 +16,27 @@ AIManager::AIManager(lua_State* L):_luaState(L)
 {
 }
 
+
+
 AIManager::~AIManager()
 {
 }
+
+
 
 void AIManager::update()
 {
 
 }
 
+
+
 void AIManager::SetLuaState( lua_State* L )
 {
 	_luaState = L;
 }
+
+
 
 lua_State* AIManager::GetLuaState()
 {
@@ -42,6 +50,8 @@ void AIManager::insertAgent( AIAgent* agent )
 		_aiAgents.push_back( agent );
 	}
 }
+
+
 
 bool AIManager::removeAgent( AIAgent* agent )
 {
@@ -57,7 +67,23 @@ bool AIManager::removeAgent( AIAgent* agent )
 	return false;
 }
 
+
+
 unsigned int AIManager::getNumberofAgents() const
 {
 	return _aiAgents.size();
+}
+
+
+
+void AIManager::setCurrentPlayerModel( PlayerModel* model )
+{
+	_currentObservedPlayerModel = model;
+}
+
+
+
+PlayerModel* AIManager::getCurrentPlayerModel() const
+{
+	return _currentObservedPlayerModel;
 }
