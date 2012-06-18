@@ -11,10 +11,14 @@
 *********************************************************************/
 
 #include "Enemy.h"
+#include "Entity.h"
+#include "GameManager.h"
 
 void Enemy::draw()
 {
-	throw std::exception("The method or operation is not implemented.");
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
+	getCurrentSprite()->draw(gc, getPosition().x, getPosition().y);
 }
 
 
@@ -26,58 +30,7 @@ void Enemy::update()
 
 
 
-void Enemy::setAlpha( float alpha )
-{
-	throw std::exception("The method or operation is not implemented.");
-}
-
-
-
 void Enemy::updateStats()
 {
 	throw std::exception("The method or operation is not implemented.");
-}
-
-
-
-CL_Vec2f Enemy::getPosition() const
-{
-	return _position;
-}
-
-
-
-void Enemy::setPosition( float x, float y )
-{
-	_position.x = x;
-	_position.y = y;
-}
-
-
-
-void Enemy::setPosition( CL_Vec2f& position )
-{
-	_position = position;
-}
-
-
-
-CL_Vec2f Enemy::getSpeed() const
-{
-	return _speed;
-}
-
-
-
-void Enemy::setSpeed( float x, float y )
-{
-	_speed.x = x;
-	_speed.y = y;
-}
-
-
-
-void Enemy::setSpeed( CL_Vec2f& speed )
-{
-	_speed = speed;
 }

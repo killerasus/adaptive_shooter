@@ -13,36 +13,31 @@
 #include "StaticEntity.h"
 #include "GameManager.h"
 
-StaticEntity::StaticEntity(float x, float y, std::string resource_id):_pos(x,y)
+StaticEntity::StaticEntity(float x, float y, std::string resource_id):Entity( x, y )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 
-	_sprite = new CL_Sprite(gc, resource_id, manager->getResourceManager());
+	_currentSprite = new CL_Sprite(gc, resource_id, manager->getResourceManager());
 }
 
 
 
 StaticEntity::~StaticEntity()
 {
-	delete _sprite;
+	delete _currentSprite;
 }
+
+
 
 void StaticEntity::draw()
 {
-	_sprite->draw( GameManager::getInstance()->getWindow()->get_gc(), _pos.x, _pos.y );
+	_currentSprite->draw( GameManager::getInstance()->getWindow()->get_gc(), getPosition().x, getPosition().y );
 }
 
 
 
 void StaticEntity::update()
 {
-	_sprite->update();
-}
-
-
-
-void StaticEntity::setAlpha( float alpha )
-{
-	_sprite->set_alpha(alpha);
+	_currentSprite->update();
 }

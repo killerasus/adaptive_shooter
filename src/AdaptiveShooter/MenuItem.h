@@ -15,10 +15,8 @@
 
 #include "Entity.h"
 #include <string>
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 
-class MenuItem : Entity
+class MenuItem : public Entity
 {
 public:
 
@@ -28,21 +26,18 @@ public:
 	};
 
 	MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id);
+
 	virtual ~MenuItem();
 
 	virtual void draw();
 
 	virtual void update();
 
-	virtual void setAlpha( float alpha );
-
 protected:
 	
 private:
 	CL_Sprite *_selected;
 	CL_Sprite *_notSelected;
-	CL_Sprite *_sprite;
-	CL_Vec2f _pos;
 	MenuItemState _state;
 };
 

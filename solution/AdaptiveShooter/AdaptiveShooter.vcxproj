@@ -120,7 +120,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\AdaptiveShooter\DynamicEntity.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Enemy.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Entity.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
@@ -135,6 +137,7 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScenePlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\AdaptiveShooter\DynamicEntity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Enemy.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h" />
@@ -155,6 +158,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="..\..\src\Scripts\test.lua" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

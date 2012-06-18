@@ -14,8 +14,6 @@
 #define StaticEntity_h__
 
 #include "Entity.h"
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
 
 class StaticEntity : public Entity
 {
@@ -27,13 +25,9 @@ public:
 
 	virtual void update();
 
-	virtual void setAlpha( float alpha );
-
 protected:
 	
 private:
-	CL_Sprite* _sprite;
-	CL_Vec2f _pos;
 };
 
 #endif // TestEntity_h__

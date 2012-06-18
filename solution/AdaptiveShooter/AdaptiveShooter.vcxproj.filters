@@ -93,6 +93,12 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScenePlayer.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\DynamicEntity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
@@ -137,6 +143,9 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScenePlayer.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\DynamicEntity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\Scripts\test.lua">
@@ -145,5 +154,7 @@
     <None Include="..\..\data\resources.xml">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>

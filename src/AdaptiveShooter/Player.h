@@ -14,11 +14,9 @@
 #define Player_h__
 
 #include "AIManager/PlayerModel.h"
-#include "Entity.h"
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
+#include "DynamicEntity.h"
 
-class Player : public Entity
+class Player : public DynamicEntity
 {
 public:
 
@@ -45,8 +43,6 @@ public:
 	virtual void draw();
 
 	virtual void update();
-
-	virtual void setAlpha( float alpha );
 
 	/**
 	 * Gets Player number (0 to max_players - 1)
@@ -97,42 +93,11 @@ public:
 	 */
 	PlayerModel* getPlayerModel() const;
 
-	/**
-	 * Gets player position on screen related to left uppermost corner
-	 * 
-	 * @return	  CL_Vec2f
-	 */
-	CL_Vec2f getPosition() const;
-
-	/**
-	 * Sets player position on screen
-	 * 
-	 * @param	  pos
-	 */
-	void setPosition(CL_Vec2f& pos);
-
-	/**
-	 * Gets player speed vector
-	 * 
-	 * @return	  CL_Vec2f
-	 */
-	CL_Vec2f getSpeed() const;
-
-	/**
-	 * Sets player speed vector
-	 * 
-	 * @param	  speed
-	 */
-	void setSpeed(CL_Vec2f& speed);
-
 protected:
 private:
 	unsigned int _playerNumber;
 	unsigned int _lives;
-	CL_Sprite* _currentSprite;
 	PlayerModel* _model;
-	CL_Vec2f _position;
-	CL_Vec2f _speed;
 	float _shotTimer; // This must go to a weapon class
 };
 

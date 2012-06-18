@@ -20,6 +20,7 @@ class Shot : public Entity
 public:
 	Shot();
 	virtual ~Shot();
+
 protected:
 	
 private:

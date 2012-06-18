@@ -12,17 +12,103 @@
 #ifndef Entity_h__
 #define Entity_h__
 
+#include <ClanLib/core.h>
+#include <ClanLib/display.h>
+
 class Entity
 {
 public:
 
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	virtual void setAlpha( float alpha ) = 0;
+	Entity();
 
-protected:
+	/**
+	 * Constructor
+	 * 
+	 * @param	  position	Position vector
+	 */
+	Entity(CL_Vec2f& position);
+
+	/**
+	 * Constructor
+	 * 
+	 * @param	  x	Position in the x axis
+	 * @param	  y	Position in the y axis
+	 */
+	Entity(float x, float y);
+
+	virtual ~Entity();
+
+	/**
+	 * Gets the position of the Entity
+	 *
+	 * @return	  CL_Vec2f	Position
+	 */
+	CL_Vec2f getPosition() const;
+
+	/**
+	 * Sets the entity position
+	 * 
+	 * @param	  position	New position
+	 */
+	void setPosition(CL_Vec2f& position);
+
+	/**
+	 * Sets the entity position
+	 *
+	 * @param	  x	New x axis position
+	 * @param	  y	New y axis position
+	 */
+	void setPosition(float x, float y);
+
+	/**
+	 * Sets x axis position
+	 *
+	 * @param	  x
+	 */
+	void setPositionX(float x);
+
+	/**
+	 * Sets y axis position
+	 *
+	 * @param	  y
+	 */
+	void setPositionY(float y);
+
+	/**
+	 * Gets current sprite in use 
+	 *
+	 * @return	  CL_Sprite*
+	 */
+	CL_Sprite* getCurrentSprite() const;
+
+	/**
+	 * Gets the alpha value of the current sprite.
+	 *
+	 * @return	  float	Alpha value of the current sprite, -1 if no current sprite set
+	 */
+	float getAlpha() const;
+
+	/**
+	 * Sets the alpha value of the current sprite
+	 *
+	 * @param	  alpha	New alpha value in the range [0.0, 1.0]
+	 */
+	void setAlpha(float alpha);
+
+	/**
+	 * Draws the current sprite to the screen
+	 */
+	virtual void draw() = 0;
+
+	/**
+	 * Updates the entity
+	 */
+	virtual void update() = 0;
 	
+protected:
+	CL_Sprite* _currentSprite;
 private:
+	CL_Vec2f _position;
 };
 
 #endif // Entity_h__
