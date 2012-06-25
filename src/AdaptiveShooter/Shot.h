@@ -13,13 +13,22 @@
 #ifndef Shot_h__
 #define Shot_h__
 
-#include "Entity.h"
+#include "DynamicEntity.h"
 
-class Shot : public Entity
+class Shot : public DynamicEntity
 {
 public:
-	Shot();
+	Shot(std::string resource);
+	
+	Shot(float x, float y, float speedX, float speedY, std::string resource);
+	
+	Shot(CL_Vec2f& position, CL_Vec2f& speed, std::string resource);
+
 	virtual ~Shot();
+
+	virtual void draw();
+
+	virtual void update();
 
 protected:
 	

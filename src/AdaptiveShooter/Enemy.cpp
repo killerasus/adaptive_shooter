@@ -14,23 +14,29 @@
 #include "Entity.h"
 #include "GameManager.h"
 
-void Enemy::draw()
+
+Enemy::Enemy() : DynamicEntity(), AIAgent()
 {
-	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	getCurrentSprite()->draw(gc, getPosition().x, getPosition().y);
+
 }
 
 
 
-void Enemy::update()
+Enemy::Enemy( float x, float y, float speedX, float speedY ) : DynamicEntity( x, y, speedX, speedY ), AIAgent()
 {
-	throw std::exception("The method or operation is not implemented.");
+
 }
 
 
 
-void Enemy::updateStats()
+Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed ) : DynamicEntity ( position, speed ), AIAgent()
 {
-	throw std::exception("The method or operation is not implemented.");
+
+}
+
+
+
+Enemy::~Enemy()
+{
+
 }

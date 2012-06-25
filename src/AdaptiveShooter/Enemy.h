@@ -16,18 +16,22 @@
 #include "DynamicEntity.h"
 #include "AIManager/AIAgent.h"
 
-class Enemy : public AIAgent, public DynamicEntity
+class Enemy : public DynamicEntity, public AIAgent
 {
 public:
 	Enemy();
 
+	Enemy(float x, float y, float speedX, float speedY);
+
+	Enemy(CL_Vec2f& position, CL_Vec2f& speed);
+
 	virtual ~Enemy();
 
-	virtual void draw();
+	virtual void draw() = 0;
 
-	virtual void update();
+	virtual void update() = 0;
 
-	virtual void updateStats();
+	virtual void updateStats() = 0;
 
 protected:
 	

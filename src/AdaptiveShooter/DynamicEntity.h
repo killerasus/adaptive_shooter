@@ -63,6 +63,20 @@ public:
 	 */
 	void setSpeed(CL_Vec2f& speed);
 
+	/**
+	 * Sets speed x component
+	 * 
+	 * @param	  x	Speed value in x axis
+	 */
+	void setSpeedX(float x);
+
+	/**
+	 * Sets speed y component
+	 * 
+	 * @param	  y Speed value in y axis
+	 */
+	void setSpeedY(float y);
+
 	virtual void draw() = 0;
 
 	virtual void update() = 0;

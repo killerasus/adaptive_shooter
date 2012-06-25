@@ -18,6 +18,11 @@ class TestEnemy : public Enemy
 {
 public:
 	TestEnemy();
+
+	TestEnemy(float x, float y, float speedX, float speedY, std::string resource);
+
+	TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource);
+
 	~TestEnemy();
 
 	virtual void draw();
@@ -29,6 +34,7 @@ public:
 protected:
 	
 private:
+	float _multiplier; //Speed multiplier
 };
 
 #endif // TestEnemy_h__

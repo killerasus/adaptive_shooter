@@ -16,17 +16,16 @@
 
 GameManager* GameManager::_instance = 0;
 
-GameManager::GameManager(): setup_core(), setup_display(), setup_gl()
+GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _quit(false), _player(0)
 {
 	L = lua_open();
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
 	_window = new CL_DisplayWindow("Hello World", 640, 480);
-	_quit = false;
 
 	_aiManager = new AIManager(L);
-	//_player = new Player("sprites/boat", new PlayerModelImpl(0.3f), 0.0f, 0.0f, 50.0f, 50.0f);
+	// Player can only be created when there is already a GameManager instantiated
 }
 
 
@@ -55,7 +54,10 @@ int GameManager::loop()
 		{
 #if _DEBUG
 			if(_window->get_ic().get_keyboard().get_keycode(CL_KEY_ESCAPE) == true)
+			{
 				_quit = true;
+				break;
+			}
 #endif
 
 			update();

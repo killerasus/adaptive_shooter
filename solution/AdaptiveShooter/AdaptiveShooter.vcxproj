@@ -132,7 +132,9 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\Player.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\PlayerModelImpl.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Scene.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Shot.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\StaticEntity.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestEnemy.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScenePlayer.cpp" />
   </ItemGroup>
@@ -150,6 +152,7 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Shot.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestEnemy.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScenePlayer.h" />
   </ItemGroup>
@@ -158,8 +161,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="..\..\src\Scripts\test.lua" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

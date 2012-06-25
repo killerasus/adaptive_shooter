@@ -12,7 +12,7 @@
 
 #include "Entity.h"
 
-Entity::Entity()
+Entity::Entity() : _currentSprite(0), _position(0.0f, 0.0f)
 {
 }
 

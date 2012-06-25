@@ -55,3 +55,17 @@ void DynamicEntity::setSpeed( CL_Vec2f& speed )
 {
 	_speed = speed;
 }
+
+
+
+void DynamicEntity::setSpeedX( float x )
+{
+	_speed.x = x;
+}
+
+
+
+void DynamicEntity::setSpeedY( float y )
+{
+	_speed.y = y;
+}

@@ -50,22 +50,22 @@ void Player::update()
 
 	if (keyboard.get_keycode(CL_KEY_LEFT))
 	{
-		setPositionX( getPosition().x - getSpeed().x * dt/1000.0f );
+		setPositionX( getPosition().x - getSpeed().x * dt * 0.001f );
 	}
 
 	if (keyboard.get_keycode(CL_KEY_RIGHT))
 	{
-		setPositionX( getPosition().x + getSpeed().x * dt/1000.0f );
+		setPositionX( getPosition().x + getSpeed().x * dt * 0.001f );
 	}
 
 	if (keyboard.get_keycode(CL_KEY_UP))
 	{
-		setPositionY( getPosition().y - getSpeed().y * dt/1000.0f );
+		setPositionY( getPosition().y - getSpeed().y * dt * 0.001f );
 	}
 
 	if (keyboard.get_keycode(CL_KEY_DOWN))
 	{
-		setPositionY( getPosition().y + getSpeed().y * dt/1000.0f );
+		setPositionY( getPosition().y + getSpeed().y * dt * 0.001f );
 	}
 
 	_currentSprite->update();
