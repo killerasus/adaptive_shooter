@@ -23,28 +23,32 @@ TestEnemy::TestEnemy() : Enemy()
 
 TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY )
 {
-
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
+	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 }
 
 
 
-TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource)
+TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed)
 {
-
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
+	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 }
 
 
 
 TestEnemy::~TestEnemy()
 {
-
+	delete _currentSprite;
 }
 
 
 
 void TestEnemy::draw()
 {
-
+	
 }
 
 
@@ -86,19 +90,19 @@ void TestEnemy::updateStats()
 
 	if (perceptedDifficulty == "Easy")
 	{
-		//TODO: Change stats (multiplier)
+		_multiplier = 0.5f;
 	} 
 	else
 	{
 		if (perceptedDifficulty == "Normal")
 		{
-			//TODO: Change stats (multiplier)
+			_multiplier = 1.0f;
 		}
 		else
 		{
 			if (perceptedDifficulty == "Hard")
 			{
-				//TODO: Change stats (multiplier)
+				_multiplier = 1.5f;
 			} 
 			else
 			{
