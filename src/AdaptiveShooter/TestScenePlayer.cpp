@@ -16,6 +16,10 @@
 #include "GameManager.h"
 #include "PlayerModelImpl.h"
 
+// Logging tool
+#define LOGOG_USE_PREFIX 1
+#include "logog.hpp"
+
 TestScenePlayer::TestScenePlayer()
 {
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
@@ -59,13 +63,14 @@ void TestScenePlayer::update()
 	//manager->getAIManager()->update();
 	manager->getPlayer(0)->update();
 
-#if _DEBUG
-
-	const float variation = 0.001f;
 	float dt = manager->getDeltaTime();
 	PlayerModel* model = manager->getPlayer(0)->getPlayerModel();
 
 	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
+
+#if _DEBUG
+
+	const float variation = 0.001f;
 
 	if (keyboard.get_keycode(CL_KEY_U))
 	{
@@ -103,4 +108,12 @@ void TestScenePlayer::update()
 	}
 
 #endif
+
+	if (keyboard.get_keycode(CL_KEY_SPACE))
+	{
+		Player* player = GameManager::getInstance()->getPlayer(0);
+		LOGOG_INFO("Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f",
+			player->getPlayerNumber() + 1, player->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY),
+			player->getPlayerModel()->getTrait(PlayerModelImpl::LIVES_VARIATION), player->getPlayerModel()->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL));
+	}
 }

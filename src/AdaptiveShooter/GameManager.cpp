@@ -25,6 +25,7 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _quit(fal
 	_window = new CL_DisplayWindow("Hello World", 640, 480);
 
 	_aiManager = new AIManager(L);
+	_loggerFile = new logog::LogFile("test.txt");
 	// Player can only be created when there is already a GameManager instantiated
 }
 
@@ -52,13 +53,11 @@ int GameManager::loop()
 
 		while (!_quit)
 		{
-#if _DEBUG
 			if(_window->get_ic().get_keyboard().get_keycode(CL_KEY_ESCAPE) == true)
 			{
 				_quit = true;
 				break;
 			}
-#endif
 
 			update();
 			draw();
@@ -212,6 +211,9 @@ void GameManager::cleanUp()
 		_sceneStack.pop();
 	}*/
 
+	// Closes log operation
+	delete _loggerFile;
+
 	delete _window;
 	_window = NULL;
 }
@@ -236,4 +238,11 @@ void GameManager::setupPlayer( unsigned int n )
 AIManager* GameManager::getAIManager()
 {
 	return _aiManager;
+}
+
+
+
+logog::LogFile* GameManager::getLogger()
+{
+	return _loggerFile;
 }

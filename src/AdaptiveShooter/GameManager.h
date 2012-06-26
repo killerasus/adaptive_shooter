@@ -33,6 +33,10 @@ extern "C"
 	#include "lua.h"
 };
 
+// Logging tool
+#define LOGOG_USE_PREFIX 1
+#include "logog.hpp"
+
 /**
  * GameManager provides a Singleton interface for manipulating elements common to
  * the game
@@ -126,6 +130,13 @@ public:
 	 */
 	AIManager* getAIManager();
 
+	/**
+	 * Gets logger
+	 *
+	 * @return	logog::LogFile*	Pointer to logger object
+	 */
+	logog::LogFile* getLogger();
+
 protected:
 	GameManager();
 	virtual void draw();
@@ -154,6 +165,8 @@ private:
 	Player* _player;
 
 	static GameManager* _instance;
+
+	logog::LogFile* _loggerFile;
 };
 
 #endif // GameManager_h__

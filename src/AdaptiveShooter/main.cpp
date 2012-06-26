@@ -10,21 +10,29 @@
 	purpose:	Main entry for Adaptive Shooter
 *********************************************************************/
 
+// ClanLib engine includes
 #include <ClanLib/core.h>
 #include <ClanLib/display.h>
 #include <ClanLib/application.h>
 
+// Std Lib includes
 #include <string>
 
+// Logging tool
+#define LOGOG_USE_PREFIX 1
+#include "logog.hpp" 
+
+
+// Project includes
 #include "luafunctions.h"
 #include "GameManager.h"
 #include "FadingScene.h"
 #include "Menu.h"
-
 #include "TestScene.h"
 #include "TestScenePlayer.h"
 #include "StaticEntity.h"
 
+// AI Manager includes
 #include "AIManager/AIManager.h"
 
 class DisplayProgram
@@ -33,7 +41,6 @@ public:
 	static int main(const std::vector<CL_String> &args){
 
 #if _DEBUG
-
 		CL_ConsoleWindow console("Debug Console", 80, 160);
 		CL_Console::write_line("Arguments: %1", args.size());
 
@@ -46,6 +53,9 @@ public:
 
 		CL_Console::write_line("");
 #endif
+
+		// Starting logog service
+		LOGOG_INITIALIZE();
 
 		GameManager* manager = GameManager::getInstance();
 		manager->loadResource("../../../../data/resources.xml");
@@ -60,7 +70,6 @@ public:
 		//Menu mainMenu();
 
 		//Test scene
-		//TestScene newTest;
 		TestScenePlayer* newTest = new TestScenePlayer();
 
 		newScene.setNextScene(newTest);
@@ -77,6 +86,9 @@ public:
 #if _DEBUG
 		console.display_close_message();
 #endif
+
+		// Ending logog service
+		LOGOG_SHUTDOWN();
 
 		return ret;
 	}

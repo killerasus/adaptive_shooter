@@ -15,6 +15,10 @@
 #include "PlayerModelImpl.h"
 #include "GameManager.h"
 
+// Logging tool
+#define LOGOG_USE_PREFIX 1
+#include "logog.hpp"
+
 Player::Player( std::string sprite, PlayerModel* model, float x, float y, float speedX, float speedY, unsigned int number,
 	unsigned int lives = 2 )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _model( model )
