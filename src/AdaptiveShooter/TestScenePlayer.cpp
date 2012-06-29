@@ -82,6 +82,7 @@ void TestScenePlayer::draw()
 	std::ostringstream text;
 	text.precision(4);
 	text << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
+	text << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
 	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY) << std::endl;
 	text << "Lives variation = " << playerOne->getPlayerModel()->getTrait(PlayerModelImpl::LIVES_VARIATION) << std::endl;
 	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL) << std::endl;
@@ -97,11 +98,11 @@ void TestScenePlayer::draw()
 void TestScenePlayer::update()
 {
 	GameManager* manager = GameManager::getInstance();
-	//manager->getAIManager()->update();
-	manager->getPlayer(0)->update();
-
+	Player* player = manager->getPlayer(0);
 	float dt = manager->getDeltaTime();
-	PlayerModel* model = manager->getPlayer(0)->getPlayerModel();
+	PlayerModel* model = player->getPlayerModel();
+
+	player->update();
 
 	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
@@ -148,10 +149,15 @@ void TestScenePlayer::update()
 
 	if (keyboard.get_keycode(CL_KEY_SPACE))
 	{
-		Player* player = GameManager::getInstance()->getPlayer(0);
-		LOGOG_INFO("Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f",
-			player->getPlayerNumber() + 1, player->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY),
-			player->getPlayerModel()->getTrait(PlayerModelImpl::LIVES_VARIATION), player->getPlayerModel()->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL));
+
+		std::string modelName = model->getName();
+
+		AIManager* aimanager = GameManager::getInstance()->getAIManager();
+		aimanager->update();
+
+		LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
+			player->getPlayerNumber() + 1, player->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY), model->getTrait(PlayerModelImpl::LIVES_VARIATION),
+			model->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), player->getPlayerModel()->getName().c_str() );
 	}
 
 	// Calls parent implementation of update

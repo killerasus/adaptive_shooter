@@ -16,7 +16,7 @@
 
 GameManager* GameManager::_instance = 0;
 
-GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _quit(false), _player(0)
+GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _resourceManager(0), _quit(false), _player(0)
 {
 	L = lua_open();
 	luaL_openlibs(L);
@@ -40,6 +40,11 @@ GameManager::~GameManager()
 
 void GameManager::loadResource( std::string resourceFile )
 {
+	if (_resourceManager)
+	{
+		delete _resourceManager;
+	}
+
 	_resourceManager = new CL_ResourceManager(resourceFile);
 }
 
@@ -205,6 +210,8 @@ void GameManager::cleanUp()
 
 	L = NULL;
 
+	delete _resourceManager;
+
 	/** @TODO: Check if there is memory leak */
 	/*while(!_sceneStack.empty())
 	{
@@ -230,10 +237,14 @@ Player* GameManager::getPlayer( unsigned int n )
 
 void GameManager::setupPlayer( unsigned int n )
 {
-	//CL_Rect windowViewPort = _window->get_viewport();
+	CL_Rect windowViewPort = _window->get_viewport();
 	_player = new Player( 0.0f, 0.0f, 50.0f, 50.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
-	//_player->setPositionX( windowViewPort.get_width()*0.5f - _player->getCurrentSprite()->get_width()*0.5f );
-	//_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
+	_player->setPositionX( windowViewPort.get_width()*0.5f - _player->getCurrentSprite()->get_width()*0.5f );
+	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
+
+#ifdef _DEBUG
+	_player->getPlayerModel()->setName("Normal");
+#endif
 }
 
 

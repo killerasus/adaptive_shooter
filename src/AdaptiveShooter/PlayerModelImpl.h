@@ -28,7 +28,7 @@ public:
 		TRAITS_SIZE
 	};
 
-	PlayerModelImpl(float learningrate);
+	PlayerModelImpl(float learningrate = 0.0f);
 
 	virtual ~PlayerModelImpl();
 

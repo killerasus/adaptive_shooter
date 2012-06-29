@@ -15,21 +15,21 @@
 #include "GameManager.h"
 
 
-Enemy::Enemy() : DynamicEntity(), AIAgent()
+Enemy::Enemy() : DynamicEntity(), AIAgent(), _points( 0 )
 {
 
 }
 
 
 
-Enemy::Enemy( float x, float y, float speedX, float speedY ) : DynamicEntity( x, y, speedX, speedY ), AIAgent()
+Enemy::Enemy( float x, float y, float speedX, float speedY, int points ) : DynamicEntity( x, y, speedX, speedY ), AIAgent(), _points( points )
 {
 
 }
 
 
 
-Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed ) : DynamicEntity ( position, speed ), AIAgent()
+Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed, int points ) : DynamicEntity ( position, speed ), AIAgent(), _points( points )
 {
 
 }
@@ -39,4 +39,18 @@ Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed ) : DynamicEntity ( position, 
 Enemy::~Enemy()
 {
 
+}
+
+
+
+void Enemy::setPoints( int points )
+{
+	_points = points;
+}
+
+
+
+int Enemy::getPoints()
+{
+	return _points;
 }

@@ -33,7 +33,7 @@ public:
 	 * @param[in]	  lives		Number of starting lives, defaulted to 2
 	 */
 	Player( float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
-		unsigned int lives);
+		unsigned int lives = 2);
 
 	/**
 	 * Destructor

@@ -20,7 +20,7 @@
 #include "logog.hpp"
 
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
-	unsigned int lives = 2 )
+	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _model( model )
 {
 	GameManager* manager = GameManager::getInstance();

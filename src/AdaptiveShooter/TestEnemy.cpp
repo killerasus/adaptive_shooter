@@ -103,7 +103,7 @@ void TestEnemy::updateStats()
 			} 
 			else
 			{
-				LOGOG_ERROR( "Unknown difficulty: %s", perceptedDifficulty );
+				LOGOG_ERROR( "\nUnknown difficulty: %s\n", perceptedDifficulty );
 			}
 		}
 	}

@@ -24,20 +24,22 @@ public:
 	/**
 	 * Constructor
 	 * 
-	 * @param	  x
-	 * @param	  y
-	 * @param	  speedX	In pixels per second
-	 * @param	  speedY	In pixels per second
+	 * @param[in]	x
+	 * @param[in]	y
+	 * @param[in]	speedX	In pixels per second
+	 * @param[in]	speedY	In pixels per second
+	 * @param[in]	points	Points value
 	 */
-	Enemy(float x, float y, float speedX, float speedY);
+	Enemy(float x, float y, float speedX, float speedY, int points = 0);
 
 	/**
 	 * Constructor
 	 * 
-	 * @param	  position
-	 * @param	  speed		In pixels per second
+	 * @param[in]	position
+	 * @param[in]	speed	In pixels per second
+	 * @param[in]	points	Points value
 	 */
-	Enemy(CL_Vec2f& position, CL_Vec2f& speed);
+	Enemy(CL_Vec2f& position, CL_Vec2f& speed, int points = 0);
 
 	virtual ~Enemy();
 
@@ -45,8 +47,23 @@ public:
 
 	virtual void updateStats() = 0;
 
+	/**
+	 * Modifies enemy's points value
+	 * 
+	 * @param	  points
+	 */
+	void setPoints(int points);
+
+	/**
+	 * Gets enemy points value
+	 * 
+	 * @return	  int	Enemy points value
+	 */
+	virtual int getPoints();
+
 protected:
 	
 private:
+	int _points;
 };
 #endif
