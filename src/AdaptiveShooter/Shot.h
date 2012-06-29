@@ -26,8 +26,6 @@ public:
 
 	virtual ~Shot();
 
-	virtual void draw();
-
 	virtual void update();
 
 protected:

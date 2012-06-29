@@ -25,8 +25,8 @@ public:
 	 * 
 	 * @param	  x
 	 * @param	  y
-	 * @param	  speedX
-	 * @param	  speedY
+	 * @param	  speedX	In pixels per second
+	 * @param	  speedY	In pixels per second
 	 */
 	DynamicEntity(float x, float y, float speedX, float speedY);
 
@@ -34,12 +34,16 @@ public:
 	 * Constructor
 	 * 
 	 * @param	  position
-	 * @param	  speed
+	 * @param	  speed		In pixels per second
 	 * @return	  
 	 */
 	DynamicEntity(CL_Vec2f& position, CL_Vec2f& speed);
 
 	virtual ~DynamicEntity();
+
+	virtual void draw();
+
+	virtual void update() = 0;
 
 	/**
 	 * Gets speed
@@ -51,35 +55,31 @@ public:
 	/**
 	 * Sets speed
 	 * 
-	 * @param	  x	Speed value in x axis
-	 * @param	  y	Speed value in y axis
+	 * @param	  x	Speed value in x axis in pixels per second
+	 * @param	  y	Speed value in y axis in pixels per second
 	 */
 	void setSpeed(float x, float y);
 
 	/**
 	 * Sets speed
 	 *
-	 * @param	  speed
+	 * @param	  speed	In pixels per second
 	 */
 	void setSpeed(CL_Vec2f& speed);
 
 	/**
 	 * Sets speed x component
 	 * 
-	 * @param	  x	Speed value in x axis
+	 * @param	  x	Speed value in x axis in pixels per second
 	 */
 	void setSpeedX(float x);
 
 	/**
 	 * Sets speed y component
 	 * 
-	 * @param	  y Speed value in y axis
+	 * @param	  y Speed value in y axis in pixels per second
 	 */
 	void setSpeedY(float y);
-
-	virtual void draw() = 0;
-
-	virtual void update() = 0;
 
 protected:
 	

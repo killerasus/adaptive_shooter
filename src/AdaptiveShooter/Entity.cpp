@@ -58,7 +58,6 @@ void Entity::setPosition( float x, float y )
 
 
 
-
 void Entity::setPositionX( float x )
 {
 	_position.x = x;

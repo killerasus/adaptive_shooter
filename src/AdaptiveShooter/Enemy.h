@@ -21,13 +21,25 @@ class Enemy : public DynamicEntity, public AIAgent
 public:
 	Enemy();
 
+	/**
+	 * Constructor
+	 * 
+	 * @param	  x
+	 * @param	  y
+	 * @param	  speedX	In pixels per second
+	 * @param	  speedY	In pixels per second
+	 */
 	Enemy(float x, float y, float speedX, float speedY);
 
+	/**
+	 * Constructor
+	 * 
+	 * @param	  position
+	 * @param	  speed		In pixels per second
+	 */
 	Enemy(CL_Vec2f& position, CL_Vec2f& speed);
 
 	virtual ~Enemy();
-
-	virtual void draw() = 0;
 
 	virtual void update() = 0;
 

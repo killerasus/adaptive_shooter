@@ -11,6 +11,7 @@
 *********************************************************************/
 
 #include "DynamicEntity.h"
+#include "GameManager.h"
 
 DynamicEntity::DynamicEntity()
 {
@@ -32,6 +33,18 @@ DynamicEntity::DynamicEntity( CL_Vec2f& position, CL_Vec2f& speed ) : Entity( po
 
 DynamicEntity::~DynamicEntity()
 {
+}
+
+
+
+void DynamicEntity::draw()
+{
+	if (_currentSprite)
+	{
+		GameManager* manager = GameManager::getInstance();
+		CL_GraphicContext gc = manager->getWindow()->get_gc();
+		_currentSprite->draw( gc, getPosition().x, getPosition().y );
+	}
 }
 
 
