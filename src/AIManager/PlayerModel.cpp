@@ -16,10 +16,14 @@ PlayerModel::PlayerModel( unsigned int numberOfTraits, float learningRate ):_tra
 
 }
 
+
+
 PlayerModel::~PlayerModel()
 {
 
 }
+
+
 
 void PlayerModel::resetTraits()
 {
@@ -29,15 +33,21 @@ void PlayerModel::resetTraits()
 	}
 }
 
+
+
 std::string PlayerModel::getName()
 {
 	return _name;
 }
 
+
+
 void PlayerModel::setName( std::string name )
 {
 	_name = name;
 }
+
+
 
 void PlayerModel::updateTrait( unsigned int trait, float observedValue )
 {
@@ -53,10 +63,14 @@ void PlayerModel::updateTrait( unsigned int trait, float observedValue )
 	}
 }
 
+
+
 float PlayerModel::getTrait( unsigned int trait )
 {
 	return _traitValues[trait];
 }
+
+
 
 void PlayerModel::setTrait( unsigned int trait, float value )
 {
@@ -78,15 +92,21 @@ void PlayerModel::setTrait( unsigned int trait, float value )
 	}
 }
 
+
+
 const unsigned int PlayerModel::getNumberOfTraits() const
 {
 	return _traitValues.size();
 }
 
+
+
 void PlayerModel::setLearningRate( float rate )
 {
 	_learningRate = rate;
 }
+
+
 
 float PlayerModel::getLearningRate() const
 {
