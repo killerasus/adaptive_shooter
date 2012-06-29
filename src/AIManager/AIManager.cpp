@@ -14,31 +14,78 @@
 
 AIManager::AIManager(lua_State* L):_luaState(L)
 {
+	//TODO: Import player models from Lua State
 }
 
 
 
 AIManager::~AIManager()
 {
+	//TODO: Verify memory leak from PlayerModels
+	/*std::vector<PlayerModel*>::iterator it;
+
+	for (it = _playerModels.begin(); it != _playerModels.end(); it++)
+	{
+		it = _playerModels.erase( it );
+	}*/
 }
 
 
 
 void AIManager::update()
 {
+	std::vector<PlayerModel*>::iterator it;
+	float result(0.0f);
 
+	for (it = _playerModels.begin(); it != _playerModels.end(); it++)
+	{
+		result = _currentObservedPlayerModel->compare( *it );
+
+		// Checks if observed player model is lesser than current comparable player model
+		if (result < 0.0f)
+		{
+			continue;
+		}
+		else
+		{
+			// Checks if observed player model matches current comparable player model
+			if (result == 0.0f)
+			{
+				_currentReferenceModel = *it;
+				break;
+			}
+			else
+			{
+				// Checks if observed player model is superior to current comparable player model
+				if (result)
+				{
+					// Compares referenced with current comparable
+					result = _currentReferenceModel->compare( *it );
+
+					// Checks if reference model is inferior to current comparable
+					if (result < 0.0f)
+					{
+						// Reference model should be updated to current comparable
+						_currentReferenceModel = *it;
+					} 
+				}
+			}
+		}
+	}
+
+	_currentObservedPlayerModel->setName( _currentReferenceModel->getName() );
 }
 
 
 
-void AIManager::SetLuaState( lua_State* L )
+void AIManager::setLuaState( lua_State* L )
 {
 	_luaState = L;
 }
 
 
 
-lua_State* AIManager::GetLuaState() const
+lua_State* AIManager::getLuaState() const
 {
 	return _luaState;
 }
@@ -88,4 +135,53 @@ void AIManager::setCurrentPlayerModel( PlayerModel* model )
 PlayerModel* AIManager::getCurrentPlayerModel() const
 {
 	return _currentObservedPlayerModel;
+}
+
+
+
+void AIManager::setCurrentReferenceModel( PlayerModel* model )
+{
+	_currentReferenceModel = model;
+}
+
+
+
+PlayerModel* AIManager::getCurrentReferenceModel() const
+{
+	return _currentReferenceModel;
+}
+
+
+
+void AIManager::addPlayerModel( PlayerModel* model )
+{
+	_playerModels.push_back( model );
+}
+
+
+
+bool AIManager::removePlayerModel( PlayerModel* model )
+{
+	bool result = false;
+
+	std::vector<PlayerModel*>::iterator it;
+
+	for (it = _playerModels.begin(); it != _playerModels.end(); it++)
+	{
+		if ((*it) == model)
+		{
+			_playerModels.erase( it );
+			result = true;
+			break;
+		}
+	}
+
+	return result;
+}
+
+
+
+std::vector<PlayerModel*>* AIManager::getPlayerModelVector() const
+{
+	return new std::vector<PlayerModel*>( _playerModels );
 }

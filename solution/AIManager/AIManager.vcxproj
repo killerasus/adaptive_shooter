@@ -183,6 +183,7 @@
     <ClInclude Include="..\..\src\AIManager\AIAgent.h" />
     <ClInclude Include="..\..\src\AIManager\AIManager.h" />
     <ClInclude Include="..\..\src\AIManager\PlayerModel.h" />
+    <ClInclude Include="..\..\src\AIManager\Trait.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

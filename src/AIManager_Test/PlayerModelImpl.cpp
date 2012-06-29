@@ -19,7 +19,7 @@
 
 PlayerModelImpl::PlayerModelImpl(float valor, float learningRate) : PlayerModel( TOTAL_STATS, learningRate )
 {
-	setTrait(SHOOTING_RATE, valor);
+	setTraitValue(SHOOTING_RATE, valor);
 }
 
 PlayerModelImpl::~PlayerModelImpl()
@@ -31,10 +31,10 @@ float PlayerModelImpl::compare( PlayerModel* comparable )
 {
 	if (comparable)
 	{
-		return this->getTrait(SHOOTING_RATE) - ((PlayerModelImpl*)comparable)->getTrait(SHOOTING_RATE);
+		return this->getTraitValue(SHOOTING_RATE) - ((PlayerModelImpl*)comparable)->getTraitValue(SHOOTING_RATE);
 	} 
 	else
 	{
-		return this->getTrait(SHOOTING_RATE);
+		return this->getTraitValue(SHOOTING_RATE);
 	}
 }

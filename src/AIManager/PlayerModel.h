@@ -16,6 +16,8 @@
 #include <string>
 #include <vector>
 
+#include "Trait.h"
+
 class PlayerModel
 {
 public:
@@ -42,7 +44,7 @@ public:
 	 * 
 	 * @return	  std::string
 	 */
-	std::string getName();
+	std::string getName() const;
 
 	/**
 	 * Sets the name of the player model
@@ -54,10 +56,18 @@ public:
 	/**
 	 * Updates the trait with the given value using LMS
 	 * 
-	 * @param	  trait			Position of the trait in the _traitValues
+	 * @param	  trait			Position of the trait in the collection
 	 * @param	  observedValue Value observed of the trait
 	 */
 	void updateTrait( unsigned int trait, float observedValue );
+
+	/**
+	 * Gets a copy of the trait
+	 * 
+	 * @param	  trait	Position of the trait in the collection
+	 * @return	  Trait	Copy of the trait
+	 */
+	Trait getTrait( unsigned int trait ) const;
 
 	/**
 	 * Gets the trait value
@@ -65,15 +75,74 @@ public:
 	 * @param	  trait	The trait position from the collection
 	 * @return	  float	Trait value in range [0..1] if trait is [0.._traitValues.size())
 	 */
-	float getTrait( unsigned int trait );
+	float getTraitValue( unsigned int trait ) const;
+
+	/**
+	 * Gets the trait minimum value
+	 * 
+	 * @param[in]	trait The trait position in the collection
+	 * @return		float Trait minimum value in range [0..1] if trait is [0.._traitValues.size())
+	 */
+	float getTraitMinimum( unsigned int trait ) const;
+
+	/**
+	 * Gets the trait maximum value
+	 * 
+	 * @param[in] trait The trait position in the collection
+	 * @return	  float Trait maximum value in range [0..1] if trait is [0.._traitValues.size())
+	 */
+	float getTraitMaximum( unsigned int trait ) const;
+
+	/**
+	 * Gets trait weight
+	 * 
+	 * @param	  trait	The trait position in the collection
+	 * @return	  float	Weight value
+	 */
+	float getTraitWeight( unsigned int trait ) const;
+
+	/**
+	 * Sets trait with values
+	 * 
+	 * @param	  trait		The trait position in the collection
+	 * @param	  minimum	Minimum value
+	 * @param	  maximum	Maximum value
+	 * @param	  weight	Weight value
+	 * @param	  value		Current value
+	 */
+	void setTrait(unsigned int trait, float minimum, float maximum, float weight, float value);
 
 	/**
 	 * Sets trait with new value
 	 * 
-	 * @param	  trait	The trait position from the collection
-	 * @param	  value	New trait value
+	 * @param[in] trait	The trait position in the collection
+	 * @param[in] value	New trait value
 	 */
-	void setTrait( unsigned int trait, float value );
+	void setTraitValue( unsigned int trait, float value );
+
+	/**
+	 * Sets trait minimum with new value
+	 * 
+	 * @param[in] trait	The trait position in the collection
+	 * @param[in] value	New trait minimum value
+	 */
+	void setTraitMinimum( unsigned int trait, float value );
+
+	/**
+	 * Sets trait maximum with new value
+	 * 
+	 * @param[in] trait	The trait position in the collection
+	 * @param[in] value	New trait maximum value
+	 */
+	void setTraitMaximum( unsigned int trait, float value );
+
+	/**
+	 * Sets trait weight
+	 * 
+	 * @param	  trait	The trait position in the collection
+	 * @param	  value	New trait weight value
+	 */
+	void setTraitWeight( unsigned int trait, float value );
 
 	/**
 	 * Gets the number of traits observed
@@ -106,7 +175,7 @@ public:
 protected:
 
 private:
-	std::vector<float> _traitValues;
+	std::vector<Trait> _traits;
 	std::string _name;
 	float _learningRate;
 };

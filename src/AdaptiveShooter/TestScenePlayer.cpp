@@ -83,9 +83,9 @@ void TestScenePlayer::draw()
 	text.precision(4);
 	text << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
 	text << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
-	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY) << std::endl;
-	text << "Lives variation = " << playerOne->getPlayerModel()->getTrait(PlayerModelImpl::LIVES_VARIATION) << std::endl;
-	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL) << std::endl;
+	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY) << std::endl;
+	text << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::LIVES_VARIATION) << std::endl;
+	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) << std::endl;
 
 	std::string drawableText = text.str();
 	float textX = 640.0f - _font->get_text_size(gc, drawableText).width - 10.f; 
@@ -112,32 +112,32 @@ void TestScenePlayer::update()
 
 	if (keyboard.get_keycode(CL_KEY_U))
 	{
-		model->setTrait(PlayerModelImpl::ACCURACY, model->getTrait(PlayerModelImpl::ACCURACY) + dt*variation);
+		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) + dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_I))
 	{
-		model->setTrait(PlayerModelImpl::LIVES_VARIATION, model->getTrait(PlayerModelImpl::LIVES_VARIATION) + dt*variation);
+		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) + dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_O))
 	{
-		model->setTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL) + dt*variation);
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) + dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_J))
 	{
-		model->setTrait(PlayerModelImpl::ACCURACY, model->getTrait(PlayerModelImpl::ACCURACY) - dt*variation);
+		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) - dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_K))
 	{
-		model->setTrait(PlayerModelImpl::LIVES_VARIATION, model->getTrait(PlayerModelImpl::LIVES_VARIATION) - dt*variation);
+		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) - dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_L))
 	{
-		model->setTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL) - dt*variation);
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) - dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_P))
@@ -156,8 +156,8 @@ void TestScenePlayer::update()
 		aimanager->update();
 
 		LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
-			player->getPlayerNumber() + 1, player->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY), model->getTrait(PlayerModelImpl::LIVES_VARIATION),
-			model->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), player->getPlayerModel()->getName().c_str() );
+			player->getPlayerNumber() + 1, player->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY), model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),
+			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), player->getPlayerModel()->getName().c_str() );
 	}
 
 	// Calls parent implementation of update

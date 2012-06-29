@@ -11,7 +11,7 @@
 *********************************************************************/
 #include "PlayerModel.h"
 
-PlayerModel::PlayerModel( unsigned int numberOfTraits, float learningRate ):_traitValues( numberOfTraits, 0.5f ), _learningRate( learningRate )
+PlayerModel::PlayerModel( unsigned int numberOfTraits, float learningRate ):_traits( numberOfTraits ), _learningRate( learningRate )
 {
 
 }
@@ -27,15 +27,15 @@ PlayerModel::~PlayerModel()
 
 void PlayerModel::resetTraits()
 {
-	for (unsigned int i = 0; i < _traitValues.size(); i++)
+	for (unsigned int i = 0; i < _traits.size(); i++)
 	{
-		_traitValues[i] = 0.5f;
+		_traits[i]._currentValue = 0.5f;
 	}
 }
 
 
 
-std::string PlayerModel::getName()
+std::string PlayerModel::getName() const
 {
 	return _name;
 }
@@ -51,52 +51,112 @@ void PlayerModel::setName( std::string name )
 
 void PlayerModel::updateTrait( unsigned int trait, float observedValue )
 {
-	float currentValue = _traitValues[trait];
+	float currentValue = _traits[trait]._currentValue;
 	float delta = observedValue - currentValue;
 	float weightedDelta = _learningRate * delta;
 
-	_traitValues[trait] += weightedDelta;
+	_traits[trait]._currentValue += weightedDelta;
 
-	if(_traitValues[trait] > 1.0f)
+	if(_traits[trait]._currentValue > 1.0f)
 	{
-		_traitValues[trait] = 1.0f;
+		_traits[trait]._currentValue = 1.0f;
 	}
 }
 
 
 
-float PlayerModel::getTrait( unsigned int trait )
+
+Trait PlayerModel::getTrait( unsigned int trait ) const
 {
-	return _traitValues[trait];
+	return _traits[trait];
 }
 
 
 
-void PlayerModel::setTrait( unsigned int trait, float value )
+float PlayerModel::getTraitValue( unsigned int trait ) const
+{
+	return _traits[trait]._currentValue;
+}
+
+
+
+float PlayerModel::getTraitMinimum( unsigned int trait ) const
+{
+	return _traits[trait]._minValue;
+}
+
+
+
+float PlayerModel::getTraitMaximum( unsigned int trait ) const
+{
+	return _traits[trait]._maxValue;
+}
+
+
+
+float PlayerModel::getTraitWeight( unsigned int trait ) const
+{
+	return _traits[trait]._weight;
+}
+
+
+
+void PlayerModel::setTrait( unsigned int trait, float minimum, float maximum, float weight, float value )
+{
+	setTraitValue( trait, value );
+	setTraitMinimum( trait, minimum );
+	setTraitMaximum( trait, maximum );
+	setTraitWeight( trait, weight );
+}
+
+
+
+void PlayerModel::setTraitValue( unsigned int trait, float value )
 {
 	// Trimming the value to range.
 	if (value >= 0.0f && value <= 1.0f)
 	{
-		_traitValues[trait] = value;
+		_traits[trait]._currentValue = value;
 	}
 	else
 	{
 		if (value > 1.0f)
 		{
-			_traitValues[trait] = 1.0f;
+			_traits[trait]._currentValue = 1.0f;
 		}
 		else
 		{
-			_traitValues[trait] = 0.0f;
+			_traits[trait]._currentValue = 0.0f;
 		}
 	}
+}
+
+
+
+void PlayerModel::setTraitMinimum( unsigned int trait, float value )
+{
+	_traits[trait]._minValue = value;
+}
+
+
+
+void PlayerModel::setTraitMaximum( unsigned int trait, float value )
+{
+	_traits[trait]._maxValue = value;
+}
+
+
+
+void PlayerModel::setTraitWeight( unsigned int trait, float value )
+{
+	_traits[trait]._weight = value;
 }
 
 
 
 const unsigned int PlayerModel::getNumberOfTraits() const
 {
-	return _traitValues.size();
+	return _traits.size();
 }
 
 

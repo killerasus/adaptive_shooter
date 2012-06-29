@@ -239,8 +239,43 @@ void GameManager::setupPlayer( unsigned int n )
 {
 	CL_Rect windowViewPort = _window->get_viewport();
 	_player = new Player( 0.0f, 0.0f, 50.0f, 50.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
-	_player->setPositionX( windowViewPort.get_width()*0.5f - _player->getCurrentSprite()->get_width()*0.5f );
+	_player->setPositionX( float ((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
 	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
+
+	PlayerModelImpl* model = new PlayerModelImpl( 0.3f );
+	model->setName( "Easy" );
+
+	model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, 0.0f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, 0.0f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.0f, 0.3f, 0.6f, 0.0f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.0f, 0.3f, 1.0f, 0.0f );
+
+	_aiManager->addPlayerModel( model );
+
+	model = new PlayerModelImpl( 0.3f );
+
+	model->setName( "Normal" );
+
+	model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, 0.0f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.3f, 0.6f, 1.0f, 0.0f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.3f, 0.6f, 0.6f, 0.0f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.3f, 0.6f, 1.0f, 0.0f );
+
+	_aiManager->addPlayerModel( model );
+
+#ifdef _DEBUG
+	_aiManager->setCurrentReferenceModel( model ); //Sets normal as the reference
+#endif
+
+	model->setName( "Hard" );
+
+	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, 0.0f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, 0.0f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.6f, 1.0f, 0.6f, 0.0f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.6f, 1.0f, 1.0f, 0.0f );
+
+	_aiManager->addPlayerModel( model );
+	_aiManager->setCurrentPlayerModel( _player->getPlayerModel() );
 
 #ifdef _DEBUG
 	_player->getPlayerModel()->setName("Normal");

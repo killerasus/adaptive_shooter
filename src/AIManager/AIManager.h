@@ -46,14 +46,14 @@ public:
 	 * Sets Lua state observed
 	 * @param	  L	New Lua state
 	 */
-	void SetLuaState( lua_State* L );
+	void setLuaState( lua_State* L );
 
 	/**
 	 * Gets lua_State currently observed
 	 * 
 	 * @return	  lua_State*	Current Lua state
 	 */
-	lua_State* GetLuaState() const;
+	lua_State* getLuaState() const;
 
 	/**
 	 * Inserts a new AIAgent in the agents control list
@@ -92,14 +92,50 @@ public:
 	 */
 	PlayerModel* getCurrentPlayerModel() const;
 
+	/**
+	 * Sets the current player model being referenced
+	 *
+	 * @param[in]	model	Pointer to player model from the vector
+	 */
+	void setCurrentReferenceModel( PlayerModel* model );
+
+	/**
+	 * Returns the current player model being referenced from the list
+	 *
+	 * @return	PlayerModel*	Pointer to current player model referenced
+	 */
+	PlayerModel* getCurrentReferenceModel() const;
+
+	/**
+	 * Includes a player model in the manager. Takes responsibility of deleting the pointer.
+	 * 
+	 * @param	  model	Pointer to player model
+	 */
+	void addPlayerModel( PlayerModel*  model );
+
+	/**
+	 * Removes a PlayerModel from the manager
+	 * 
+	 * @param	  model	Pointer to model to remove
+	 * @return	  bool	true if the model was found and removed
+	 */
+	bool removePlayerModel( PlayerModel* model );
+
+	/**
+	 * Gets a copy of the player model vector from the manager
+	 * 
+	 * @return	  std::vector<PlayerModel*>*	Returns a copy of the player model vector. Caller must delete.
+	 */
+	std::vector<PlayerModel*>* getPlayerModelVector () const;
+
 protected:
 
 private:
-	lua_State *_luaState;
-	PlayerModel *_currentObservedPlayerModel;
-	std::vector<PlayerModel*> _playerModels;
+	lua_State *_luaState; //Lua state used to load parameters
+	PlayerModel *_currentObservedPlayerModel; //PlayerModel relative to the current observed player
+	PlayerModel *_currentReferenceModel; //PlayerModel from _playerModels that matches the last observed player model
+	std::vector<PlayerModel*> _playerModels; //Vector of PlayerModels
 	std::vector<AIAgent*> _aiAgents;
-	float _tolerance;
 };
 
 #endif // AIManager_h__
