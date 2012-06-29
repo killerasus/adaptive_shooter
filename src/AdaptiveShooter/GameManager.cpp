@@ -230,7 +230,10 @@ Player* GameManager::getPlayer( unsigned int n )
 
 void GameManager::setupPlayer( unsigned int n )
 {
-	_player = new Player("sprites/boat", new PlayerModelImpl(0.3f), 0.0f, 0.0f, 50.0f, 50.0f, n, 3);
+	//CL_Rect windowViewPort = _window->get_viewport();
+	_player = new Player( 0.0f, 0.0f, 50.0f, 50.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
+	//_player->setPositionX( windowViewPort.get_width()*0.5f - _player->getCurrentSprite()->get_width()*0.5f );
+	//_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
 }
 
 

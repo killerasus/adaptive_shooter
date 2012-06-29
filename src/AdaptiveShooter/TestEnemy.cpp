@@ -14,14 +14,16 @@
 #include "GameManager.h"
 #include "PlayerModelImpl.h"
 
-TestEnemy::TestEnemy() : Enemy()
+#include "logog.hpp"
+
+TestEnemy::TestEnemy() : Enemy(), _multiplier(1.0f)
 {
 
 }
 
 
 
-TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY )
+TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ), _multiplier(1.0f)
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
@@ -30,7 +32,7 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 
 
 
-TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed)
+TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed), _multiplier(1.0f)
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
@@ -46,16 +48,10 @@ TestEnemy::~TestEnemy()
 
 
 
-void TestEnemy::draw()
-{
-	
-}
-
-
-
 void TestEnemy::update()
 {
 	float dt = GameManager::getInstance()->getDeltaTime();
+
 	setPositionX( getPosition().x + getSpeed().x * _multiplier * dt * 0.001f );
 	CL_Vec2f position = getPosition();
 
@@ -63,6 +59,7 @@ void TestEnemy::update()
 	CL_Size spriteSize = getCurrentSprite()->get_size();
 
 	//Checks if sprite is trying to get outside window view to the right
+
 	if (position.x + spriteSize.width > windowSize.width)
 	{
 		setPositionX( (float)(windowSize.width - spriteSize.width) );
@@ -106,7 +103,7 @@ void TestEnemy::updateStats()
 			} 
 			else
 			{
-				//TODO: Log error. Unknown difficulty
+				LOGOG_ERROR( "Unknown difficulty: %s", perceptedDifficulty );
 			}
 		}
 	}

@@ -23,9 +23,7 @@ public:
 
 	TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource);
 
-	~TestEnemy();
-
-	virtual void draw();
+	virtual ~TestEnemy();
 
 	virtual void update();
 

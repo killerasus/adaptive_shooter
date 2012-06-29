@@ -23,24 +23,22 @@ public:
 	/**
 	 * Constructor
 	 * 
-	 * @param[in]	  sprite	Sprite path in resource file
-	 * @param[in]	  model		Implementation of PlayerModel interface, Player takes care of deleting
 	 * @param[in]	  x			Starting x position
 	 * @param[in]	  y			Starting y position
 	 * @param[in]	  speedX	Starting x speed
 	 * @param[in]	  speedY	Starting y speed
 	 * @param[in]	  number	Player number, from 0 to max_players - 1
+	 * @param[in]	  sprite	Sprite path in resource file
+	 * @param[in]	  model		Implementation of PlayerModel interface, Player takes care of deleting
 	 * @param[in]	  lives		Number of starting lives, defaulted to 2
 	 */
-	Player(std::string  sprite, PlayerModel* model, float x, float y, float speedX, float speedY, unsigned int number,
+	Player( float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 		unsigned int lives);
 
 	/**
 	 * Destructor
 	 */
 	virtual ~Player();
-
-	virtual void draw();
 
 	virtual void update();
 

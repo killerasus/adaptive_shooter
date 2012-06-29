@@ -19,7 +19,7 @@
 #define LOGOG_USE_PREFIX 1
 #include "logog.hpp"
 
-Player::Player( std::string sprite, PlayerModel* model, float x, float y, float speedX, float speedY, unsigned int number,
+Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives = 2 )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _model( model )
 {
@@ -34,15 +34,6 @@ Player::~Player()
 {
 	delete _model;
 	delete _currentSprite;
-}
-
-
-
-void Player::draw()
-{
-	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_currentSprite->draw(gc, getPosition().x, getPosition().y);
 }
 
 

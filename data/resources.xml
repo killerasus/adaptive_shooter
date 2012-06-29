@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  
   <section name="sprites">
+    
     <sprite name="boat">
       <image file="/images/test/example3boat.png">
         <grid size="159,91" array="4,1" />
       </image>
-      <animation speed="200" loop="yes" pingpong="no" />
+      <animation speed="100" loop="yes" pingpong="no" />
     </sprite>
+    
+    <sprite name="rwing">
+      <image file="/images/stepdragon/starfox50.png">
+        <grid size="49,49" array="8,1" />
+      </image>
+      <animation speed="60" loop="yes" pingpong="no" />
+    </sprite>
+    
   </section>
+  
   <section name="scenes">
+    
     <sprite name="logo">
       <image file="/images/test/ludobardos.png"></image>
     </sprite>
+    
   </section>
+  
   <section name="menu">
+    
     <sprite name="background">
       <image file="/images/test/background_menu.png"></image>
     </sprite>
+    
   </section>
+  
 </resources>

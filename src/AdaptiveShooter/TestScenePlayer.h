@@ -13,9 +13,14 @@
 #ifndef TestScenePlayer_h__
 #define TestScenePlayer_h__
 
-#include "Scene.h"
+#include <vector>
+
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
+
+#include "Scene.h"
+#include "Enemy.h"
+#include "Shot.h"
 
 class TestScenePlayer : public Scene
 {
@@ -29,6 +34,9 @@ public:
 
 private:
 	CL_Font* _font;
+	std::vector<Enemy*> _enemies;
+	std::vector<Shot*> _playerShots;
+	std::vector<Shot*> _enemyShots;
 };
 
 #endif // TestScenePlayer_h__

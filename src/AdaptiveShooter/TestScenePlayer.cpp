@@ -15,20 +15,54 @@
 #include "TestScenePlayer.h"
 #include "GameManager.h"
 #include "PlayerModelImpl.h"
+#include "TestEnemy.h"
 
 // Logging tool
 #define LOGOG_USE_PREFIX 1
 #include "logog.hpp"
 
+
 TestScenePlayer::TestScenePlayer()
 {
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font(gc, "Tahoma", 14);
+
+	CL_Rect windowArea = GameManager::getInstance()->getWindow()->get_viewport();
+
+	TestEnemy* enemy = new TestEnemy( 0.0f, 0.0f, 50.0f, 50.0f, "sprites/boat"  );
+
+	// Adjusts enemy position to the horizontal center of the window
+	enemy->setPositionX( windowArea.get_width()*0.5f - enemy->getCurrentSprite()->get_width()*0.5f );
+
+	insertEntity( enemy );
+	_enemies.push_back( enemy );
 }
 
 TestScenePlayer::~TestScenePlayer()
 {
 	delete _font;
+
+	std::vector<Shot*>::iterator shotIter;
+
+	// Deletes player shots
+	for (shotIter = _playerShots.begin(); shotIter != _playerShots.end(); shotIter++)
+	{
+		delete *shotIter;
+	}
+
+	// Deletes enemies shots
+	for (shotIter = _enemyShots.begin(); shotIter != _enemyShots.end(); shotIter++)
+	{
+		delete *shotIter;
+	}
+
+	std::vector<Enemy*>::iterator enemyIter;
+
+	// Deletes enemies
+	for (enemyIter = _enemies.begin(); enemyIter != _enemies.end(); enemyIter++)
+	{
+		delete *enemyIter;
+	}
 }
 
 void TestScenePlayer::draw()
@@ -40,6 +74,9 @@ void TestScenePlayer::draw()
 
 	Player* playerOne = GameManager::getInstance()->getPlayer(0);
 	playerOne->draw();
+
+	// Calls parent draw implementation for drawing entities
+	Scene::draw();
 
 #if _DEBUG
 	std::ostringstream text;
@@ -116,4 +153,7 @@ void TestScenePlayer::update()
 			player->getPlayerNumber() + 1, player->getPlayerModel()->getTrait(PlayerModelImpl::ACCURACY),
 			player->getPlayerModel()->getTrait(PlayerModelImpl::LIVES_VARIATION), player->getPlayerModel()->getTrait(PlayerModelImpl::ENEMIES_WASTED_TOTAL));
 	}
+
+	// Calls parent implementation of update
+	Scene::update();
 }
