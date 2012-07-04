@@ -81,11 +81,31 @@ void TestScenePlayer::draw()
 #if _DEBUG
 	std::ostringstream text;
 	text.precision(4);
+
 	text << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
 	text << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
 	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY) << std::endl;
 	text << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::LIVES_VARIATION) << std::endl;
 	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) << std::endl;
+
+	if (GameManager::getInstance()->getWindow()->get_ic().get_joystick_count() > 0)
+	{
+		CL_InputDevice joystick = GameManager::getInstance()->getWindow()->get_ic().get_joystick();
+		text << "Joystick name = " << joystick.get_name().c_str() << std::endl;
+
+		for (int i = 0; i < joystick.get_button_count(); i++)
+		{
+			if (joystick.get_keycode( i ))
+			{
+				text << "Joystick key = " << joystick.get_key_name( i ).c_str() << std::endl;
+			}
+		}
+
+		for (int i = 0; i < joystick.get_axis_count(); i++)
+		{
+			text << "Joystick axis " << i << " = " << joystick.get_axis( i ) << std::endl;
+		}
+	}
 
 	std::string drawableText = text.str();
 	float textX = 640.0f - _font->get_text_size(gc, drawableText).width - 10.f; 

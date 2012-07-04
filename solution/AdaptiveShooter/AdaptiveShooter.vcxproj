@@ -178,6 +178,7 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScenePlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\AdaptiveShooter\ControllerInterface.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\DynamicEntity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Enemy.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h" />
