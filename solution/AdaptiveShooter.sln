@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIManager_Test", "AIManager
 		{6BD695B9-9F5D-42AB-A126-6ED70406627D} = {6BD695B9-9F5D-42AB-A126-6ED70406627D}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Outliner", "Outliner\Outliner.vcxproj", "{162A9EC2-F3C5-46E7-A429-16FB965C92AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_GL1|Any CPU = Debug_GL1|Any CPU
@@ -91,6 +93,26 @@ Global
 		{E2C7F7D6-DDB3-41CD-80CA-C2B27D52AEB2}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{E2C7F7D6-DDB3-41CD-80CA-C2B27D52AEB2}.Release|Win32.ActiveCfg = Release|Win32
 		{E2C7F7D6-DDB3-41CD-80CA-C2B27D52AEB2}.Release|Win32.Build.0 = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug_GL1|Any CPU.ActiveCfg = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug_GL1|Mixed Platforms.ActiveCfg = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug_GL1|Mixed Platforms.Build.0 = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug_GL1|Win32.ActiveCfg = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug_GL1|Win32.Build.0 = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Debug|Win32.Build.0 = Debug|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release_GL1|Any CPU.ActiveCfg = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release_GL1|Mixed Platforms.ActiveCfg = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release_GL1|Mixed Platforms.Build.0 = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release_GL1|Win32.ActiveCfg = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release_GL1|Win32.Build.0 = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release|Any CPU.ActiveCfg = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release|Win32.ActiveCfg = Release|Win32
+		{162A9EC2-F3C5-46E7-A429-16FB965C92AB}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
