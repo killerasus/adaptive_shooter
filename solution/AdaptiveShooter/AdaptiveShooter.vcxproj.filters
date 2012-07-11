@@ -152,11 +152,11 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\TestEnemy.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\ControllerInterface.h">
       <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

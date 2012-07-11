@@ -21,11 +21,17 @@
 
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives )
-	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _model( model )
+	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _model( model ), _spriteResourceKey( sprite )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite(gc, sprite, manager->getResourceManager());
+
+	for (unsigned int i = 0; i < _currentSprite->get_frame_count(); i++)
+	{
+		CL_String collisionResource = cl_format( "outlines/player/rwing_00%1", i );
+		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+	}
 }
 
 
@@ -36,6 +42,17 @@ Player::~Player()
 	delete _currentSprite;
 }
 
+
+
+#ifdef _DEBUG
+void Player::draw()
+{
+	this->DynamicEntity::draw();
+	int frame = getCurrentSprite()->get_current_frame();
+	_currentOutlines[frame]->draw( getPosition().x, getPosition().y, CL_Colorf::red,
+		GameManager::getInstance()->getWindow()->get_gc() );
+}
+#endif
 
 
 void Player::update()
@@ -121,3 +138,4 @@ PlayerModel* Player::getPlayerModel() const
 {
 	return _model;
 }
+

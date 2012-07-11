@@ -239,6 +239,7 @@ void GameManager::setupPlayer( unsigned int n )
 {
 	CL_Rect windowViewPort = _window->get_viewport();
 	_player = new Player( 0.0f, 0.0f, 50.0f, 50.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
+	//_player->setupCollisionOutlines();
 	_player->setPositionX( float ((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
 	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
 

@@ -40,6 +40,10 @@ public:
 	 */
 	virtual ~Player();
 
+#ifdef _DEBUG
+	virtual void draw();
+#endif
+
 	virtual void update();
 
 	/**
@@ -95,7 +99,9 @@ protected:
 private:
 	unsigned int _playerNumber;
 	unsigned int _lives;
+	std::vector<CL_CollisionOutline*> _currentOutlines;
 	PlayerModel* _model;
+	std::string _spriteResourceKey;
 	float _shotTimer; // This must go to a weapon class
 };
 

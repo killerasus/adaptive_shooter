@@ -1,38 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  
-  <section name="sprites">
-    
-    <sprite name="boat">
-      <image file="/images/test/example3boat.png">
-        <grid size="159,91" array="4,1" />
-      </image>
-      <animation speed="100" loop="yes" pingpong="no" />
-    </sprite>
-    
-    <sprite name="rwing">
-      <image file="/images/stepdragon/starfox50.png">
-        <grid size="49,49" array="8,1" />
-      </image>
-      <animation speed="60" loop="yes" pingpong="no" />
-    </sprite>
+	
+	<section name="sprites">
+		
+		<sprite name="boat">
+			<image file="/images/test/example3boat.png">
+				<grid size="159,91" array="4,1" />
+			</image>
+			<animation speed="100" loop="yes" pingpong="no" />
+		</sprite>
+		
+		<sprite name="rwing">
+			<image file="/images/stepdragon/starfox50.png">
+				<grid size="49,49" array="8,1" />
+			</image>
+			<animation speed="60" loop="yes" pingpong="no" />
+		</sprite>
+		
+	</section>
+
+  <section name="outlines">
+
+    <section name="player">
+      <collisionoutline name="rwing_000" file="/images/stepdragon/collisiondata/rwing_000.out"/>
+      <collisionoutline name="rwing_001" file="/images/stepdragon/collisiondata/rwing_001.out"/>
+      <collisionoutline name="rwing_002" file="/images/stepdragon/collisiondata/rwing_002.out"/>
+      <collisionoutline name="rwing_003" file="/images/stepdragon/collisiondata/rwing_003.out"/>
+      <collisionoutline name="rwing_004" file="/images/stepdragon/collisiondata/rwing_004.out"/>
+      <collisionoutline name="rwing_005" file="/images/stepdragon/collisiondata/rwing_005.out"/>
+      <collisionoutline name="rwing_006" file="/images/stepdragon/collisiondata/rwing_006.out"/>
+      <collisionoutline name="rwing_007" file="/images/stepdragon/collisiondata/rwing_007.out"/>
+    </section>
+
+    <section name="shot">
+      <collisionoutline name="shot_000" file="/images/test/shot_000.out"/>
+    </section>
     
   </section>
-  
-  <section name="scenes">
-    
-    <sprite name="logo">
-      <image file="/images/test/ludobardos.png"></image>
-    </sprite>
-    
-  </section>
-  
-  <section name="menu">
-    
-    <sprite name="background">
-      <image file="/images/test/background_menu.png"></image>
-    </sprite>
-    
-  </section>
-  
+	
+	<section name="scenes">
+		
+		<sprite name="logo">
+			<image file="/images/test/ludobardos.png"></image>
+		</sprite>
+		
+	</section>
+	
+	<section name="menu">
+		
+		<sprite name="background">
+			<image file="/images/test/background_menu.png"></image>
+		</sprite>
+		
+	</section>
+	
 </resources>
