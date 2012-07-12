@@ -23,18 +23,18 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-	for (unsigned int i = 0; i < _entities.size(); i++)
+	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); )
 	{
-		delete _entities[i];
+		it = _entities.erase( it );
 	}
 }
 
 /* Override */
 void Menu::update()
 {
-	for (unsigned int i = 0; i < _entities.size(); i++)
+	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++)
 	{
-		_entities[i]->update();
+		(*it)->update();
 	}
 
 	//Insert code for menu state transition

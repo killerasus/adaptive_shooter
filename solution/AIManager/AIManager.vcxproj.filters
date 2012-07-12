@@ -16,7 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="AIManagerClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\AIManager\AIAgent.cpp">

@@ -74,6 +74,13 @@ public:
 	Scene* popScene();
 
 	/**
+	 * Gets the scene from the top of the scene stack. Does not pop.
+	 * 
+	 * @return	  Scene*	Scene on the top of the stack. Null if no scene is in stack.
+	 */
+	Scene* peekScene();
+
+	/**
 	 * Gets current game window
 	 * 
 	 * @return	  CL_DisplayWindow*

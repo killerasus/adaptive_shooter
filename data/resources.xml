@@ -2,25 +2,49 @@
 <resources>
 	
 	<section name="sprites">
-		
+    
+		<!--Test sprite-->
 		<sprite name="boat">
 			<image file="/images/test/example3boat.png">
 				<grid size="159,91" array="4,1" />
 			</image>
 			<animation speed="100" loop="yes" pingpong="no" />
 		</sprite>
-		
+
+    <!--Player sprite-->
 		<sprite name="rwing">
 			<image file="/images/stepdragon/starfox50.png">
 				<grid size="49,49" array="8,1" />
 			</image>
 			<animation speed="60" loop="yes" pingpong="no" />
 		</sprite>
-		
+
+    <!--Shot sprite-->
+    <sprite name="shot">
+      <image file="/images/test/shot.png">
+        <grid size="7,19" array="1,1"/>
+      </image>
+    </sprite>
+
+    <!--Enemy sprites-->
+    <sprite name="enemy1">
+      <image file="/images/test/enemy1.png">
+        <grid size="57,26" array="1,1"/>
+      </image>
+    </sprite>
+
+    <sprite name="enemy2">
+      <image file="images/test/enemy2.png">
+        <grid size="27,26" array="2,1"/>
+      </image>
+      <animation speed="100" loop="yes" pingpong="no" />
+    </sprite>
+    
 	</section>
 
   <section name="outlines">
 
+    <!--Player collision outlines-->
     <section name="player">
       <collisionoutline name="rwing_000" file="/images/stepdragon/collisiondata/rwing_000.out"/>
       <collisionoutline name="rwing_001" file="/images/stepdragon/collisiondata/rwing_001.out"/>
@@ -32,8 +56,23 @@
       <collisionoutline name="rwing_007" file="/images/stepdragon/collisiondata/rwing_007.out"/>
     </section>
 
+    <!--Shot collision outlines-->
     <section name="shot">
-      <collisionoutline name="shot_000" file="/images/test/shot_000.out"/>
+      <collisionoutline name="shot_000" file="/images/test/collisiondata/shot.out"/>
+    </section>
+
+    <!--Enemies collision outlines-->
+    <section name="enemies">
+
+      <section name="enemy1">
+        <collisionoutline name="enemy1_000" file="/images/test/collisiondata/enemy1.out"/>
+      </section>
+
+      <section name="enemy2">
+        <collisionoutline name="enemy2_000" file="/images/test/collisiondata/enemy2_000.out"/>
+        <collisionoutline name="enemy2_001" file="/images/test/collisiondata/enemy2_001.out"/>
+      </section>
+      
     </section>
     
   </section>
@@ -45,7 +84,8 @@
 		</sprite>
 		
 	</section>
-	
+  
+  <!--Menu images-->
 	<section name="menu">
 		
 		<sprite name="background">

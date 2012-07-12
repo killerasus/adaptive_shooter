@@ -29,12 +29,17 @@ TestScenePlayer::TestScenePlayer()
 
 	CL_Rect windowArea = GameManager::getInstance()->getWindow()->get_viewport();
 
-	TestEnemy* enemy = new TestEnemy( 0.0f, 0.0f, 50.0f, 50.0f, "sprites/boat"  );
+	TestEnemy* enemy = new TestEnemy( 0.0f, 0.0f, 50.0f, 50.0f, "sprites/enemy1"  );
 
 	// Adjusts enemy position to the horizontal center of the window
 	enemy->setPositionX( windowArea.get_width()*0.5f - enemy->getCurrentSprite()->get_width()*0.5f );
 
+	// Inserts enemy in AIManager control list
+	GameManager::getInstance()->getAIManager()->insertAgent( enemy );
+
+	// Inserts enemy in Scene control list
 	insertEntity( enemy );
+
 	_enemies.push_back( enemy );
 }
 
@@ -42,26 +47,26 @@ TestScenePlayer::~TestScenePlayer()
 {
 	delete _font;
 
-	std::vector<Shot*>::iterator shotIter;
+	std::list<Shot*>::iterator shotIter;
 
 	// Deletes player shots
-	for (shotIter = _playerShots.begin(); shotIter != _playerShots.end(); shotIter++)
+	for (shotIter = _playerShots.begin(); shotIter != _playerShots.end(); )
 	{
-		delete *shotIter;
+		shotIter = _playerShots.erase( shotIter );
 	}
 
 	// Deletes enemies shots
-	for (shotIter = _enemyShots.begin(); shotIter != _enemyShots.end(); shotIter++)
+	for (shotIter = _enemyShots.begin(); shotIter != _enemyShots.end(); )
 	{
-		delete *shotIter;
+		shotIter = _enemyShots.erase( shotIter );
 	}
 
-	std::vector<Enemy*>::iterator enemyIter;
+	std::vector<Enemy*>::iterator enemyIter = _enemies.begin();
 
 	// Deletes enemies
-	for (enemyIter = _enemies.begin(); enemyIter != _enemies.end(); enemyIter++)
+	while (enemyIter != _enemies.end())
 	{
-		delete *enemyIter;
+		enemyIter = _enemies.erase( enemyIter );
 	}
 }
 
@@ -84,9 +89,10 @@ void TestScenePlayer::draw()
 
 	text << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
 	text << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
-	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY) << std::endl;
-	text << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::LIVES_VARIATION) << std::endl;
-	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) << std::endl;
+	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ACCURACY ) << std::endl;
+	text << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::LIVES_VARIATION ) << std::endl;
+	text << "Enemies wasted wave = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ENEMIES_WASTED_WAVE ) << std::endl;
+	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ENEMIES_WASTED_TOTAL ) << std::endl;
 
 	if (GameManager::getInstance()->getWindow()->get_ic().get_joystick_count() > 0)
 	{
@@ -118,11 +124,13 @@ void TestScenePlayer::draw()
 void TestScenePlayer::update()
 {
 	GameManager* manager = GameManager::getInstance();
-	Player* player = manager->getPlayer(0);
+	Player* playerOne = manager->getPlayer(0);
 	float dt = manager->getDeltaTime();
-	PlayerModel* model = player->getPlayerModel();
+	PlayerModel* model = playerOne->getPlayerModel();
 
-	player->update();
+	// Player updates occur separately because players can drop in or out
+	// treating this in entities would be messy
+	playerOne->update();
 
 	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
@@ -130,14 +138,19 @@ void TestScenePlayer::update()
 
 	const float variation = 0.001f;
 
-	if (keyboard.get_keycode(CL_KEY_U))
+	if (keyboard.get_keycode(CL_KEY_Y))
 	{
 		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) + dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_I))
+	if (keyboard.get_keycode(CL_KEY_U))
 	{
 		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) + dt*variation);
+	}
+
+	if (keyboard.get_keycode(CL_KEY_I))
+	{
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) + dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_O))
@@ -145,14 +158,19 @@ void TestScenePlayer::update()
 		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) + dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_J))
+	if (keyboard.get_keycode(CL_KEY_H))
 	{
 		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) - dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_K))
+	if (keyboard.get_keycode(CL_KEY_J))
 	{
 		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) - dt*variation);
+	}
+
+	if (keyboard.get_keycode(CL_KEY_K))
+	{
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) - dt*variation);
 	}
 
 	if (keyboard.get_keycode(CL_KEY_L))
@@ -176,10 +194,185 @@ void TestScenePlayer::update()
 		aimanager->update();
 
 		LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
-			player->getPlayerNumber() + 1, player->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY), model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),
-			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), player->getPlayerModel()->getName().c_str() );
+			playerOne->getPlayerNumber() + 1, playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY), model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),
+			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), playerOne->getPlayerModel()->getName().c_str() );
 	}
 
-	// Calls parent implementation of update
+	// Calls parent implementation of update, updating all Entities
 	Scene::update();
+
+	// Treat playerShots and enemyShots collision and out of bounds
+	std::list<Shot*>::iterator shotIt;
+
+	/*for (shotIt = _playerShots.begin(); shotIt != _playerShots.end(); )
+	{
+		if ((*shotIt)->checkBoundary())
+		{
+			shotIt++;
+		}
+		else
+		{
+			Shot* remove = *shotIt;
+			shotIt++;
+			removePlayerShot( remove );
+			delete remove;
+		}
+	}*/
+
+	/*for (shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
+	{
+		if ((*shotIt)->checkBoundary())
+		{
+			shotIt++;
+		}
+		else
+		{
+			Shot* remove = *shotIt;
+			shotIt++;
+			removeEnemyShot( remove );
+			delete remove;
+		}
+	}*/
+
+	std::vector<Enemy*>::iterator enemyIt;
+
+	CL_CollisionOutline* shot = NULL;
+	CL_CollisionOutline* object = NULL;
+	bool remove;
+
+	// Player shots colliding with enemies
+	for(shotIt = _playerShots.begin(); shotIt != _playerShots.end(); )
+	{
+		// Checks if inside window boundaries
+		if (!(*shotIt)->checkBoundary())
+		{
+			Shot* remove = *shotIt;
+			shotIt++;
+			removePlayerShot( remove );
+			delete remove;
+			continue;
+		}
+
+		remove = false;
+		shot = (*shotIt)->getCurrentCollisionOutline();
+
+		//Translates outlines to their current sprite position as outlines start in 0,0
+		CL_Vec2f pos = (*shotIt)->getPosition();
+		shot->set_translation(pos.x, pos.y);
+
+		for (enemyIt = _enemies.begin(); enemyIt != _enemies.end(); enemyIt++)
+		{
+			object = (*enemyIt)->getCurrentCollisionOutline();
+			
+			CL_Vec2f posEnemy = (*enemyIt)->getPosition();
+			object->set_translation(posEnemy.x, posEnemy.y);
+
+			if (shot->collide( *object ))
+			{
+				object->set_translation(0.0f, 0.0f);
+				remove = true;
+				break;
+			}
+
+			object->set_translation(0.0f, 0.0f);
+		}
+
+		shot->set_translation(0.0f, 0.0f);
+
+		if (remove)
+		{
+			Shot* shotRemove = (*shotIt);
+			shotIt++;
+			removePlayerShot( shotRemove );
+			delete shotRemove;
+		} 
+		else
+		{
+			shotIt++;
+		}
+		
+	}
+
+	// As currently there is just one player...
+	object = playerOne->getCurrentCollisionOutline();
+	object->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
+
+	// Enemies shots colliding with player
+	for(shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
+	{
+		// Checks if inside window boundaries
+		if (!(*shotIt)->checkBoundary())
+		{
+			Shot* remove = *shotIt;
+			shotIt++;
+			removeEnemyShot( remove );
+			delete remove;
+			continue;
+		}
+
+		shot = (*shotIt)->getCurrentCollisionOutline();
+
+		CL_Vec2f pos = (*shotIt)->getPosition();
+		shot->set_translation(pos.x, pos.y);
+
+		if (shot->collide( *object ))
+		{
+			Shot* shotRemove = *shotIt;
+			shotIt++;
+			removeEnemyShot( shotRemove );
+			delete ( shotRemove );
+		}
+		else
+		{
+			shot->set_translation(0.0f, 0.0f);
+			shotIt++;
+		}
+	}
+
+	// Returns player outline to 0,0
+	object->set_translation(0.0f, 0.0f);
+}
+
+
+
+void TestScenePlayer::addPlayerShot( Shot* newShot )
+{
+	// For drawing and updating
+	insertEntity( newShot );
+
+	// For collision checking
+	_playerShots.push_back( newShot );
+}
+
+
+
+void TestScenePlayer::addEnemyShot( Shot* newShot )
+{
+	// For drawing and updating
+	insertEntity( newShot );
+
+	// For collision checking
+	_enemyShots.push_back( newShot );
+}
+
+
+
+void TestScenePlayer::removePlayerShot( Shot* shot )
+{
+	if (shot != NULL)
+	{
+		removeEntity( shot );
+		_playerShots.remove( shot );
+	}
+}
+
+
+
+void TestScenePlayer::removeEnemyShot( Shot* shot )
+{
+	if (shot != NULL)
+	{
+		removeEntity( shot );
+		_enemyShots.remove( shot );
+	}
 }

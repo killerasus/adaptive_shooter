@@ -25,6 +25,10 @@ public:
 
 	virtual ~TestEnemy();
 
+#ifdef _DEBUG
+	virtual void draw();
+#endif // _DEBUG
+
 	virtual void update();
 
 	virtual void updateStats();

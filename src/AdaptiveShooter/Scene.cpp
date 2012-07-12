@@ -33,13 +33,14 @@ void Scene::insertEntity( Entity* entity)
 }
 
 
+
 void Scene::removeEntity( Entity* entity )
 {
-	for ( std::vector<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
+	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
 	{
 		if ( (*it) == entity )
 		{
-			_entities.erase(it);
+			_entities.remove(*it);
 			break;
 		}
 	}
@@ -47,36 +48,60 @@ void Scene::removeEntity( Entity* entity )
 	return;
 }
 
+
+
 Entity* Scene::getEntity( unsigned int i )
 {
-	return _entities.at(i);
+	Entity* ret = NULL;
+	int j = 0;
+
+	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++, j++ )
+	{
+		if ( j == i )
+		{
+			ret = *it;
+			break;
+		}
+	}
+
+	return ret;
 }
+
+
 
 void Scene::draw()
 {
-	for ( std::vector<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
+	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
 	{
 		(*it)->draw();
 	}
 }
 
+
+
 void Scene::update()
 {
-	for ( std::vector<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
+	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
 	{
 		(*it)->update();
 	}
 }
+
+
 
 Scene* Scene::getNextScene()
 {
 	return _nextScene;
 }
 
+
+
 void Scene::setNextScene( Scene* next )
 {
 	_nextScene = next;
 }
+
+
 
 void Scene::changeToNextScene()
 {

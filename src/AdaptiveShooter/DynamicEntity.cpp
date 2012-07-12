@@ -82,3 +82,11 @@ void DynamicEntity::setSpeedY( float y )
 {
 	_speed.y = y;
 }
+
+
+
+CL_CollisionOutline* DynamicEntity::getCurrentCollisionOutline() const
+{
+	int i = getCurrentSprite()->get_current_frame();
+	return _currentOutlines[i];
+}

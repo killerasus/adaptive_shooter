@@ -14,6 +14,7 @@
 #define TestScenePlayer_h__
 
 #include <vector>
+#include <list>
 
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
@@ -32,11 +33,43 @@ public:
 
 	virtual void update();
 
+	/**
+	 * Adds a player shot to the Scene entities and player's shots control list
+	 * 
+	 * @param	  newShot
+	 * @return	  void
+	 */
+	void addPlayerShot(Shot* newShot);
+
+	/**
+	 * Adds an enemy shot to the Scene entities and enemies' shots control list
+	 * 
+	 * @param	  newShot
+	 * @return	  void
+	 */
+	void addEnemyShot(Shot* newShot);
+
 private:
 	CL_Font* _font;
 	std::vector<Enemy*> _enemies;
-	std::vector<Shot*> _playerShots;
-	std::vector<Shot*> _enemyShots;
+	std::list<Shot*> _playerShots;
+	std::list<Shot*> _enemyShots;
+
+	/**
+	 * Removes player shot from Scene entities and player's shot control.
+	 * 
+	 * @param	  shot
+	 * @return	  void
+	 */
+	void removePlayerShot(Shot* shot);
+
+	/**
+	 * Removes enemy shot from Scene entities and enemies' shot control.
+	 * 
+	 * @param	  shot
+	 * @return	  void
+	 */
+	void removeEnemyShot(Shot* shot);
 };
 
 #endif // TestScenePlayer_h__

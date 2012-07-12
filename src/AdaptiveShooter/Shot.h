@@ -20,11 +20,31 @@ class Shot : public DynamicEntity
 public:
 	Shot(std::string resource);
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param	  x			X coordinate referring to the middle of the sprite in screen coordinates
+	 * @param	  y			Y coordinate referring to the bottom of the sprite in screen coordinates
+	 * @param	  speedX
+	 * @param	  speedY
+	 * @param	  resource
+	 */
 	Shot(float x, float y, float speedX, float speedY, std::string resource);
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param	  position	Coordinates referring to the middle and bottom of the sprite in screen coordinates
+	 * @param	  speed
+	 * @param	  resource
+	 */
 	Shot(CL_Vec2f& position, CL_Vec2f& speed, std::string resource);
 
 	virtual ~Shot();
+
+#ifdef _DEBUG
+	virtual void draw();
+#endif // _DEBUG
 
 	virtual void update();
 

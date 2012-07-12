@@ -34,12 +34,12 @@ AIManager::~AIManager()
 
 void AIManager::update()
 {
-	std::vector<PlayerModel*>::iterator it;
+	std::vector<PlayerModel*>::iterator itPM;
 	float result(0.0f);
 
-	for (it = _playerModels.begin(); it != _playerModels.end(); it++)
+	for (itPM = _playerModels.begin(); itPM != _playerModels.end(); itPM++)
 	{
-		result = _currentObservedPlayerModel->compare( *it );
+		result = _currentObservedPlayerModel->compare( *itPM );
 
 		// Checks if observed player model is lesser than current comparable player model
 		if (result < 0.0f)
@@ -51,7 +51,7 @@ void AIManager::update()
 			// Checks if observed player model matches current comparable player model
 			if (result == 0.0f)
 			{
-				_currentReferenceModel = *it;
+				_currentReferenceModel = *itPM;
 				break;
 			}
 			else
@@ -60,13 +60,13 @@ void AIManager::update()
 				if (result)
 				{
 					// Compares referenced with current comparable
-					result = _currentReferenceModel->compare( *it );
+					result = _currentReferenceModel->compare( *itPM );
 
 					// Checks if reference model is inferior to current comparable
 					if (result < 0.0f)
 					{
 						// Reference model should be updated to current comparable
-						_currentReferenceModel = *it;
+						_currentReferenceModel = *itPM;
 					} 
 				}
 			}
@@ -74,6 +74,13 @@ void AIManager::update()
 	}
 
 	_currentObservedPlayerModel->setName( _currentReferenceModel->getName() );
+
+	std::vector<AIAgent*>::iterator it;
+
+	for (it = _aiAgents.begin(); it != _aiAgents.end(); it++)
+	{
+		(*it)->updateStats();
+	}
 }
 
 

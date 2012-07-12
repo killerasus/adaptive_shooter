@@ -14,7 +14,7 @@
 #define Scene_h__
 
 #include "Entity.h"
-#include <vector>
+#include <list>
 
 class Scene
 {
@@ -46,7 +46,7 @@ public:
 protected:
 	void changeToNextScene();
 
-	std::vector< Entity* > _entities;
+	std::list< Entity* > _entities;
 	SceneState _sceneState;
 	Scene *_nextScene;
 private:

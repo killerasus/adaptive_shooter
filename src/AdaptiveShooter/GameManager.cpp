@@ -113,6 +113,20 @@ Scene* GameManager::popScene()
 
 
 
+Scene* GameManager::peekScene()
+{
+	Scene* top = NULL;
+
+	if (!_sceneStack.empty())
+	{
+		top = _sceneStack.top();
+	}
+
+	return top;
+}
+
+
+
 void GameManager::draw()
 {
 	_window->get_gc().clear(CL_Colorf::black);
@@ -243,44 +257,46 @@ void GameManager::setupPlayer( unsigned int n )
 	_player->setPositionX( float ((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
 	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
 
+	// Setting Easy
 	PlayerModelImpl* model = new PlayerModelImpl( 0.3f );
 	model->setName( "Easy" );
 
-	model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, 0.0f );
-	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, 0.0f );
-	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.0f, 0.3f, 0.6f, 0.0f );
-	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.0f, 0.3f, 1.0f, 0.0f );
+	model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, (0.0f + 0.3f)*0.5f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, (0.0f + 0.3f)*0.5f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.0f, 0.3f, 0.6f, (0.0f + 0.3f)*0.5f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.0f, 0.3f, 1.0f, (0.0f + 0.3f)*0.5f );
 
 	_aiManager->addPlayerModel( model );
 
+	// Setting Normal
 	model = new PlayerModelImpl( 0.3f );
 
 	model->setName( "Normal" );
 
-	model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, 0.0f );
-	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.3f, 0.6f, 1.0f, 0.0f );
-	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.3f, 0.6f, 0.6f, 0.0f );
-	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.3f, 0.6f, 1.0f, 0.0f );
+	model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, (0.3f + 0.6f)*0.5f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.3f, 0.6f, 1.0f, (0.3f + 0.6f)*0.5f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.3f, 0.6f, 0.6f, (0.3f + 0.6f)*0.5f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.3f, 0.6f, 1.0f, (0.3f + 0.6f)*0.5f );
 
 	_aiManager->addPlayerModel( model );
 
 #ifdef _DEBUG
 	_aiManager->setCurrentReferenceModel( model ); //Sets normal as the reference
+	_player->getPlayerModel()->setName("Normal");
 #endif
+
+	// Setting Hard
+	model = new PlayerModelImpl( 0.3f );
 
 	model->setName( "Hard" );
 
-	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, 0.0f );
-	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, 0.0f );
-	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.6f, 1.0f, 0.6f, 0.0f );
-	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.6f, 1.0f, 1.0f, 0.0f );
+	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, (0.6f + 1.0f)*0.5f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, (0.6f + 1.0f)*0.5f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.6f, 1.0f, 0.6f, (0.6f + 1.0f)*0.5f );
+	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.6f, 1.0f, 1.0f, (0.6f + 1.0f)*0.5f );
 
 	_aiManager->addPlayerModel( model );
 	_aiManager->setCurrentPlayerModel( _player->getPlayerModel() );
-
-#ifdef _DEBUG
-	_player->getPlayerModel()->setName("Normal");
-#endif
 }
 
 

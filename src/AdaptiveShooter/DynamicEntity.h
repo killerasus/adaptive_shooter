@@ -81,8 +81,15 @@ public:
 	 */
 	void setSpeedY(float y);
 
+	/**
+	 * Gets the current collision outline from the current sprite
+	 * 
+	 * @return	  const CL_CollisionOutline*	Const pointer to current collision outline
+	 */
+	CL_CollisionOutline* getCurrentCollisionOutline() const;
+
 protected:
-	
+	std::vector<CL_CollisionOutline*> _currentOutlines;
 private:
 	CL_Vec2f _speed;
 };

@@ -104,6 +104,13 @@ public:
 	 * Updates the entity
 	 */
 	virtual void update() = 0;
+
+	/**
+	 * Checks if current sprite is still visible in screen boundaries
+	 * 
+	 * @return	  bool	true if inside graphics context window, false otherwise
+	 */
+	bool checkBoundary();
 	
 protected:
 	CL_Sprite* _currentSprite;

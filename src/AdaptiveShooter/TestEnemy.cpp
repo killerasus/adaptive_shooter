@@ -28,6 +28,13 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
+
+	//TODO: Substitute this for a DynamicEntity function
+	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	{
+		CL_String collisionResource = cl_format( "outlines/enemies/enemy1/enemy1_00%1", i );
+		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+	}
 }
 
 
@@ -37,6 +44,13 @@ TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) 
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
+
+	//TODO: Substitute this for a DynamicEntity function
+	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	{
+		CL_String collisionResource = cl_format( "outlines/enemies/enemy1/enemy1_00%1", i );
+		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+	}
 }
 
 
@@ -46,6 +60,15 @@ TestEnemy::~TestEnemy()
 	delete _currentSprite;
 }
 
+#ifdef _DEBUG
+void TestEnemy::draw()
+{
+	this->DynamicEntity::draw();
+	int frame = getCurrentSprite()->get_current_frame();
+	_currentOutlines[frame]->draw( getPosition().x, getPosition().y, CL_Colorf::red,
+		GameManager::getInstance()->getWindow()->get_gc() );
+}
+#endif
 
 
 void TestEnemy::update()

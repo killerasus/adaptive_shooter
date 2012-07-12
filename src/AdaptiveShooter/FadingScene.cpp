@@ -136,7 +136,7 @@ void FadingScene::update()
 		}//if
 	}//if
 
-	for (std::vector<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++)
+	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++)
 	{
 		(*it)->setAlpha(alpha);
 		(*it)->update();

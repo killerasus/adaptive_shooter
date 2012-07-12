@@ -11,6 +11,7 @@
 *********************************************************************/
 
 #include "Entity.h"
+#include "GameManager.h"
 
 Entity::Entity() : _currentSprite(0), _position(0.0f, 0.0f)
 {
@@ -93,4 +94,26 @@ void Entity::setAlpha(float alpha)
 {
 	if (_currentSprite)
 		_currentSprite->set_alpha( alpha );
+}
+
+
+
+bool Entity::checkBoundary()
+{
+	CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc();
+	float top, bottom, left, right;
+
+	top = _position.y;
+	left = _position.x;
+	right = left + _currentSprite->get_width();
+	bottom = top + _currentSprite->get_height();
+
+	if (bottom < 0.0f || right < 0.0f || top > gc.get_height() || left > gc.get_width())
+	{
+		return false;
+	} 
+	else
+	{
+		return true;
+	}
 }

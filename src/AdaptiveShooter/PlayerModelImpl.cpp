@@ -30,33 +30,25 @@ float PlayerModelImpl::compare( PlayerModel* comparable )
 {
 	float traitValue;
 	float total = 0.0f;
+	float totalCompareMin = 0.0f;
+	float totalCompareMax = 0.0f;
 
 	for (int i = 0; i < PlayerModelImpl::TRAITS_SIZE; i++)
 	{
-		traitValue = getTraitValue( i );
-
-		if (traitValue >= comparable->getTraitMinimum( i ))
-		{
-			if (traitValue > comparable->getTraitMaximum( i ))
-			{
-				total += comparable->getTraitWeight( i );
-			} 
-			else
-			{
-				total += comparable->getTraitWeight( i )*0.75f;
-			}
-		}
+		total += getTraitValue( i );
+		totalCompareMin += comparable->getTraitMinimum( i );
+		totalCompareMax += comparable->getTraitMaximum( i );
 	}
 
 	// Checks if model is under the comparable
-	if (total <= 2.0f)
+	if (total < totalCompareMin)
 	{
 		return -1.0f;
 	} 
 	else
 	{
 		// Checks if model is above comparable
-		if (total >= 4.0f)
+		if (total > totalCompareMax)
 		{
 			return 1.0f;
 		} 
