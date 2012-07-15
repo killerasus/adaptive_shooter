@@ -23,22 +23,24 @@ public:
 	/**
 	 * Constructor
 	 * 
-	 * @param	  x			X coordinate referring to the middle of the sprite in screen coordinates
-	 * @param	  y			Y coordinate referring to the bottom of the sprite in screen coordinates
-	 * @param	  speedX
-	 * @param	  speedY
-	 * @param	  resource
+	 * @param[in]	x			X coordinate referring to the middle of the sprite in screen coordinates
+	 * @param[in]	y			Y coordinate referring to the bottom of the sprite in screen coordinates
+	 * @param[in]	speedX		X axis speed in pixels per second
+	 * @param[in]	speedY		Y axis speed in pixels per second
+	 * @param[in]	resource	Resource location in resource file
+	 * @param[in]	damage		Amount of damage caused to Entity
 	 */
-	Shot(float x, float y, float speedX, float speedY, std::string resource);
+	Shot(float x, float y, float speedX, float speedY, std::string resource, int damage);
 	
 	/**
 	 * Constructor
 	 * 
-	 * @param	  position	Coordinates referring to the middle and bottom of the sprite in screen coordinates
-	 * @param	  speed
-	 * @param	  resource
+	 * @param[in]	position	Coordinates referring to the middle and bottom of the sprite in screen coordinates
+	 * @param[in]	speed		Speed vector in pixels per second
+	 * @param[in]	resource	Resource location in resource file
+	 * @param[in]	damage		Amount of damage caused to Entity
 	 */
-	Shot(CL_Vec2f& position, CL_Vec2f& speed, std::string resource);
+	Shot(CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damage);
 
 	virtual ~Shot();
 
@@ -48,9 +50,24 @@ public:
 
 	virtual void update();
 
+	/**
+	 * Sets shot damage amount
+	 * 
+	 * @param	  damage	Damage value
+	 */
+	void setDamage( int damage );
+
+	/**
+	 * Gets shot damage amount
+	 * 
+	 * @return	  int	Amount of damage to be applied
+	 */
+	int getDamage ();
+
 protected:
 	
 private:
+	int _damage;
 };
 
 #endif // Shot_h__

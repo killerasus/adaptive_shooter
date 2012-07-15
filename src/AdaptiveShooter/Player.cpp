@@ -89,7 +89,7 @@ void Player::update()
 		if (currentScene != NULL)
 		{
 			Shot* newShot = new Shot(getPosition().x + getCurrentSprite()->get_width()*0.5f,
-				getPosition().y, 0.0f, -100.0f, "sprites/shot");
+				getPosition().y, 0.0f, -100.0f, "sprites/shot", 50);
 			currentScene->addPlayerShot( newShot );
 		}
 	}
@@ -152,4 +152,3 @@ PlayerModel* Player::getPlayerModel() const
 {
 	return _model;
 }
-

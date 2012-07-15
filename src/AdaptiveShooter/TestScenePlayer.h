@@ -70,6 +70,11 @@ private:
 	 * @return	  void
 	 */
 	void removeEnemyShot(Shot* shot);
+
+	/**
+	 * Computes collision for each shot in Scene and boundary exit
+	 */
+	void computeShotsCollision();
 };
 
 #endif // TestScenePlayer_h__

@@ -13,7 +13,7 @@
 #include "Shot.h"
 #include "GameManager.h"
 
-Shot::Shot( std::string resource ) : DynamicEntity()
+Shot::Shot( std::string resource ) : DynamicEntity(), _damage( 0 )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
@@ -29,7 +29,7 @@ Shot::Shot( std::string resource ) : DynamicEntity()
 
 
 
-Shot::Shot( float x, float y, float speedX, float speedY, std::string resource ) : DynamicEntity( x, y, speedX, speedY )
+Shot::Shot( float x, float y, float speedX, float speedY, std::string resource, int damage ) : DynamicEntity( x, y, speedX, speedY ), _damage( damage )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
@@ -45,7 +45,7 @@ Shot::Shot( float x, float y, float speedX, float speedY, std::string resource )
 
 
 
-Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource ) : DynamicEntity( position, speed )
+Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damage ) : DynamicEntity( position, speed ), _damage( damage )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();

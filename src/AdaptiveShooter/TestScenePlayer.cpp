@@ -202,135 +202,7 @@ void TestScenePlayer::update()
 	Scene::update();
 
 	// Treat playerShots and enemyShots collision and out of bounds
-	std::list<Shot*>::iterator shotIt;
-
-	/*for (shotIt = _playerShots.begin(); shotIt != _playerShots.end(); )
-	{
-		if ((*shotIt)->checkBoundary())
-		{
-			shotIt++;
-		}
-		else
-		{
-			Shot* remove = *shotIt;
-			shotIt++;
-			removePlayerShot( remove );
-			delete remove;
-		}
-	}*/
-
-	/*for (shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
-	{
-		if ((*shotIt)->checkBoundary())
-		{
-			shotIt++;
-		}
-		else
-		{
-			Shot* remove = *shotIt;
-			shotIt++;
-			removeEnemyShot( remove );
-			delete remove;
-		}
-	}*/
-
-	std::vector<Enemy*>::iterator enemyIt;
-
-	CL_CollisionOutline* shot = NULL;
-	CL_CollisionOutline* object = NULL;
-	bool remove;
-
-	// Player shots colliding with enemies
-	for(shotIt = _playerShots.begin(); shotIt != _playerShots.end(); )
-	{
-		// Checks if inside window boundaries
-		if (!(*shotIt)->checkBoundary())
-		{
-			Shot* remove = *shotIt;
-			shotIt++;
-			removePlayerShot( remove );
-			delete remove;
-			continue;
-		}
-
-		remove = false;
-		shot = (*shotIt)->getCurrentCollisionOutline();
-
-		//Translates outlines to their current sprite position as outlines start in 0,0
-		CL_Vec2f pos = (*shotIt)->getPosition();
-		shot->set_translation(pos.x, pos.y);
-
-		for (enemyIt = _enemies.begin(); enemyIt != _enemies.end(); enemyIt++)
-		{
-			object = (*enemyIt)->getCurrentCollisionOutline();
-			
-			CL_Vec2f posEnemy = (*enemyIt)->getPosition();
-			object->set_translation(posEnemy.x, posEnemy.y);
-
-			if (shot->collide( *object ))
-			{
-				object->set_translation(0.0f, 0.0f);
-				remove = true;
-				break;
-			}
-
-			object->set_translation(0.0f, 0.0f);
-		}
-
-		shot->set_translation(0.0f, 0.0f);
-
-		if (remove)
-		{
-			Shot* shotRemove = (*shotIt);
-			shotIt++;
-			removePlayerShot( shotRemove );
-			delete shotRemove;
-		} 
-		else
-		{
-			shotIt++;
-		}
-		
-	}
-
-	// As currently there is just one player...
-	object = playerOne->getCurrentCollisionOutline();
-	object->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
-
-	// Enemies shots colliding with player
-	for(shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
-	{
-		// Checks if inside window boundaries
-		if (!(*shotIt)->checkBoundary())
-		{
-			Shot* remove = *shotIt;
-			shotIt++;
-			removeEnemyShot( remove );
-			delete remove;
-			continue;
-		}
-
-		shot = (*shotIt)->getCurrentCollisionOutline();
-
-		CL_Vec2f pos = (*shotIt)->getPosition();
-		shot->set_translation(pos.x, pos.y);
-
-		if (shot->collide( *object ))
-		{
-			Shot* shotRemove = *shotIt;
-			shotIt++;
-			removeEnemyShot( shotRemove );
-			delete ( shotRemove );
-		}
-		else
-		{
-			shot->set_translation(0.0f, 0.0f);
-			shotIt++;
-		}
-	}
-
-	// Returns player outline to 0,0
-	object->set_translation(0.0f, 0.0f);
+	computeShotsCollision();
 }
 
 
@@ -375,4 +247,110 @@ void TestScenePlayer::removeEnemyShot( Shot* shot )
 		removeEntity( shot );
 		_enemyShots.remove( shot );
 	}
+}
+
+
+
+void TestScenePlayer::computeShotsCollision() 
+{
+	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+	std::list<Shot*>::iterator shotIt;
+	std::vector<Enemy*>::iterator enemyIt;
+
+	CL_CollisionOutline* shot = NULL;
+	CL_CollisionOutline* object = NULL;
+	bool remove;
+
+	// Player shots colliding with enemies
+	for(shotIt = _playerShots.begin(); shotIt != _playerShots.end(); )
+	{
+		// Checks if inside window boundaries
+		if (!(*shotIt)->checkBoundary())
+		{
+			Shot* remove = *shotIt;
+			shotIt++;
+			removePlayerShot( remove );
+			delete remove;
+			continue;
+		}
+
+		remove = false;
+		shot = (*shotIt)->getCurrentCollisionOutline();
+
+		//Translates outlines to their current sprite position as outlines start in 0,0
+		CL_Vec2f pos = (*shotIt)->getPosition();
+		shot->set_translation(pos.x, pos.y);
+
+		for (enemyIt = _enemies.begin(); enemyIt != _enemies.end(); enemyIt++)
+		{
+			object = (*enemyIt)->getCurrentCollisionOutline();
+
+			CL_Vec2f posEnemy = (*enemyIt)->getPosition();
+			object->set_translation(posEnemy.x, posEnemy.y);
+
+			if (shot->collide( *object ))
+			{
+				object->set_translation(0.0f, 0.0f);
+				remove = true;
+				break;
+			}
+
+			object->set_translation(0.0f, 0.0f);
+		}
+
+		shot->set_translation(0.0f, 0.0f);
+
+		if (remove)
+		{
+			Shot* shotRemove = (*shotIt);
+			shotIt++;
+			removePlayerShot( shotRemove );
+			delete shotRemove;
+		} 
+		else
+		{
+			shotIt++;
+		}
+
+	}
+
+	// As currently there is just one player...
+	object = playerOne->getCurrentCollisionOutline();
+	// Translation is set to the current player position
+	object->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
+
+	// Enemies shots colliding with player
+	for(shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
+	{
+		// Checks if inside window boundaries
+		if (!(*shotIt)->checkBoundary())
+		{
+			Shot* remove = *shotIt;
+			shotIt++;
+			removeEnemyShot( remove );
+			delete remove;
+			continue;
+		}
+
+		shot = (*shotIt)->getCurrentCollisionOutline();
+
+		CL_Vec2f pos = (*shotIt)->getPosition();
+		shot->set_translation(pos.x, pos.y);
+
+		if (shot->collide( *object ))
+		{
+			Shot* shotRemove = *shotIt;
+			shotIt++;
+			removeEnemyShot( shotRemove );
+			delete ( shotRemove );
+		}
+		else
+		{
+			shot->set_translation(0.0f, 0.0f);
+			shotIt++;
+		}
+	}
+
+	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
+	object->set_translation(0.0f, 0.0f);
 }
