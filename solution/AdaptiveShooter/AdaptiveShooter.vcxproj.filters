@@ -105,6 +105,9 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestEnemy.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp">
+      <Filter>Header Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

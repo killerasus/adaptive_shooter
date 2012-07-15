@@ -15,6 +15,7 @@
 
 #include "AIManager/PlayerModel.h"
 #include "DynamicEntity.h"
+#include "Weapon.h"
 
 class Player : public DynamicEntity
 {
@@ -95,13 +96,21 @@ public:
 	 */
 	PlayerModel* getPlayerModel() const;
 
+	/**
+	 * Gets player weapon
+	 * 
+	 * @return	  Weapon*	Current weapon
+	 */
+	Weapon* getWeapon() const;
+
 protected:
 private:
 	unsigned int _playerNumber;
 	unsigned int _lives;
 	PlayerModel* _model;
 	std::string _spriteResourceKey;
-	float _shotTimer; // This must go to a weapon class
+	Weapon* _weapon;
+
 };
 
 #endif // Player_h__

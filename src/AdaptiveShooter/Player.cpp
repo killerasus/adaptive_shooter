@@ -34,6 +34,8 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 		CL_String collisionResource = cl_format( "outlines/player/rwing_00%1", i );
 		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
 	}
+
+	_weapon = new Weapon("Standard laser", "sprites/shot", 500);
 }
 
 
@@ -42,6 +44,7 @@ Player::~Player()
 {
 	delete _model;
 	delete _currentSprite;
+	delete _weapon;
 }
 
 
@@ -61,6 +64,8 @@ void Player::update()
 {
 	CL_InputDevice keyboard = GameManager::getInstance()->getWindow()->get_ic().get_keyboard();
 	float dt = GameManager::getInstance()->getDeltaTime();
+
+	_weapon->update();
 
 	if (keyboard.get_keycode(CL_KEY_LEFT))
 	{
@@ -84,14 +89,7 @@ void Player::update()
 
 	if (keyboard.get_keycode(CL_KEY_Z))
 	{
-		TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( GameManager::getInstance()->peekScene() );
-		
-		if (currentScene != NULL)
-		{
-			Shot* newShot = new Shot(getPosition().x + getCurrentSprite()->get_width()*0.5f,
-				getPosition().y, 0.0f, -100.0f, "sprites/shot", 50);
-			currentScene->addPlayerShot( newShot );
-		}
+		int shots = _weapon->shoot();
 	}
 
 	_currentSprite->update();
@@ -151,4 +149,11 @@ void Player::subtractLives(unsigned int val)
 PlayerModel* Player::getPlayerModel() const
 {
 	return _model;
+}
+
+
+
+Weapon* Player::getWeapon() const
+{
+	return _weapon;
 }

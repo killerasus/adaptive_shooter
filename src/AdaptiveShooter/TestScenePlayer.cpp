@@ -88,6 +88,7 @@ void TestScenePlayer::draw()
 	text.precision(4);
 
 	text << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
+	text << "Shot timer: " << (playerOne->getWeapon()->getDelay() - playerOne->getWeapon()->getTimer()) << std::endl;
 	text << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
 	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ACCURACY ) << std::endl;
 	text << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::LIVES_VARIATION ) << std::endl;
@@ -277,7 +278,7 @@ void TestScenePlayer::computeShotsCollision()
 		remove = false;
 		shot = (*shotIt)->getCurrentCollisionOutline();
 
-		//Translates outlines to their current sprite position as outlines start in 0,0
+		// Translates outlines to their current sprite position as outlines start in 0,0
 		CL_Vec2f pos = (*shotIt)->getPosition();
 		shot->set_translation(pos.x, pos.y);
 

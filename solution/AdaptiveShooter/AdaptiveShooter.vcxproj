@@ -176,6 +176,7 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestEnemy.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\TestScenePlayer.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\ControllerInterface.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\TestEnemy.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestScenePlayer.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\data\resources.xml">
