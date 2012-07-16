@@ -108,7 +108,24 @@ private:
 	 */
 	void validateEnemies();
 
+	/**
+	 * Adds an enemy to the wave. Also registers in AIManager and in Scene entities list.
+	 * 
+	 * @param[in]  enemy	Pointer to enemy to add
+	 */
 	void addWaveEnemy( Enemy* enemy );
+
+	/**
+	 * Applies damage to Enemy and updates wave and scene shot variables.
+	 * 
+	 * @param[in]  shot		Pointer to shot that hit the enemy
+	 * @param[in]  enemy	Pointer to enemy hit by the shot
+	 */
+	void computeShotHitEnemy( Shot* shot, Enemy* enemy );
+
+#ifdef _DEBUG
+	void createDebugEnemy();
+#endif
 };
 
 #endif // TestScenePlayer_h__

@@ -29,20 +29,7 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font(gc, "Tahoma", 14);
 
-	CL_Rect windowArea = GameManager::getInstance()->getWindow()->get_viewport();
-
-	TestEnemy* enemy = new TestEnemy( 0.0f, 0.0f, 50.0f, 50.0f, "sprites/enemy1"  );
-
-	// Adjusts enemy position to the horizontal center of the window
-	enemy->setPositionX( windowArea.get_width()*0.5f - enemy->getCurrentSprite()->get_width()*0.5f );
-
-	// Inserts enemy in AIManager control list
-	GameManager::getInstance()->getAIManager()->insertAgent( enemy );
-
-	// Inserts enemy in Scene control list
-	insertEntity( enemy );
-
-	_enemies.push_back( enemy );
+	// TODO: Read demoscene.lua and create waves
 }
 
 TestScenePlayer::~TestScenePlayer()
@@ -182,6 +169,11 @@ void TestScenePlayer::update()
 		model->resetTraits();
 	}
 
+	if (keyboard.get_keycode(CL_KEY_E))
+	{
+		createDebugEnemy();
+	}
+
 #endif
 
 	if (keyboard.get_keycode(CL_KEY_SPACE))
@@ -297,8 +289,7 @@ void TestScenePlayer::computeShotsCollision()
 			if (shot->collide( *object ))
 			{
 				// Applies damage to enemy
-				(*enemyIt)->setHealth( (*enemyIt)->getHealth() - (*shotIt)->getDamage() );
-				_shotsWaveOnTarget++;
+				computeShotHitEnemy( (*shotIt), (*enemyIt) );
 				object->set_translation(0.0f, 0.0f);
 				remove = true;
 				break;
@@ -387,9 +378,6 @@ void TestScenePlayer::waveFinish()
 	PlayerModel* model = playerOne->getPlayerModel();
 
 	_livesEndWave = playerOne->getLives();
-
-	_enemiesTotal += _enemiesWave;
-	_enemiesTotalWasted += _enemiesWaveWasted;
 	
 	float livesVariation = (float)_livesStartWave/(float)_livesEndWave;
 	float accuracyWave = (float)_shotsWaveOnTarget/(float)_shotsWave;
@@ -449,5 +437,40 @@ void TestScenePlayer::validateEnemies()
 
 void TestScenePlayer::addWaveEnemy( Enemy* enemy )
 {
+	// Inserts enemy in AIManager control list
+	GameManager::getInstance()->getAIManager()->insertAgent( enemy );
 
+	// Inserts enemy in Scene control list
+	insertEntity( enemy );
+
+	// Inserts enemy in Enemies control vector
+	_enemies.push_back( enemy );
+
+	_enemiesTotal++;
+	_enemiesWave++;
 }
+
+
+
+void TestScenePlayer::computeShotHitEnemy( Shot* shot, Enemy* enemy )
+{
+	enemy->setHealth( enemy->getHealth() - shot->getDamage() );
+	_shotsWaveOnTarget++;
+	_shotsTotalOnTarget++;
+}
+
+
+
+#ifdef _DEBUG
+void TestScenePlayer::createDebugEnemy()
+{
+
+	CL_Rect windowArea = GameManager::getInstance()->getWindow()->get_viewport();
+	TestEnemy* enemy = new TestEnemy( 0.0f, 0.0f, 50.0f, 50.0f, "sprites/enemy1"  );
+
+	// Adjusts enemy position to the horizontal center of the window
+	enemy->setPositionX( windowArea.get_width()*0.5f - enemy->getCurrentSprite()->get_width()*0.5f );
+
+	addWaveEnemy( enemy );
+}
+#endif // _DEBUG
