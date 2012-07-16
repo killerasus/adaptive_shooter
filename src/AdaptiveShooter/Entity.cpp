@@ -117,3 +117,43 @@ bool Entity::checkBoundary()
 		return true;
 	}
 }
+
+
+
+unsigned int Entity::boundToScreen()
+{
+	unsigned int collision = CD_NOCOLLISION;
+	CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc();
+	float top, bottom, left, right;
+
+	top = _position.y;
+	left = _position.x;
+	right = left + _currentSprite->get_width();
+	bottom = top + _currentSprite->get_height();
+
+	if (bottom > gc.get_height())
+	{
+		_position.y = (float)(gc.get_height() - _currentSprite->get_height());
+		collision |= CD_BOTTOM;
+	} 
+	
+	if (right > gc.get_width())
+	{
+		_position.x = (float)(gc.get_width() - _currentSprite->get_width());
+		collision |= CD_RIGHT;
+	}
+	
+	if (top < 0.0f)
+	{
+		_position.y = 0.0f;
+		collision |= CD_TOP;
+	}
+	
+	if (left < 0.0f)
+	{
+		_position.x = 0.0f;
+		collision |= CD_LEFT;
+	}
+
+	return collision;
+}

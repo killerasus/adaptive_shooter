@@ -90,23 +90,45 @@ public:
 	void subtractLives(unsigned int val);
 
 	/**
-	 *	Gets current player model
+	 *	Gets current player's model
 	 * 
 	 * @return	  PlayerModel*
 	 */
 	PlayerModel* getPlayerModel() const;
 
 	/**
-	 * Gets player weapon
+	 * Gets player's weapon
 	 * 
 	 * @return	  Weapon*	Current weapon
 	 */
 	Weapon* getWeapon() const;
 
+	/**
+	 * Sets player's score
+	 * 
+	 * @param[in]	score	New value
+	 */
+	void setScore( int score);
+
+	/**
+	 * Gets player's score
+	 * 
+	 * @return	int	Player's score
+	 */
+	int getScore() const;
+
+	/**
+	 * Add points to player's score
+	 * 
+	 * @param[in]	value	Points to add
+	 */
+	void addToScore( int value );
+
 protected:
 private:
 	unsigned int _playerNumber;
 	unsigned int _lives;
+	int _score;
 	PlayerModel* _model;
 	std::string _spriteResourceKey;
 	Weapon* _weapon;

@@ -22,7 +22,8 @@
 
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives )
-	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _model( model ), _spriteResourceKey( sprite )
+	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
+	_spriteResourceKey( sprite )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
@@ -89,10 +90,13 @@ void Player::update()
 
 	if (keyboard.get_keycode(CL_KEY_Z))
 	{
+		// TODO: Adjust scene statistics
 		int shots = _weapon->shoot();
 	}
 
 	_currentSprite->update();
+
+	boundToScreen();
 }
 
 
@@ -156,4 +160,25 @@ PlayerModel* Player::getPlayerModel() const
 Weapon* Player::getWeapon() const
 {
 	return _weapon;
+}
+
+
+
+void Player::setScore( int score )
+{
+	_score = score;
+}
+
+
+
+int Player::getScore() const
+{
+	return _score;
+}
+
+
+
+void Player::addToScore( int value )
+{
+	_score += value;
 }

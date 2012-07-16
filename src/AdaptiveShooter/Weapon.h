@@ -24,7 +24,7 @@ public:
 	/** Describes weapon level */
 	enum WeaponLevel
 	{
-		WL_LEVEL_0,
+		WL_LEVEL_0 = 0,
 		WL_LEVEL_1,
 		WL_LEVEL_2
 	};
@@ -117,6 +117,20 @@ public:
 	 * @return	int	How many shots were created. 0 if canShoot returns false
 	 */
 	virtual int shoot();
+
+	/**
+	 * Sets the weapon's name
+	 * 
+	 * @param[in]  name	New name
+	 */
+	void setName(std::string name);
+
+	/**
+	 * Gets the weapon's name
+	 * 
+	 * @return	std::string	Weapon's name
+	 */
+	std::string getName();
 
 protected:
 	

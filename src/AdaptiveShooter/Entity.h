@@ -19,6 +19,17 @@ class Entity
 {
 public:
 
+	enum CollisionDirection{
+		CD_NOCOLLISION = 0,
+		CD_LEFT = 1,
+		CD_RIGHT = 2,
+		CD_TOP = 4,
+		CD_BOTTOM = 8
+	};
+
+	/**
+	 * Constructor
+	 */
 	Entity();
 
 	/**
@@ -112,6 +123,14 @@ public:
 	 */
 	bool checkBoundary();
 	
+	/**
+	 * Bounds the entity to screen, canceling movement that would otherwise make the entity
+	 * outside of screen boundaries
+	 *
+	 * @return	unsigned int	Directions where a collision has occurred. Check CollisionDirection for values.
+	 */
+	unsigned int boundToScreen();
+
 protected:
 	CL_Sprite* _currentSprite;
 private:

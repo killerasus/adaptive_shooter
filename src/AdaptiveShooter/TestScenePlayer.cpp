@@ -22,7 +22,9 @@
 #include "logog.hpp"
 
 
-TestScenePlayer::TestScenePlayer()
+TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _shotsTotal( 0 ),
+	_shotsTotalOnTarget( 0 ), _livesStartWave( 0 ), _livesEndWave( 0 ), _enemiesWave( 0 ), _enemiesWaveWasted( 0 ),
+	_enemiesTotal( 0 ), _enemiesTotalWasted( 0 ), _keyDelayTime ( 1000.0f ), _timer( 0.0f ), _canPressKey( true ), _wave( 0 )
 {
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font(gc, "Tahoma", 14);
@@ -291,8 +293,10 @@ void TestScenePlayer::computeShotsCollision()
 
 			if (shot->collide( *object ))
 			{
+				// TODO: Cause damage to enemy
 				object->set_translation(0.0f, 0.0f);
 				remove = true;
+				_shotsWaveOnTarget++;
 				break;
 			}
 
@@ -340,6 +344,7 @@ void TestScenePlayer::computeShotsCollision()
 
 		if (shot->collide( *object ))
 		{
+			// TODO: Cause damage to player
 			Shot* shotRemove = *shotIt;
 			shotIt++;
 			removeEnemyShot( shotRemove );
@@ -354,4 +359,43 @@ void TestScenePlayer::computeShotsCollision()
 
 	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
 	object->set_translation(0.0f, 0.0f);
+}
+
+
+
+
+void TestScenePlayer::waveBegin()
+{
+	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+	_livesStartWave = playerOne->getLives();
+	_enemiesWave = 0;
+	_enemiesWaveWasted = 0;
+	_shotsWave = 0;
+	_shotsWaveOnTarget = 0;
+	_wave++;
+}
+
+
+
+void TestScenePlayer::waveFinish()
+{
+	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+	PlayerModel* model = playerOne->getPlayerModel();
+
+	_livesEndWave = playerOne->getLives();
+
+	_enemiesTotal += _enemiesWave;
+	_enemiesTotalWasted += _enemiesWaveWasted;
+	
+	float livesVariation = (float)_livesStartWave/(float)_livesEndWave;
+	float accuracyWave = (float)_shotsWaveOnTarget/(float)_shotsWave;
+	float enemiesWastedWave = (float)_enemiesWaveWasted/(float)_enemiesWave;
+	float enemiesWastedTotal = (float)_enemiesTotalWasted/(float)_enemiesTotal;
+
+	model->updateTrait( PlayerModelImpl::ACCURACY, accuracyWave );
+	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, enemiesWastedWave );
+	model->updateTrait( PlayerModelImpl::LIVES_VARIATION, livesVariation );
+	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
+
+	GameManager::getInstance()->getAIManager()->update();
 }

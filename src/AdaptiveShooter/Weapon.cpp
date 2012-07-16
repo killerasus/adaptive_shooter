@@ -133,3 +133,17 @@ int Weapon::shoot()
 
 	return 0;
 }
+
+
+
+void Weapon::setName( std::string name )
+{
+	_name = name;
+}
+
+
+
+std::string Weapon::getName()
+{
+	return _name;
+}

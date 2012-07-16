@@ -55,6 +55,23 @@ private:
 	std::list<Shot*> _playerShots;
 	std::list<Shot*> _enemyShots;
 
+	// Player One
+	int _shotsWave;
+	int _shotsWaveOnTarget;
+	int _shotsTotal;
+	int _shotsTotalOnTarget;
+	int _livesStartWave;
+	int _livesEndWave;
+	int _enemiesWave;
+	int _enemiesWaveWasted;
+	int _enemiesTotal;
+	int _enemiesTotalWasted;
+
+	float _keyDelayTime; // Miliseconds
+	float _timer; // Miliseconds
+	bool _canPressKey;
+	int _wave;
+
 	/**
 	 * Removes player shot from Scene entities and player's shot control.
 	 * 
@@ -75,6 +92,16 @@ private:
 	 * Computes collision for each shot in Scene and boundary exit
 	 */
 	void computeShotsCollision();
+
+	/**
+	 * Begins wave variables
+	 */
+	void waveBegin();
+
+	/**
+	 * Updates player model based on wave scores, updates scene totals
+	 */
+	void waveFinish();
 };
 
 #endif // TestScenePlayer_h__
