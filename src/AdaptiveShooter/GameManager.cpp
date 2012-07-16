@@ -241,7 +241,7 @@ void GameManager::cleanUp()
 
 
 
-/** @TODO: Rewrite when more players are supported*/
+/** TODO: Rewrite when more players are supported*/
 Player* GameManager::getPlayer( unsigned int n )
 {
 	return _player;

@@ -26,7 +26,23 @@
 class TestScenePlayer : public Scene
 {
 public:
+
+	struct EnemyDescription{
+		std::string resource;
+		float startPositionX;
+		float startPositionY;
+		float speedX;
+		float speedY;
+		std::string instanceClass;
+	};
+
+
+	struct Wave{
+		std::vector<EnemyDescription> enemies;
+	};
+
 	TestScenePlayer();
+
 	virtual ~TestScenePlayer();
 
 	virtual void draw();
@@ -54,6 +70,7 @@ private:
 	std::vector<Enemy*> _enemies;
 	std::list<Shot*> _playerShots;
 	std::list<Shot*> _enemyShots;
+	std::vector<Wave> _waves;
 
 	// Player One
 	int _shotsWave;
@@ -70,7 +87,8 @@ private:
 	float _keyDelayTime; // Miliseconds
 	float _timer; // Miliseconds
 	bool _canPressKey;
-	int _wave;
+	int _waveNumber;
+	bool _waveOn;
 
 	/**
 	 * Removes player shot from Scene entities and player's shot control.
@@ -126,6 +144,13 @@ private:
 #ifdef _DEBUG
 	void createDebugEnemy();
 #endif
+
+	/**
+	 * Instantiates a wave from _waves
+	 * 
+	 * @param[in]  i	Wave position in the container
+	 */
+	void createWave( int i );
 };
 
 #endif // TestScenePlayer_h__

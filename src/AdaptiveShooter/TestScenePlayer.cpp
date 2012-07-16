@@ -21,15 +21,58 @@
 #define LOGOG_USE_PREFIX 1
 #include "logog.hpp"
 
+extern "C"
+{
+#include "lua.h"
+};
+
 
 TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _shotsTotal( 0 ),
 	_shotsTotalOnTarget( 0 ), _livesStartWave( 0 ), _livesEndWave( 0 ), _enemiesWave( 0 ), _enemiesWaveWasted( 0 ),
-	_enemiesTotal( 0 ), _enemiesTotalWasted( 0 ), _keyDelayTime ( 1000.0f ), _timer( 0.0f ), _canPressKey( true ), _wave( 0 )
+	_enemiesTotal( 0 ), _enemiesTotalWasted( 0 ), _keyDelayTime ( 1000.0f ), _timer( 0.0f ), _canPressKey( true ), _waveNumber( 0 ), _waveOn(false)
 {
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font(gc, "Tahoma", 14);
 
-	// TODO: Read demoscene.lua and create waves
+	//lua_State* l = GameManager::getInstance()->getLuaState();
+
+	// TODO: Write lua scene loadingcode
+	Wave wave1, wave2;
+
+	EnemyDescription desc;
+
+	desc.resource = "sprites/enemy2";
+	desc.startPositionX = 0.0f;
+	desc.startPositionY = 40.0f;
+	desc.speedX = 100.0f;
+	desc.speedY = 200.0f;
+	desc.instanceClass = "TestEnemy";
+	wave1.enemies.push_back(desc);
+
+	desc.startPositionX = 40.0f;
+	desc.startPositionY = 80.0f;
+	wave1.enemies.push_back(desc);
+
+	desc.startPositionX = 80.0f;
+	desc.startPositionY = 120.0f;
+	wave1.enemies.push_back(desc);
+
+	_waves.push_back(wave1);
+
+	desc.resource = "sprites/enemy1";
+	desc.startPositionX = 40.0f;
+	desc.startPositionY = 40.0f;
+	wave2.enemies.push_back(desc);
+
+	desc.startPositionX = 80.0f;
+	desc.startPositionY = 80.0f;
+	wave2.enemies.push_back(desc);
+
+	desc.startPositionX = 120.0f;
+	desc.startPositionY = 120.0f;
+	wave2.enemies.push_back(desc);
+
+	_waves.push_back(wave2);
 }
 
 TestScenePlayer::~TestScenePlayer()
@@ -90,7 +133,7 @@ void TestScenePlayer::draw()
 	std::ostringstream waveText;
 	waveText.precision( 4 );
 
-	waveText << "Wave: " << _wave << std::endl;
+	waveText << "Wave: " << _waveNumber << std::endl;
 	waveText << "Enemies wave: " << _enemiesWave << std::endl;
 	waveText << "Enemies wave wasted: " << _enemiesWaveWasted << std::endl;
 	waveText << "Enemies total: " << _enemiesTotal << std::endl;
@@ -113,6 +156,22 @@ void TestScenePlayer::update()
 	Player* playerOne = manager->getPlayer(0);
 	float dt = manager->getDeltaTime();
 	PlayerModel* model = playerOne->getPlayerModel();
+
+	if (!_waveOn)
+	{
+		if (_waveNumber < _waves.size())
+		{
+			waveBegin();
+			createWave(_waveNumber);
+		}
+	}
+	else
+	{
+		if (_enemies.size() == 0)
+		{
+			waveFinish();
+		}
+	}
 
 	// Player updates occur separately because players can drop in or out
 	// treating this in entities would be messy
@@ -367,7 +426,8 @@ void TestScenePlayer::waveBegin()
 	_enemiesWaveWasted = 0;
 	_shotsWave = 0;
 	_shotsWaveOnTarget = 0;
-	_wave++;
+	
+	_waveOn = true;
 }
 
 
@@ -390,6 +450,9 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
 	GameManager::getInstance()->getAIManager()->update();
+
+	_waveNumber++;
+	_waveOn = false;
 }
 
 
@@ -474,3 +537,17 @@ void TestScenePlayer::createDebugEnemy()
 	addWaveEnemy( enemy );
 }
 #endif // _DEBUG
+
+
+
+void TestScenePlayer::createWave( int i )
+{
+	Wave wave = _waves[i];
+
+	for (int i = 0; i < wave.enemies.size(); i++)
+	{
+		EnemyDescription desc = wave.enemies[i];
+		TestEnemy* enemy = new TestEnemy(desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource);
+		addWaveEnemy(enemy);
+	}
+}

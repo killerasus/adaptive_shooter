@@ -29,11 +29,23 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 
-	//TODO: Substitute this for a DynamicEntity function
-	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	if(resource == "sprites/enemy1")
 	{
-		CL_String collisionResource = cl_format( "outlines/enemies/enemy1/enemy1_00%1", i );
-		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		//TODO: Substitute this for a DynamicEntity function
+		for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+		{
+			CL_String collisionResource = cl_format( "outlines/enemies/enemy1/enemy1_00%1", i );
+			_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		}
+	}
+	else
+	{
+		//TODO: Substitute this for a DynamicEntity function
+		for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+		{
+			CL_String collisionResource = cl_format( "outlines/enemies/enemy2/enemy2_00%1", i );
+			_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		}
 	}
 }
 
@@ -45,11 +57,23 @@ TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) 
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 
-	//TODO: Substitute this for a DynamicEntity function
-	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	if(resource == "sprite/enemy1")
 	{
-		CL_String collisionResource = cl_format( "outlines/enemies/enemy1/enemy1_00%1", i );
-		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		//TODO: Substitute this for a DynamicEntity function
+		for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+		{
+			CL_String collisionResource = cl_format( "outlines/enemies/enemy1/enemy1_00%1", i );
+			_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		}
+	}
+	else
+	{
+		//TODO: Substitute this for a DynamicEntity function
+		for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+		{
+			CL_String collisionResource = cl_format( "outlines/enemies/enemy2/enemy2_00%1", i );
+			_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		}
 	}
 }
 
