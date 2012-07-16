@@ -64,41 +64,59 @@ void TestScenePlayer::draw()
 	Scene::draw();
 
 #if _DEBUG
-	std::ostringstream text;
-	text.precision(4);
+	std::ostringstream playerText;
+	playerText.precision( 4 );
 
-	text << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
-	text << "Shot timer: " << (playerOne->getWeapon()->getDelay() - playerOne->getWeapon()->getTimer()) << std::endl;
-	text << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
-	text << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ACCURACY ) << std::endl;
-	text << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::LIVES_VARIATION ) << std::endl;
-	text << "Enemies wasted wave = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ENEMIES_WASTED_WAVE ) << std::endl;
-	text << "Enemies wasted total = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ENEMIES_WASTED_TOTAL ) << std::endl;
+	playerText << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
+	playerText << "Shot timer: " << (playerOne->getWeapon()->getDelay() - playerOne->getWeapon()->getTimer()) << std::endl;
+	playerText << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
+	playerText << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ACCURACY ) << std::endl;
+	playerText << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::LIVES_VARIATION ) << std::endl;
+	playerText << "Enemies wasted wave = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ENEMIES_WASTED_WAVE ) << std::endl;
+	playerText << "Enemies wasted total = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ENEMIES_WASTED_TOTAL ) << std::endl;
 
 	if (GameManager::getInstance()->getWindow()->get_ic().get_joystick_count() > 0)
 	{
 		CL_InputDevice joystick = GameManager::getInstance()->getWindow()->get_ic().get_joystick();
-		text << "Joystick name = " << joystick.get_name().c_str() << std::endl;
+		playerText << "Joystick name = " << joystick.get_name().c_str() << std::endl;
 
 		for (int i = 0; i < joystick.get_button_count(); i++)
 		{
 			if (joystick.get_keycode( i ))
 			{
-				text << "Joystick key = " << joystick.get_key_name( i ).c_str() << std::endl;
+				playerText << "Joystick key = " << joystick.get_key_name( i ).c_str() << std::endl;
 			}
 		}
 
 		for (int i = 0; i < joystick.get_axis_count(); i++)
 		{
-			text << "Joystick axis " << i << " = " << joystick.get_axis( i ) << std::endl;
+			playerText << "Joystick axis " << i << " = " << joystick.get_axis( i ) << std::endl;
 		}
 	}
 
-	std::string drawableText = text.str();
+	std::string drawableText = playerText.str();
 	float textX = 640.0f - _font->get_text_size(gc, drawableText).width - 10.f; 
 	float textY = 110.0f;
 
 	_font->draw_text(gc, textX, textY, drawableText, CL_Colorf::red);
+
+	std::ostringstream waveText;
+	waveText.precision( 4 );
+
+	waveText << "Wave: " << _wave << std::endl;
+	waveText << "Enemies wave: " << _enemiesWave << std::endl;
+	waveText << "Enemies wave wasted: " << _enemiesWaveWasted << std::endl;
+	waveText << "Enemies total: " << _enemiesTotal << std::endl;
+	waveText << "Enemies wasted total: " << _enemiesTotalWasted << std::endl;
+	waveText << "Shots wave: " << _shotsWave << std::endl;
+	waveText << "Shots wave on target: " << _shotsWaveOnTarget << std::endl;
+	waveText << "Shots total: " << _shotsTotal << std::endl;
+	waveText << "Shots total on target: " << _shotsTotalOnTarget << std::endl;
+
+	std::string waveDrawableText = waveText.str();
+
+	_font->draw_text(gc, 0.0f, 110.0f, waveDrawableText, CL_Colorf::green);
+
 #endif
 }
 
@@ -171,6 +189,7 @@ void TestScenePlayer::update()
 
 		std::string modelName = model->getName();
 
+		// Updates player model observed
 		AIManager* aimanager = GameManager::getInstance()->getAIManager();
 		aimanager->update();
 
@@ -198,6 +217,9 @@ void TestScenePlayer::addPlayerShot( Shot* newShot )
 
 	// For collision checking
 	_playerShots.push_back( newShot );
+
+	_shotsTotal++;
+	_shotsWave++;
 }
 
 
@@ -401,6 +423,7 @@ void TestScenePlayer::validateEnemies()
 
 			removeEntity( enemy );
 			enemyIt = _enemies.erase( enemyIt );
+			GameManager::getInstance()->getAIManager()->removeAgent( enemy );
 			delete enemy;
 		} 
 		else
@@ -411,6 +434,7 @@ void TestScenePlayer::validateEnemies()
 			{
 				removeEntity( enemy );
 				enemyIt = _enemies.erase( enemyIt );
+				GameManager::getInstance()->getAIManager()->removeAgent( enemy );
 				delete enemy;
 			} 
 			else
@@ -419,4 +443,11 @@ void TestScenePlayer::validateEnemies()
 			}
 		}
 	}
+}
+
+
+
+void TestScenePlayer::addWaveEnemy( Enemy* enemy )
+{
+
 }

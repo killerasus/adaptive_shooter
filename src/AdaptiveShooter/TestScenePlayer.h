@@ -107,6 +107,8 @@ private:
 	 * Checks if any enemy is dead or out of bounds. Sets Player's and Wave's variables accordingly.
 	 */
 	void validateEnemies();
+
+	void addWaveEnemy( Enemy* enemy );
 };
 
 #endif // TestScenePlayer_h__
