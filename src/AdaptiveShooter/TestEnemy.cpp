@@ -58,6 +58,9 @@ TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) 
 TestEnemy::~TestEnemy()
 {
 	delete _currentSprite;
+#ifdef _DEBUG
+	CL_Console::write_line("Enemy deleted");
+#endif
 }
 
 #ifdef _DEBUG

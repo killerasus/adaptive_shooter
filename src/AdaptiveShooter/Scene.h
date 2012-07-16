@@ -33,20 +33,48 @@ public:
 
 	virtual void update();
 
+	/**
+	 * Inserts an Entity in list control.
+	 * 
+	 * @param[in]  entity	Pointer to entity to add
+	 */
 	void insertEntity(Entity* entity);
 
+	/**
+	 *	Removes an Entity from the control list.
+	 * 
+	 * @param[in]  entity	Pointer to entity to remove
+	 */
 	void removeEntity(Entity* entity);
 
+	/**
+	 * Gets an Entity from the control list
+	 * 
+	 * @param[in]  i		Position of the entity in the list
+	 * @return	  Entity*	Pointer to the entity.
+	 */
 	Entity* getEntity(unsigned int i);
 
+	/**
+	 * Gets the pointer to the next scene
+	 * 
+	 * @return	  Scene*
+	 */
 	Scene* getNextScene();
 
+	/**
+	 * Sets next scene
+	 * @param	  next
+	 */
 	void setNextScene(Scene* next);
 
 protected:
+	/**
+	 * Changes to the next scene in the stack
+	 */
 	void changeToNextScene();
 
-	std::list< Entity* > _entities;
+	std::list< Entity* > _entities; // List of scene Entities (Enemies, etc.)
 	SceneState _sceneState;
 	Scene *_nextScene;
 private:

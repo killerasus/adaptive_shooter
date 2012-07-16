@@ -28,18 +28,20 @@ public:
 	 * @param[in]	y
 	 * @param[in]	speedX	In pixels per second
 	 * @param[in]	speedY	In pixels per second
+	 * @param[in]	health	Health points
 	 * @param[in]	points	Points value
 	 */
-	Enemy(float x, float y, float speedX, float speedY, int points = 0);
+	Enemy(float x, float y, float speedX, float speedY, int health = 50, int points = 0);
 
 	/**
 	 * Constructor
 	 * 
 	 * @param[in]	position
 	 * @param[in]	speed	In pixels per second
+	 * @param[in]	health	Health points
 	 * @param[in]	points	Points value
 	 */
-	Enemy(CL_Vec2f& position, CL_Vec2f& speed, int points = 0);
+	Enemy(CL_Vec2f& position, CL_Vec2f& speed, int health = 50, int points = 0);
 
 	virtual ~Enemy();
 
@@ -61,9 +63,24 @@ public:
 	 */
 	virtual int getPoints();
 
+	/**
+	 * Sets enemy health value
+	 * 
+	 * @param[in]  health	New health
+	 */
+	void setHealth( int health );
+
+	/**
+	 * Gets enemy's current health value
+	 * 
+	 * @return	int	Health value
+	 */
+	int getHealth();
+
 protected:
 	
 private:
-	int _points;
+	int _points; // Score points value
+	int _health; // Health points
 };
 #endif

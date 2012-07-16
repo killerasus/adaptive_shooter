@@ -35,9 +35,7 @@ static int l_CLconsoleprint (lua_State* L)
 		s = lua_tostring(L, -1);  /* get result */
 
 		if (s == NULL)
-			return luaL_error(L, LUA_QL("tostring") " must return a string to "
-
-		LUA_QL("print"));
+			return luaL_error(L, LUA_QL("tostring") " must return a string to " LUA_QL("print"));
 
 		if (i>1) 
 			CL_Console::write("\t");

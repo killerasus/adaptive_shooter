@@ -12,6 +12,7 @@
 
 #include "Shot.h"
 #include "GameManager.h"
+#include <ClanLib/core.h>
 
 Shot::Shot( std::string resource ) : DynamicEntity(), _damage( 0 )
 {
@@ -64,6 +65,10 @@ Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damag
 Shot::~Shot()
 {
 	delete _currentSprite;
+
+#ifdef _DEBUG
+	CL_Console::write_line("Deleted a shot");
+#endif
 }
 
 
@@ -113,4 +118,18 @@ void Shot::update()
 			//TODO:
 		}
 	}
+}
+
+
+
+void Shot::setDamage( int damage )
+{
+	_damage = damage;
+}
+
+
+
+int Shot::getDamage()
+{
+	return _damage;
 }

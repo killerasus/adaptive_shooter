@@ -102,6 +102,11 @@ private:
 	 * Updates player model based on wave scores, updates scene totals
 	 */
 	void waveFinish();
+
+	/**
+	 * Checks if any enemy is dead or out of bounds. Sets Player's and Wave's variables accordingly.
+	 */
+	void validateEnemies();
 };
 
 #endif // TestScenePlayer_h__

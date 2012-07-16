@@ -48,28 +48,6 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 TestScenePlayer::~TestScenePlayer()
 {
 	delete _font;
-
-	std::list<Shot*>::iterator shotIter;
-
-	// Deletes player shots
-	for (shotIter = _playerShots.begin(); shotIter != _playerShots.end(); )
-	{
-		shotIter = _playerShots.erase( shotIter );
-	}
-
-	// Deletes enemies shots
-	for (shotIter = _enemyShots.begin(); shotIter != _enemyShots.end(); )
-	{
-		shotIter = _enemyShots.erase( shotIter );
-	}
-
-	std::vector<Enemy*>::iterator enemyIter = _enemies.begin();
-
-	// Deletes enemies
-	while (enemyIter != _enemies.end())
-	{
-		enemyIter = _enemies.erase( enemyIter );
-	}
 }
 
 void TestScenePlayer::draw()
@@ -206,6 +184,9 @@ void TestScenePlayer::update()
 
 	// Treat playerShots and enemyShots collision and out of bounds
 	computeShotsCollision();
+
+	// Checks if any enemy is dead or out of bounds
+	validateEnemies();
 }
 
 
@@ -293,10 +274,11 @@ void TestScenePlayer::computeShotsCollision()
 
 			if (shot->collide( *object ))
 			{
-				// TODO: Cause damage to enemy
+				// Applies damage to enemy
+				(*enemyIt)->setHealth( (*enemyIt)->getHealth() - (*shotIt)->getDamage() );
+				_shotsWaveOnTarget++;
 				object->set_translation(0.0f, 0.0f);
 				remove = true;
-				_shotsWaveOnTarget++;
 				break;
 			}
 
@@ -398,4 +380,43 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
 	GameManager::getInstance()->getAIManager()->update();
+}
+
+
+
+void TestScenePlayer::validateEnemies()
+{
+	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+	std::vector<Enemy*>::iterator enemyIt;
+
+	for (enemyIt = _enemies.begin(); enemyIt != _enemies.end(); )
+	{
+		Enemy* enemy = (*enemyIt);
+
+		// Check if enemy is destroyed
+		if (enemy->getHealth() <= 0)
+		{
+			_enemiesTotalWasted++;
+			_enemiesWaveWasted++;
+
+			removeEntity( enemy );
+			enemyIt = _enemies.erase( enemyIt );
+			delete enemy;
+		} 
+		else
+		{
+			CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc();
+			// Checks if enemy still above the bottom of the window
+			if (enemy->getPosition().y > (float)gc.get_height())
+			{
+				removeEntity( enemy );
+				enemyIt = _enemies.erase( enemyIt );
+				delete enemy;
+			} 
+			else
+			{
+				enemyIt++;
+			}
+		}
+	}
 }

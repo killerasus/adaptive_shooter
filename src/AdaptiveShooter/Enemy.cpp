@@ -13,23 +13,26 @@
 #include "Enemy.h"
 #include "Entity.h"
 #include "GameManager.h"
+#include <ClanLib/core.h>
 
 
-Enemy::Enemy() : DynamicEntity(), AIAgent(), _points( 0 )
+Enemy::Enemy() : DynamicEntity(), AIAgent(), _health( 50 ), _points( 0 )
 {
 
 }
 
 
 
-Enemy::Enemy( float x, float y, float speedX, float speedY, int points ) : DynamicEntity( x, y, speedX, speedY ), AIAgent(), _points( points )
+Enemy::Enemy( float x, float y, float speedX, float speedY, int health, int points ) : DynamicEntity( x, y, speedX, speedY ),
+	AIAgent(), _health ( health ), _points( points )
 {
 
 }
 
 
 
-Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed, int points ) : DynamicEntity ( position, speed ), AIAgent(), _points( points )
+Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed, int health, int points ) : DynamicEntity ( position, speed ),
+	AIAgent(), _health( health ), _points( points )
 {
 
 }
@@ -53,4 +56,18 @@ void Enemy::setPoints( int points )
 int Enemy::getPoints()
 {
 	return _points;
+}
+
+
+
+void Enemy::setHealth( int health )
+{
+	_health = health;
+}
+
+
+
+int Enemy::getHealth()
+{
+	return _health;
 }
