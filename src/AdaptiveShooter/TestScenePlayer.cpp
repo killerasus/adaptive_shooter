@@ -32,47 +32,9 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	_enemiesTotal( 0 ), _enemiesTotalWasted( 0 ), _keyDelayTime ( 1000.0f ), _timer( 0.0f ), _canPressKey( true ), _waveNumber( 0 ), _waveOn(false)
 {
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
-	_font = new CL_Font(gc, "Tahoma", 14);
+	_font = new CL_Font( gc, "Tahoma", 14 );
 
-	//lua_State* l = GameManager::getInstance()->getLuaState();
-
-	// TODO: Write lua scene loadingcode
-	Wave wave1, wave2;
-
-	EnemyDescription desc;
-
-	desc.resource = "sprites/enemy2";
-	desc.startPositionX = 0.0f;
-	desc.startPositionY = 40.0f;
-	desc.speedX = 100.0f;
-	desc.speedY = 200.0f;
-	desc.instanceClass = "TestEnemy";
-	wave1.enemies.push_back(desc);
-
-	desc.startPositionX = 40.0f;
-	desc.startPositionY = 80.0f;
-	wave1.enemies.push_back(desc);
-
-	desc.startPositionX = 80.0f;
-	desc.startPositionY = 120.0f;
-	wave1.enemies.push_back(desc);
-
-	_waves.push_back(wave1);
-
-	desc.resource = "sprites/enemy1";
-	desc.startPositionX = 40.0f;
-	desc.startPositionY = 40.0f;
-	wave2.enemies.push_back(desc);
-
-	desc.startPositionX = 80.0f;
-	desc.startPositionY = 80.0f;
-	wave2.enemies.push_back(desc);
-
-	desc.startPositionX = 120.0f;
-	desc.startPositionY = 120.0f;
-	wave2.enemies.push_back(desc);
-
-	_waves.push_back(wave2);
+	loadScene( "../../../../src/Scripts/demoscene.lua" );
 }
 
 TestScenePlayer::~TestScenePlayer()
@@ -550,4 +512,106 @@ void TestScenePlayer::createWave( int i )
 		TestEnemy* enemy = new TestEnemy(desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource);
 		addWaveEnemy(enemy);
 	}
+}
+
+
+
+void TestScenePlayer::loadScene( std::string sceneFile )
+{
+	lua_State* l = GameManager::getInstance()->getLuaState();
+
+	int loadResult = luaL_dofile( l, sceneFile.c_str() );
+
+	lua_getglobal( l, "scene" );
+
+	if (lua_istable( l, -1 ))
+	{
+		// Gets the number of waves in scene
+		size_t waves = lua_objlen( l, -1 );
+
+		// Lua arrays start at 1
+		for (int i = 1; i <= waves; i++)
+		{
+			Wave wave;
+
+			// Pushes the table index into stack
+			lua_pushinteger( l, i );
+			// Gets the element i from table wave (index -2)
+			lua_gettable(l, -2);
+
+			if (lua_istable( l, -1 ))
+			{
+				// Gets the number of enemies in current wave
+				size_t enemies = lua_objlen( l, -1 );
+
+				for (int j = 1; j <= enemies; j++)
+				{
+					// Pushes the table index into stack
+					lua_pushinteger( l, j );
+					// Gets the element j from table enemy (index -2)
+					lua_gettable( l, -2 );
+
+					if(lua_istable( l, -1 ))
+					{
+						EnemyDescription desc;
+
+						// Getting resource
+						lua_pushinteger( l, 1 );
+						lua_gettable( l, -2 );
+
+						desc.resource = lua_tostring( l, -1 );
+						lua_pop( l, 1 );
+
+						// Getting start position x
+						lua_pushinteger( l, 2 );
+						lua_gettable( l, -2 );
+
+						desc.startPositionX = (float) lua_tonumber( l, -1 );
+						lua_pop( l, 1 );
+
+						// Getting start position y
+						lua_pushinteger( l, 3 );
+						lua_gettable( l, -2 );
+
+						desc.startPositionY = (float) lua_tonumber( l, -1 );
+						lua_pop( l, 1 );
+
+						// Getting speed x
+						lua_pushinteger( l, 4 );
+						lua_gettable( l, -2 );
+
+						desc.speedX = (float) lua_tonumber( l, -1 );
+						lua_pop( l, 1 );
+
+						// Getting speed y
+						lua_pushinteger( l, 5 );
+						lua_gettable( l, -2 );
+
+						desc.speedY = (float) lua_tonumber( l, -1 );
+						lua_pop( l, 1 );
+
+						// Getting class
+						lua_pushinteger( l, 6 );
+						lua_gettable( l, -2 );
+
+						desc.instanceClass = lua_tostring( l, -1 );
+						lua_pop( l, 1 );
+
+						wave.enemies.push_back( desc );
+
+						// Pops the enemy
+						lua_pop( l, 1 );
+					}
+				}
+
+				_waves.push_back( wave );
+
+				// Pops the wave
+				lua_pop( l, 1);
+			}
+		}
+	}
+
+	// Pops scene
+	lua_pop( l, 1 );
 }

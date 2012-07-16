@@ -151,6 +151,13 @@ private:
 	 * @param[in]  i	Wave position in the container
 	 */
 	void createWave( int i );
+
+	/**
+	 * Loads scene from a Lua file
+	 * 
+	 * @param[in]	sceneFile	Lua file containing a scene table
+	 */
+	void loadScene( std::string sceneFile );
 };
 
 #endif // TestScenePlayer_h__
