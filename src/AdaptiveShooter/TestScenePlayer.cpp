@@ -119,8 +119,10 @@ void TestScenePlayer::update()
 	float dt = manager->getDeltaTime();
 	PlayerModel* model = playerOne->getPlayerModel();
 
+	// Checks if there is any wave in progress
 	if (!_waveOn)
 	{
+		// If there are any waves to be 
 		if (_waveNumber < _waves.size())
 		{
 			waveBegin();
@@ -199,7 +201,6 @@ void TestScenePlayer::update()
 
 	if (keyboard.get_keycode(CL_KEY_SPACE))
 	{
-
 		std::string modelName = model->getName();
 
 		// Updates player model observed
@@ -401,7 +402,7 @@ void TestScenePlayer::waveFinish()
 
 	_livesEndWave = playerOne->getLives();
 	
-	float livesVariation = (float)_livesStartWave/(float)_livesEndWave;
+	float livesVariation = (float) (_livesEndWave - _livesStartWave) / (float) _livesStartWave ;
 	float accuracyWave = (float)_shotsWaveOnTarget/(float)_shotsWave;
 	float enemiesWastedWave = (float)_enemiesWaveWasted/(float)_enemiesWave;
 	float enemiesWastedTotal = (float)_enemiesTotalWasted/(float)_enemiesTotal;
@@ -506,7 +507,7 @@ void TestScenePlayer::createWave( int i )
 {
 	Wave wave = _waves[i];
 
-	for (int i = 0; i < wave.enemies.size(); i++)
+	for (unsigned int i = 0; i < wave.enemies.size(); i++)
 	{
 		EnemyDescription desc = wave.enemies[i];
 		TestEnemy* enemy = new TestEnemy(desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource);
@@ -530,7 +531,7 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 		size_t waves = lua_objlen( l, -1 );
 
 		// Lua arrays start at 1
-		for (int i = 1; i <= waves; i++)
+		for (unsigned int i = 1; i <= waves; i++)
 		{
 			Wave wave;
 
@@ -544,7 +545,7 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 				// Gets the number of enemies in current wave
 				size_t enemies = lua_objlen( l, -1 );
 
-				for (int j = 1; j <= enemies; j++)
+				for (unsigned int j = 1; j <= enemies; j++)
 				{
 					// Pushes the table index into stack
 					lua_pushinteger( l, j );
@@ -556,42 +557,42 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 						EnemyDescription desc;
 
 						// Getting resource
-						lua_pushinteger( l, 1 );
+						lua_pushinteger( l, EDD_SPRITE_RESOURCE );
 						lua_gettable( l, -2 );
 
 						desc.resource = lua_tostring( l, -1 );
 						lua_pop( l, 1 );
 
 						// Getting start position x
-						lua_pushinteger( l, 2 );
+						lua_pushinteger( l, EDD_START_X );
 						lua_gettable( l, -2 );
 
 						desc.startPositionX = (float) lua_tonumber( l, -1 );
 						lua_pop( l, 1 );
 
 						// Getting start position y
-						lua_pushinteger( l, 3 );
+						lua_pushinteger( l, EDD_START_Y );
 						lua_gettable( l, -2 );
 
 						desc.startPositionY = (float) lua_tonumber( l, -1 );
 						lua_pop( l, 1 );
 
 						// Getting speed x
-						lua_pushinteger( l, 4 );
+						lua_pushinteger( l, EDD_SPEED_X );
 						lua_gettable( l, -2 );
 
 						desc.speedX = (float) lua_tonumber( l, -1 );
 						lua_pop( l, 1 );
 
 						// Getting speed y
-						lua_pushinteger( l, 5 );
+						lua_pushinteger( l, EDD_SPEED_Y );
 						lua_gettable( l, -2 );
 
 						desc.speedY = (float) lua_tonumber( l, -1 );
 						lua_pop( l, 1 );
 
 						// Getting class
-						lua_pushinteger( l, 6 );
+						lua_pushinteger( l, EDD_CLASS );
 						lua_gettable( l, -2 );
 
 						desc.instanceClass = lua_tostring( l, -1 );

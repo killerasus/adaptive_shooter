@@ -27,6 +27,7 @@ class TestScenePlayer : public Scene
 {
 public:
 
+	// Used for storing data from Lua scene descriptor
 	struct EnemyDescription{
 		std::string resource;
 		float startPositionX;
@@ -36,9 +37,20 @@ public:
 		std::string instanceClass;
 	};
 
-
+	// Used for storing data from Lua scene descriptor
 	struct Wave{
 		std::vector<EnemyDescription> enemies;
+	};
+
+	// Used to access data in EnemyDescription table in Lua
+	enum EnemyDescriptionData
+	{
+		EDD_SPRITE_RESOURCE = 1,
+		EDD_START_X,
+		EDD_START_Y,
+		EDD_SPEED_X,
+		EDD_SPEED_Y,
+		EDD_CLASS
 	};
 
 	TestScenePlayer();
@@ -87,7 +99,7 @@ private:
 	float _keyDelayTime; // Miliseconds
 	float _timer; // Miliseconds
 	bool _canPressKey;
-	int _waveNumber;
+	unsigned int _waveNumber;
 	bool _waveOn;
 
 	/**
