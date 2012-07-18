@@ -63,7 +63,9 @@ void Player::draw()
 
 void Player::update()
 {
+	// These input methods should change having an input controller class
 	CL_InputDevice keyboard = GameManager::getInstance()->getWindow()->get_ic().get_keyboard();
+
 	float dt = GameManager::getInstance()->getDeltaTime();
 
 	_weapon->update();
@@ -90,8 +92,7 @@ void Player::update()
 
 	if (keyboard.get_keycode(CL_KEY_Z))
 	{
-		// TODO: Adjust scene statistics
-		int shots = _weapon->shoot();
+		_weapon->shoot();
 	}
 
 	_currentSprite->update();

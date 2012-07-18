@@ -122,7 +122,7 @@ void TestScenePlayer::update()
 	// Checks if there is any wave in progress
 	if (!_waveOn)
 	{
-		// If there are any waves to be 
+		// If there are any waves to be processed
 		if (_waveNumber < _waves.size())
 		{
 			waveBegin();
@@ -141,9 +141,9 @@ void TestScenePlayer::update()
 	// treating this in entities would be messy
 	playerOne->update();
 
-	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
-
 #if _DEBUG
+
+	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
 	const float variation = 0.001f;
 
@@ -197,8 +197,6 @@ void TestScenePlayer::update()
 		createDebugEnemy();
 	}
 
-#endif
-
 	if (keyboard.get_keycode(CL_KEY_SPACE))
 	{
 		std::string modelName = model->getName();
@@ -206,11 +204,13 @@ void TestScenePlayer::update()
 		// Updates player model observed
 		AIManager* aimanager = GameManager::getInstance()->getAIManager();
 		aimanager->update();
-
+		
 		LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
 			playerOne->getPlayerNumber() + 1, playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY), model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),
 			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), playerOne->getPlayerModel()->getName().c_str() );
 	}
+
+#endif
 
 	// Calls parent implementation of update, updating all Entities
 	Scene::update();
@@ -413,6 +413,13 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
 	GameManager::getInstance()->getAIManager()->update();
+
+	CL_DateTime time = CL_DateTime::get_current_local_time();
+
+	LOGOG_INFO( "\nWave %d Finish: %s\n\nPlayer: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
+		_waveNumber, time.to_long_time_string().c_str(), playerOne->getPlayerNumber() + 1, playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY),
+		model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),	model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL), model->getName().c_str(),
+		playerOne->getPlayerModel()->getName().c_str() );
 
 	_waveNumber++;
 	_waveOn = false;
