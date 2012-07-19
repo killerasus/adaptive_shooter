@@ -14,6 +14,11 @@
 
 class ControllerInterface {
 public:
+
+	ControllerInterface(){};
+
+	virtual ~ControllerInterface(){};
+
 	/**
 	 * Checks if Up is pressed
 	 *

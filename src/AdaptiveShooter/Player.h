@@ -16,6 +16,7 @@
 #include "AIManager/PlayerModel.h"
 #include "DynamicEntity.h"
 #include "Weapon.h"
+#include "ControllerInterface.h"
 
 class Player : public DynamicEntity
 {
@@ -132,7 +133,7 @@ private:
 	PlayerModel* _model;
 	std::string _spriteResourceKey;
 	Weapon* _weapon;
-
+	ControllerInterface* _controller;
 };
 
 #endif // Player_h__

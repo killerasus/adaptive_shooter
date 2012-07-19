@@ -15,6 +15,8 @@
 #include "PlayerModelImpl.h"
 #include "GameManager.h"
 #include "TestScenePlayer.h"
+#include "KeyboardController.h"
+#include "GamepadController.h"
 
 // Logging tool
 #define LOGOG_USE_PREFIX 1
@@ -23,21 +25,26 @@
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
-	_spriteResourceKey( sprite )
+	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", 500) ),
+	_controller( GamepadController::getNewGamepad( 0 ) )
 {
+	if (_controller == NULL)
+	{
+		_controller = new KeyboardController();
+	}
+
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_currentSprite = new CL_Sprite(gc, sprite, manager->getResourceManager());
+	_currentSprite = new CL_Sprite( gc, sprite, manager->getResourceManager() );
 
-	CL_String descriptor = sprite.substr(sprite.find_last_of("/") + 1);
+	CL_String descriptor = sprite.substr( sprite.find_last_of( "/" ) + 1 );
 
 	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
 	{
 		CL_String collisionResource = cl_format( "outlines/player/%1_00%2", descriptor, i );
-		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		_currentOutlines.push_back( new CL_CollisionOutline( collisionResource.c_str(), manager->getResourceManager() ) );
 	}
 
-	_weapon = new Weapon("Standard laser", "sprites/shot", 500);
 }
 
 
@@ -47,6 +54,7 @@ Player::~Player()
 	delete _model;
 	delete _currentSprite;
 	delete _weapon;
+	delete _controller;
 }
 
 
@@ -64,36 +72,37 @@ void Player::draw()
 
 void Player::update()
 {
-	// These input methods should change having an input controller class
-	CL_InputDevice keyboard = GameManager::getInstance()->getWindow()->get_ic().get_keyboard();
-
 	float dt = GameManager::getInstance()->getDeltaTime();
 
 	_weapon->update();
 
-	if (keyboard.get_keycode(CL_KEY_LEFT))
+	if (_controller)
 	{
-		setPositionX( getPosition().x - getSpeed().x * dt * 0.001f );
-	}
 
-	if (keyboard.get_keycode(CL_KEY_RIGHT))
-	{
-		setPositionX( getPosition().x + getSpeed().x * dt * 0.001f );
-	}
+		if (_controller->isControllerLeft())
+		{
+			setPositionX( getPosition().x - getSpeed().x * dt * 0.001f );
+		}
 
-	if (keyboard.get_keycode(CL_KEY_UP))
-	{
-		setPositionY( getPosition().y - getSpeed().y * dt * 0.001f );
-	}
+		if (_controller->isControllerRight())
+		{
+			setPositionX( getPosition().x + getSpeed().x * dt * 0.001f );
+		}
 
-	if (keyboard.get_keycode(CL_KEY_DOWN))
-	{
-		setPositionY( getPosition().y + getSpeed().y * dt * 0.001f );
-	}
+		if (_controller->isControllerUp())
+		{
+			setPositionY( getPosition().y - getSpeed().y * dt * 0.001f );
+		}
 
-	if (keyboard.get_keycode(CL_KEY_Z))
-	{
-		_weapon->shoot();
+		if (_controller->isControllerDown())
+		{
+			setPositionY( getPosition().y + getSpeed().y * dt * 0.001f );
+		}
+
+		if (_controller->isControllerFire())
+		{
+			_weapon->shoot();
+		}
 	}
 
 	_currentSprite->update();

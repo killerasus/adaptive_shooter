@@ -164,6 +164,8 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\Entity.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\GamepadController.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\KeyboardController.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Menu.cpp" />
@@ -185,6 +187,8 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\GamepadController.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\KeyboardController.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\MenuItem.h" />

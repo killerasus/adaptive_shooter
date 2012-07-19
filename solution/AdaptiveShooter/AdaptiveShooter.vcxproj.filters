@@ -108,6 +108,12 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp">
       <Filter>Header Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\KeyboardController.cpp">
+      <Filter>Source Files\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\GamepadController.cpp">
+      <Filter>Source Files\Control</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
@@ -163,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\KeyboardController.h">
+      <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\GamepadController.h">
+      <Filter>Header Files\Control</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
