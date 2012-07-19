@@ -34,7 +34,7 @@
     </sprite>
 
     <sprite name="enemy2">
-      <image file="images/test/enemy2.png">
+      <image file="/images/test/enemy2.png">
         <grid size="27,26" array="2,1"/>
       </image>
       <animation speed="100" loop="yes" pingpong="no" />

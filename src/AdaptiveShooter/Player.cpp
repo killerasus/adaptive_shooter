@@ -29,10 +29,11 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite(gc, sprite, manager->getResourceManager());
 
-	// TODO: Substitute for a DynamicEntity method
+	CL_String descriptor = sprite.substr(sprite.find_last_of("/") + 1);
+
 	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/player/rwing_00%1", i );
+		CL_String collisionResource = cl_format( "outlines/player/%1_00%2", descriptor, i );
 		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
 	}
 
