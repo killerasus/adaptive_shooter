@@ -46,6 +46,23 @@ public:
 	virtual bool isControllerBack();
 
 	virtual bool isControllerStart();
+
+	enum GamepadKeys
+	{
+		GP_X_AXIS = 0,
+		GP_Y_AXIS,
+		GP_Z_AXIS,
+		GP_BUTTON_A = 0,
+		GP_BUTTON_B,
+		GP_BUTTON_X,
+		GP_BUTTON_Y,
+		GP_BUTTON_L,
+		GP_BUTTON_R,
+		GP_BUTTON_SELECT,
+		GP_BUTTON_START,
+		GP_BUTTON_L_HATCH,
+		GP_BUTTON_R_HATCH
+	};
 private:
 
 	/**

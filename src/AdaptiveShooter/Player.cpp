@@ -78,7 +78,6 @@ void Player::update()
 
 	if (_controller)
 	{
-
 		if (_controller->isControllerLeft())
 		{
 			setPositionX( getPosition().x - getSpeed().x * dt * 0.001f );

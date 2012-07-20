@@ -48,7 +48,7 @@ GamepadController::GamepadController( int number ) :
 
 bool GamepadController::isControllerUp()
 {
-	if ( _gamepad.get_axis( 1 ) < -_deadzone )
+	if ( _gamepad.get_axis( GP_Y_AXIS ) < -_deadzone )
 	{
 		return true;
 	}
@@ -62,7 +62,7 @@ bool GamepadController::isControllerUp()
 
 bool GamepadController::isControllerDown()
 {
-	if ( _gamepad.get_axis( 1 ) > _deadzone )
+	if ( _gamepad.get_axis( GP_Y_AXIS ) > _deadzone )
 	{
 		return true;
 	}
@@ -76,7 +76,7 @@ bool GamepadController::isControllerDown()
 
 bool GamepadController::isControllerLeft()
 {
-	if ( _gamepad.get_axis( 0 ) < -_deadzone )
+	if ( _gamepad.get_axis( GP_X_AXIS ) < -_deadzone )
 	{
 		return true;
 	}
@@ -90,7 +90,7 @@ bool GamepadController::isControllerLeft()
 
 bool GamepadController::isControllerRight()
 {
-	if ( _gamepad.get_axis( 0 ) > _deadzone )
+	if ( _gamepad.get_axis( GP_X_AXIS ) > _deadzone )
 	{
 		return true;
 	}
@@ -104,26 +104,26 @@ bool GamepadController::isControllerRight()
 
 bool GamepadController::isControllerFire()
 {
-	return _gamepad.get_keycode( 2 );
+	return _gamepad.get_keycode( GP_BUTTON_X );
 }
 
 
 
 bool GamepadController::isControllerBomb()
 {
-	return _gamepad.get_keycode( 0 );
+	return _gamepad.get_keycode( GP_BUTTON_A );
 }
 
 
 
 bool GamepadController::isControllerBack()
 {
-	return _gamepad.get_keycode( 1 );
+	return _gamepad.get_keycode( GP_BUTTON_B );
 }
 
 
 
 bool GamepadController::isControllerStart()
 {
-	return _gamepad.get_keycode( 7 );
+	return _gamepad.get_keycode( GP_BUTTON_START );
 }
