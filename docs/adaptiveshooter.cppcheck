@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <includedir>
+        <dir name="C:/Users/Bruno/Documents/Mestrado/2011.2/Dissertacao/AdaptiveShooter/src/AIManager/"/>
+        <dir name="C:/Users/Bruno/Documents/Mestrado/2011.2/Dissertacao/AdaptiveShooter/dependences/clanlib2.3.6/include/"/>
+        <dir name="C:/Users/Bruno/Documents/Mestrado/2011.2/Dissertacao/AdaptiveShooter/dependences/logog/include/"/>
+        <dir name="C:/Users/Bruno/Documents/Mestrado/2011.2/Dissertacao/AdaptiveShooter/dependences/lua/include/"/>
+    </includedir>
+    <paths>
+        <dir name="C:/Users/Bruno/Documents/Mestrado/2011.2/Dissertacao/AdaptiveShooter/src/AdaptiveShooter"/>
+    </paths>
+</project>

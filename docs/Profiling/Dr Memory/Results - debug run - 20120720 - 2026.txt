@@ -1,0 +1,1883 @@
+Dr. Memory version 1.4.6 build 2 built on Mar  7 2012 10:14:04
+Application cmdline: ""C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertacao\AdaptiveShooter\build\Win32\Debug_GL1\AdaptiveShooter\AdaptiveShooter.exe""
+Recorded 62 suppression(s) from default C:\Program Files (x86)\Dr. Memory/bin/suppress-default.txt
+
+Error #1: UNINITIALIZED READ: reading 0x009edf14-0x009edf18 4 byte(s)
+# 0 KERNEL32.dll!HeapSetInformation          +0x102    (0x750d5723 <KERNEL32.dll+0x15723>)
+# 1 nvoglv32.dll!DrvPresentBuffers           +0x2f83   (0x6c48f744 <nvoglv32.dll+0x83f744>)
+# 2 nvoglv32.dll!DrvPresentBuffers           +0x312d   (0x6c48f8ee <nvoglv32.dll+0x83f8ee>)
+# 3 nvoglv32.dll!DllMain                     +0x5efb   (0x6c479fbc <nvoglv32.dll+0x829fbc>)
+# 4 nvoglv32.dll!DrvCopyContext              +0xbc4d   (0x6c473cee <nvoglv32.dll+0x823cee>)
+# 5 nvoglv32.dll!DllMain                     +0x54     (0x6c474115 <nvoglv32.dll+0x824115>)
+# 6 nvoglv32.dll!DrvPresentBuffers           +0x28128a (0x6c70da4b <nvoglv32.dll+0xabda4b>)
+# 7 nvoglv32.dll!DrvPresentBuffers           +0x281332 (0x6c70daf3 <nvoglv32.dll+0xabdaf3>)
+# 8 ntdll.dll!RtlQueryEnvironmentVariable    +0x240    (0x77589950 <ntdll.dll+0x39950>)
+# 9 ntdll.dll!LdrResSearchResource           +0xb4c    (0x7758d8c9 <ntdll.dll+0x3d8c9>)
+#10 ntdll.dll!LdrResSearchResource           +0xa0f    (0x7758d78c <ntdll.dll+0x3d78c>)
+#11 ntdll.dll!LdrLoadDll                     +0x7a     (0x7758c4d5 <ntdll.dll+0x3c4d5>)
+Note: @0:00:17.853 in thread 2412
+Note: instruction: cmp    %eax (%esi)
+
+Error #2: UNINITIALIZED READ: reading register cx
+# 0 RPCRT4.dll!NdrConformantStringBufferSize      +0x7f     (0x75b802e0 <RPCRT4.dll+0x202e0>)
+# 1 RPCRT4.dll!NdrConformantStringBufferSize      +0x2b     (0x75b8028d <RPCRT4.dll+0x2028d>)
+# 2 RPCRT4.dll!NdrConformantStringBufferSize      +0x310    (0x75b80572 <RPCRT4.dll+0x20572>)
+# 3 RPCRT4.dll!NdrPointerBufferSize               +0x9d     (0x75b76bf0 <RPCRT4.dll+0x16bf0>)
+# 4 RPCRT4.dll!NdrPointerBufferSize               +0x28     (0x75b76b7b <RPCRT4.dll+0x16b7b>)
+# 5 RPCRT4.dll!SimpleTypeMemorySize               +0x3d6    (0x75b70db7 <RPCRT4.dll+0x10db7>)
+# 6 RPCRT4.dll!?                                  +0x0      (0x75c10104 <RPCRT4.dll+0xb0104>)
+# 7 POWRPROF.dll!PowerSettingRegisterNotification +0x144    (0x73b23042 <POWRPROF.dll+0x3042>)
+# 8 POWRPROF.dll!PowerSettingRegisterNotification +0xc4     (0x73b22fc2 <POWRPROF.dll+0x2fc2>)
+# 9 USER32.dll!RegisterPowerSettingNotification   +0x42     (0x74ccdde2 <USER32.dll+0x3dde2>)
+#10 nvoglv32.dll!DrvCopyContext                   +0x21ee   (0x6c46a28f <nvoglv32.dll+0x81a28f>)
+#11 KERNEL32.dll!BaseThreadInitThunk              +0x11     (0x750d339a <KERNEL32.dll+0x1339a>)
+Note: @0:00:18.669 in thread 7924
+Note: instruction: data16 test   %cx %cx
+
+Error #3: UNINITIALIZED READ: reading register cx
+# 0 RPCRT4.dll!NdrConformantStringMarshall        +0x8c     (0x75b801db <RPCRT4.dll+0x201db>)
+# 1 RPCRT4.dll!NdrConformantStringMarshall        +0x34     (0x75b80184 <RPCRT4.dll+0x20184>)
+# 2 RPCRT4.dll!NdrConformantStringBufferSize      +0x281    (0x75b804e3 <RPCRT4.dll+0x204e3>)
+# 3 RPCRT4.dll!NdrPointerMarshall                 +0xd5     (0x75b76b42 <RPCRT4.dll+0x16b42>)
+# 4 RPCRT4.dll!NdrPointerMarshall                 +0x2f     (0x75b76a9c <RPCRT4.dll+0x16a9c>)
+# 5 RPCRT4.dll!NdrPointerBufferSize               +0x437    (0x75b76f8a <RPCRT4.dll+0x16f8a>)
+# 6 RPCRT4.dll!?                                  +0x0      (0x75c1013d <RPCRT4.dll+0xb013d>)
+# 7 POWRPROF.dll!PowerSettingRegisterNotification +0x144    (0x73b23042 <POWRPROF.dll+0x3042>)
+# 8 POWRPROF.dll!PowerSettingRegisterNotification +0xc4     (0x73b22fc2 <POWRPROF.dll+0x2fc2>)
+# 9 USER32.dll!RegisterPowerSettingNotification   +0x42     (0x74ccdde2 <USER32.dll+0x3dde2>)
+#10 nvoglv32.dll!DrvCopyContext                   +0x21ee   (0x6c46a28f <nvoglv32.dll+0x81a28f>)
+#11 KERNEL32.dll!BaseThreadInitThunk              +0x11     (0x750d339a <KERNEL32.dll+0x1339a>)
+Note: @0:00:18.678 in thread 7924
+Note: instruction: data16 test   %cx %cx
+
+Error #4: UNINITIALIZED READ: reading 0x009ed8c8-0x009ed8ca 2 byte(s)
+# 0 KERNELBASE.dll!OpenRegKey             +0x1cbd   (0x74dd5168 <KERNELBASE.dll+0x35168>)
+# 1 USER32.dll!EnumDisplayMonitors        +0x4d     (0x74cb4568 <USER32.dll+0x24568>)
+# 2 nvoglv32.dll!DllMain                  +0x7b22   (0x6c47bbe3 <nvoglv32.dll+0x82bbe3>)
+# 3 USER32.dll!GetMonitorInfoA            +0xe9     (0x74cb44fd <USER32.dll+0x244fd>)
+# 4 ntdll.dll!KiUserCallbackDispatcher    +0x2d     (0x7756010a <ntdll.dll+0x1010a>)
+# 5 nvoglv32.dll!DllMain                  +0x9600   (0x6c47d6c1 <nvoglv32.dll+0x82d6c1>)
+# 6 nvoglv32.dll!DllMain                  +0xa292   (0x6c47e353 <nvoglv32.dll+0x82e353>)
+# 7 nvoglv32.dll!DllMain                  +0xad76   (0x6c47ee37 <nvoglv32.dll+0x82ee37>)
+# 8 nvoglv32.dll!?                        +0x0      (0x6c45c428 <nvoglv32.dll+0x80c428>)
+# 9 nvoglv32.dll!?                        +0x0      (0x6c45c6b9 <nvoglv32.dll+0x80c6b9>)
+#10 nvoglv32.dll!DrvCopyContext           +0x4c8e   (0x6c46cd2f <nvoglv32.dll+0x81cd2f>)
+#11 nvoglv32.dll!DrvCopyContext           +0x52bd   (0x6c46d35e <nvoglv32.dll+0x81d35e>)
+Note: @0:00:18.810 in thread 2412
+Note: instruction: data16 cmp    (%eax) %cx
+
+Error #5: UNINITIALIZED READ: reading 0x009ee850-0x009ee851 1 byte(s)
+# 0 nvoglv32.dll!DrvPresentBuffers      +0x252d31 (0x6c6df4f1 <nvoglv32.dll+0xa8f4f1>)
+# 1 nvoglv32.dll!DrvPresentBuffers      +0x23e13d (0x6c6ca8fe <nvoglv32.dll+0xa7a8fe>)
+# 2 nvoglv32.dll!DllMain                +0xad94   (0x6c47ee55 <nvoglv32.dll+0x82ee55>)
+# 3 nvoglv32.dll!?                      +0x0      (0x6c45c428 <nvoglv32.dll+0x80c428>)
+# 4 nvoglv32.dll!?                      +0x0      (0x6c45c6b9 <nvoglv32.dll+0x80c6b9>)
+# 5 nvoglv32.dll!DrvCopyContext         +0x4c8e   (0x6c46cd2f <nvoglv32.dll+0x81cd2f>)
+# 6 nvoglv32.dll!DrvCopyContext         +0x52bd   (0x6c46d35e <nvoglv32.dll+0x81d35e>)
+# 7 nvoglv32.dll!DrvDescribePixelFormat +0xe1     (0x6c467792 <nvoglv32.dll+0x817792>)
+# 8 OPENGL32.dll!wglGetProcAddress      +0x40e    (0x6e1ec654 <OPENGL32.dll+0x3c654>)
+# 9 OPENGL32.dll!wglGetProcAddress      +0x471    (0x6e1ec6b7 <OPENGL32.dll+0x3c6b7>)
+#10 OPENGL32.dll!wglGetPixelFormat      +0x6f     (0x6e1f5658 <OPENGL32.dll+0x45658>)
+#11 OPENGL32.dll!wglDescribePixelFormat +0xa1     (0x6e1f5dd4 <OPENGL32.dll+0x45dd4>)
+Note: @0:00:19.496 in thread 2412
+Note: instruction: test   0xffffffe8(%ebp) $0x01
+
+Error #6: UNINITIALIZED READ: reading 0x009ed928-0x009ed92a 2 byte(s)
+# 0 KERNELBASE.dll!OpenRegKey             +0x1cbd   (0x74dd5168 <KERNELBASE.dll+0x35168>)
+# 1 USER32.dll!EnumDisplayMonitors        +0x4d     (0x74cb4568 <USER32.dll+0x24568>)
+# 2 nvoglv32.dll!DllMain                  +0x7b22   (0x6c47bbe3 <nvoglv32.dll+0x82bbe3>)
+# 3 USER32.dll!GetMonitorInfoA            +0xe9     (0x74cb44fd <USER32.dll+0x244fd>)
+# 4 ntdll.dll!KiUserCallbackDispatcher    +0x2d     (0x7756010a <ntdll.dll+0x1010a>)
+# 5 nvoglv32.dll!DllMain                  +0x9600   (0x6c47d6c1 <nvoglv32.dll+0x82d6c1>)
+# 6 nvoglv32.dll!DllMain                  +0xa17c   (0x6c47e23d <nvoglv32.dll+0x82e23d>)
+# 7 nvoglv32.dll!?                        +0x0      (0x6c45b367 <nvoglv32.dll+0x80b367>)
+# 8 nvoglv32.dll!?                        +0x0      (0x6c45c6b9 <nvoglv32.dll+0x80c6b9>)
+# 9 nvoglv32.dll!DrvCopyContext           +0x4c8e   (0x6c46cd2f <nvoglv32.dll+0x81cd2f>)
+#10 nvoglv32.dll!DrvCopyContext           +0x52bd   (0x6c46d35e <nvoglv32.dll+0x81d35e>)
+#11 nvoglv32.dll!DrvDescribePixelFormat   +0xe1     (0x6c467792 <nvoglv32.dll+0x817792>)
+Note: @0:00:20.801 in thread 2412
+Note: instruction: data16 cmp    (%eax) %cx
+
+Error #7: UNINITIALIZED READ: reading 0x009eeda4-0x009eeda5 1 byte(s)
+# 0 nvoglv32.dll!DrvPresentBuffers                            +0x2f267  (0x6c4bba27 <nvoglv32.dll+0x86ba27>)
+# 1 nvoglv32.dll!DrvPresentBuffers                            +0x52b4f  (0x6c4df310 <nvoglv32.dll+0x88f310>)
+# 2 nvoglv32.dll!DrvPresentBuffers                            +0x28824  (0x6c4b4fe5 <nvoglv32.dll+0x864fe5>)
+# 3 nvoglv32.dll!?                                            +0x0      (0x6bd59446 <nvoglv32.dll+0x109446>)
+# 4 nvoglv32.dll!?                                            +0x0      (0x6bd43b78 <nvoglv32.dll+0xf3b78>)
+# 5 nvoglv32.dll!DrvSetContext                                +0x36b    (0x6c467cbc <nvoglv32.dll+0x817cbc>)
+# 6 OPENGL32.dll!wglSwapLayerBuffers                          +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+# 7 OPENGL32.dll!wglMakeCurrent                               +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+# 8 CL_GL1CreationHelper::set_active                           [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:219]
+# 9 CL_GL1CreationHelper::create_opengl3_context               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:182]
+#10 CL_GL1WindowProvider_WGL::create                           [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_window_provider_wgl.cpp:282]
+#11 CL_DisplayWindow::CL_DisplayWindow                         [c:\clanlib\clanlib-2.3.6\sources\display\window\display_window.cpp:68]
+Note: @0:00:24.184 in thread 2412
+Note: instruction: test   0xfffffffc(%ebp) $0x02
+
+Error #8: UNINITIALIZED READ: reading 0x00cc7028-0x00cc7030 8 byte(s) within 0x00cc7020-0x00cc7030
+# 0 nvoglv32.dll!DrvPresentBuffers                +0x283ff2 (0x6c7107b2 <nvoglv32.dll+0xac07b2>)
+# 1 nvoglv32.dll!DrvCopyContext                   +0x6962   (0x6c46ea03 <nvoglv32.dll+0x81ea03>)
+# 2 nvoglv32.dll!DrvPresentBuffers                +0x20a154 (0x6c696915 <nvoglv32.dll+0xa46915>)
+# 3 nvoglv32.dll!?                                +0x0      (0x6bdacc1d <nvoglv32.dll+0x15cc1d>)
+# 4 nvoglv32.dll!DrvPresentBuffers                +0x1698e3 (0x6c5f60a4 <nvoglv32.dll+0x9a60a4>)
+# 5 nvoglv32.dll!DrvPresentBuffers                +0x170812 (0x6c5fcfd3 <nvoglv32.dll+0x9acfd3>)
+# 6 nvoglv32.dll!DrvPresentBuffers                +0x23881  (0x6c4b0042 <nvoglv32.dll+0x860042>)
+# 7 nvoglv32.dll!?                                +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 8 nvoglv32.dll!DrvSetContext                    +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+# 9 OPENGL32.dll!wglSwapLayerBuffers              +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+#10 OPENGL32.dll!wglMakeCurrent                   +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+#11 CL_GL1CreationHelper::set_active               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:219]
+Note: @0:00:25.215 in thread 2412
+Note: instruction: movdqa (%esi) -> %xmm0
+
+Error #9: UNINITIALIZED READ: reading register dl
+# 0 nvoglv32.dll!DrvPresentBuffers +0x3fb10  (0x6c4cc2d0 <nvoglv32.dll+0x87c2d0>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x4005c  (0x6c4cc81d <nvoglv32.dll+0x87c81d>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0x404e6  (0x6c4ccca7 <nvoglv32.dll+0x87cca7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0x159b5  (0x6c4a2176 <nvoglv32.dll+0x852176>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0xf86cd  (0x6c584e8e <nvoglv32.dll+0x934e8e>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 7 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+#10 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+Note: @0:00:25.533 in thread 2412
+Note: instruction: cmp    %dl $0x05
+
+Error #10: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!?                 +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+Note: @0:00:25.542 in thread 2412
+Note: instruction: cmp    %eax $0x0000000c
+
+Error #11: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5641e  (0x6c4e2bde <nvoglv32.dll+0x892bde>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0xf7dbe  (0x6c58457f <nvoglv32.dll+0x93457f>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 6 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+#11 nvoglv32.dll!?                 +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+Note: @0:00:25.543 in thread 2412
+Note: instruction: cmp    %eax %edi
+
+Error #12: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!?                 +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+Note: @0:00:25.544 in thread 2412
+Note: instruction: cmp    %eax $0x0000000c
+
+Error #13: UNINITIALIZED READ: reading register cl
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 6 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 8 nvoglv32.dll!DrvPresentBuffers
+# 9 nvoglv32.dll!DrvPresentBuffers
+#10 nvoglv32.dll!?                 +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+#11 nvoglv32.dll!DrvSetContext
+Note: @0:00:25.555 in thread 2412
+Note: instruction: cmp    %cl $0x04
+
+Error #14: UNINITIALIZED READ: reading register dl
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 6 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 8 nvoglv32.dll!DrvPresentBuffers
+# 9 nvoglv32.dll!DrvPresentBuffers
+#10 nvoglv32.dll!?                 +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+#11 nvoglv32.dll!DrvSetContext
+Note: @0:00:25.556 in thread 2412
+Note: instruction: cmp    %dl $0x04
+
+Error #15: UNINITIALIZED READ: reading register cl
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 6 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 8 nvoglv32.dll!DrvPresentBuffers
+# 9 nvoglv32.dll!DrvPresentBuffers
+#10 nvoglv32.dll!?                 +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+#11 nvoglv32.dll!DrvSetContext
+Note: @0:00:25.557 in thread 2412
+Note: instruction: cmp    %cl $0x04
+
+Error #16: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9c4  (0x6c4e8184 <nvoglv32.dll+0x898184>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+Note: @0:00:25.580 in thread 2412
+Note: instruction: jz     $0x6c4e8190
+
+Error #17: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9c9  (0x6c4e8189 <nvoglv32.dll+0x898189>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+Note: @0:00:25.580 in thread 2412
+Note: instruction: jnz    $0x6c4e8198
+
+Error #18: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!DrvPresentBuffers
+Note: @0:00:25.581 in thread 2412
+Note: instruction: jz     $0x6c4e81e4
+
+Error #19: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b8fd  (0x6c4e80bd <nvoglv32.dll+0x8980bd>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+Note: @0:00:25.582 in thread 2412
+Note: instruction: movzx  (%ecx,%eax,2) -> %eax
+
+Error #20: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!DrvPresentBuffers
+Note: @0:00:25.586 in thread 2412
+Note: instruction: jz     $0x6c4e81bc
+
+Error #21: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9f5  (0x6c4e81b5 <nvoglv32.dll+0x8981b5>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+Note: @0:00:25.587 in thread 2412
+Note: instruction: jnz    $0x6c4e81ec
+
+Error #22: UNINITIALIZED READ: reading register ecx
+# 0 ntdll.dll!RtlAllocateHeap      +0x2c     (0x7757e072 <ntdll.dll+0x2e072>)
+# 1 KERNELBASE.dll!GlobalAlloc     +0x6d     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 2 nvoglv32.dll!DrvCopyContext    +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0x107277 (0x6c593a38 <nvoglv32.dll+0x943a38>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0xf7209  (0x6c5839ca <nvoglv32.dll+0x9339ca>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf8867  (0x6c585028 <nvoglv32.dll+0x935028>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+Note: @0:00:25.867 in thread 2412
+Note: instruction: cmp    %ecx %esi
+
+Error #23: UNINITIALIZED READ: reading register esi
+# 0 ntdll.dll!RtlAllocateHeap      +0xcb     (0x7757e111 <ntdll.dll+0x2e111>)
+# 1 KERNELBASE.dll!GlobalAlloc     +0x6d     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 2 nvoglv32.dll!DrvCopyContext    +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0x107277 (0x6c593a38 <nvoglv32.dll+0x943a38>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0xf7209  (0x6c5839ca <nvoglv32.dll+0x9339ca>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf8867  (0x6c585028 <nvoglv32.dll+0x935028>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!DrvPresentBuffers +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+Note: @0:00:25.868 in thread 2412
+Note: instruction: test   %esi %esi
+
+Error #24: UNINITIALIZED READ: reading register dl
+# 0 nvoglv32.dll!DrvPresentBuffers   +0x3fb10  (0x6c4cc2d0 <nvoglv32.dll+0x87c2d0>)
+# 1 nvoglv32.dll!DrvPresentBuffers   +0x4005c  (0x6c4cc81d <nvoglv32.dll+0x87c81d>)
+# 2 nvoglv32.dll!DrvPresentBuffers   +0x404e6  (0x6c4ccca7 <nvoglv32.dll+0x87cca7>)
+# 3 nvoglv32.dll!DrvPresentBuffers   +0x159b5  (0x6c4a2176 <nvoglv32.dll+0x852176>)
+# 4 nvoglv32.dll!DrvPresentBuffers   +0x11c570 (0x6c5a8d31 <nvoglv32.dll+0x958d31>)
+# 5 nvoglv32.dll!DrvPresentBuffers   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 6 nvoglv32.dll!DrvPresentBuffers   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 7 nvoglv32.dll!DrvPresentBuffers   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 8 nvoglv32.dll!DrvPresentBuffers   +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+# 9 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+#10 nvoglv32.dll!DrvSetContext       +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+#11 OPENGL32.dll!wglSwapLayerBuffers +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+Note: @0:00:26.026 in thread 2412
+Note: instruction: cmp    %dl $0x05
+
+Error #25: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers   +0x5b9ed  (0x6c4e81ad <nvoglv32.dll+0x8981ad>)
+# 1 nvoglv32.dll!DrvPresentBuffers   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!DrvPresentBuffers   +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+# 8 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 9 nvoglv32.dll!DrvSetContext       +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+#10 OPENGL32.dll!wglSwapLayerBuffers +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+#11 OPENGL32.dll!wglMakeCurrent      +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+Note: @0:00:26.036 in thread 2412
+Note: instruction: jz     $0x6c4e81e4
+
+Error #26: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers   +0x5b9f2  (0x6c4e81b2 <nvoglv32.dll+0x8981b2>)
+# 1 nvoglv32.dll!DrvPresentBuffers   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!DrvPresentBuffers   +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+# 8 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 9 nvoglv32.dll!DrvSetContext       +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+#10 OPENGL32.dll!wglSwapLayerBuffers +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+#11 OPENGL32.dll!wglMakeCurrent      +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+Note: @0:00:26.037 in thread 2412
+Note: instruction: jz     $0x6c4e81bc
+
+Error #27: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers   +0x5b9f5  (0x6c4e81b5 <nvoglv32.dll+0x8981b5>)
+# 1 nvoglv32.dll!DrvPresentBuffers   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!DrvPresentBuffers   +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+# 8 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 9 nvoglv32.dll!DrvSetContext       +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+#10 OPENGL32.dll!wglSwapLayerBuffers +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+#11 OPENGL32.dll!wglMakeCurrent      +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+Note: @0:00:26.037 in thread 2412
+Note: instruction: jnz    $0x6c4e81ec
+
+Error #28: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!DrvPresentBuffers
+# 8 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 9 nvoglv32.dll!DrvSetContext
+#10 OPENGL32.dll!wglSwapLayerBuffers
+#11 OPENGL32.dll!wglMakeCurrent
+Note: @0:00:26.038 in thread 2412
+Note: instruction: movzx  (%ecx,%eax,2) -> %eax
+
+Error #29: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!DrvPresentBuffers
+# 8 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 9 nvoglv32.dll!DrvSetContext
+#10 OPENGL32.dll!wglSwapLayerBuffers
+#11 OPENGL32.dll!wglMakeCurrent
+Note: @0:00:26.039 in thread 2412
+Note: instruction: jz     $0x6c4e8190
+
+Error #30: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers   +0x5b9c9  (0x6c4e8189 <nvoglv32.dll+0x898189>)
+# 1 nvoglv32.dll!DrvPresentBuffers   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!DrvPresentBuffers   +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+# 8 nvoglv32.dll!?                   +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 9 nvoglv32.dll!DrvSetContext       +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+#10 OPENGL32.dll!wglSwapLayerBuffers +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+#11 OPENGL32.dll!wglMakeCurrent      +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+Note: @0:00:26.039 in thread 2412
+Note: instruction: jnz    $0x6c4e8198
+
+Error #31: UNINITIALIZED READ: reading register ecx
+# 0 ntdll.dll!RtlAllocateHeap
+# 1 KERNELBASE.dll!GlobalAlloc   
+# 2 nvoglv32.dll!DrvCopyContext
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                                +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 8 nvoglv32.dll!DrvSetContext
+# 9 OPENGL32.dll!wglSwapLayerBuffers
+#10 OPENGL32.dll!wglMakeCurrent
+#11 CL_GL1CreationHelper::set_active               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:219]
+Note: @0:00:26.050 in thread 2412
+Note: instruction: cmp    %ecx %esi
+
+Error #32: UNINITIALIZED READ: reading register esi
+# 0 ntdll.dll!RtlAllocateHeap                     +0xcb     (0x7757e111 <ntdll.dll+0x2e111>)
+# 1 KERNELBASE.dll!GlobalAlloc                    +0x6d     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 2 nvoglv32.dll!DrvCopyContext                   +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 3 nvoglv32.dll!DrvPresentBuffers                +0x107277 (0x6c593a38 <nvoglv32.dll+0x943a38>)
+# 4 nvoglv32.dll!DrvPresentBuffers                +0x11c7c5 (0x6c5a8f86 <nvoglv32.dll+0x958f86>)
+# 5 nvoglv32.dll!DrvPresentBuffers                +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 6 nvoglv32.dll!DrvPresentBuffers                +0x2427d  (0x6c4b0a3e <nvoglv32.dll+0x860a3e>)
+# 7 nvoglv32.dll!?                                +0x0      (0x6c45a03c <nvoglv32.dll+0x80a03c>)
+# 8 nvoglv32.dll!DrvSetContext                    +0x4e7    (0x6c467e38 <nvoglv32.dll+0x817e38>)
+# 9 OPENGL32.dll!wglSwapLayerBuffers              +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+#10 OPENGL32.dll!wglMakeCurrent                   +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+#11 CL_GL1CreationHelper::set_active               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:219]
+Note: @0:00:26.051 in thread 2412
+Note: instruction: test   %esi %esi
+
+Error #33: WARNING: GDI usage error: free mismatch for DC 0x710116f8: use ReleaseDC only for GetDC and DeleteDC only for CreateDC
+# 0 system call NtGdiDeleteObjectApp           
+# 1 GDI32.dll!DeleteDC                                       +0x11     (0x75a458c5 <GDI32.dll+0x158c5>)
+# 2 CL_GL1CreationHelper::~CL_GL1CreationHelper               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:85]
+# 3 CL_GL1WindowProvider_WGL::create                          [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_window_provider_wgl.cpp:288]
+# 4 CL_DisplayWindow::CL_DisplayWindow                        [c:\clanlib\clanlib-2.3.6\sources\display\window\display_window.cpp:68]
+# 5 GameManager::GameManager                                  [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:25]
+# 6 GameManager::getInstance                                  [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:171]
+# 7 DisplayProgram::main                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:60]
+# 8 WinMain                                                   [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:28.318 in thread 2412
+
+Error #34: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x563ef  (0x6c4e2baf <nvoglv32.dll+0x892baf>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0xf7dbe  (0x6c58457f <nvoglv32.dll+0x93457f>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers                                   +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#10 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#11 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+Note: @0:00:37.735 in thread 2412
+Note: instruction: cmp    %eax $0x0000000c
+
+Error #35: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5641e  (0x6c4e2bde <nvoglv32.dll+0x892bde>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0xf7dbe  (0x6c58457f <nvoglv32.dll+0x93457f>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers                                   +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#10 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#11 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+Note: @0:00:37.736 in thread 2412
+Note: instruction: cmp    %eax %edi
+
+Error #36: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5644a  (0x6c4e2c0a <nvoglv32.dll+0x892c0a>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0xf7dbe  (0x6c58457f <nvoglv32.dll+0x93457f>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers                                   +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#10 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#11 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+Note: @0:00:37.737 in thread 2412
+Note: instruction: cmp    %eax $0x0000000c
+
+Error #37: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 8 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 9 nvoglv32.dll!DrvPresentBuffers
+#10 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#11 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+Note: @0:00:37.739 in thread 2412
+Note: instruction: cmp    %eax %edi
+
+Error #38: UNINITIALIZED READ: reading register cl
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0xf7f33  (0x6c5846f3 <nvoglv32.dll+0x9346f3>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 5 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 8 nvoglv32.dll!DrvPresentBuffers                                   +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+# 9 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#10 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+#11 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+Note: @0:00:37.742 in thread 2412
+Note: instruction: cmp    %cl $0x04
+
+Error #39: UNINITIALIZED READ: reading register dl
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0xf7f55  (0x6c584715 <nvoglv32.dll+0x934715>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 5 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 8 nvoglv32.dll!DrvPresentBuffers                                   +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+# 9 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#10 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+#11 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+Note: @0:00:37.743 in thread 2412
+Note: instruction: cmp    %dl $0x04
+
+Error #40: UNINITIALIZED READ: reading register cl
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0xf7f77  (0x6c584737 <nvoglv32.dll+0x934737>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0xf86ef  (0x6c584eb0 <nvoglv32.dll+0x934eb0>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 5 nvoglv32.dll!?                                                   +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+# 8 nvoglv32.dll!DrvPresentBuffers                                   +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+# 9 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#10 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+#11 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+Note: @0:00:37.745 in thread 2412
+Note: instruction: cmp    %cl $0x04
+
+Error #41: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.746 in thread 2412
+Note: instruction: jz     $0x6c4e8190
+
+Error #42: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9c9  (0x6c4e8189 <nvoglv32.dll+0x898189>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.747 in thread 2412
+Note: instruction: jnz    $0x6c4e8198
+
+Error #43: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9ed  (0x6c4e81ad <nvoglv32.dll+0x8981ad>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.748 in thread 2412
+Note: instruction: jz     $0x6c4e81e4
+
+Error #44: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.748 in thread 2412
+Note: instruction: movzx  (%ecx,%eax,2) -> %eax
+
+Error #45: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9f2  (0x6c4e81b2 <nvoglv32.dll+0x8981b2>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.749 in thread 2412
+Note: instruction: jz     $0x6c4e81bc
+
+Error #46: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers +0x5b9f5  (0x6c4e81b5 <nvoglv32.dll+0x8981b5>)
+# 1 nvoglv32.dll!DrvPresentBuffers +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers +0xf7026  (0x6c5837e7 <nvoglv32.dll+0x9337e7>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0xf8624  (0x6c584de5 <nvoglv32.dll+0x934de5>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf885d  (0x6c58501e <nvoglv32.dll+0x93501e>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.749 in thread 2412
+Note: instruction: jnz    $0x6c4e81ec
+
+Error #47: UNINITIALIZED READ: reading register ecx
+# 0 ntdll.dll!RtlAllocateHeap
+# 1 KERNELBASE.dll!GlobalAlloc   
+# 2 nvoglv32.dll!DrvCopyContext
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.752 in thread 2412
+Note: instruction: cmp    %ecx %esi
+
+Error #48: UNINITIALIZED READ: reading register esi
+# 0 ntdll.dll!RtlAllocateHeap      +0xcb     (0x7757e111 <ntdll.dll+0x2e111>)
+# 1 KERNELBASE.dll!GlobalAlloc     +0x6d     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 2 nvoglv32.dll!DrvCopyContext    +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 3 nvoglv32.dll!DrvPresentBuffers +0x107277 (0x6c593a38 <nvoglv32.dll+0x943a38>)
+# 4 nvoglv32.dll!DrvPresentBuffers +0xf7209  (0x6c5839ca <nvoglv32.dll+0x9339ca>)
+# 5 nvoglv32.dll!DrvPresentBuffers +0xf8867  (0x6c585028 <nvoglv32.dll+0x935028>)
+# 6 nvoglv32.dll!DrvPresentBuffers +0xfee9b  (0x6c58b65c <nvoglv32.dll+0x93b65c>)
+# 7 nvoglv32.dll!?                 +0x0      (0x6bc51c75 <nvoglv32.dll+0x1c75>)
+# 8 nvoglv32.dll!?                 +0x0      (0x6bc5165b <nvoglv32.dll+0x165b>)
+# 9 nvoglv32.dll!?                 +0x0      (0x6bdab1ef <nvoglv32.dll+0x15b1ef>)
+#10 nvoglv32.dll!DrvPresentBuffers +0x100148 (0x6c58c909 <nvoglv32.dll+0x93c909>)
+#11 nvoglv32.dll!?                 +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+Note: @0:00:37.752 in thread 2412
+Note: instruction: test   %esi %esi
+
+Error #49: UNINITIALIZED READ: reading 0x009ee8ab-0x009ee8ac 1 byte(s) within 0x009ee8a0-0x009ee8b0
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x9a915  (0x6c5270d5 <nvoglv32.dll+0x8d70d5>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x9ab93  (0x6c527354 <nvoglv32.dll+0x8d7354>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x8ee7f  (0x6c51b640 <nvoglv32.dll+0x8cb640>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x97863  (0x6c524024 <nvoglv32.dll+0x8d4024>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x978de  (0x6c52409f <nvoglv32.dll+0x8d409f>)
+# 5 nvoglv32.dll!?                                                   +0x0      (0x6bd3cd9f <nvoglv32.dll+0xecd9f>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0x10ad60 (0x6c597521 <nvoglv32.dll+0x947521>)
+# 7 nvoglv32.dll!DrvPresentBuffers                                   +0x10af22 (0x6c5976e3 <nvoglv32.dll+0x9476e3>)
+# 8 nvoglv32.dll!DrvPresentBuffers                                   +0x1001f0 (0x6c58c9b1 <nvoglv32.dll+0x93c9b1>)
+# 9 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#10 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+#11 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+Note: @0:00:37.760 in thread 2412
+Note: instruction: movaps 0x00(%ebx) -> %xmm0
+
+Error #50: UNINITIALIZED READ: reading register dl
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!DrvPresentBuffers
+# 8 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 9 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+#10 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#11 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+Note: @0:00:37.797 in thread 2412
+Note: instruction: cmp    %dl $0x05
+
+Error #51: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5b9ed  (0x6c4e81ad <nvoglv32.dll+0x8981ad>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 8 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 9 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#10 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#11 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+Note: @0:00:37.816 in thread 2412
+Note: instruction: jz     $0x6c4e81e4
+
+Error #52: UNINITIALIZED READ: reading register eax
+# 0 nvoglv32.dll!DrvPresentBuffers
+# 1 nvoglv32.dll!DrvPresentBuffers
+# 2 nvoglv32.dll!DrvPresentBuffers
+# 3 nvoglv32.dll!DrvPresentBuffers
+# 4 nvoglv32.dll!DrvPresentBuffers
+# 5 nvoglv32.dll!DrvPresentBuffers
+# 6 nvoglv32.dll!DrvPresentBuffers
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 8 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 9 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#10 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#11 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+Note: @0:00:37.818 in thread 2412
+Note: instruction: movzx  (%ecx,%eax,2) -> %eax
+
+Error #53: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5b9f2  (0x6c4e81b2 <nvoglv32.dll+0x8981b2>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 8 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 9 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#10 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#11 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+Note: @0:00:37.820 in thread 2412
+Note: instruction: jz     $0x6c4e81bc
+
+Error #54: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5b9f5  (0x6c4e81b5 <nvoglv32.dll+0x8981b5>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 8 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 9 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#10 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#11 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+Note: @0:00:37.821 in thread 2412
+Note: instruction: jnz    $0x6c4e81ec
+
+Error #55: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5b9c4  (0x6c4e8184 <nvoglv32.dll+0x898184>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 8 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 9 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#10 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#11 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+Note: @0:00:37.823 in thread 2412
+Note: instruction: jz     $0x6c4e8190
+
+Error #56: UNINITIALIZED READ: reading register eflags
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x5b9c9  (0x6c4e8189 <nvoglv32.dll+0x898189>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x28942  (0x6c4b5103 <nvoglv32.dll+0x865103>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x11ba83 (0x6c5a8244 <nvoglv32.dll+0x958244>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x11c58f (0x6c5a8d50 <nvoglv32.dll+0x958d50>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x415e2  (0x6c4cdda3 <nvoglv32.dll+0x87dda3>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7aa (0x6c5a8f6b <nvoglv32.dll+0x958f6b>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 7 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 8 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 9 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+#10 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#11 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+Note: @0:00:37.825 in thread 2412
+Note: instruction: jnz    $0x6c4e8198
+
+Error #57: UNINITIALIZED READ: reading register ecx
+# 0 ntdll.dll!RtlAllocateHeap                                        +0x2c     (0x7757e072 <ntdll.dll+0x2e072>)
+# 1 KERNELBASE.dll!GlobalAlloc                                       +0x6d     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 2 nvoglv32.dll!DrvCopyContext                                      +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x107277 (0x6c593a38 <nvoglv32.dll+0x943a38>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7c5 (0x6c5a8f86 <nvoglv32.dll+0x958f86>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 7 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 8 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+# 9 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#10 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+#11 CL_GraphicContext_Impl::flush_batcher                             [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context_impl.cpp:95]
+Note: @0:00:37.837 in thread 2412
+Note: instruction: cmp    %ecx %esi
+
+Error #58: UNINITIALIZED READ: reading register esi
+# 0 ntdll.dll!RtlAllocateHeap                                        +0xcb     (0x7757e111 <ntdll.dll+0x2e111>)
+# 1 KERNELBASE.dll!GlobalAlloc                                       +0x6d     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 2 nvoglv32.dll!DrvCopyContext                                      +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x107277 (0x6c593a38 <nvoglv32.dll+0x943a38>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x11c7c5 (0x6c5a8f86 <nvoglv32.dll+0x958f86>)
+# 5 nvoglv32.dll!DrvPresentBuffers                                   +0xfe762  (0x6c58af23 <nvoglv32.dll+0x93af23>)
+# 6 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+# 7 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+# 8 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+# 9 CL_GraphicContext::draw_primitives                                [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context.cpp:347]
+#10 CL_RenderBatch2D::flush                                           [c:\clanlib\clanlib-2.3.6\sources\display\2d\render_batch2d.cpp:234]
+#11 CL_GraphicContext_Impl::flush_batcher                             [c:\clanlib\clanlib-2.3.6\sources\display\render\graphic_context_impl.cpp:95]
+Note: @0:00:37.839 in thread 2412
+Note: instruction: test   %esi %esi
+
+Error #59: UNINITIALIZED READ: reading 0x009ee2c3-0x009ee2c4 1 byte(s) within 0x009ee2b8-0x009ee2c8
+# 0 nvoglv32.dll!DrvPresentBuffers                                   +0x9a8d7  (0x6c527097 <nvoglv32.dll+0x8d7097>)
+# 1 nvoglv32.dll!DrvPresentBuffers                                   +0x9ab93  (0x6c527354 <nvoglv32.dll+0x8d7354>)
+# 2 nvoglv32.dll!DrvPresentBuffers                                   +0x8ee7f  (0x6c51b640 <nvoglv32.dll+0x8cb640>)
+# 3 nvoglv32.dll!DrvPresentBuffers                                   +0x97863  (0x6c524024 <nvoglv32.dll+0x8d4024>)
+# 4 nvoglv32.dll!DrvPresentBuffers                                   +0x978de  (0x6c52409f <nvoglv32.dll+0x8d409f>)
+# 5 nvoglv32.dll!?                                                   +0x0      (0x6bd3cd9f <nvoglv32.dll+0xecd9f>)
+# 6 nvoglv32.dll!DrvPresentBuffers                                   +0x10ad60 (0x6c597521 <nvoglv32.dll+0x947521>)
+# 7 nvoglv32.dll!DrvPresentBuffers                                   +0x10af22 (0x6c5976e3 <nvoglv32.dll+0x9476e3>)
+# 8 nvoglv32.dll!DrvPresentBuffers                                   +0x1001f0 (0x6c58c9b1 <nvoglv32.dll+0x93c9b1>)
+# 9 nvoglv32.dll!?                                                   +0x0      (0x6bdd326a <nvoglv32.dll+0x18326a>)
+#10 CL_GL1GraphicContextProvider::draw_primitives_array               [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:1014]
+#11 CL_GL1GraphicContextProvider::draw_primitives                     [c:\clanlib\clanlib-2.3.6\sources\gl1\gl1_graphic_context_provider.cpp:764]
+Note: @0:00:47.062 in thread 2412
+Note: instruction: movups 0x00(%ebx) -> %xmm0
+
+Error #60: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:80]
+# 2 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::~basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:77]
+# 3 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::~basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:584]
+# 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::`vbase destructor'
+# 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:113]
+# 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+# 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+# 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:48.448 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 2 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:26]
+Note: # 3 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:537]
+Note: # 4 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:95]
+Note: # 5 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: # 6 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: # 7 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+Note: # 8 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #61: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<_RTL_CRITICAL_SECTION>                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:62]
+# 1 std::_Mutex::~_Mutex                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:19]
+# 2 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:81]
+# 3 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::~basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:77]
+# 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::~basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:584]
+# 5 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::`vbase destructor'
+# 6 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:113]
+# 7 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+# 8 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+# 9 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+#10 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:48.471 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::_Mutex::_Mutex                                                        [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:12]
+Note: # 2 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 3 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:26]
+Note: # 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:537]
+Note: # 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:95]
+Note: # 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: # 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: # 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+Note: # 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #62: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::ios_base::_Ios_base_dtor                                              [f:\dd\vctools\crt_bld\self_x86\crt\src\ios.cpp:44]
+# 2 std::ios_base::~ios_base                                                   [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:541]
+# 3 std::basic_ios<char,std::char_traits<char> >::~basic_ios<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:38]
+# 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::`vbase destructor'
+# 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:113]
+# 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+# 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+# 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:48.506 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::ios_base::_Init                                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:564]
+Note: # 2 std::basic_ios<char,std::char_traits<char> >::init                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:155]
+Note: # 3 std::basic_ostream<char,std::char_traits<char> >::basic_ostream<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:51]
+Note: # 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:537]
+Note: # 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:95]
+Note: # 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: # 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: # 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+Note: # 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #63: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:80]
+# 2 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::~basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:77]
+# 3 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::~basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:584]
+# 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::`vbase destructor'
+# 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:113]
+# 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+# 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+# 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:48.532 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 2 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:26]
+Note: # 3 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:537]
+Note: # 4 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:59]
+Note: # 5 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: # 6 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: # 7 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+Note: # 8 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #64: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<_RTL_CRITICAL_SECTION>                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:62]
+# 1 std::_Mutex::~_Mutex                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:19]
+# 2 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:81]
+# 3 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::~basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:77]
+# 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::~basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:584]
+# 5 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::`vbase destructor'
+# 6 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:113]
+# 7 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+# 8 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+# 9 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+#10 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:48.537 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::_Mutex::_Mutex                                                        [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:12]
+Note: # 2 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 3 std::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> >::basic_stringbuf<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:26]
+Note: # 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:537]
+Note: # 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:59]
+Note: # 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: # 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: # 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+Note: # 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #65: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::ios_base::_Ios_base_dtor                                              [f:\dd\vctools\crt_bld\self_x86\crt\src\ios.cpp:44]
+# 2 std::ios_base::~ios_base                                                   [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:541]
+# 3 std::basic_ios<char,std::char_traits<char> >::~basic_ios<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:38]
+# 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::`vbase destructor'
+# 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:113]
+# 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+# 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+# 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+Note: @0:00:48.543 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::ios_base::_Init                                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:564]
+Note: # 2 std::basic_ios<char,std::char_traits<char> >::init                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:155]
+Note: # 3 std::basic_ostream<char,std::char_traits<char> >::basic_ostream<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:51]
+Note: # 4 std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> >::basic_ostringstream<char,std::char_traits<char>,std::allocator<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\sstream:537]
+Note: # 5 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:59]
+Note: # 6 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: # 7 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: # 8 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+Note: # 9 WinMain                                                                    [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #66: INVALID HEAP ARGUMENT: allocated with operator new[], freed with free
+# 0 std::_DebugHeapDelete<void>                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::numpunct<char>::_Tidy                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:190]
+# 2 std::numpunct<char>::~numpunct<char>                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:121]
+# 3 std::numpunct<char>::`scalar deleting destructor'
+# 4 std::_DebugHeapDelete<std::locale::facet>                          [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:59]
+# 5 std::_Fac_node::~_Fac_node                                         [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:23]
+# 6 std::_Fac_node::`scalar deleting destructor'
+# 7 std::_DebugHeapDelete<std::_Fac_node>                              [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:59]
+# 8 _Fac_tidy                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:41]
+# 9 std::_Fac_tidy_reg_t::~_Fac_tidy_reg_t                             [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:48]
+#10 std::`dynamic atexit destructor for '_Fac_tidy_reg''
+#11 doexit                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+Note: @0:01:46.132 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 operator new[]                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:22]
+Note: # 2 std::_Maklocstr<char>                                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:660]
+Note: # 3 std::numpunct<char>::_Init                                                 [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:141]
+Note: # 4 std::numpunct<char>::numpunct<char>                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:106]
+Note: # 5 std::numpunct<char>::_Getcat                                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:114]
+Note: # 6 std::use_facet<std::numpunct<char> >                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:516]
+Note: # 7 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::_Iput [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1481]
+Note: # 8 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::do_put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1188]
+Note: # 9 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1105]
+Note: #10 std::basic_ostream<char,std::char_traits<char> >::operator<<               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:316]
+Note: #11 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:62]
+
+Error #67: INVALID HEAP ARGUMENT: allocated with operator new[], freed with free
+# 0 std::_DebugHeapDelete<void>                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::numpunct<char>::_Tidy                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:191]
+# 2 std::numpunct<char>::~numpunct<char>                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:121]
+# 3 std::numpunct<char>::`scalar deleting destructor'
+# 4 std::_DebugHeapDelete<std::locale::facet>                          [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:59]
+# 5 std::_Fac_node::~_Fac_node                                         [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:23]
+# 6 std::_Fac_node::`scalar deleting destructor'
+# 7 std::_DebugHeapDelete<std::_Fac_node>                              [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:59]
+# 8 _Fac_tidy                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:41]
+# 9 std::_Fac_tidy_reg_t::~_Fac_tidy_reg_t                             [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:48]
+#10 std::`dynamic atexit destructor for '_Fac_tidy_reg''
+#11 doexit                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+Note: @0:01:46.198 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 operator new[]                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:22]
+Note: # 2 std::_Maklocstr<char>                                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:660]
+Note: # 3 std::numpunct<char>::_Init                                                 [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:143]
+Note: # 4 std::numpunct<char>::numpunct<char>                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:106]
+Note: # 5 std::numpunct<char>::_Getcat                                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:114]
+Note: # 6 std::use_facet<std::numpunct<char> >                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:516]
+Note: # 7 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::_Iput [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1481]
+Note: # 8 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::do_put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1188]
+Note: # 9 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1105]
+Note: #10 std::basic_ostream<char,std::char_traits<char> >::operator<<               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:316]
+Note: #11 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:62]
+
+Error #68: INVALID HEAP ARGUMENT: allocated with operator new[], freed with free
+# 0 std::_DebugHeapDelete<void>                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::numpunct<char>::_Tidy                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:192]
+# 2 std::numpunct<char>::~numpunct<char>                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:121]
+# 3 std::numpunct<char>::`scalar deleting destructor'
+# 4 std::_DebugHeapDelete<std::locale::facet>                          [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:59]
+# 5 std::_Fac_node::~_Fac_node                                         [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:23]
+# 6 std::_Fac_node::`scalar deleting destructor'
+# 7 std::_DebugHeapDelete<std::_Fac_node>                              [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:59]
+# 8 _Fac_tidy                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:41]
+# 9 std::_Fac_tidy_reg_t::~_Fac_tidy_reg_t                             [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:48]
+#10 std::`dynamic atexit destructor for '_Fac_tidy_reg''
+#11 doexit                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+Note: @0:01:46.260 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 operator new[]                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:22]
+Note: # 2 std::_Maklocstr<char>                                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:660]
+Note: # 3 std::numpunct<char>::_Init                                                 [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:144]
+Note: # 4 std::numpunct<char>::numpunct<char>                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:106]
+Note: # 5 std::numpunct<char>::_Getcat                                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:114]
+Note: # 6 std::use_facet<std::numpunct<char> >                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:516]
+Note: # 7 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::_Iput [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1481]
+Note: # 8 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::do_put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1188]
+Note: # 9 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1105]
+Note: #10 std::basic_ostream<char,std::char_traits<char> >::operator<<               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:316]
+Note: #11 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:62]
+
+Error #69: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale::facet>                          [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::_Fac_node::~_Fac_node                                         [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:23]
+# 2 std::_Fac_node::`scalar deleting destructor'
+# 3 std::_DebugHeapDelete<std::_Fac_node>                              [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:59]
+# 4 _Fac_tidy                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:41]
+# 5 std::_Fac_tidy_reg_t::~_Fac_tidy_reg_t                             [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:48]
+# 6 std::`dynamic atexit destructor for '_Fac_tidy_reg''
+# 7 doexit                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 8 exit                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 9 __tmainCRTStartup                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+#10 WinMainCRTStartup                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+#11 KERNEL32.dll!BaseThreadInitThunk
+Note: @0:01:46.325 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::locale::facet::operator new                                           [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:147]
+Note: # 2 std::numpunct<char>::_Getcat                                               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:114]
+Note: # 3 std::use_facet<std::numpunct<char> >                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:516]
+Note: # 4 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::_Iput [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1481]
+Note: # 5 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::do_put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1188]
+Note: # 6 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1105]
+Note: # 7 std::basic_ostream<char,std::char_traits<char> >::operator<<               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:316]
+Note: # 8 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:62]
+Note: # 9 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: #10 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: #11 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+
+Error #70: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::_Fac_node>                              [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:62]
+# 1 _Fac_tidy                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:41]
+# 2 std::_Fac_tidy_reg_t::~_Fac_tidy_reg_t                             [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:48]
+# 3 std::`dynamic atexit destructor for '_Fac_tidy_reg''
+# 4 doexit                                                             [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 5 exit                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 6 __tmainCRTStartup                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 7 WinMainCRTStartup                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+# 8 KERNEL32.dll!BaseThreadInitThunk
+# 9 ntdll.dll!RtlInitializeExceptionChain
+#10 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.391 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::locale::facet::_Facet_Register                                        [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:57]
+Note: # 2 std::locale::facet::_Register                                              [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:133]
+Note: # 3 std::use_facet<std::numpunct<char> >                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:533]
+Note: # 4 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::_Iput [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1481]
+Note: # 5 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::do_put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1188]
+Note: # 6 std::num_put<char,std::ostreambuf_iterator<char,std::char_traits<char> > >::put [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocnum:1105]
+Note: # 7 std::basic_ostream<char,std::char_traits<char> >::operator<<               [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:316]
+Note: # 8 TestScenePlayer::draw                                                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:62]
+Note: # 9 GameManager::draw                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:136]
+Note: #10 GameManager::loop                                                          [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:68]
+Note: #11 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+
+Error #71: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::ios_base::_Ios_base_dtor                                              [f:\dd\vctools\crt_bld\self_x86\crt\src\ios.cpp:44]
+# 2 std::ios_base::~ios_base                                                   [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:541]
+# 3 std::basic_ios<char,std::char_traits<char> >::~basic_ios<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:38]
+# 4 std::basic_ostream<char,std::char_traits<char> >::`vbase destructor'
+# 5 std::`dynamic atexit destructor for 'cerr''
+# 6 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 7 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 8 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 9 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+#10 KERNEL32.dll!BaseThreadInitThunk
+#11 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.469 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::ios_base::_Init                                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:564]
+Note: # 2 std::basic_ios<char,std::char_traits<char> >::init                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:155]
+Note: # 3 std::basic_ostream<char,std::char_traits<char> >::basic_ostream<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:51]
+Note: # 4 std::`dynamic initializer for 'cerr''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cerr.cpp:16]
+Note: # 5 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 6 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 7 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: # 8 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: # 9 KERNEL32.dll!BaseThreadInitThunk
+Note: #10 ntdll.dll!RtlInitializeExceptionChain
+Note: #11 ntdll.dll!RtlInitializeExceptionChain
+
+Error #72: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:80]
+# 2 std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:148]
+# 3 std::`dynamic atexit destructor for 'ferr''
+# 4 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 5 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 6 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 7 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+# 8 KERNEL32.dll!BaseThreadInitThunk
+# 9 ntdll.dll!RtlInitializeExceptionChain
+#10 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.545 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 2 std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:152]
+Note: # 3 std::`dynamic initializer for 'ferr''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cerr.cpp:12]
+Note: # 4 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 5 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 6 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: # 7 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: # 8 KERNEL32.dll!BaseThreadInitThunk
+Note: # 9 ntdll.dll!RtlInitializeExceptionChain
+Note: #10 ntdll.dll!RtlInitializeExceptionChain
+
+Error #73: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<_RTL_CRITICAL_SECTION>                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:62]
+# 1 std::_Mutex::~_Mutex                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:19]
+# 2 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:81]
+# 3 std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:148]
+# 4 std::`dynamic atexit destructor for 'ferr''
+# 5 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 6 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 7 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 8 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+# 9 KERNEL32.dll!BaseThreadInitThunk
+#10 ntdll.dll!RtlInitializeExceptionChain
+#11 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.589 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::_Mutex::_Mutex                                                        [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:12]
+Note: # 2 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 3 std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:152]
+Note: # 4 std::`dynamic initializer for 'ferr''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cerr.cpp:12]
+Note: # 5 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 6 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 7 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: # 8 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: # 9 KERNEL32.dll!BaseThreadInitThunk
+Note: #10 ntdll.dll!RtlInitializeExceptionChain
+Note: #11 ntdll.dll!RtlInitializeExceptionChain
+
+Error #74: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::ios_base::_Ios_base_dtor                                              [f:\dd\vctools\crt_bld\self_x86\crt\src\ios.cpp:44]
+# 2 std::ios_base::~ios_base                                                   [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:541]
+# 3 std::basic_ios<char,std::char_traits<char> >::~basic_ios<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:38]
+# 4 std::basic_ostream<char,std::char_traits<char> >::`vbase destructor'
+# 5 std::`dynamic atexit destructor for 'cout''
+# 6 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 7 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 8 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 9 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+#10 KERNEL32.dll!BaseThreadInitThunk
+#11 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.637 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::ios_base::_Init                                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xiosbase:564]
+Note: # 2 std::basic_ios<char,std::char_traits<char> >::init                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ios:155]
+Note: # 3 std::basic_ostream<char,std::char_traits<char> >::basic_ostream<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\ostream:51]
+Note: # 4 std::`dynamic initializer for 'cout''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cout.cpp:16]
+Note: # 5 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 6 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 7 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: # 8 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: # 9 KERNEL32.dll!BaseThreadInitThunk
+Note: #10 ntdll.dll!RtlInitializeExceptionChain
+Note: #11 ntdll.dll!RtlInitializeExceptionChain
+
+Error #75: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale::facet>                                  [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::locale::~locale                                                       [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:411]
+# 2 std::locale::`scalar deleting destructor'
+# 3 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:59]
+# 4 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:80]
+# 5 std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:148]
+# 6 std::`dynamic atexit destructor for 'fout''
+# 7 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 8 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 9 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+#10 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+#11 KERNEL32.dll!BaseThreadInitThunk
+Note: @0:01:46.696 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::locale::facet::operator new                                           [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:147]
+Note: # 2 std::locale::_Init                                                         [f:\dd\vctools\crt_bld\self_x86\crt\src\locale0.cpp:151]
+Note: # 3 std::locale::locale                                                        [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xlocale:315]
+Note: # 4 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 5 std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:152]
+Note: # 6 std::`dynamic initializer for 'fout''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cout.cpp:12]
+Note: # 7 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 8 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 9 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: #10 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: #11 KERNEL32.dll!BaseThreadInitThunk
+
+Error #76: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<std::locale>                                         [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xdebug:62]
+# 1 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:80]
+# 2 std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:148]
+# 3 std::`dynamic atexit destructor for 'fout''
+# 4 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 5 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 6 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 7 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+# 8 KERNEL32.dll!BaseThreadInitThunk
+# 9 ntdll.dll!RtlInitializeExceptionChain
+#10 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.750 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 2 std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:152]
+Note: # 3 std::`dynamic initializer for 'fout''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cout.cpp:12]
+Note: # 4 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 5 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 6 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: # 7 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: # 8 KERNEL32.dll!BaseThreadInitThunk
+Note: # 9 ntdll.dll!RtlInitializeExceptionChain
+Note: #10 ntdll.dll!RtlInitializeExceptionChain
+
+Error #77: INVALID HEAP ARGUMENT: allocated with operator new, freed with free
+# 0 std::_DebugHeapDelete<_RTL_CRITICAL_SECTION>                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug:62]
+# 1 std::_Mutex::~_Mutex                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:19]
+# 2 std::basic_streambuf<char,std::char_traits<char> >::~basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:81]
+# 3 std::basic_filebuf<char,std::char_traits<char> >::~basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:148]
+# 4 std::`dynamic atexit destructor for 'fout''
+# 5 doexit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:565]
+# 6 exit                                                                       [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:393]
+# 7 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:282]
+# 8 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+# 9 KERNEL32.dll!BaseThreadInitThunk
+#10 ntdll.dll!RtlInitializeExceptionChain
+#11 ntdll.dll!RtlInitializeExceptionChain
+Note: @0:01:46.793 in thread 2412
+Note: memory was allocated here:
+Note: # 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\xdebug.cpp:10]
+Note: # 1 std::_Mutex::_Mutex                                                        [f:\dd\vctools\crt_bld\self_x86\crt\src\xmutex.cpp:12]
+Note: # 2 std::basic_streambuf<char,std::char_traits<char> >::basic_streambuf<char,std::char_traits<char> > [c:\program files (x86)\microsoft visual studio 10.0\vc\include\streambuf:25]
+Note: # 3 std::basic_filebuf<char,std::char_traits<char> >::basic_filebuf<char,std::char_traits<char> > [f:\dd\vctools\crt_bld\self_x86\crt\src\fstream:152]
+Note: # 4 std::`dynamic initializer for 'fout''                                      [f:\dd\vctools\crt_bld\self_x86\crt\src\cout.cpp:12]
+Note: # 5 _initterm                                                                  [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:872]
+Note: # 6 _cinit                                                                     [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0dat.c:288]
+Note: # 7 __tmainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:262]
+Note: # 8 WinMainCRTStartup                                                          [f:\dd\vctools\crt_bld\self_x86\crt\src\crt0.c:188]
+Note: # 9 KERNEL32.dll!BaseThreadInitThunk
+Note: #10 ntdll.dll!RtlInitializeExceptionChain
+Note: #11 ntdll.dll!RtlInitializeExceptionChain
+
+Error #78: LEAK 8 direct bytes 0x00c87148-0x00c87150 + 512 indirect bytes
+# 0 KERNELBASE.dll!LocalAlloc                     +0x5f     (0x74db4ec3 <KERNELBASE.dll+0x14ec3>)
+# 1 POWRPROF.dll!PowerSettingRegisterNotification +0x43     (0x73b22f41 <POWRPROF.dll+0x2f41>)
+# 2 USER32.dll!RegisterPowerSettingNotification   +0x42     (0x74ccdde2 <USER32.dll+0x3dde2>)
+# 3 nvoglv32.dll!DrvCopyContext                   +0x21ee   (0x6c46a28f <nvoglv32.dll+0x81a28f>)
+# 4 KERNEL32.dll!BaseThreadInitThunk              +0x11     (0x750d339a <KERNEL32.dll+0x1339a>)
+# 5 ntdll.dll!RtlInitializeExceptionChain         +0x62     (0x77589ef2 <ntdll.dll+0x39ef2>)
+# 6 ntdll.dll!RtlInitializeExceptionChain         +0x35     (0x77589ec5 <ntdll.dll+0x39ec5>)
+
+Error #79: LEAK 16 direct bytes 0x02c09ad8-0x02c09ae8 + 832 indirect bytes
+# 0 operator new                              [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 TestEnemy::TestEnemy                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:38]
+# 2 TestScenePlayer::createWave               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+# 3 TestScenePlayer::update                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:129]
+# 4 GameManager::update                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:157]
+# 5 GameManager::loop                         [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:67]
+# 6 DisplayProgram::main                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 7 WinMain                                   [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #80: LEAK 16 direct bytes 0x02c09f58-0x02c09f68 + 176 indirect bytes
+# 0 operator new                          [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 Shot::Shot                            [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+# 2 Weapon::shoot                         [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+# 3 Player::update                        [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:95]
+# 4 TestScenePlayer::update               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:142]
+# 5 GameManager::update                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:157]
+# 6 GameManager::loop                     [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:67]
+# 7 DisplayProgram::main                  [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 8 WinMain                               [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #81: LEAK 44 direct bytes 0x02e0ad58-0x02e0ad84 + 0 indirect bytes
+# 0 KERNELBASE.dll!LocalAlloc                +0x5f     (0x74db4ec3 <KERNELBASE.dll+0x14ec3>)
+# 1 MSCTF.dll!CtfImeDispatchDefImeMessage    +0x119    (0x75593d69 <MSCTF.dll+0x3d69>)
+# 2 MSCTF.dll!DllCanUnloadNow                +0x5f     (0x75594044 <MSCTF.dll+0x4044>)
+# 3 USER32.dll!ReleaseDC                     +0xcf     (0x74ca7516 <USER32.dll+0x17516>)
+# 4 USER32.dll!ReleaseDC                     +0x1a6    (0x74ca75ed <USER32.dll+0x175ed>)
+# 5 USER32.dll!gapfnScSendMessage            +0x331    (0x74ca62fa <USER32.dll+0x162fa>)
+# 6 USER32.dll!GetThreadDesktop              +0xd6     (0x74ca6d3a <USER32.dll+0x16d3a>)
+# 7 USER32.dll!GetThreadDesktop              +0x184    (0x74ca6de8 <USER32.dll+0x16de8>)
+# 8 USER32.dll!UnregisterClassW              +0x7bb    (0x74caa740 <USER32.dll+0x1a740>)
+# 9 ntdll.dll!KiUserCallbackDispatcher       +0x2d     (0x7756010a <ntdll.dll+0x1010a>)
+#10 USER32.dll!UnregisterClassW              +0xab7    (0x74caaa3c <USER32.dll+0x1aa3c>)
+#11 USER32.dll!CreateWindowExA               +0x32     (0x74cad261 <USER32.dll+0x1d261>)
+
+Error #82: LEAK 8 direct bytes 0x02c0c2d0-0x02c0c2d8 + 984 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_Pointf,std::allocator<CL_Pointf> >::_Vector_val<CL_Pointf,std::allocator<CL_Pointf> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::vector<CL_Pointf,std::allocator<CL_Pointf> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_Contour_Impl::CL_Contour_Impl                                           [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:43]
+# 6 CL_Contour::CL_Contour                                                     [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:62]
+# 7 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:81]
+# 8 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 9 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+#10 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+#11 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+
+Error #83: LEAK 8 direct bytes 0x02c0c570-0x02c0c578 + 152 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_Contour,std::allocator<CL_Contour> >::_Vector_val<CL_Contour,std::allocator<CL_Contour> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_Contour,std::allocator<CL_Contour> >::vector<CL_Contour,std::allocator<CL_Contour> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:74]
+# 6 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:67]
+# 7 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 8 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 9 Player::Player                                                             [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:36]
+#10 GameManager::setupPlayer                                                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:255]
+#11 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:62]
+
+Error #84: LEAK 8 direct bytes 0x02c0c768-0x02c0c770 + 136 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_Contour,std::allocator<CL_Contour> >::_Vector_val<CL_Contour,std::allocator<CL_Contour> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_Contour,std::allocator<CL_Contour> >::vector<CL_Contour,std::allocator<CL_Contour> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:74]
+# 6 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:67]
+# 7 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 8 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 9 Shot::Shot                                                                 [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+#10 Weapon::shoot                                                              [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+#11 Player::update                                                             [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:95]
+
+Error #85: LEAK 40 direct bytes 0x02c12668-0x02c12690 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_OutlineCircle>                                           [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_OutlineCircle>::allocate                                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::reserve   [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:751]
+# 4 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::_Reserve  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1297]
+# 5 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::push_back [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:991]
+# 6 CL_CollisionOutline_Generic::calculate_sub_circles                         [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:345]
+# 7 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:130]
+# 8 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+# 9 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+#10 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:38]
+#11 TestScenePlayer::createWave                                                [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+
+Error #86: LEAK 20 direct bytes 0x02c16288-0x02c1629c + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_OutlineCircle>                                           [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_OutlineCircle>::allocate                                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::reserve   [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:751]
+# 4 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::_Reserve  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1297]
+# 5 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::push_back [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:991]
+# 6 CL_CollisionOutline_Generic::calculate_sub_circles                         [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:345]
+# 7 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:130]
+# 8 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+# 9 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+#10 Shot::Shot                                                                 [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+#11 Weapon::shoot                                                              [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+
+Error #87: LEAK 8 direct bytes 0x02c16c48-0x02c16c50 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_CollidingContours,std::allocator<CL_CollidingContours> >::_Vector_val<CL_CollidingContours,std::allocator<CL_CollidingContours> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_CollidingContours,std::allocator<CL_CollidingContours> >::vector<CL_CollidingContours,std::allocator<CL_CollidingContours> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:74]
+# 6 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:67]
+# 7 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 8 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 9 Shot::Shot                                                                 [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+#10 Weapon::shoot                                                              [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+#11 Player::update                                                             [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:95]
+
+Error #88: LEAK 8 direct bytes 0x02c16c80-0x02c16c88 + 144 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_Contour>                                                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_Contour>::allocate                                       [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_Contour,std::allocator<CL_Contour> >::_Buy                  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1261]
+# 4 std::vector<CL_Contour,std::allocator<CL_Contour> >::operator=             [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:737]
+# 5 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:68]
+# 6 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 7 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 8 Shot::Shot                                                                 [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+# 9 Weapon::shoot                                                              [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+#10 Player::update                                                             [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:95]
+#11 TestScenePlayer::update                                                    [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:142]
+
+Error #89: LEAK 40 direct bytes 0x02b9eac8-0x02b9eaf0 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_OutlineCircle>                                           [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_OutlineCircle>::allocate                                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::reserve   [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:751]
+# 4 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::_Reserve  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1297]
+# 5 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::push_back [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:991]
+# 6 CL_CollisionOutline_Generic::calculate_sub_circles                         [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:345]
+# 7 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:130]
+# 8 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+# 9 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+#10 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:47]
+#11 TestScenePlayer::createWave                                                [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+
+Error #90: LEAK 336 direct bytes 0x02c286d0-0x02c28820 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_Pointf>                                                  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_Pointf>::allocate                                        [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::reserve                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:751]
+# 4 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::_Reserve                [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1297]
+# 5 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::push_back               [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:991]
+# 6 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:91]
+# 7 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 8 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+# 9 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+#10 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+#11 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:47]
+
+Error #91: LEAK 336 direct bytes 0x02c29ab8-0x02c29c08 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_Pointf>                                                  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_Pointf>::allocate                                        [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::reserve                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:751]
+# 4 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::_Reserve                [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1297]
+# 5 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::push_back               [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:991]
+# 6 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:91]
+# 7 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 8 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+# 9 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+#10 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+#11 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:38]
+
+Error #92: POSSIBLE LEAK 96 direct bytes 0x02baefb0-0x02baf010 + 9664 indirect bytes
+# 0 operator new                           [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 GameManager::setupPlayer               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:255]
+# 2 DisplayProgram::main                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:62]
+# 3 WinMain                                [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #93: LEAK 8 direct bytes 0x02bb1780-0x02bb1788 + 20 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<std::tr1::shared_ptr<CL_SlotCallback>,std::allocator<std::tr1::shared_ptr<CL_SlotCallback> > >::_Vector_val<std::tr1::shared_ptr<CL_SlotCallback>,std::allocator<std::tr1::shared_ptr<CL_SlotCallback> > > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<std::tr1::shared_ptr<CL_SlotCallback>,std::allocator<std::tr1::shared_ptr<CL_SlotCallback> > >::vector<std::tr1::shared_ptr<CL_SlotCallback>,std::allocator<std::tr1::shared_ptr<CL_SlotCallback> > > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_Signal_Impl::CL_Signal_Impl
+# 6 CL_Signal_v0::CL_Signal_v0                                                 [c:\clanlib\clanlib-2.3.6\sources\api\core\signals\signal_v0.h:118]
+# 7 CL_Sprite_Impl::CL_Sprite_Impl                                             [c:\clanlib\clanlib-2.3.6\sources\display\2d\sprite_impl.cpp:68]
+# 8 CL_Sprite::CL_Sprite                                                       [c:\clanlib\clanlib-2.3.6\sources\display\2d\sprite.cpp:88]
+# 9 Player::Player                                                             [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:30]
+#10 GameManager::setupPlayer                                                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:255]
+#11 DisplayProgram::main                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:62]
+
+Error #94: LEAK 16 direct bytes 0x02c36b20-0x02c36b30 + 1052 indirect bytes
+# 0 operator new                              [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 TestEnemy::TestEnemy                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:47]
+# 2 TestScenePlayer::createWave               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+# 3 TestScenePlayer::update                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:129]
+# 4 GameManager::update                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:157]
+# 5 GameManager::loop                         [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:67]
+# 6 DisplayProgram::main                      [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 7 WinMain                                   [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #95: POSSIBLE LEAK 60 direct bytes 0x02c3b300-0x02c3b33c + 80 indirect bytes
+# 0 operator new                           [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 GameManager::setupPlayer               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:261]
+# 2 DisplayProgram::main                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:62]
+# 3 WinMain                                [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #96: POSSIBLE LEAK 60 direct bytes 0x02c3b368-0x02c3b3a4 + 80 indirect bytes
+# 0 operator new                           [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 GameManager::setupPlayer               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:272]
+# 2 DisplayProgram::main                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:62]
+# 3 WinMain                                [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #97: POSSIBLE LEAK 60 direct bytes 0x02c3b3d0-0x02c3b40c + 72 indirect bytes
+# 0 operator new                           [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 GameManager::setupPlayer               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:289]
+# 2 DisplayProgram::main                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:62]
+# 3 WinMain                                [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #98: POSSIBLE LEAK 791 direct bytes 0x02e3e5c0-0x02e3e8d7 + 0 indirect bytes
+# 0 KERNELBASE.dll!GlobalAlloc                                +0x6e     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 1 nvoglv32.dll!DrvCopyContext                               +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 2 nvoglv32.dll!DrvPresentBuffers                            +0x43ed   (0x6c490bae <nvoglv32.dll+0x840bae>)
+# 3 nvoglv32.dll!DrvPresentBuffers                            +0xf35ef  (0x6c57fdb0 <nvoglv32.dll+0x92fdb0>)
+# 4 nvoglv32.dll!DrvPresentBuffers                            +0x45133  (0x6c4d18f4 <nvoglv32.dll+0x8818f4>)
+# 5 nvoglv32.dll!?                                            +0x0      (0x6bd58884 <nvoglv32.dll+0x108884>)
+# 6 nvoglv32.dll!?                                            +0x0      (0x6bd43b78 <nvoglv32.dll+0xf3b78>)
+# 7 nvoglv32.dll!DrvSetContext                                +0x36b    (0x6c467cbc <nvoglv32.dll+0x817cbc>)
+# 8 OPENGL32.dll!wglSwapLayerBuffers                          +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+# 9 OPENGL32.dll!wglMakeCurrent                               +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+#10 CL_GL1CreationHelper::set_active                           [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:219]
+#11 CL_GL1CreationHelper::create_opengl3_context               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:182]
+
+Error #99: LEAK 48 direct bytes 0x02bca6b0-0x02bca6e0 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_Pointf>                                                  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_Pointf>::allocate                                        [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::reserve                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:751]
+# 4 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::_Reserve                [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1297]
+# 5 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::push_back               [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:991]
+# 6 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:91]
+# 7 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 8 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+# 9 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+#10 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+#11 Shot::Shot                                                                 [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+
+Error #100: LEAK 8 direct bytes 0x02c4c038-0x02c4c040 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::_Vector_val<CL_OutlineCircle,std::allocator<CL_OutlineCircle> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> >::vector<CL_OutlineCircle,std::allocator<CL_OutlineCircle> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_Contour_Impl::CL_Contour_Impl                                           [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:43]
+# 6 CL_Contour::CL_Contour                                                     [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:62]
+# 7 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:81]
+# 8 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 9 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+#10 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+#11 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+
+Error #101: POSSIBLE LEAK 8 direct bytes 0x02c4c0e0-0x02c4c0e8 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_Pointf,std::allocator<CL_Pointf> >::_Vector_val<CL_Pointf,std::allocator<CL_Pointf> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_Pointf,std::allocator<CL_Pointf> >::vector<CL_Pointf,std::allocator<CL_Pointf> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_Contour_Impl::CL_Contour_Impl                                           [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:43]
+# 6 CL_Contour::CL_Contour                                                     [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:62]
+# 7 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:81]
+# 8 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 9 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+#10 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+#11 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+
+Error #102: LEAK 8 direct bytes 0x02c53860-0x02c53868 + 16 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<CL_Contour>                                                 [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<CL_Contour>::allocate                                       [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::vector<CL_Contour,std::allocator<CL_Contour> >::_Buy                  [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:1261]
+# 4 std::vector<CL_Contour,std::allocator<CL_Contour> >::operator=             [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:737]
+# 5 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:68]
+# 6 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 7 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 8 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:47]
+# 9 TestScenePlayer::createWave                                                [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+#10 TestScenePlayer::update                                                    [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:129]
+#11 GameManager::update                                                        [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:157]
+
+Error #103: LEAK 8 direct bytes 0x02c538d0-0x02c538d8 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_Contour,std::allocator<CL_Contour> >::_Vector_val<CL_Contour,std::allocator<CL_Contour> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_Contour,std::allocator<CL_Contour> >::vector<CL_Contour,std::allocator<CL_Contour> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:74]
+# 6 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:67]
+# 7 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 8 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 9 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:47]
+#10 TestScenePlayer::createWave                                                [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+#11 TestScenePlayer::update                                                    [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:129]
+
+Error #104: LEAK 8 direct bytes 0x02c53908-0x02c53910 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::_Allocate<std::_Container_proxy>                                      [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:36]
+# 2 std::allocator<std::_Container_proxy>::allocate                            [c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory:187]
+# 3 std::_Vector_val<CL_CollidingContours,std::allocator<CL_CollidingContours> >::_Vector_val<CL_CollidingContours,std::allocator<CL_CollidingContours> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:442]
+# 4 std::vector<CL_CollidingContours,std::allocator<CL_CollidingContours> >::vector<CL_CollidingContours,std::allocator<CL_CollidingContours> > [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\vector:507]
+# 5 CL_CollisionOutline_Generic::CL_CollisionOutline_Generic                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline_generic.cpp:74]
+# 6 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:67]
+# 7 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:80]
+# 8 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 9 TestEnemy::TestEnemy                                                       [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testenemy.cpp:47]
+#10 TestScenePlayer::createWave                                                [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:520]
+#11 TestScenePlayer::update                                                    [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:129]
+
+Error #105: POSSIBLE LEAK 119903 direct bytes 0x02e57ec0-0x02e7531f + 0 indirect bytes
+# 0 KERNELBASE.dll!GlobalAlloc               +0x6e     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 1 nvoglv32.dll!DrvCopyContext              +0x68ec   (0x6c46e98d <nvoglv32.dll+0x81e98d>)
+# 2 nvoglv32.dll!?                           +0x0      (0x6c33e041 <nvoglv32.dll+0x6ee041>)
+# 3 nvoglv32.dll!DrvCopyContext              +0xbd1b   (0x6c473dbc <nvoglv32.dll+0x823dbc>)
+# 4 nvoglv32.dll!DllMain                     +0x54     (0x6c474115 <nvoglv32.dll+0x824115>)
+# 5 nvoglv32.dll!DrvPresentBuffers           +0x28128a (0x6c70da4b <nvoglv32.dll+0xabda4b>)
+# 6 nvoglv32.dll!DrvPresentBuffers           +0x281332 (0x6c70daf3 <nvoglv32.dll+0xabdaf3>)
+# 7 ntdll.dll!RtlQueryEnvironmentVariable    +0x240    (0x77589950 <ntdll.dll+0x39950>)
+# 8 ntdll.dll!LdrResSearchResource           +0xb4c    (0x7758d8c9 <ntdll.dll+0x3d8c9>)
+# 9 ntdll.dll!LdrResSearchResource           +0xa0f    (0x7758d78c <ntdll.dll+0x3d78c>)
+#10 ntdll.dll!LdrLoadDll                     +0x7a     (0x7758c4d5 <ntdll.dll+0x3c4d5>)
+#11 KERNELBASE.dll!LoadLibraryExW            +0x1f0    (0x74db2288 <KERNELBASE.dll+0x12288>)
+
+Error #106: POSSIBLE LEAK 16 direct bytes 0x02c5c5b8-0x02c5c5c8 + 220 indirect bytes
+# 0 operator new                          [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 Shot::Shot                            [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+# 2 Weapon::shoot                         [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+# 3 Player::update                        [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:95]
+# 4 TestScenePlayer::update               [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\testsceneplayer.cpp:142]
+# 5 GameManager::update                   [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:157]
+# 6 GameManager::loop                     [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\gamemanager.cpp:67]
+# 7 DisplayProgram::main                  [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\main.cpp:80]
+# 8 WinMain                               [c:\clanlib\clanlib-2.3.6\sources\app\win32\clanapp.cpp:87]
+
+Error #107: LEAK 16 direct bytes 0x02c5ddf8-0x02c5de08 + 0 indirect bytes
+# 0 operator new                                                               [f:\dd\vctools\crt_bld\self_x86\crt\src\new.cpp:59]
+# 1 std::tr1::shared_ptr<CL_Contour_Impl>::_Resetp<CL_Contour_Impl>            [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\memory:1662]
+# 2 std::tr1::shared_ptr<CL_Contour_Impl>::shared_ptr<CL_Contour_Impl><CL_Contour_Impl> [c:\arquivos de programas\microsoft visual studio 10.0\vc\include\memory:1431]
+# 3 CL_Contour::CL_Contour                                                     [c:\clanlib\clanlib-2.3.6\sources\api\display\collision\contour.h:62]
+# 4 CL_OutlineProviderFile_Generic::load                                       [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:81]
+# 5 CL_OutlineProviderFile_Generic::CL_OutlineProviderFile_Generic             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file_generic.cpp:44]
+# 6 CL_OutlineProviderFile::CL_OutlineProviderFile                             [c:\clanlib\clanlib-2.3.6\sources\display\collision\outline_provider_file.cpp:60]
+# 7 CL_ResourceData_CollisionOutline::CL_ResourceData_CollisionOutline         [c:\clanlib\clanlib-2.3.6\sources\display\collision\resourcedata_collisionoutline.cpp:70]
+# 8 CL_CollisionOutline::CL_CollisionOutline                                   [c:\clanlib\clanlib-2.3.6\sources\display\collision\collision_outline.cpp:132]
+# 9 Shot::Shot                                                                 [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\shot.cpp:43]
+#10 Weapon::shoot                                                              [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\weapon.cpp:124]
+#11 Player::update                                                             [c:\users\bruno\documents\mestrado\2011.2\dissertacao\adaptiveshooter\src\adaptiveshooter\player.cpp:95]
+
+Error #108: POSSIBLE LEAK 791 direct bytes 0x00ce2238-0x00ce254f + 0 indirect bytes
+# 0 KERNELBASE.dll!GlobalAlloc                                +0x6e     (0x74db443a <KERNELBASE.dll+0x1443a>)
+# 1 nvoglv32.dll!DrvCopyContext                               +0x68c4   (0x6c46e965 <nvoglv32.dll+0x81e965>)
+# 2 nvoglv32.dll!DrvPresentBuffers                            +0x43c8   (0x6c490b89 <nvoglv32.dll+0x840b89>)
+# 3 nvoglv32.dll!DrvPresentBuffers                            +0xf35ef  (0x6c57fdb0 <nvoglv32.dll+0x92fdb0>)
+# 4 nvoglv32.dll!DrvPresentBuffers                            +0x45133  (0x6c4d18f4 <nvoglv32.dll+0x8818f4>)
+# 5 nvoglv32.dll!?                                            +0x0      (0x6bd58884 <nvoglv32.dll+0x108884>)
+# 6 nvoglv32.dll!?                                            +0x0      (0x6bd43b78 <nvoglv32.dll+0xf3b78>)
+# 7 nvoglv32.dll!DrvSetContext                                +0x36b    (0x6c467cbc <nvoglv32.dll+0x817cbc>)
+# 8 OPENGL32.dll!wglSwapLayerBuffers                          +0x711    (0x6e1e9422 <OPENGL32.dll+0x39422>)
+# 9 OPENGL32.dll!wglMakeCurrent                               +0x8d     (0x6e1e95e9 <OPENGL32.dll+0x395e9>)
+#10 CL_GL1CreationHelper::set_active                           [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:219]
+#11 CL_GL1CreationHelper::create_opengl3_context               [c:\clanlib\clanlib-2.3.6\sources\gl1\wgl\gl1_creation_helper.cpp:182]
+
+Error #109: POSSIBLE LEAK 9560 direct bytes 0x02e759d0-0x02e77f28 + 0 indirect bytes
+# 0 OPENGL32.dll!glTexSubImage2D                   +0x2559d  (0x6e1d97ee <OPENGL32.dll+0x297ee>)
+# 1 OPENGL32.dll!glTexSubImage2D                   +0x25752  (0x6e1d99a4 <OPENGL32.dll+0x299a4>)
+# 2 OPENGL32.dll!wglChoosePixelFormat              +0x549d1  (0x6e24aeed <OPENGL32.dll+0x9aeed>)
+# 3 ntdll.dll!RtlQueryEnvironmentVariable          +0x240    (0x77589950 <ntdll.dll+0x39950>)
+# 4 ntdll.dll!RtlAllocateActivationContextStack    +0x1ce    (0x7758a162 <ntdll.dll+0x3a162>)
+# 5 ntdll.dll!RtlDecodePointer                     +0xf6     (0x77589e4c <ntdll.dll+0x39e4c>)
+# 6 ntdll.dll!LdrInitializeThunk                   +0xf      (0x77589e79 <ntdll.dll+0x39e79>)
+
+DUPLICATE ERROR COUNTS:
+	Error #   2:     21
+	Error #   3:     21
+	Error #   8:      2
+	Error #   9:      5
+	Error #  10:      2
+	Error #  11:      2
+	Error #  13:      2
+	Error #  14:      2
+	Error #  15:      2
+	Error #  16:      2
+	Error #  17:      2
+	Error #  18:      6
+	Error #  20:      5
+	Error #  21:      5
+	Error #  24:      9
+	Error #  25:     18
+	Error #  26:     13
+	Error #  27:     13
+	Error #  28:      5
+	Error #  34:      4
+	Error #  35:      4
+	Error #  36:      4
+	Error #  37:      2
+	Error #  38:      4
+	Error #  39:      4
+	Error #  40:      4
+	Error #  41:      4
+	Error #  42:      4
+	Error #  43:     12
+	Error #  44:      2
+	Error #  45:     10
+	Error #  46:     10
+	Error #  50:     10
+	Error #  51:     21
+	Error #  52:      6
+	Error #  53:     15
+	Error #  54:     15
+	Error #  59:     18
+	Error #  60:    309
+	Error #  61:    309
+	Error #  62:    309
+	Error #  63:    309
+	Error #  64:    309
+	Error #  65:    309
+	Error #  69:      3
+	Error #  70:      3
+	Error #  79:      3
+	Error #  80:     18
+	Error #  82:      9
+	Error #  84:      2
+	Error #  86:      4
+	Error #  89:      2
+	Error #  90:      2
+	Error #  94:      6
+	Error #  99:      4
+	Error # 100:      6
+	Error # 101:      2
+
+SUPPRESSIONS USED:
+
+ERRORS FOUND:
+      0 unique,     0 total unaddressable access(es)
+     58 unique,   310 total uninitialized access(es)
+     18 unique,  1870 total invalid heap argument(s)
+      1 unique,     1 total warning(s)
+     22 unique,    68 total,  12984 byte(s) of leak(s)
+     10 unique,    11 total, 141469 byte(s) of possible leak(s)
+ERRORS IGNORED:
+   1807 still-reachable allocation(s)
+         (re-run with "-show_reachable" for details)
+Details: C:\Users\Bruno\AppData\Roaming/Dr. Memory/DrMemory-AdaptiveShooter.exe.3700.000/results.txt

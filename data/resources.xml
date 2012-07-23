@@ -26,6 +26,27 @@
       </image>
     </sprite>
 
+    <sprite name="roundShotBig">
+      <image file="images/test/roundShotBig.png">
+        <grid size="11,11" array="2,1"/>
+      </image>
+      <animation speed="100" loop="yes" pingpong="no" />
+    </sprite>
+
+    <sprite name="roundShotMedium">
+      <image file="images/test/roundShotMedium.png">
+        <grid size="8,8" array="2,1"/>
+      </image>
+      <animation speed="100" loop="yes" pingpong="no" />
+    </sprite>
+
+    <sprite name="roundShotSmall">
+      <image file="images/test/roundShotSmall.png">
+        <grid size="5,5" array="2,1"/>
+      </image>
+      <animation speed="100" loop="yes" pingpong="no" />
+    </sprite>
+
     <!--Enemy sprites-->
     <sprite name="enemy1">
       <image file="/images/test/enemy1.png">
@@ -59,6 +80,21 @@
     <!--Shot collision outlines-->
     <section name="shot">
       <collisionoutline name="shot_000" file="/images/test/collisiondata/shot.out"/>
+    </section>
+
+    <section name="roundShotSmall">
+      <coillisionoutline name="roundShotSmall_000" file="images/test/collisiondata/roundShotSmall_000.out"/>
+      <coillisionoutline name="roundShotSmall_001" file="images/test/collisiondata/roundShotSmall_001.out"/>
+    </section>
+
+    <section name="roundShotMedium">
+      <coillisionoutline name="roundShotMedium_000" file="images/test/collisiondata/roundShotMedium_000.out"/>
+      <coillisionoutline name="roundShotMedium_001" file="images/test/collisiondata/roundShotMedium_001.out"/>
+    </section>
+
+    <section name="roundShotBig">
+      <coillisionoutline name="roundShotBig_000" file="images/test/collisiondata/roundShotBig_000.out"/>
+      <coillisionoutline name="roundShotBig_001" file="images/test/collisiondata/roundShotBig_001.out"/>
     </section>
 
     <!--Enemies collision outlines-->
