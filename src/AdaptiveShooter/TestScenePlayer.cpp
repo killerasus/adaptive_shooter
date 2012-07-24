@@ -60,7 +60,7 @@ void TestScenePlayer::draw()
 	playerText.precision( 4 );
 
 	playerText << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
-	playerText << "Shot timer: " << (playerOne->getWeapon()->getDelay() - playerOne->getWeapon()->getTimer()) << std::endl;
+	playerText << "Shot timer: " << (playerOne->getCurrentWeapon()->getDelay() - playerOne->getCurrentWeapon()->getTimer()) << std::endl;
 	playerText << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
 	playerText << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ACCURACY ) << std::endl;
 	playerText << "Lives variation = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::LIVES_VARIATION ) << std::endl;
@@ -362,6 +362,7 @@ void TestScenePlayer::computeShotsCollision()
 		if (shot->collide( *object ))
 		{
 			// TODO: Cause damage to player
+			computeShotHitPlayer( (*shotIt), playerOne );
 			Shot* shotRemove = *shotIt;
 			shotIt++;
 			removeEnemyShot( shotRemove );
@@ -490,6 +491,13 @@ void TestScenePlayer::computeShotHitEnemy( Shot* shot, Enemy* enemy )
 	enemy->setHealth( enemy->getHealth() - shot->getDamage() );
 	_shotsWaveOnTarget++;
 	_shotsTotalOnTarget++;
+}
+
+
+
+void TestScenePlayer::computeShotHitPlayer( Shot* shot, Player* player )
+{
+	//TODO:
 }
 
 

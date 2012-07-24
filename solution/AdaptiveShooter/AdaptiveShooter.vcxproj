@@ -173,6 +173,7 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\Player.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\PlayerModelImpl.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Scene.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Shooter.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Shot.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\StaticEntity.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\TestEnemy.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\Player.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\PlayerModelImpl.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Shooter.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Shot.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\TestEnemy.h" />

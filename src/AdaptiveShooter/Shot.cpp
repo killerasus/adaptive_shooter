@@ -20,10 +20,11 @@ Shot::Shot( std::string resource ) : DynamicEntity(), _damage( 0 )
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 
-	//TODO: Substitute this for a DynamicEntity function
+	CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+
 	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/shot/shot_00%1", i );
+		CL_String collisionResource = cl_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
 		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
 	}
 }
@@ -36,10 +37,11 @@ Shot::Shot( float x, float y, float speedX, float speedY, std::string resource, 
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 
-	//TODO: Substitute this for a DynamicEntity function
+	CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+
 	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/shot/shot_00%1", i );
+		CL_String collisionResource = cl_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
 		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
 	}
 }
@@ -52,10 +54,11 @@ Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damag
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
 
-	//TODO: Substitute this for a DynamicEntity function
+	CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+
 	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/shot/shot_00%1", i );
+		CL_String collisionResource = cl_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
 		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
 	}
 }
@@ -88,36 +91,6 @@ void Shot::update()
 {
 	float dt = GameManager::getInstance()->getDeltaTime();
 	setPosition( getPosition().x + getSpeed().x * dt * 0.001f, getPosition().y + getSpeed().y * dt * 0.001f );
-	CL_Vec2f position = getPosition();
-
-	CL_Size windowSize = GameManager::getInstance()->getWindow()->get_gc().get_size();
-	CL_Size spriteSize = getCurrentSprite()->get_size();
-
-	//Checks if sprite is trying to get outside window horizontally
-	if (position.x + spriteSize.width > windowSize.width)
-	{
-		//TODO: 
-	}
-	else
-	{
-		if (position.x < 0.0f)
-		{
-			//TODO:
-		}
-	}
-
-	//Checks if sprite is trying to get outside window view vertically
-	if (position.y + spriteSize.height < 0.0f)
-	{
-		//TODO:
-	} 
-	else
-	{
-		if (position.y > windowSize.height)
-		{
-			//TODO:
-		}
-	}
 }
 
 
@@ -129,7 +102,7 @@ void Shot::setDamage( int damage )
 
 
 
-int Shot::getDamage()
+int Shot::getDamage() const
 {
 	return _damage;
 }

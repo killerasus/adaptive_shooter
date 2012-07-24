@@ -15,10 +15,10 @@
 
 #include "AIManager/PlayerModel.h"
 #include "DynamicEntity.h"
-#include "Weapon.h"
+#include "Shooter.h"
 #include "ControllerInterface.h"
 
-class Player : public DynamicEntity
+class Player : public DynamicEntity, public Shooter
 {
 public:
 
@@ -98,13 +98,6 @@ public:
 	PlayerModel* getPlayerModel() const;
 
 	/**
-	 * Gets player's weapon
-	 * 
-	 * @return	  Weapon*	Current weapon
-	 */
-	Weapon* getWeapon() const;
-
-	/**
 	 * Sets player's score
 	 * 
 	 * @param[in]	score	New value
@@ -124,6 +117,8 @@ public:
 	 * @param[in]	value	Points to add
 	 */
 	void addToScore( int value );
+
+	virtual void addShots( std::vector<Shot*> shots );
 
 protected:
 private:

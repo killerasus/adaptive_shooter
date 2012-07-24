@@ -105,14 +105,17 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\TestEnemy.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp">
-      <Filter>Header Files\Player</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\AdaptiveShooter\KeyboardController.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\AdaptiveShooter\GamepadController.cpp">
       <Filter>Source Files\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\Shooter.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp">
+      <Filter>Source Files\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,14 +170,17 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\KeyboardController.h">
       <Filter>Header Files\Control</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\GamepadController.h">
       <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Shooter.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

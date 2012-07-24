@@ -37,8 +37,11 @@ public:
 	 * @param[in]	delay			Delay between shots in miliseconds
 	 * @param[in]	damage			Base damage caused by each shot
 	 * @param[in]	level			Weapon's level
+	 * @param[in]	speedX			Shot's speed in x axis in pixels per second
+	 * @param[in]	speedY			Shot's speed in y axis in pixels per second
 	 */
-	Weapon(std::string name, std::string shotResource, float delay, int damage = 50, WeaponLevel level = WL_LEVEL_0);
+	Weapon( std::string name, std::string shotResource, float delay, int damage = 50, WeaponLevel level = WL_LEVEL_0,
+		float speedX = 0.0f, float speedY = -300.0f );
 
 	/** Destructor */
 	virtual ~Weapon();
@@ -112,11 +115,13 @@ public:
 	WeaponLevel getWeaponLevel() const;
 
 	/**
-	 * Makes weapon shoot. Instantiates new Shot objects in current Scene. Delegates deletion to Scene.
+	 * Makes weapon shoot. Returns new Shot objects for adding to current Scene. Delegates deletion to Scene.
+	 * Shots created in this method are centered to the Entity.
 	 *
-	 * @return	int	How many shots were created. 0 if canShoot returns false
+	 * @param[in]	Entity*				Shot owner
+	 * @return		std::vector<Shot*>	How many shots were created. 0 if canShoot returns false
 	 */
-	virtual int shoot();
+	virtual std::vector<Shot*> shoot( Entity* entity );
 
 	/**
 	 * Sets the weapon's name
@@ -130,7 +135,29 @@ public:
 	 * 
 	 * @return	std::string	Weapon's name
 	 */
-	std::string getName();
+	std::string getName() const;
+
+	/**
+	 * Sets current shot's speed
+	 * 
+	 * @param[in]	x	Speed in x axis, in pixels per second
+	 * @param[in]	y	Speed in y axis, in pixels per second
+	 */
+	void setShotSpeed( float x, float y);
+
+	/**
+	 * Sets current shot's speed
+	 * 
+	 * @param[in]	speed	Speed in pixels per second
+	 */
+	void setShotSpeed( CL_Vec2f& speed );
+
+	/**
+	 * Gets current shot's speed
+	 * 
+	 * @return	CL_Vec2f	Current shot's speed
+	 */
+	CL_Vec2f getShotSpeed() const;
 
 protected:
 	
@@ -142,6 +169,7 @@ private:
 	float _timer; // Current weapon timer in miliseconds.
 	std::string _name; // Weapon's name
 	std::string _shotResource; // Resource file for creating shots
+	CL_Vec2f _shotSpeed; // Current shot's speed in pixels per second
 };
 
 #endif // Weapon_h__

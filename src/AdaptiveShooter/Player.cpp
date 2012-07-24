@@ -28,6 +28,8 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", 500) ),
 	_controller( GamepadController::getNewGamepad( 0 ) )
 {
+	setCurrentWeapon( _weapon );
+
 	if (_controller == NULL)
 	{
 		_controller = new KeyboardController();
@@ -74,7 +76,7 @@ void Player::update()
 {
 	float dt = GameManager::getInstance()->getDeltaTime();
 
-	_weapon->update();
+	Shooter::update();
 
 	if (_controller)
 	{
@@ -100,7 +102,7 @@ void Player::update()
 
 		if (_controller->isControllerFire())
 		{
-			_weapon->shoot();
+			addShots( getCurrentWeapon()->shoot( this ) );
 		}
 	}
 
@@ -167,13 +169,6 @@ PlayerModel* Player::getPlayerModel() const
 
 
 
-Weapon* Player::getWeapon() const
-{
-	return _weapon;
-}
-
-
-
 void Player::setScore( int score )
 {
 	_score = score;
@@ -191,4 +186,16 @@ int Player::getScore() const
 void Player::addToScore( int value )
 {
 	_score += value;
+}
+
+
+
+void Player::addShots( std::vector<Shot*> shots )
+{
+	TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( GameManager::getInstance()->peekScene() );
+
+	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
+	{
+		currentScene->addPlayerShot( (*it) );
+	}
 }

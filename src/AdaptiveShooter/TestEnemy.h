@@ -13,8 +13,9 @@
 #define TestEnemy_h__
 
 #include "Enemy.h"
+#include "Shooter.h"
 
-class TestEnemy : public Enemy
+class TestEnemy : public Enemy, public Shooter
 {
 public:
 	TestEnemy();
@@ -33,10 +34,13 @@ public:
 
 	virtual void updateStats();
 
+	virtual void addShots( std::vector<Shot*> shots );
+
 protected:
 	
 private:
 	float _multiplier; //Speed multiplier
+	Weapon* _weapon;
 };
 
 #endif // TestEnemy_h__

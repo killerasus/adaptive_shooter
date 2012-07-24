@@ -22,6 +22,7 @@
 #include "Scene.h"
 #include "Enemy.h"
 #include "Shot.h"
+#include "Player.h"
 
 class TestScenePlayer : public Scene
 {
@@ -152,6 +153,14 @@ private:
 	 * @param[in]  enemy	Pointer to enemy hit by the shot
 	 */
 	void computeShotHitEnemy( Shot* shot, Enemy* enemy );
+
+	/**
+	 * Applies damage to Player and updates wave and scene shot variables
+	 * 
+	 * @param[in]	shot
+	 * @param[in]	player
+	 */
+	void computeShotHitPlayer( Shot* shot, Player* player );
 
 #ifdef _DEBUG
 	void createDebugEnemy();

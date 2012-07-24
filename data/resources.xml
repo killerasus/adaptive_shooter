@@ -79,29 +79,29 @@
 
     <!--Shot collision outlines-->
     <section name="shot">
-      <collisionoutline name="shot_000" file="/images/test/collisiondata/shot.out"/>
+      <collisionoutline name="shot_000" file="/images/test/collisiondata/shot_000.out"/>
     </section>
 
     <section name="roundShotSmall">
-      <coillisionoutline name="roundShotSmall_000" file="images/test/collisiondata/roundShotSmall_000.out"/>
-      <coillisionoutline name="roundShotSmall_001" file="images/test/collisiondata/roundShotSmall_001.out"/>
+      <collisionoutline name="roundShotSmall_000" file="/images/test/collisiondata/roundShotSmall_000.out"/>
+      <collisionoutline name="roundShotSmall_001" file="/images/test/collisiondata/roundShotSmall_001.out"/>
     </section>
 
     <section name="roundShotMedium">
-      <coillisionoutline name="roundShotMedium_000" file="images/test/collisiondata/roundShotMedium_000.out"/>
-      <coillisionoutline name="roundShotMedium_001" file="images/test/collisiondata/roundShotMedium_001.out"/>
+      <collisionoutline name="roundShotMedium_000" file="/images/test/collisiondata/roundShotMedium_000.out"/>
+      <collisionoutline name="roundShotMedium_001" file="/images/test/collisiondata/roundShotMedium_001.out"/>
     </section>
 
     <section name="roundShotBig">
-      <coillisionoutline name="roundShotBig_000" file="images/test/collisiondata/roundShotBig_000.out"/>
-      <coillisionoutline name="roundShotBig_001" file="images/test/collisiondata/roundShotBig_001.out"/>
+      <collisionoutline name="roundShotBig_000" file="/images/test/collisiondata/roundShotBig_000.out"/>
+      <collisionoutline name="roundShotBig_001" file="/images/test/collisiondata/roundShotBig_001.out"/>
     </section>
 
     <!--Enemies collision outlines-->
     <section name="enemies">
 
       <section name="enemy1">
-        <collisionoutline name="enemy1_000" file="/images/test/collisiondata/enemy1.out"/>
+        <collisionoutline name="enemy1_000" file="/images/test/collisiondata/enemy1_000.out"/>
       </section>
 
       <section name="enemy2">

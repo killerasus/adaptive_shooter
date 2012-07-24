@@ -13,18 +13,24 @@
 #include "TestEnemy.h"
 #include "GameManager.h"
 #include "PlayerModelImpl.h"
+#include "TestScenePlayer.h"
 
 #include "logog.hpp"
 
-TestEnemy::TestEnemy() : Enemy(), _multiplier(1.0f)
+TestEnemy::TestEnemy() : Enemy(), _multiplier(1.0f), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
 {
-
+	_weapon->setShotSpeed( 0.0f, 300.0f );
+	setCurrentWeapon( _weapon );
 }
 
 
 
-TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ), _multiplier(1.0f)
+TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ),
+	_multiplier(1.0f), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
 {
+	_weapon->setShotSpeed( 0.0f, 300.0f );
+	setCurrentWeapon( _weapon );
+
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
@@ -60,6 +66,7 @@ TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) 
 TestEnemy::~TestEnemy()
 {
 	delete _currentSprite;
+	delete _weapon;
 #ifdef _DEBUG
 	CL_Console::write_line("Enemy deleted");
 #endif
@@ -78,6 +85,8 @@ void TestEnemy::draw()
 
 void TestEnemy::update()
 {
+	Shooter::update();
+
 	float dt = GameManager::getInstance()->getDeltaTime();
 
 	setPositionX( getPosition().x + getSpeed().x * _multiplier * dt * 0.001f );
@@ -104,6 +113,8 @@ void TestEnemy::update()
 			setSpeed( -(speed.x), speed.y ); //Changing movement direction
 		}
 	}
+
+	addShots( _weapon->shoot( this ) );
 }
 
 
@@ -134,5 +145,17 @@ void TestEnemy::updateStats()
 				LOGOG_ERROR( "\nUnknown difficulty: %s\n", perceptedDifficulty );
 			}
 		}
+	}
+}
+
+
+
+void TestEnemy::addShots( std::vector<Shot*> shots )
+{
+	TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( GameManager::getInstance()->peekScene() );
+
+	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
+	{
+		currentScene->addEnemyShot( (*it) );
 	}
 }

@@ -62,7 +62,7 @@ public:
 	 * 
 	 * @return	  int	Amount of damage to be applied
 	 */
-	int getDamage ();
+	int getDamage () const;
 
 protected:
 	

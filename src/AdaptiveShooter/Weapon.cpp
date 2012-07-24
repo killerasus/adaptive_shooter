@@ -16,8 +16,10 @@
 #include "Player.h"
 #include "PlayerModelImpl.h"
 
-Weapon::Weapon( std::string name, std::string shotResource, float delay, int damage /*= 50*/, WeaponLevel level /*= WL_LEVEL_0*/ )
-	: _canShoot( true ), _damage( damage ), _level( level ), _delay( delay ), _timer ( 0.0f ), _name( name ), _shotResource( shotResource )
+Weapon::Weapon( std::string name, std::string shotResource, float delay, int damage /*= 50*/,
+	WeaponLevel level /*= WL_LEVEL_0*/, float speedX /* = 0.0f */, float speedY /* = -300.0f */ )
+	: _canShoot( true ), _damage( damage ), _level( level ), _delay( delay ), _timer ( 0.0f ), _name( name ),
+	_shotResource( shotResource ), _shotSpeed( speedX, speedY )
 {
 
 }
@@ -111,27 +113,26 @@ Weapon::WeaponLevel Weapon::getWeaponLevel() const
 
 
 
-int Weapon::shoot()
+std::vector<Shot*> Weapon::shoot( Entity* entity )
 {
+	std::vector<Shot*> shots;
+
 	if (_canShoot)
 	{
 		TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( GameManager::getInstance()->peekScene() );
-		Player* player = GameManager::getInstance()->getPlayer( 0 );
 
-		if (currentScene != NULL)
+		if (currentScene != NULL )
 		{
-			Shot* newShot = new Shot(player->getPosition().x + player->getCurrentSprite()->get_width()*0.5f,
-				player->getPosition().y, 0.0f, -300.0f, _shotResource, _damage);
+			Shot* newShot = new Shot(entity->getPosition().x + entity->getCurrentSprite()->get_width()*0.5f,
+				entity->getPosition().y, _shotSpeed.x, _shotSpeed.y, _shotResource, _damage);
 
-			currentScene->addPlayerShot( newShot );
+			shots.push_back( newShot );
 
 			setCanShoot( false );
-
-			return 1;
 		}
 	}
 
-	return 0;
+	return shots;
 }
 
 
@@ -143,7 +144,30 @@ void Weapon::setName( std::string name )
 
 
 
-std::string Weapon::getName()
+std::string Weapon::getName() const
 {
 	return _name;
+}
+
+
+
+void Weapon::setShotSpeed( float x, float y )
+{
+	_shotSpeed.x = x;
+	_shotSpeed.y = y;
+}
+
+
+
+void Weapon::setShotSpeed( CL_Vec2f& speed )
+{
+	_shotSpeed = speed;
+}
+
+
+
+
+CL_Vec2f Weapon::getShotSpeed() const
+{
+	return _shotSpeed;
 }
