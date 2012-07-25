@@ -34,8 +34,8 @@ extern "C"
 };
 
 // Logging tool
-#define LOGOG_USE_PREFIX 1
-#include "logog.hpp"
+//#define LOGOG_USE_PREFIX 1
+//#include "logog.hpp"
 
 /**
  * GameManager provides a Singleton interface for manipulating elements common to
@@ -140,9 +140,9 @@ public:
 	/**
 	 * Gets logger
 	 *
-	 * @return	logog::LogFile*	Pointer to logger object
+	 * @return	CL_Logger*	Pointer to logger object
 	 */
-	logog::LogFile* getLogger();
+	CL_Logger* getLogger();
 
 protected:
 	GameManager();
@@ -173,7 +173,8 @@ private:
 
 	static GameManager* _instance;
 
-	logog::LogFile* _loggerFile;
+	//logog::LogFile* _loggerFile;
+	CL_Logger* _loggerFile;
 };
 
 #endif // GameManager_h__

@@ -55,7 +55,7 @@ public:
 #endif
 
 		// Starting logog service
-		LOGOG_INITIALIZE();
+		//LOGOG_INITIALIZE();
 
 		GameManager* manager = GameManager::getInstance();
 		manager->loadResource("../../../../data/resources.xml");
@@ -88,7 +88,7 @@ public:
 #endif
 
 		// Ending logog service
-		LOGOG_SHUTDOWN();
+		//LOGOG_SHUTDOWN();
 
 		return ret;
 	}

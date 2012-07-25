@@ -21,13 +21,13 @@ AIManager::AIManager(lua_State* L):_luaState(L)
 
 AIManager::~AIManager()
 {
-	//TODO: Verify memory leak from PlayerModels
-	/*std::vector<PlayerModel*>::iterator it;
+	std::vector<PlayerModel*>::iterator it;
 
-	for (it = _playerModels.begin(); it != _playerModels.end(); it++)
+	for (it = _playerModels.begin(); it != _playerModels.end(); )
 	{
+		delete (*it);
 		it = _playerModels.erase( it );
-	}*/
+	}
 }
 
 

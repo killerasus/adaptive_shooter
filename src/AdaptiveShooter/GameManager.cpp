@@ -22,10 +22,12 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _resource
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
-	_window = new CL_DisplayWindow("Hello World", 640, 480);
+	_window = new CL_DisplayWindow("Adaptive Shooter - Bruno Baere", 640, 480);
 
 	_aiManager = new AIManager(L);
-	_loggerFile = new logog::LogFile("test.txt");
+	//_loggerFile = new logog::LogFile("test.txt");
+	_loggerFile = new CL_FileLogger("log.txt");
+	_loggerFile->enable();
 	// Player can only be created when there is already a GameManager instantiated
 }
 
@@ -252,7 +254,7 @@ Player* GameManager::getPlayer( unsigned int n )
 void GameManager::setupPlayer( unsigned int n )
 {
 	CL_Rect windowViewPort = _window->get_viewport();
-	_player = new Player( 0.0f, 0.0f, 50.0f, 50.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
+	_player = new Player( 0.0f, 0.0f, 100.0f, 100.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
 	//_player->setupCollisionOutlines();
 	_player->setPositionX( float ((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
 	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
@@ -270,7 +272,6 @@ void GameManager::setupPlayer( unsigned int n )
 
 	// Setting Normal
 	model = new PlayerModelImpl( 0.3f );
-
 	model->setName( "Normal" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, (0.3f + 0.6f)*0.5f );
@@ -286,7 +287,6 @@ void GameManager::setupPlayer( unsigned int n )
 
 	// Setting Hard
 	model = new PlayerModelImpl( 0.3f );
-
 	model->setName( "Hard" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, (0.6f + 1.0f)*0.5f );
@@ -307,7 +307,7 @@ AIManager* GameManager::getAIManager()
 
 
 
-logog::LogFile* GameManager::getLogger()
+CL_Logger* GameManager::getLogger()
 {
 	return _loggerFile;
 }

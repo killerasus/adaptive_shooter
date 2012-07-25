@@ -17,7 +17,7 @@
 Menu::Menu()
 {
 	_sceneState = SS_RUNNING;
-	_entities.push_back(new StaticEntity(0,0,"background_menu"));
+	_entities.push_back(new StaticEntity(0,0,"menu/background_menu"));
 	_menuState = 0;
 }
 
@@ -25,6 +25,7 @@ Menu::~Menu()
 {
 	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); )
 	{
+		delete (*it);
 		it = _entities.erase( it );
 	}
 }

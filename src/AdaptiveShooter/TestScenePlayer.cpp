@@ -18,8 +18,8 @@
 #include "TestEnemy.h"
 
 // Logging tool
-#define LOGOG_USE_PREFIX 1
-#include "logog.hpp"
+//#define LOGOG_USE_PREFIX 1
+//#include "logog.hpp"
 
 extern "C"
 {
@@ -205,9 +205,9 @@ void TestScenePlayer::update()
 		AIManager* aimanager = GameManager::getInstance()->getAIManager();
 		aimanager->update();
 		
-		LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
+		/*LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
 			playerOne->getPlayerNumber() + 1, playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY), model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),
-			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), playerOne->getPlayerModel()->getName().c_str() );
+			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), playerOne->getPlayerModel()->getName().c_str() );*/
 	}
 
 #endif
@@ -401,6 +401,8 @@ void TestScenePlayer::waveFinish()
 	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
 	PlayerModel* model = playerOne->getPlayerModel();
 
+	std::string modelNameBefore = model->getName();
+
 	_livesEndWave = playerOne->getLives();
 	
 	float livesVariation = (float) (_livesEndWave - _livesStartWave) / (float) _livesStartWave ;
@@ -417,10 +419,32 @@ void TestScenePlayer::waveFinish()
 
 	CL_DateTime time = CL_DateTime::get_current_local_time();
 
-	LOGOG_INFO( "\nWave %d Finish: %s\n\nPlayer: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
-		_waveNumber, time.to_long_time_string().c_str(), playerOne->getPlayerNumber() + 1, playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY),
+	std::ostringstream text;
+	text << time.to_long_time_string().c_str();
+	
+	text << "\nWave ";
+	text << _waveNumber;
+	text << " finish\n\n";
+	text << "Player: ";
+	text << playerOne->getPlayerNumber() + 1;
+	text << "\nStats:\n Accuracy ";
+	text << model->getTraitValue(PlayerModelImpl::ACCURACY);
+	text << "\tLives var ";
+	text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+	text << "\tEnemies total ";
+	text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
+	text << "\nModel name before update: ";
+	text << modelNameBefore;
+	text << "\nModel name after update: ";
+	text << model->getName();
+	text << "\n";
+
+	GameManager::getInstance()->getLogger()->log("Update", text.str());
+
+	/*LOGOG_INFO( "\nWave %d Finish: %s\n\nPlayer: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
+		_waveNumber, time.to_long_time_string().c_str(), playerOne->getPlayerNumber() + 1, model->getTraitValue(PlayerModelImpl::ACCURACY),
 		model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),	model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL), model->getName().c_str(),
-		playerOne->getPlayerModel()->getName().c_str() );
+		playerOne->getPlayerModel()->getName().c_str() );*/
 
 	_waveNumber++;
 	_waveOn = false;

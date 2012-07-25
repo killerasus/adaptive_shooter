@@ -15,7 +15,8 @@
 #include "PlayerModelImpl.h"
 #include "TestScenePlayer.h"
 
-#include "logog.hpp"
+#include <sstream>
+//#include "logog.hpp"
 
 TestEnemy::TestEnemy() : Enemy(), _multiplier(1.0f), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
 {
@@ -142,7 +143,13 @@ void TestEnemy::updateStats()
 			} 
 			else
 			{
-				LOGOG_ERROR( "\nUnknown difficulty: %s\n", perceptedDifficulty );
+				//LOGOG_ERROR( "\nUnknown difficulty: %s\n", perceptedDifficulty );
+				std::ostringstream text;
+				text << CL_DateTime().get_current_local_time().to_long_time_string().c_str();
+				text <<"\nUnknown difficulty: ";
+				text << perceptedDifficulty;
+				text << "\n";
+				GameManager::getInstance()->getLogger()->log("Error", text.str());
 			}
 		}
 	}

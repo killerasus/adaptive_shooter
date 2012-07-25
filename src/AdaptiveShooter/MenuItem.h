@@ -20,11 +20,6 @@ class MenuItem : public Entity
 {
 public:
 
-	enum MenuItemState{
-		MIStateNotSelected = 0,
-		MIStateSelected
-	};
-
 	MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id);
 
 	virtual ~MenuItem();
@@ -33,12 +28,24 @@ public:
 
 	virtual void update();
 
+	/**
+	 * Sets if MenuItem is selected
+	 * 
+	 * @param[in]	selected	True if selected, else false
+	 */
+	void setSelected( bool selected );
+
+	/**
+	 * Gets if MenuItem is selected
+	 */
+	bool getSelected();
+
 protected:
 	
 private:
 	CL_Sprite *_selected;
 	CL_Sprite *_notSelected;
-	MenuItemState _state;
+	bool _isSelected;
 };
 
 #endif // MenuItem_h__

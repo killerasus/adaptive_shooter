@@ -19,8 +19,8 @@
 #include "GamepadController.h"
 
 // Logging tool
-#define LOGOG_USE_PREFIX 1
-#include "logog.hpp"
+//#define LOGOG_USE_PREFIX 1
+//#include "logog.hpp"
 
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives )

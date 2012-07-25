@@ -13,18 +13,22 @@
 #include "MenuItem.h"
 #include "GameManager.h"
 
-MenuItem::MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id):
-Entity( x, y )
+MenuItem::MenuItem( float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id ):
+Entity( x, y ), _selected( false )
 {
-	CL_ResourceManager *manager = GameManager::getInstance()->getResourceManager();
-	/** TODO: Implement manager get of sprite resources */
+	GameManager* manager = GameManager::getInstance();
+	CL_GraphicContext gc = manager->getWindow()->get_gc();
+	_notSelected = new CL_Sprite( gc, notSelectedResource_id, manager->getResourceManager() );
+	_selected = new CL_Sprite( gc, notSelectedResource_id, manager->getResourceManager() );
+	_currentSprite = _notSelected;
 }
 
 
 
 MenuItem::~MenuItem()
 {
-
+	delete _notSelected;
+	delete _selected;
 }
 
 
@@ -39,4 +43,20 @@ void MenuItem::draw()
 void MenuItem::update()
 {
 	getCurrentSprite()->update();
+}
+
+
+
+void MenuItem::setSelected( bool selected )
+{
+	_isSelected = selected;
+
+	_currentSprite = _isSelected ? _selected : _notSelected;
+}
+
+
+
+bool MenuItem::getSelected()
+{
+	return _isSelected;
 }
