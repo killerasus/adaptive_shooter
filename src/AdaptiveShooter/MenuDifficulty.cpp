@@ -17,12 +17,14 @@
 #include "MenuDifficulty.h"
 #include "MenuItem.h"
 
-MenuDifficulty::MenuDifficulty() : Menu()
+MenuDifficulty::MenuDifficulty() : Menu(), FadingScene( 0.0f, 1000.f, 0.0f, FadingScene::FM_FADE_OUT ), _isFading( false )
 {
 #ifdef _DEBUG
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font( gc, "Tahoma", 14 );
 #endif // _DEBUG
+
+	
 
 	MenuItem* easy = new MenuItem( 170.f, 5.f, "menu/easy_selected", "menu/easy_notselected" );
 	MenuItem* normal = new MenuItem( 170.f, easy->getPosition().y + easy->getCurrentSprite()->get_height() + 10.f,
@@ -33,9 +35,9 @@ MenuDifficulty::MenuDifficulty() : Menu()
 	easy->setSelected( true );
 
 	// Delegating delete to Scene
-	insertEntity( easy );
-	insertEntity( normal );
-	insertEntity( hard );
+	Scene::insertEntity( easy );
+	Scene::insertEntity( normal );
+	Scene::insertEntity( hard );
 
 	// Inserting into menu items
 	_menuItems.push_back( easy );
@@ -53,12 +55,20 @@ MenuDifficulty::~MenuDifficulty()
 
 
 
-#ifdef _DEBUG
 /*Override*/
 void MenuDifficulty::draw()
 {
-	Menu::draw();
+	if (!_isFading)
+	{
+		Menu::draw();
+	}
+	else
+	{
+		FadingScene::draw();
+	}
 
+
+#ifdef _DEBUG
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 
 	std::ostringstream menuText;
@@ -74,8 +84,23 @@ void MenuDifficulty::draw()
 	float textY = 110.0f;
 
 	_font->draw_text(gc, textX, textY, drawableText, CL_Colorf::red);
-}
 #endif
+}
+
+
+
+/*Override*/
+void MenuDifficulty::update()
+{
+	if (!_isFading)
+	{
+		Menu::update();
+	} 
+	else
+	{
+		FadingScene::update();
+	}
+}
 
 
 
@@ -93,5 +118,5 @@ void MenuDifficulty::ExecuteState()
 		break;
 	}
 
-	changeToNextScene();
+	_isFading = true;
 }

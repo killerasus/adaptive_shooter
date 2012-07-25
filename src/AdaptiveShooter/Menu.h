@@ -20,7 +20,7 @@
 /**
  * Menu is a class for handling menu-like interfaces for changing game options
  */
-class Menu : public Scene
+class Menu : virtual public Scene
 {
 public:
 	Menu();

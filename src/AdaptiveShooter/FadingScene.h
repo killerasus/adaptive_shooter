@@ -17,7 +17,7 @@
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
 
-class FadingScene : public Scene
+class FadingScene : virtual public Scene
 {
 public:
 

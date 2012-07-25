@@ -14,19 +14,20 @@
 
 
 #include "Menu.h"
+#include "FadingScene.h"
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
 
-class MenuDifficulty : public Menu
+class MenuDifficulty : public Menu, public FadingScene
 {
 public:
 
 	MenuDifficulty();
 	virtual ~MenuDifficulty();
 
-#ifdef _DEBUG
 	virtual void draw();
-#endif
+
+	virtual void update();
 
 	virtual void ExecuteState();
 
@@ -39,6 +40,8 @@ private:
 		DIFFICULTY_NORMAL,
 		DIFFICULTY_HARD
 	};
+
+	bool _isFading;
 
 #ifdef _DEBUG
 	CL_Font* _font;

@@ -17,6 +17,8 @@ FadingScene::FadingScene():_fadein(0.0f),_fadeout(0.0f),_waittime(0.0f),_mode(FM
 	_sceneState = SS_RUNNING;
 }
 
+
+
 FadingScene::FadingScene( float fadein, float fadeout, float waittime, FadingMode mode ):_fadein(fadein),_fadeout(fadeout),_waittime(waittime),_mode(mode),_backgroundColor(0,0,0),_timer(0.0f)
 {
 	_sceneState = SS_RUNNING;
@@ -41,20 +43,28 @@ FadingScene::FadingScene( float fadein, float fadeout, float waittime, FadingMod
 	}
 }
 
+
+
 FadingScene::~FadingScene()
 {
 
 }
+
+
 
 void FadingScene::SetBackgroundColor( CL_Color color )
 {
 	_backgroundColor = color;
 }
 
+
+
 CL_Color FadingScene::GetBackgroundColor()
 {
 	return _backgroundColor;
 }
+
+
 
 /* Override */
 void FadingScene::update()
@@ -145,13 +155,15 @@ void FadingScene::update()
 }
 
 
+
 void FadingScene::SetFadeMode( FadingMode mode )
 {
 	_mode = mode;
 }
 
+
+
 FadingScene::FadingMode FadingScene::GetFadeMode()
 {
 	return _mode;
 }
-
