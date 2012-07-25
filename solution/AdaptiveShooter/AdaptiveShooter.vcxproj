@@ -169,6 +169,7 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Menu.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\MenuDifficulty.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\MenuItem.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\Player.cpp" />
     <ClCompile Include="..\..\src\AdaptiveShooter\PlayerModelImpl.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="..\..\src\AdaptiveShooter\KeyboardController.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\MenuDifficulty.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\MenuItem.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\Player.h" />
     <ClInclude Include="..\..\src\AdaptiveShooter\PlayerModelImpl.h" />

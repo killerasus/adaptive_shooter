@@ -22,7 +22,11 @@ Scene::Scene()
 
 Scene::~Scene()
 {
-
+	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); )
+	{
+		delete (*it);
+		it = _entities.erase( it );
+	}
 }
 
 
@@ -36,16 +40,7 @@ void Scene::insertEntity( Entity* entity)
 
 void Scene::removeEntity( Entity* entity )
 {
-	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
-	{
-		if ( (*it) == entity )
-		{
-			_entities.remove(*it);
-			break;
-		}
-	}
-
-	return;
+	_entities.remove( entity );
 }
 
 
@@ -107,5 +102,5 @@ void Scene::changeToNextScene()
 {
 	GameManager* manager = GameManager::getInstance();
 	manager->popScene();
-	manager->pushScene(_nextScene);
+	manager->pushScene( _nextScene );
 }

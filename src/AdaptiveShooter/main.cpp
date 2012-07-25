@@ -28,6 +28,7 @@
 #include "GameManager.h"
 #include "FadingScene.h"
 #include "Menu.h"
+#include "MenuDifficulty.h"
 #include "TestScene.h"
 #include "TestScenePlayer.h"
 #include "StaticEntity.h"
@@ -48,42 +49,68 @@ public:
 
 		for( unsigned int i = 0; i < args.size(); i++ )
 		{
-			CL_Console::write( "[%1] = %2\t", i, args[i] );
+			CL_Console::write( "[%1] = %2\n", i, args[i] );
 		}
 
 		CL_Console::write_line("");
 #endif
 
-		// Starting logog service
-		//LOGOG_INITIALIZE();
+		int ret = 0;
 
-		GameManager* manager = GameManager::getInstance();
-		manager->loadResource("../../../../data/resources.xml");
-		manager->setupPlayer(0);
+#ifdef _DEBUG
+		try
+		{
+#endif
+	
+			// Starting logog service
+			//LOGOG_INITIALIZE();
+	
+			GameManager* manager = GameManager::getInstance();
+			manager->loadResource("../../../../data/resources.xml");
+			manager->setupPlayer(0);
+	
+			//Splash screen
+			FadingScene* splashScreen = new FadingScene( 2000.0f, 2000.0f, 4000.0f, FadingScene::FM_FADE_INOUT );
+			StaticEntity* newEntity = new StaticEntity( 0.0f, 0.0f, "scenes/logo" );
+			splashScreen->insertEntity( newEntity );
+	
+			//Menu screen
+			MenuDifficulty* difficultyMenu = new MenuDifficulty();
+	
+			//Test scene
+			TestScenePlayer* newTest = new TestScenePlayer();
+	
+			difficultyMenu->setNextScene( newTest );
+			splashScreen->setNextScene( difficultyMenu );
+			manager->pushScene( splashScreen );
+	
+			/* Main game loop */
+			ret = manager->loop();
+	
+			delete newTest;
+			delete splashScreen;
+			delete manager;
+#ifdef _DEBUG
+		}
+		catch(CL_Exception &exception)
+		{
+			// Create a console window for text-output if not available
+			CL_ConsoleWindow console("Console", 80, 160);
+			CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
+			console.display_close_message();
 
-		//Splash screen
-		FadingScene newScene(2000.0f, 2000.0f, 4000.0f, FadingScene::FM_FADE_INOUT);
-		StaticEntity* newEntity = new StaticEntity(0.0f, 0.0f, "scenes/logo");
-		newScene.insertEntity(newEntity);
+			return -1;
+		}
+		/*catch(...)
+		{
+			CL_ConsoleWindow console("Console", 80, 160);
+			CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
+			console.display_close_message()
+			return -1;
+		}*/
+#endif
 
-		//Menu screen
-		//Menu mainMenu();
-
-		//Test scene
-		TestScenePlayer* newTest = new TestScenePlayer();
-
-		newScene.setNextScene(newTest);
-
-		manager->pushScene(&newScene);
-
-		/* Main game loop */
-		int ret = manager->loop();
-
-		delete newTest;
-		delete manager;
-		delete newEntity;
-
-#if _DEBUG
+#ifdef _DEBUG
 		console.display_close_message();
 #endif
 

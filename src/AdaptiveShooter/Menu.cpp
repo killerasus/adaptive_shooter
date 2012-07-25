@@ -13,22 +13,28 @@
 #include "Menu.h"
 #include "GameManager.h"
 #include "StaticEntity.h"
+#include "GamepadController.h"
+#include "KeyboardController.h"
 
-Menu::Menu()
+Menu::Menu() : Scene(), _menuState( 0 ), _controller( GamepadController::getNewGamepad( 0 ) ), _inputDelay( 100.f ),
+	_inputeTimer( 0.0f ), _canExecute( true )
 {
 	_sceneState = SS_RUNNING;
-	_entities.push_back(new StaticEntity(0,0,"menu/background_menu"));
-	_menuState = 0;
+	
+	if (_controller == NULL)
+	{
+		_controller = new KeyboardController();
+	}
 }
+
+
 
 Menu::~Menu()
 {
-	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); )
-	{
-		delete (*it);
-		it = _entities.erase( it );
-	}
+	delete _controller;
 }
+
+
 
 /* Override */
 void Menu::update()
@@ -38,53 +44,76 @@ void Menu::update()
 		(*it)->update();
 	}
 
-	//Insert code for menu state transition
-	CL_InputContext ic = GameManager::getInstance()->getWindow()->get_ic();
-	CL_InputDevice keyboard = ic.get_keyboard();
-	CL_InputDevice joystick = ic.get_joystick();
-
-	if (keyboard.get_keycode(CL_KEY_DOWN))
+	if (!_canExecute)
 	{
+		float dt = GameManager::getInstance()->getDeltaTime();
+		_inputeTimer += dt;
+
+		if (_inputeTimer >= _inputDelay)
+		{
+			_canExecute = true;
+			_inputeTimer = 0.0f;
+		}
+		else
+		{
+			return;
+		}
+	}
+
+	if (_controller->isControllerDown())
+	{
+		_canExecute = false;
 		StateDown();
 	}
 
-	if (keyboard.get_keycode(CL_KEY_UP))
+	if (_controller->isControllerUp())
 	{
+		_canExecute = false;
 		StateUp();
 	}
 
-	if (keyboard.get_keycode(CL_KEY_ENTER))
+	if (_controller->isControllerFire())
 	{
+		_canExecute = false;
 		ExecuteState();
 	}
 }
+
+
 
 /* Override */
 void Menu::draw()
 {
 	Scene::draw();
-
-	//Specific drawing code for _menuOptions and _menuPointer
-
 }
+
+
+
+unsigned int Menu::getMenuState() const
+{
+	return _menuState;
+}
+
+
 
 void Menu::StateDown()
 {
 	if ( _menuState < _menuItems.size() - 1 )
 	{
-		_menuState++;
+		_menuItems[_menuState]->setSelected( false );
+		++_menuState;
+		_menuItems[_menuState]->setSelected( true );
 	}
 }
+
+
 
 void Menu::StateUp()
 {
 	if ( _menuState > 0 )
 	{
-		_menuState--;
+		_menuItems[_menuState]->setSelected( false );
+		--_menuState;
+		_menuItems[_menuState]->setSelected( true );
 	}
-}
-
-void Menu::ExecuteState()
-{
-
 }

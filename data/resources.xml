@@ -79,13 +79,13 @@
     </sprite>
 
     <sprite name="normal_selected">
-      <image file="/images/test/normal_selected.png">
+      <image file="/images/test/medium_selected.png">
         <grid size="300,150" array="1,1"/>
       </image>
     </sprite>
 
     <sprite name="normal_notselected">
-      <image file="/images/test/normal_notselected.png">
+      <image file="/images/test/medium_notselected.png">
         <grid size="300,150" array="1,1"/>
       </image>
     </sprite>

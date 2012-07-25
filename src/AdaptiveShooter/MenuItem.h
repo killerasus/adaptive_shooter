@@ -20,7 +20,15 @@ class MenuItem : public Entity
 {
 public:
 
-	MenuItem(float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id);
+	/**
+	 * Constructor
+	 * 
+	 * @param[in]	x						x axis position
+	 * @param[in]	y						y axis position
+	 * @param[in]	selectedResource_id		Selected image resource
+	 * @param[in]	notSelectedResource_id	Not selected image resource
+	 */
+	MenuItem(float x, float y, std::string selectedResource_id, std::string notSelectedResource_id);
 
 	virtual ~MenuItem();
 

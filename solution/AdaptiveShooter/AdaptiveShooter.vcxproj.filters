@@ -117,6 +117,9 @@
     <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\AdaptiveShooter\MenuDifficulty.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h">
       <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AdaptiveShooter\MenuDifficulty.h">
+      <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

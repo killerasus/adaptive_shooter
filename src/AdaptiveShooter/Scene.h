@@ -27,6 +27,10 @@ public:
 	};
 
 	Scene();
+
+	/**
+	 * Calls each of _entities destructor
+	 */
 	virtual ~Scene();
 
 	virtual void draw();
@@ -41,7 +45,7 @@ public:
 	void insertEntity(Entity* entity);
 
 	/**
-	 *	Removes an Entity from the control list.
+	 *	Removes an Entity from the control list. Does not call entity's destructor.
 	 * 
 	 * @param[in]  entity	Pointer to entity to remove
 	 */

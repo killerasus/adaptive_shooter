@@ -13,13 +13,13 @@
 #include "MenuItem.h"
 #include "GameManager.h"
 
-MenuItem::MenuItem( float x, float y, std::string notSelectedResource_id, std::string SelectedResource_id ):
-Entity( x, y ), _selected( false )
+MenuItem::MenuItem( float x, float y, std::string selectedResource_id, std::string notSelectedResource_id ):
+Entity( x, y ), _isSelected( false )
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_notSelected = new CL_Sprite( gc, notSelectedResource_id, manager->getResourceManager() );
-	_selected = new CL_Sprite( gc, notSelectedResource_id, manager->getResourceManager() );
+	_selected = new CL_Sprite( gc, selectedResource_id, manager->getResourceManager() );
 	_currentSprite = _notSelected;
 }
 
