@@ -13,6 +13,7 @@
 #include "GameManager.h"
 #include "luafunctions.h"
 #include "PlayerModelImpl.h"
+#include "StaticEntity.h"
 
 GameManager* GameManager::_instance = 0;
 
@@ -22,6 +23,7 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _resource
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
+	// Creates window
 	_window = new CL_DisplayWindow("Adaptive Shooter - Bruno Baere", 640, 480);
 
 	_aiManager = new AIManager(L);
@@ -67,6 +69,12 @@ int GameManager::loop()
 			}
 
 			update();
+
+			if (_quit)
+			{
+				return 0;
+			}
+
 			draw();
 
 			// Read messages from the windowing system message queue, if any are available:
@@ -133,7 +141,7 @@ void GameManager::draw()
 {
 	_window->get_gc().clear(CL_Colorf::black);
 
-	if (!_sceneStack.empty())
+	if (!_sceneStack.empty() && _sceneStack.top() != NULL)
 	{
 		_sceneStack.top()->draw();
 	}
@@ -154,7 +162,7 @@ void GameManager::update()
 	_last_time = _current_time;
 
 	//Update
-	if (!_sceneStack.empty())
+	if (!_sceneStack.empty() && _sceneStack.top() != NULL)
 	{
 		_sceneStack.top()->update();
 	} 
@@ -221,12 +229,15 @@ void GameManager::getLuaState( lua_State* l )
 void GameManager::cleanUp()
 {
 	delete _aiManager;
+	_aiManager = NULL;
 
 	lua_close(L);
-
 	L = NULL;
 
+	delete _gameOverScene;
+	_gameOverScene = NULL;
 	delete _resourceManager;
+	_resourceManager = NULL;
 
 	/** @TODO: Check if there is memory leak */
 	/*while(!_sceneStack.empty())
@@ -236,6 +247,7 @@ void GameManager::cleanUp()
 
 	// Closes log operation
 	delete _loggerFile;
+	_loggerFile = NULL;
 
 	delete _window;
 	_window = NULL;
@@ -296,6 +308,12 @@ void GameManager::setupPlayer( unsigned int n )
 
 	_aiManager->addPlayerModel( model );
 	_aiManager->setCurrentPlayerModel( _player->getPlayerModel() );
+
+	// TODO: Should not be here!!!!
+	_gameOverScene = new FadingScene( 2000.0f, 2000.0f, 2000.0f, FadingScene::FM_FADE_INOUT );
+	StaticEntity* newEntity = new StaticEntity( 0.0f, 0.0f, "scenes/gameover" ); // Fading scene deletes this
+	newEntity->setAlpha( 0.0f );
+	_gameOverScene->insertEntity( newEntity );
 }
 
 
@@ -310,4 +328,12 @@ AIManager* GameManager::getAIManager()
 CL_Logger* GameManager::getLogger()
 {
 	return _loggerFile;
+}
+
+
+
+
+FadingScene* GameManager::getGameOverScene()
+{
+	return _gameOverScene;
 }

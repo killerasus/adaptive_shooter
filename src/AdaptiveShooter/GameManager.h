@@ -25,6 +25,7 @@
 #endif
 
 #include "Scene.h"
+#include "FadingScene.h"
 #include "AIManager/AIManager.h"
 #include "Player.h"
 
@@ -144,6 +145,13 @@ public:
 	 */
 	CL_Logger* getLogger();
 
+	/**
+	 * Gets the GameOver scene
+	 * 
+	 * @return	FadingScene*	Game over, man, game over
+	 */
+	FadingScene* getGameOverScene();
+
 protected:
 	GameManager();
 	virtual void draw();
@@ -172,6 +180,8 @@ private:
 	Player* _player;
 
 	static GameManager* _instance;
+
+	FadingScene* _gameOverScene;
 
 	//logog::LogFile* _loggerFile;
 	CL_Logger* _loggerFile;

@@ -26,7 +26,7 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
 	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", 500) ),
-	_controller( GamepadController::getNewGamepad( 0 ) )
+	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimer( 500.f ), _incibilityAlpha( 0.f )
 {
 	setCurrentWeapon( _weapon );
 

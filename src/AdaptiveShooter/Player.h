@@ -129,6 +129,9 @@ private:
 	std::string _spriteResourceKey;
 	Weapon* _weapon;
 	ControllerInterface* _controller;
+	bool _invincible;
+	float _invincibilityTimer;
+	float _incibilityAlpha;
 };
 
 #endif // Player_h__

@@ -57,10 +57,10 @@ public:
 
 		int ret = 0;
 
-#ifdef _DEBUG
+
 		try
 		{
-#endif
+
 	
 			// Starting logog service
 			//LOGOG_INITIALIZE();
@@ -71,7 +71,7 @@ public:
 	
 			//Splash screen
 			FadingScene* splashScreen = new FadingScene( 2000.0f, 2000.0f, 4000.0f, FadingScene::FM_FADE_INOUT );
-			StaticEntity* newEntity = new StaticEntity( 0.0f, 0.0f, "scenes/logo" );
+			StaticEntity* newEntity = new StaticEntity( 0.0f, 0.0f, "scenes/logo" ); // Fading scene deletes this
 			splashScreen->insertEntity( newEntity );
 	
 			//Menu screen
@@ -90,7 +90,7 @@ public:
 			delete newTest;
 			delete splashScreen;
 			delete manager;
-#ifdef _DEBUG
+
 		}
 		catch(CL_Exception &exception)
 		{
@@ -108,7 +108,7 @@ public:
 			console.display_close_message()
 			return -1;
 		}*/
-#endif
+
 
 #ifdef _DEBUG
 		console.display_close_message();

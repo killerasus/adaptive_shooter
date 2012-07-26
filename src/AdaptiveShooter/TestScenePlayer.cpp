@@ -119,6 +119,13 @@ void TestScenePlayer::update()
 	float dt = manager->getDeltaTime();
 	PlayerModel* model = playerOne->getPlayerModel();
 
+	if (playerOne->getLives() <= 0)
+	{
+		setNextScene( manager->getGameOverScene() );
+		changeToNextScene();
+		return;
+	}
+
 	// Checks if there is any wave in progress
 	if (!_waveOn)
 	{
@@ -365,6 +372,9 @@ void TestScenePlayer::computeShotsCollision()
 			computeShotHitPlayer( (*shotIt), playerOne );
 			Shot* shotRemove = *shotIt;
 			shotIt++;
+
+			playerOne->subtractLives( 1 );
+
 			removeEnemyShot( shotRemove );
 			delete ( shotRemove );
 		}

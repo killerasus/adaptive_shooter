@@ -13,7 +13,7 @@
 #include "Scene.h"
 #include "GameManager.h"
 
-Scene::Scene()
+Scene::Scene() : _nextScene( NULL )
 {
 
 }

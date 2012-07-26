@@ -16,7 +16,7 @@
 #include "GamepadController.h"
 #include "KeyboardController.h"
 
-Menu::Menu() : Scene(), _menuState( 0 ), _controller( GamepadController::getNewGamepad( 0 ) ), _inputDelay( 100.f ),
+Menu::Menu() : Scene(), _menuState( 0 ), _controller( GamepadController::getNewGamepad( 0 ) ), _inputDelay( 200.f ),
 	_inputeTimer( 0.0f ), _canExecute( true )
 {
 	_sceneState = SS_RUNNING;
