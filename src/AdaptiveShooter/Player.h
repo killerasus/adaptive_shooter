@@ -120,6 +120,20 @@ public:
 
 	virtual void addShots( std::vector<Shot*> shots );
 
+	/**
+	 * Gets invincibility
+	 * 
+	 * @return	bool	True if invincible, false otherwise
+	 */
+	bool getInvincible();
+
+	/**
+	 * Enable or disable invincibility
+	 * 
+	 * @param[in]	status
+	 */
+	void setInvincible( bool status );
+
 protected:
 private:
 	unsigned int _playerNumber;
@@ -130,8 +144,16 @@ private:
 	Weapon* _weapon;
 	ControllerInterface* _controller;
 	bool _invincible;
+	float _invincibilityTimerBase;
 	float _invincibilityTimer;
 	float _incibilityAlpha;
+
+	/**
+	 * Updates invincibility timer
+	 * 
+	 * @param[in]	dt	Time delta since last update
+	 */
+	void updateInvincibility( float dt );
 };
 
 #endif // Player_h__

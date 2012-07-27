@@ -368,12 +368,11 @@ void TestScenePlayer::computeShotsCollision()
 
 		if (shot->collide( *object ))
 		{
-			// TODO: Cause damage to player
-			computeShotHitPlayer( (*shotIt), playerOne );
+			if (!playerOne->getInvincible())
+				computeShotHitPlayer( (*shotIt), playerOne );
+
 			Shot* shotRemove = *shotIt;
 			shotIt++;
-
-			playerOne->subtractLives( 1 );
 
 			removeEnemyShot( shotRemove );
 			delete ( shotRemove );
@@ -531,7 +530,8 @@ void TestScenePlayer::computeShotHitEnemy( Shot* shot, Enemy* enemy )
 
 void TestScenePlayer::computeShotHitPlayer( Shot* shot, Player* player )
 {
-	//TODO:
+	player->subtractLives( 1 );
+	player->setInvincible( true );
 }
 
 

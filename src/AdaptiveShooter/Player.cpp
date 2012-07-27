@@ -26,7 +26,8 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
 	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", 500) ),
-	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimer( 500.f ), _incibilityAlpha( 0.f )
+	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimerBase(1500.0f),
+	_invincibilityTimer( 0.f ), _incibilityAlpha( 0.f )
 {
 	setCurrentWeapon( _weapon );
 
@@ -77,6 +78,8 @@ void Player::update()
 	float dt = GameManager::getInstance()->getDeltaTime();
 
 	Shooter::update();
+
+	updateInvincibility(dt);
 
 	if (_controller)
 	{
@@ -197,5 +200,46 @@ void Player::addShots( std::vector<Shot*> shots )
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
 	{
 		currentScene->addPlayerShot( (*it) );
+	}
+}
+
+
+
+bool Player::getInvincible()
+{
+	return _invincible;
+}
+
+
+
+void Player::setInvincible( bool status )
+{
+	_invincible = status;
+
+	if (_invincible)
+	{
+		_invincibilityTimer = 0.0f;
+		_currentSprite->set_alpha( 0.5f );
+	}
+	else
+	{
+		_currentSprite->set_alpha( 1.0f );
+	}
+}
+
+
+
+void Player::updateInvincibility( float dt )
+{
+	if (_invincible)
+	{
+		if (_invincibilityTimer >= _invincibilityTimerBase)
+		{
+			setInvincible( false );
+		}
+		else
+		{
+			_invincibilityTimer += dt;
+		}
 	}
 }
