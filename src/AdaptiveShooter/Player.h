@@ -146,7 +146,7 @@ private:
 	bool _invincible;
 	float _invincibilityTimerBase;
 	float _invincibilityTimer;
-	float _incibilityAlpha;
+	float _alphaFlash;
 
 	/**
 	 * Updates invincibility timer

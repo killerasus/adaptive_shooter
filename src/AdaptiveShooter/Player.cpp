@@ -27,7 +27,7 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
 	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", 500) ),
 	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimerBase(1500.0f),
-	_invincibilityTimer( 0.f ), _incibilityAlpha( 0.f )
+	_invincibilityTimer( 0.f ), _alphaFlash( 0.5f )
 {
 	setCurrentWeapon( _weapon );
 
@@ -219,10 +219,12 @@ void Player::setInvincible( bool status )
 	if (_invincible)
 	{
 		_invincibilityTimer = 0.0f;
-		_currentSprite->set_alpha( 0.5f );
+		_alphaFlash = 0.5f;
+		_currentSprite->set_alpha( _alphaFlash );
 	}
 	else
 	{
+		_alphaFlash = 1.0f;
 		_currentSprite->set_alpha( 1.0f );
 	}
 }
@@ -231,6 +233,8 @@ void Player::setInvincible( bool status )
 
 void Player::updateInvincibility( float dt )
 {
+	static int direction = 1;
+
 	if (_invincible)
 	{
 		if (_invincibilityTimer >= _invincibilityTimerBase)
@@ -240,6 +244,24 @@ void Player::updateInvincibility( float dt )
 		else
 		{
 			_invincibilityTimer += dt;
+
+			_alphaFlash = _alphaFlash + direction*dt*0.01f;
+
+			if (_alphaFlash <= 0.0f)
+			{
+				direction = -direction;
+				_alphaFlash = 0.0f;
+			}
+			else
+			{
+				if (_alphaFlash >= 1.0f)
+				{
+					direction = -direction;
+					_alphaFlash = 1.0f;
+				}
+			}
+
+			_currentSprite->set_alpha( _alphaFlash );
 		}
 	}
 }
