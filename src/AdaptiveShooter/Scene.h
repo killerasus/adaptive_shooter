@@ -72,6 +72,13 @@ public:
 	 */
 	void setNextScene(Scene* next);
 
+	/**
+	 * Inserts an entity into the post update delete list
+	 * 
+	 * @param[in]	entity	Entity to be deleted
+	 */
+	void pushEntityToDelete(Entity* entity);
+
 protected:
 	/**
 	 * Changes to the next scene in the stack
@@ -79,6 +86,7 @@ protected:
 	void changeToNextScene();
 
 	std::list< Entity* > _entities; // List of scene Entities (Enemies, etc.)
+	std::list< Entity* > _deleteEntities; // List of Entities to be deleted after update
 	SceneState _sceneState;
 	Scene *_nextScene;
 private:

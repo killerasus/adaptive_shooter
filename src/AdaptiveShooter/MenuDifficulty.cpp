@@ -74,7 +74,7 @@ void MenuDifficulty::draw()
 	std::ostringstream menuText;
 	menuText.precision( 4 );
 
-	for (int i = 0; i < _menuItems.size(); i++)
+	for (unsigned int i = 0; i < _menuItems.size(); i++)
 	{
 		menuText << "Menu item " << i << " state: " << _menuItems[i]->getSelected() << std::endl;
 	}

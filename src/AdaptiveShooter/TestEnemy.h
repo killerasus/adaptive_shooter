@@ -39,7 +39,6 @@ public:
 protected:
 	
 private:
-	float _multiplier; //Speed multiplier
 	Weapon* _weapon;
 };
 

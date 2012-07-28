@@ -18,7 +18,7 @@
 #include <sstream>
 //#include "logog.hpp"
 
-TestEnemy::TestEnemy() : Enemy(), _multiplier(1.0f), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
+TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
 {
 	_weapon->setShotSpeed( 0.0f, 300.0f );
 	setCurrentWeapon( _weapon );
@@ -27,7 +27,7 @@ TestEnemy::TestEnemy() : Enemy(), _multiplier(1.0f), _weapon( new Weapon( "Stand
 
 
 TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ),
-	_multiplier(1.0f), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
+	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
 {
 	_weapon->setShotSpeed( 0.0f, 300.0f );
 	setCurrentWeapon( _weapon );
@@ -47,7 +47,7 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 
 
 
-TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed), _multiplier(1.0f)
+TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed)
 {
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();

@@ -61,6 +61,15 @@
       <animation speed="100" loop="yes" pingpong="no" />
     </sprite>
     
+    <!--Explosion sprites-->
+
+    <sprite name="explosionMedium">
+      <image file="/images/test/explosionMedium.png">
+        <grid size="89,89" array="10,1"/>
+      </image>
+      <animation speed="100" loop="no" pingpong="no" />
+    </sprite>
+    
 	</section>
 
   <!-- Menu thinghies -->

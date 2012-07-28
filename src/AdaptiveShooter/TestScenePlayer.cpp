@@ -16,6 +16,7 @@
 #include "GameManager.h"
 #include "PlayerModelImpl.h"
 #include "TestEnemy.h"
+#include "Explosion.h"
 
 // Logging tool
 //#define LOGOG_USE_PREFIX 1
@@ -475,6 +476,10 @@ void TestScenePlayer::validateEnemies()
 		{
 			_enemiesTotalWasted++;
 			_enemiesWaveWasted++;
+
+			insertEntity( new Explosion( enemy->getPosition().x + enemy->getCurrentSprite()->get_width()*0.5f,
+				enemy->getPosition().y + enemy->getCurrentSprite()->get_height()*0.5f, enemy->getSpeed().x*enemy->getMultiplier(),
+				enemy->getSpeed().y*enemy->getMultiplier(), "sprites/explosionMedium" ) );
 
 			removeEntity( enemy );
 			enemyIt = _enemies.erase( enemyIt );

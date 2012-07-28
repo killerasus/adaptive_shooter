@@ -91,6 +91,7 @@ void Shot::update()
 {
 	float dt = GameManager::getInstance()->getDeltaTime();
 	setPosition( getPosition().x + getSpeed().x * dt * 0.001f, getPosition().y + getSpeed().y * dt * 0.001f );
+	_currentSprite->update();
 }
 
 

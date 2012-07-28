@@ -77,8 +77,15 @@ public:
 	 */
 	int getHealth();
 
+	/**
+	 * Gets the multiplier value
+	 * 
+	 * @return	float	The multiplier value
+	 */
+	float getMultiplier();
+
 protected:
-	
+	float _multiplier; //Speed multiplier
 private:
 	int _points; // Score points value
 	int _health; // Health points

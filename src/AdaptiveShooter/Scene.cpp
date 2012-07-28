@@ -80,6 +80,14 @@ void Scene::update()
 	{
 		(*it)->update();
 	}
+
+	// Deletes entities pushed into _deleteEntities list
+	for ( std::list<Entity*>::iterator it = _deleteEntities.begin(); it!= _deleteEntities.end(); it++)
+	{
+		removeEntity( (*it) );
+	}
+
+	_deleteEntities.clear();
 }
 
 
@@ -103,4 +111,11 @@ void Scene::changeToNextScene()
 	GameManager* manager = GameManager::getInstance();
 	manager->popScene();
 	manager->pushScene( _nextScene );
+}
+
+
+
+void Scene::pushEntityToDelete( Entity* entity )
+{
+	_deleteEntities.push_back( entity );
 }
