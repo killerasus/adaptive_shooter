@@ -16,5 +16,11 @@ scene = {
 	{	{"sprites/enemy1", 40, 40, 100, 200, "TestEnemy"},
 		{"sprites/enemy1", 80, 80, 100, 200, "TestEnemy"},
 		{"sprites/enemy1", 120, 120, 100, 200, "TestEnemy"}
+	},
+	-- Wave 3
+	{
+		{"sprites/enemy1", 40, 40, 100, 200, "TestEnemy"},
+		{"sprites/enemy1", 80, 80, 100, 200, "TestEnemy"},
+		{"sprites/enemy1", 120, 120, 100, 200, "TestEnemy"}
 	}
 }
