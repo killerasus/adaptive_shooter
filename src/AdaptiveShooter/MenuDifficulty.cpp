@@ -106,17 +106,31 @@ void MenuDifficulty::update()
 
 void MenuDifficulty::ExecuteState()
 {
+	AIManager* aiManager = GameManager::getInstance()->getAIManager();
+	std::vector<PlayerModel*> *playerModels = aiManager->copyPlayerModelVector();
+
 	switch (getMenuState())
 	{
 	case DIFFICULTY_EASY:
+		aiManager->setCurrentReferenceModel( (*playerModels)[0] );
+		aiManager->getCurrentPlayerModel()->setName("Easy");
+		aiManager->getCurrentPlayerModel()->setTraitsToReferenceAverage( (*playerModels)[0] );
 		break;
 	case DIFFICULTY_NORMAL:
+		aiManager->setCurrentReferenceModel( (*playerModels)[1] );
+		aiManager->getCurrentPlayerModel()->setName("Normal");
+		aiManager->getCurrentPlayerModel()->setTraitsToReferenceAverage( (*playerModels)[1] );
 		break;
 	case DIFFICULTY_HARD:
+		aiManager->setCurrentReferenceModel( (*playerModels)[2] );
+		aiManager->getCurrentPlayerModel()->setName("Hard");
+		aiManager->getCurrentPlayerModel()->setTraitsToReferenceAverage( (*playerModels)[2] );
 		break;
 	default:
 		break;
 	}
 
+	aiManager->updateAgents();
 	_isFading = true;
+	delete playerModels;
 }

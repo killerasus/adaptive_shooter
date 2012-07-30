@@ -126,7 +126,12 @@ public:
 	 * 
 	 * @return	  std::vector<PlayerModel*>*	Returns a copy of the player model vector. Caller must delete.
 	 */
-	std::vector<PlayerModel*>* getPlayerModelVector () const;
+	std::vector<PlayerModel*>* copyPlayerModelVector () const;
+
+	/**
+	 * Calls each AIAgent's updateStats to keep up with PlayerModel changes
+	 */
+	void updateAgents();
 
 protected:
 

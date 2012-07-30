@@ -294,8 +294,8 @@ void GameManager::setupPlayer( unsigned int n )
 	_aiManager->addPlayerModel( model );
 
 	// TODO: Set the model to player choice
-	_aiManager->setCurrentReferenceModel( model ); //Sets normal as the reference
-	_player->getPlayerModel()->setName("Normal");
+	//_aiManager->setCurrentReferenceModel( model ); //Sets normal as the reference
+	//_player->getPlayerModel()->setName("Normal");
 
 	// Setting Hard
 	model = new PlayerModelImpl( 0.3f );

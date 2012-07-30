@@ -171,7 +171,14 @@ public:
 	 * @param	  comparable	The player model to compare to
 	 * @return	  float			0 if the models match, < 0 if current model is under the comparable, > 0 if current model is above
 	 */
-	virtual float compare(PlayerModel* comparable) = 0;
+	virtual float compare( PlayerModel* comparable ) = 0;
+
+	/**
+	 * Sets player model traits to the average of the reference
+	 * 
+	 * @param[in]	referenced	Referenced model
+	 */
+	void setTraitsToReferenceAverage( PlayerModel* referenced );
 protected:
 
 private:

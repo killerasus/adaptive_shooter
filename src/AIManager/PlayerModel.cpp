@@ -10,6 +10,7 @@
 	purpose:	Interface class for player model used in AIManager framework
 *********************************************************************/
 #include "PlayerModel.h"
+#include <assert.h>
 
 PlayerModel::PlayerModel( unsigned int numberOfTraits, float learningRate ):_traits( numberOfTraits ), _learningRate( learningRate )
 {
@@ -171,4 +172,15 @@ void PlayerModel::setLearningRate( float rate )
 float PlayerModel::getLearningRate() const
 {
 	return _learningRate;
+}
+
+
+
+void PlayerModel::setTraitsToReferenceAverage( PlayerModel* referenced )
+{
+	for (unsigned int i = 0; i < referenced->getNumberOfTraits(); i++)
+	{
+		float average = 0.5f * ( referenced->getTraitMaximum( i ) + referenced->getTraitMinimum( i ) );
+		setTraitValue( i , average );
+	}
 }

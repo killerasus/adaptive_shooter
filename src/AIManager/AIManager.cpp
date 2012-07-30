@@ -188,7 +188,17 @@ bool AIManager::removePlayerModel( PlayerModel* model )
 
 
 
-std::vector<PlayerModel*>* AIManager::getPlayerModelVector() const
+std::vector<PlayerModel*>* AIManager::copyPlayerModelVector() const
 {
 	return new std::vector<PlayerModel*>( _playerModels );
+}
+
+
+
+void AIManager::updateAgents()
+{
+	for (std::vector<AIAgent*>::iterator it = _aiAgents.begin(); it != _aiAgents.end(); it++ )
+	{
+		(*it)->updateStats();
+	}
 }

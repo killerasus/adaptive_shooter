@@ -567,6 +567,9 @@ void TestScenePlayer::createWave( int i )
 		TestEnemy* enemy = new TestEnemy(desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource);
 		addWaveEnemy(enemy);
 	}
+
+	// Updates enemies to match current observed player model
+	GameManager::getInstance()->getAIManager()->updateAgents();
 }
 
 
