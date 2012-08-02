@@ -565,6 +565,7 @@ void TestScenePlayer::createWave( int i )
 	{
 		EnemyDescription desc = wave.enemies[i];
 		TestEnemy* enemy = new TestEnemy(desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource);
+		enemy->setBehavior( Enemy::SHOOT | Enemy::GOHORIZONTAL );
 		addWaveEnemy(enemy);
 	}
 

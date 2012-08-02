@@ -39,7 +39,10 @@ public:
 protected:
 	
 private:
+
 	Weapon* _weapon;
+
+	void correctHorizontalMovement();
 };
 
 #endif // TestEnemy_h__

@@ -3,7 +3,7 @@
 --[[ 
  scene table = { 1 or more waves }
  wave table = { 1 or more enemies }
- enemy table = { sprite resource, start x, start y, speed x, speed y, class }
+ enemy table = { sprite resource, start x, start y, speed x, speed y, behavior }
 ]]--
 
 scene = {

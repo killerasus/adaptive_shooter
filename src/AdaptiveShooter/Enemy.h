@@ -19,6 +19,18 @@
 class Enemy : public DynamicEntity, public AIAgent
 {
 public:
+
+	enum EnemyBehavior{
+		DONTSHOOT = 0,
+		SHOOT = 1,
+		GODOWN = 2,
+		GOHORIZONTAL = 4,
+		GOSINUSOID = 8
+	};
+
+	/**
+	 * Constructor
+	 */
 	Enemy();
 
 	/**
@@ -84,8 +96,21 @@ public:
 	 */
 	float getMultiplier();
 
+	/**
+	 * Gets the enemy's behavior
+	 * 
+	 * @return	  Enemy::EnemyBehavior	The current behavior
+	 */
+	unsigned int getBehavior();
+
+	/**
+	 * Sets the enemy behavior
+	 */
+	void setBehavior( unsigned int behavior );
+
 protected:
 	float _multiplier; //Speed multiplier
+	unsigned int _behavior;
 private:
 	int _points; // Score points value
 	int _health; // Health points

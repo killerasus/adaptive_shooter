@@ -90,32 +90,16 @@ void TestEnemy::update()
 
 	float dt = GameManager::getInstance()->getDeltaTime();
 
-	setPositionX( getPosition().x + getSpeed().x * _multiplier * dt * 0.001f );
-	CL_Vec2f position = getPosition();
-
-	CL_Size windowSize = GameManager::getInstance()->getWindow()->get_gc().get_size();
-	CL_Size spriteSize = getCurrentSprite()->get_size();
-
-	//Checks if sprite is trying to get outside window view to the right
-
-	if (position.x + spriteSize.width > windowSize.width)
+	if((_behavior & EnemyBehavior::GOHORIZONTAL) == EnemyBehavior::GOHORIZONTAL)
 	{
-		setPositionX( (float)(windowSize.width - spriteSize.width) );
-		CL_Vec2f speed = getSpeed();
-		setSpeed( -(speed.x), speed.y ); //Changing movement direction
-	}
-	else
-	{
-		//Checks if sprite is trying to get outside window view to the left
-		if (position.x < 0.0f)
-		{
-			setPositionX( 0.0f );
-			CL_Vec2f speed = getSpeed();
-			setSpeed( -(speed.x), speed.y ); //Changing movement direction
-		}
+		setPositionX( getPosition().x + getSpeed().x * _multiplier * dt * 0.001f );
+		correctHorizontalMovement();
 	}
 
-	addShots( _weapon->shoot( this ) );
+	if ((_behavior & EnemyBehavior::SHOOT) == EnemyBehavior::SHOOT)
+	{
+		addShots( _weapon->shoot( this ) );
+	}
 }
 
 
@@ -164,5 +148,31 @@ void TestEnemy::addShots( std::vector<Shot*> shots )
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
 	{
 		currentScene->addEnemyShot( (*it) );
+	}
+}
+
+void TestEnemy::correctHorizontalMovement()
+{
+	CL_Vec2f position = getPosition();
+
+	CL_Size windowSize = GameManager::getInstance()->getWindow()->get_gc().get_size();
+	CL_Size spriteSize = getCurrentSprite()->get_size();
+
+	//Checks if sprite is trying to get outside window view to the right
+	if (position.x + spriteSize.width > windowSize.width)
+	{
+		setPositionX( (float)(windowSize.width - spriteSize.width) );
+		CL_Vec2f speed = getSpeed();
+		setSpeed( -(speed.x), speed.y ); //Changing movement direction
+	}
+	else
+	{
+		//Checks if sprite is trying to get outside window view to the left
+		if (position.x < 0.0f)
+		{
+			setPositionX( 0.0f );
+			CL_Vec2f speed = getSpeed();
+			setSpeed( -(speed.x), speed.y ); //Changing movement direction
+		}
 	}
 }

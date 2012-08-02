@@ -16,7 +16,7 @@
 #include <ClanLib/core.h>
 
 
-Enemy::Enemy() : DynamicEntity(), AIAgent(), _health( 50 ), _points( 0 ), _multiplier( 1.0f )
+Enemy::Enemy() : DynamicEntity(), AIAgent(), _health( 50 ), _points( 0 ), _multiplier( 1.0f ), _behavior( DONTSHOOT )
 {
 
 }
@@ -24,7 +24,7 @@ Enemy::Enemy() : DynamicEntity(), AIAgent(), _health( 50 ), _points( 0 ), _multi
 
 
 Enemy::Enemy( float x, float y, float speedX, float speedY, int health, int points ) : DynamicEntity( x, y, speedX, speedY ),
-	AIAgent(), _health ( health ), _points( points ), _multiplier( 1.0f )
+	AIAgent(), _health ( health ), _points( points ), _multiplier( 1.0f ), _behavior( DONTSHOOT )
 {
 
 }
@@ -32,7 +32,7 @@ Enemy::Enemy( float x, float y, float speedX, float speedY, int health, int poin
 
 
 Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed, int health, int points ) : DynamicEntity ( position, speed ),
-	AIAgent(), _health( health ), _points( points ), _multiplier( 1.0f )
+	AIAgent(), _health( health ), _points( points ), _multiplier( 1.0f ), _behavior( DONTSHOOT )
 {
 
 }
@@ -77,4 +77,18 @@ int Enemy::getHealth()
 float Enemy::getMultiplier()
 {
 	return _multiplier;
+}
+
+
+
+unsigned int Enemy::getBehavior()
+{
+	return _behavior;
+}
+
+
+
+void Enemy::setBehavior( unsigned int behavior )
+{
+	_behavior = behavior;
 }
