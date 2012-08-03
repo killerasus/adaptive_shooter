@@ -104,45 +104,45 @@ public:
 	/**
 	 * Sets trait with values
 	 * 
-	 * @param	  trait		The trait position in the collection
-	 * @param	  minimum	Minimum value
-	 * @param	  maximum	Maximum value
-	 * @param	  weight	Weight value
-	 * @param	  value		Current value
+	 * @param	  trait			The trait position in the collection
+	 * @param	  minimum		Minimum value
+	 * @param	  maximum		Maximum value
+	 * @param	  weight		Weight value
+	 * @param	  newValue		Current value
 	 */
-	void setTrait(unsigned int trait, float minimum, float maximum, float weight, float value);
+	void setTrait(unsigned int trait, float minimum, float maximum, float weight, float newValue);
 
 	/**
 	 * Sets trait with new value
 	 * 
-	 * @param[in] trait	The trait position in the collection
-	 * @param[in] value	New trait value
+	 * @param[in] trait		The trait position in the collection
+	 * @param[in] newValue	New trait value
 	 */
-	void setTraitValue( unsigned int trait, float value );
+	void setTraitValue( unsigned int trait, float newValue );
 
 	/**
 	 * Sets trait minimum with new value
 	 * 
-	 * @param[in] trait	The trait position in the collection
-	 * @param[in] value	New trait minimum value
+	 * @param[in] trait		The trait position in the collection
+	 * @param[in] newValue		New trait minimum value
 	 */
-	void setTraitMinimum( unsigned int trait, float value );
+	void setTraitMinimum( unsigned int trait, float newValue );
 
 	/**
 	 * Sets trait maximum with new value
 	 * 
-	 * @param[in] trait	The trait position in the collection
-	 * @param[in] value	New trait maximum value
+	 * @param[in] trait		The trait position in the collection
+	 * @param[in] newValue	New trait maximum value
 	 */
-	void setTraitMaximum( unsigned int trait, float value );
+	void setTraitMaximum( unsigned int trait, float newValue );
 
 	/**
 	 * Sets trait weight
 	 * 
-	 * @param	  trait	The trait position in the collection
-	 * @param	  value	New trait weight value
+	 * @param[in]  trait	The trait position in the collection
+	 * @param[in]  newValue	New trait weight value
 	 */
-	void setTraitWeight( unsigned int trait, float value );
+	void setTraitWeight( unsigned int trait, float newValue );
 
 	/**
 	 * Gets the number of traits observed
@@ -168,8 +168,8 @@ public:
 	/**
 	 * Compares the current model to a reference model under a tolerance.
 	 * 
-	 * @param	  comparable	The player model to compare to
-	 * @return	  float			0 if the models match, < 0 if current model is under the comparable, > 0 if current model is above
+	 * @param[in]	comparable		The player model to compare to
+	 * @return		float			0 if the models match, < 0 if current model is under the comparable, > 0 if current model is above
 	 */
 	virtual float compare( PlayerModel* comparable ) = 0;
 

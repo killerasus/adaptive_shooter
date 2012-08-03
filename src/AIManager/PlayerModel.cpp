@@ -56,19 +56,7 @@ void PlayerModel::updateTrait( unsigned int trait, float observedValue )
 	float delta = observedValue - currentValue;
 	float weightedDelta = _learningRate * delta;
 
-	_traits[trait]._currentValue += weightedDelta;
-
-	if(_traits[trait]._currentValue > 1.0f)
-	{
-		_traits[trait]._currentValue = 1.0f;
-	}
-	else
-	{
-		if (_traits[trait]._currentValue < 0.0f)
-		{
-			_traits[trait]._currentValue = 0.0f;
-		}
-	}
+	setTraitValue( trait, _traits[trait]._currentValue + weightedDelta );
 }
 
 
@@ -109,9 +97,9 @@ float PlayerModel::getTraitWeight( unsigned int trait ) const
 
 
 
-void PlayerModel::setTrait( unsigned int trait, float minimum, float maximum, float weight, float value )
+void PlayerModel::setTrait( unsigned int trait, float minimum, float maximum, float weight, float newValue )
 {
-	setTraitValue( trait, value );
+	setTraitValue( trait, newValue );
 	setTraitMinimum( trait, minimum );
 	setTraitMaximum( trait, maximum );
 	setTraitWeight( trait, weight );
@@ -119,16 +107,16 @@ void PlayerModel::setTrait( unsigned int trait, float minimum, float maximum, fl
 
 
 
-void PlayerModel::setTraitValue( unsigned int trait, float value )
+void PlayerModel::setTraitValue( unsigned int trait, float newValue )
 {
 	// Trimming the value to range.
-	if (value >= 0.0f && value <= 1.0f)
+	if (newValue >= 0.0f && newValue <= 1.0f)
 	{
-		_traits[trait]._currentValue = value;
+		_traits[trait]._currentValue = newValue;
 	}
 	else
 	{
-		if (value > 1.0f)
+		if (newValue > 1.0f)
 		{
 			_traits[trait]._currentValue = 1.0f;
 		}
@@ -141,23 +129,23 @@ void PlayerModel::setTraitValue( unsigned int trait, float value )
 
 
 
-void PlayerModel::setTraitMinimum( unsigned int trait, float value )
+void PlayerModel::setTraitMinimum( unsigned int trait, float newValue )
 {
-	_traits[trait]._minValue = value;
+	_traits[trait]._minValue = newValue;
 }
 
 
 
-void PlayerModel::setTraitMaximum( unsigned int trait, float value )
+void PlayerModel::setTraitMaximum( unsigned int trait, float newValue )
 {
-	_traits[trait]._maxValue = value;
+	_traits[trait]._maxValue = newValue;
 }
 
 
 
-void PlayerModel::setTraitWeight( unsigned int trait, float value )
+void PlayerModel::setTraitWeight( unsigned int trait, float newWeight )
 {
-	_traits[trait]._weight = value;
+	_traits[trait]._weight = newWeight;
 }
 
 

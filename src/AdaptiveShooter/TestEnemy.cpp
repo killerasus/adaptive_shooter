@@ -112,18 +112,21 @@ void TestEnemy::updateStats()
 	if (perceptedDifficulty == "Easy")
 	{
 		_multiplier = 0.5f;
+		_weapon->setDelay( _weapon->getDelay()/_multiplier );
 	} 
 	else
 	{
 		if (perceptedDifficulty == "Normal")
 		{
 			_multiplier = 1.0f;
+			_weapon->setDelay( _weapon->getDelay()/_multiplier );
 		}
 		else
 		{
 			if (perceptedDifficulty == "Hard")
 			{
 				_multiplier = 1.5f;
+				_weapon->setDelay( _weapon->getDelay()/_multiplier );
 			} 
 			else
 			{
