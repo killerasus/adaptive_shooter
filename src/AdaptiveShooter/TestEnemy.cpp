@@ -96,6 +96,11 @@ void TestEnemy::update()
 		correctHorizontalMovement();
 	}
 
+	if((_behavior & EnemyBehavior::GODOWN) == EnemyBehavior::GODOWN)
+	{
+		setPositionY( getPosition().y + getSpeed().y * _multiplier * dt * 0.001f );
+	}
+
 	if ((_behavior & EnemyBehavior::SHOOT) == EnemyBehavior::SHOOT)
 	{
 		addShots( _weapon->shoot( this ) );

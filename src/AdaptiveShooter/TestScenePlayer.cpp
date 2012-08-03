@@ -564,9 +564,9 @@ void TestScenePlayer::createWave( int i )
 	for (unsigned int i = 0; i < wave.enemies.size(); i++)
 	{
 		EnemyDescription desc = wave.enemies[i];
-		TestEnemy* enemy = new TestEnemy(desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource);
-		enemy->setBehavior( Enemy::SHOOT | Enemy::GOHORIZONTAL );
-		addWaveEnemy(enemy);
+		TestEnemy* enemy = new TestEnemy( desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource );
+		enemy->setBehavior( desc.behavior );
+		addWaveEnemy( enemy );
 	}
 
 	// Updates enemies to match current observed player model
@@ -649,11 +649,11 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 						desc.speedY = (float) lua_tonumber( l, -1 );
 						lua_pop( l, 1 );
 
-						// Getting class
-						lua_pushinteger( l, EDD_CLASS );
+						// Getting behavior
+						lua_pushinteger( l, EDD_BEHAVIOR );
 						lua_gettable( l, -2 );
 
-						desc.instanceClass = lua_tostring( l, -1 );
+						desc.behavior = (unsigned int) lua_tonumber( l, -1 );
 						lua_pop( l, 1 );
 
 						wave.enemies.push_back( desc );

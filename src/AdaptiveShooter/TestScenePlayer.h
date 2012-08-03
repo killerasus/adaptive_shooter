@@ -35,7 +35,7 @@ public:
 		float startPositionY;
 		float speedX;
 		float speedY;
-		std::string instanceClass;
+		unsigned int behavior;
 	};
 
 	// Used for storing data from Lua scene descriptor
@@ -51,7 +51,7 @@ public:
 		EDD_START_Y,
 		EDD_SPEED_X,
 		EDD_SPEED_Y,
-		EDD_CLASS
+		EDD_BEHAVIOR
 	};
 
 	TestScenePlayer();
