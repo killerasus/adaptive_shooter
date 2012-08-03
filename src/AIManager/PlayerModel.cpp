@@ -62,6 +62,13 @@ void PlayerModel::updateTrait( unsigned int trait, float observedValue )
 	{
 		_traits[trait]._currentValue = 1.0f;
 	}
+	else
+	{
+		if (_traits[trait]._currentValue < 0.0f)
+		{
+			_traits[trait]._currentValue = 0.0f;
+		}
+	}
 }
 
 
