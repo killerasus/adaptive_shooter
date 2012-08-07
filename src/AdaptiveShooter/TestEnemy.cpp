@@ -16,6 +16,7 @@
 #include "TestScenePlayer.h"
 
 #include <sstream>
+#include <cmath>
 //#include "logog.hpp"
 
 TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
@@ -92,8 +93,24 @@ void TestEnemy::update()
 
 	if((_behavior & EnemyBehavior::GOHORIZONTAL) == EnemyBehavior::GOHORIZONTAL)
 	{
+		float before = getPosition().x;
 		setPositionX( getPosition().x + getSpeed().x * _multiplier * dt * 0.001f );
+		float after = getPosition().x;
+
+		_currentAmplitude +=  fabs(after - before);
+
 		correctHorizontalMovement();
+
+		// Checks Sinusoid movement
+		if ((_behavior & EnemyBehavior::GOSINUSOID) == EnemyBehavior::GOSINUSOID)
+		{
+			if (_currentAmplitude >= _amplitudeLimit)
+			{
+				CL_Vec2f speed = getSpeed();
+				setSpeed( -(speed.x), speed.y ); //Changing movement direction
+				_currentAmplitude = 0.0f;
+			}
+		}
 	}
 
 	if((_behavior & EnemyBehavior::GODOWN) == EnemyBehavior::GODOWN)
@@ -159,6 +176,8 @@ void TestEnemy::addShots( std::vector<Shot*> shots )
 	}
 }
 
+
+
 void TestEnemy::correctHorizontalMovement()
 {
 	CL_Vec2f position = getPosition();
@@ -172,6 +191,7 @@ void TestEnemy::correctHorizontalMovement()
 		setPositionX( (float)(windowSize.width - spriteSize.width) );
 		CL_Vec2f speed = getSpeed();
 		setSpeed( -(speed.x), speed.y ); //Changing movement direction
+		_currentAmplitude = 0.0f;
 	}
 	else
 	{
@@ -181,6 +201,7 @@ void TestEnemy::correctHorizontalMovement()
 			setPositionX( 0.0f );
 			CL_Vec2f speed = getSpeed();
 			setSpeed( -(speed.x), speed.y ); //Changing movement direction
+			_currentAmplitude = 0.0f;
 		}
 	}
 }

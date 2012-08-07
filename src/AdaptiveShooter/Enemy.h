@@ -108,9 +108,15 @@ public:
 	 */
 	void setBehavior( unsigned int behavior );
 
+	void setAmplitudeLimit( float limit );
+
+	float getAmplitudeLimit();
+
 protected:
-	float _multiplier; //Speed multiplier
+	float _multiplier; // Speed multiplier
 	unsigned int _behavior;
+	float _amplitudeLimit; // For sinusoid behavior
+	float _currentAmplitude;
 private:
 	int _points; // Score points value
 	int _health; // Health points

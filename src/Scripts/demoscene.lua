@@ -40,5 +40,11 @@ scene = {
 		{"sprites/enemy1", 40, 40, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
 		{"sprites/enemy1", 80, 80, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
 		{"sprites/enemy1", 120, 120, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot}
+	},
+	-- Wave 4
+	{
+		{"sprites/enemy1", 40, 40, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", 80, 80, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", 120, 120, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot}
 	}
 }
