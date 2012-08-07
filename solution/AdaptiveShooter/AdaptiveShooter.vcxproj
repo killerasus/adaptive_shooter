@@ -212,6 +212,7 @@
     <None Include="..\..\data\resources.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="..\..\src\Scripts\config.lua" />
     <None Include="..\..\src\Scripts\demoscene.lua" />
     <None Include="..\..\src\Scripts\test.lua" />
   </ItemGroup>

@@ -125,6 +125,11 @@ private:
 	void computeShotsCollision();
 
 	/**
+	 * Computes collision between players and Enemies
+	 */
+	void computePlayerEnemyCollision();
+
+	/**
 	 * Begins wave variables
 	 */
 	void waveBegin();
@@ -161,6 +166,14 @@ private:
 	 * @param[in]	player
 	 */
 	void computeShotHitPlayer( Shot* shot, Player* player );
+
+	/**
+	 * Applies damage to Player and updates wave and scene variables
+	 * 
+	 * @param[in]  player	Player to test against
+	 * @param[in]  enemy	Enemy to collide
+	 */
+	void computePlayerEnemyCollisionDamage( Player* player, Enemy* enemy );
 
 #ifdef _DEBUG
 	void createDebugEnemy();

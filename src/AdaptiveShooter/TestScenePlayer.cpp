@@ -226,6 +226,9 @@ void TestScenePlayer::update()
 	// Treat playerShots and enemyShots collision and out of bounds
 	computeShotsCollision();
 
+	// Treat player-enemy collisions
+	computePlayerEnemyCollision();
+
 	// Checks if any enemy is dead or out of bounds
 	validateEnemies();
 }
@@ -391,6 +394,42 @@ void TestScenePlayer::computeShotsCollision()
 
 
 
+void TestScenePlayer::computePlayerEnemyCollision()
+{
+	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+	std::vector< Enemy* >::iterator enemyIt;
+
+	CL_CollisionOutline* playerOutline = NULL;
+	CL_CollisionOutline* enemyOutline = NULL;
+
+	// As currently there is just one player...
+	playerOutline = playerOne->getCurrentCollisionOutline();
+	// Translation is set to the current player position
+	playerOutline->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
+
+	// Enemies colliding with player
+	for(enemyIt = _enemies.begin(); enemyIt != _enemies.end(); )
+	{
+		enemyOutline = (*enemyIt)->getCurrentCollisionOutline();
+
+		CL_Vec2f pos = (*enemyIt)->getPosition();
+		enemyOutline->set_translation(pos.x, pos.y);
+
+		if (enemyOutline->collide( *playerOutline ))
+		{
+			if (!playerOne->getInvincible())
+				computePlayerEnemyCollisionDamage( playerOne, (*enemyIt) );
+		}
+		
+		enemyOutline->set_translation(0.0f, 0.0f);
+		enemyIt++;
+	}
+
+	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
+	playerOutline->set_translation(0.0f, 0.0f);
+}
+
+
 
 void TestScenePlayer::waveBegin()
 {
@@ -535,6 +574,16 @@ void TestScenePlayer::computeShotHitEnemy( Shot* shot, Enemy* enemy )
 
 void TestScenePlayer::computeShotHitPlayer( Shot* shot, Player* player )
 {
+	player->subtractLives( 1 );
+	player->setInvincible( true );
+}
+
+
+
+void TestScenePlayer::computePlayerEnemyCollisionDamage( Player* player, Enemy* enemy )
+{
+	// TODO: check if Enemy is of Boss subtype. Bosses should not die on player contact.
+	enemy->setHealth( 0 );
 	player->subtractLives( 1 );
 	player->setInvincible( true );
 }

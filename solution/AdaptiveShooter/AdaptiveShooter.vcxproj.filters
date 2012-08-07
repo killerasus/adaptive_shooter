@@ -205,5 +205,8 @@
     <None Include="..\..\src\Scripts\demoscene.lua">
       <Filter>Script Files</Filter>
     </None>
+    <None Include="..\..\src\Scripts\config.lua">
+      <Filter>Script Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

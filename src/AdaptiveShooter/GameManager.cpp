@@ -265,14 +265,66 @@ Player* GameManager::getPlayer( unsigned int n )
 
 void GameManager::setupPlayer( unsigned int n )
 {
+	float startSpeedX = 100.0f;
+	float startSpeedY = 100.0f;
+	std::string resource = "sprites/rwing";
+	unsigned int lives = 3;
+	float learningRate = 0.3f;
+
+	int loadResult = luaL_dofile( L, "../../../../src/Scripts/config.lua" );
+
+	if (!loadResult)
+	{
+		lua_getglobal( L, "Player" );
+
+		if (lua_istable( L, -1 ))
+		{
+			lua_getfield( L, -1, "SpeedX");
+			startSpeedX = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "SpeedY");
+			startSpeedY = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "LearningRate");
+			learningRate = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "Resource");
+			resource = lua_tostring( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "Lives");
+			lives = (unsigned int) lua_tointeger( L, -1 );
+			lua_pop( L, 1 );
+		}
+		else
+		{
+			// Create a console window for text-output if not available
+			CL_ConsoleWindow console( "Console", 80, 160 );
+			CL_Console::write_line( "Could not load Player from config.lua" );
+		}
+
+		// Pops Player table
+		lua_pop( L, 1 );
+	}
+	else
+	{
+		// Create a console window for text-output if not available
+		CL_ConsoleWindow console( "Console", 80, 160 );
+		CL_Console::write_line( "Could not load config.lua" );
+	}
+	
+
 	CL_Rect windowViewPort = _window->get_viewport();
-	_player = new Player( 0.0f, 0.0f, 100.0f, 100.0f, n, "sprites/rwing", new PlayerModelImpl( 0.3f ), 3 );
+	_player = new Player( 0.0f, 0.0f, startSpeedX, startSpeedY, n, resource, new PlayerModelImpl( learningRate ), lives );
 	//_player->setupCollisionOutlines();
 	_player->setPositionX( float ((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
 	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
 
 	// Setting Easy
-	PlayerModelImpl* model = new PlayerModelImpl( 0.3f );
+	PlayerModelImpl* model = new PlayerModelImpl( learningRate );
 	model->setName( "Easy" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, (0.0f + 0.3f)*0.5f );
@@ -283,7 +335,7 @@ void GameManager::setupPlayer( unsigned int n )
 	_aiManager->addPlayerModel( model );
 
 	// Setting Normal
-	model = new PlayerModelImpl( 0.3f );
+	model = new PlayerModelImpl( learningRate );
 	model->setName( "Normal" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, (0.3f + 0.6f)*0.5f );
@@ -294,7 +346,7 @@ void GameManager::setupPlayer( unsigned int n )
 	_aiManager->addPlayerModel( model );
 
 	// Setting Hard
-	model = new PlayerModelImpl( 0.3f );
+	model = new PlayerModelImpl( learningRate );
 	model->setName( "Hard" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, (0.6f + 1.0f)*0.5f );
