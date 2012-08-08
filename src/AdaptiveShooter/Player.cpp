@@ -161,6 +161,11 @@ void Player::subtractLives(unsigned int val)
 	{
 		_lives = 0;
 	}
+
+	if (_lives == 1)
+	{
+		GameManager::getInstance()->playSoundEffect( GameManager::SFX_WARNING );
+	}
 }
 
 
@@ -200,6 +205,11 @@ void Player::addShots( std::vector<Shot*> shots )
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
 	{
 		currentScene->addPlayerShot( (*it) );
+	}
+
+	if (shots.size() > 0)
+	{
+		GameManager::getInstance()->playSoundEffect(GameManager::SFX_BLASTER);
 	}
 }
 

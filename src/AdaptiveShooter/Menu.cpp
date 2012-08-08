@@ -16,7 +16,7 @@
 #include "GamepadController.h"
 #include "KeyboardController.h"
 
-Menu::Menu() : Scene(), _menuState( 0 ), _controller( GamepadController::getNewGamepad( 0 ) ), _inputDelay( 200.f ),
+Menu::Menu() : Scene(), _menuState( 0 ), _controller( GamepadController::getNewGamepad( 0 ) ), _inputDelay( 250.f ),
 	_inputeTimer( 0.0f ), _canExecute( true )
 {
 	_sceneState = SS_RUNNING;
@@ -75,6 +75,7 @@ void Menu::update()
 	if (_controller->isControllerFire())
 	{
 		_canExecute = false;
+		GameManager::getInstance()->playSoundEffect( GameManager::SFX_MENU_SELECT );
 		ExecuteState();
 	}
 }
@@ -100,6 +101,7 @@ void Menu::StateDown()
 {
 	if ( _menuState < _menuItems.size() - 1 )
 	{
+		GameManager::getInstance()->playSoundEffect( GameManager::SFX_MENU_PICK );
 		_menuItems[_menuState]->setSelected( false );
 		++_menuState;
 		_menuItems[_menuState]->setSelected( true );
@@ -112,6 +114,7 @@ void Menu::StateUp()
 {
 	if ( _menuState > 0 )
 	{
+		GameManager::getInstance()->playSoundEffect( GameManager::SFX_MENU_PICK );
 		_menuItems[_menuState]->setSelected( false );
 		--_menuState;
 		_menuItems[_menuState]->setSelected( true );

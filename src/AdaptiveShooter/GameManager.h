@@ -17,6 +17,9 @@
 
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
+#include "ClanLib/sound.h"
+#include "ClanLib/mikmod.h"
+#include "ClanLib/vorbis.h"
 
 #ifdef _GL1
 	#include "ClanLib/gl1.h"
@@ -45,6 +48,26 @@ extern "C"
 class GameManager
 {
 public:
+
+	// Enum for accessing sound effects
+	enum SoundEffects{
+		SFX_ATTENTION = 0,
+		SFX_PREPARE,
+		SFX_WARNING,
+		SFX_MENU_SELECT,
+		SFX_MENU_PICK,
+		SFX_LASER_1,
+		SFX_LASER_3,
+		SFX_BLASTER,
+		SFX_EXPLOSION,
+		SFX_VECTOR_SIZE
+	};
+
+	// Enum for accessing musics
+	enum Musics{
+		STAGE_1 = 0,
+		MUSIC_VECTOR_SIZE
+	};
 
 	static GameManager* getInstance();
 	virtual ~GameManager();
@@ -152,6 +175,22 @@ public:
 	 */
 	FadingScene* getGameOverScene();
 
+	void playSoundEffect( SoundEffects sound );
+
+	bool poolSoundEffect( SoundEffects sound );
+
+	void stopSoundEffect( SoundEffects sound );
+
+	void playMusic( Musics music );
+
+	bool poolMusic( Musics music );
+
+	void stopMusic( Musics music );
+
+	void loadSoundEffects();
+
+	void loadMusics();
+
 protected:
 	GameManager();
 	virtual void draw();
@@ -159,6 +198,10 @@ protected:
 private:
 	CL_SetupCore setup_core;
 	CL_SetupDisplay setup_display;
+	CL_SetupSound setup_sound;
+	CL_SetupMikMod setup_mikmod;
+	CL_SetupVorbis setup_vorbis;
+	CL_SoundOutput sound_output;
 #ifdef _GL1
 	CL_SetupGL1 setup_gl;
 #else
@@ -185,6 +228,11 @@ private:
 
 	//logog::LogFile* _loggerFile;
 	CL_Logger* _loggerFile;
+
+	std::vector<CL_SoundBuffer> _soundEffects;
+	std::vector<CL_SoundBuffer_Session> _soundEffectSessions;
+	std::vector<CL_SoundBuffer> _musics;
+	std::vector<CL_SoundBuffer_Session> _musicSessions;
 };
 
 #endif // GameManager_h__

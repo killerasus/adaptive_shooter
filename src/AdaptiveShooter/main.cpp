@@ -79,7 +79,14 @@ public:
 	
 			//Test scene
 			TestScenePlayer* newTest = new TestScenePlayer();
-	
+
+			//Ending scene
+			FadingScene* ending = new FadingScene( 2000.0f, 2000.0f, 2000.0f, FadingScene::FM_FADE_INOUT );
+			newEntity = new StaticEntity( 0.0f, 0.0f, "scenes/congratulations" ); // Fading scene deletes this
+			newEntity->setAlpha( 0.0f );
+			ending->insertEntity( newEntity );
+			
+			newTest->setNextScene( ending );
 			difficultyMenu->setNextScene( newTest );
 			splashScreen->setNextScene( difficultyMenu );
 			manager->pushScene( splashScreen );
@@ -89,6 +96,7 @@ public:
 	
 			delete newTest;
 			delete splashScreen;
+			delete ending;
 			delete manager;
 
 		}

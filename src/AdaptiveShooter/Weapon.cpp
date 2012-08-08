@@ -125,7 +125,7 @@ std::vector<Shot*> Weapon::shoot( Entity* entity )
 		{
 			Shot* newShot = new Shot(entity->getPosition().x + entity->getCurrentSprite()->get_width()*0.5f,
 				entity->getPosition().y, _shotSpeed.x, _shotSpeed.y, _shotResource, _damage);
-
+			newShot->setPositionX( newShot->getPosition().x - newShot->getCurrentSprite()->get_width()*0.5f );
 			shots.push_back( newShot );
 
 			setCanShoot( false );

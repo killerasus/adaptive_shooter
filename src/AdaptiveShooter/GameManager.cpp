@@ -17,7 +17,8 @@
 
 GameManager* GameManager::_instance = 0;
 
-GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _resourceManager(0), _quit(false), _player(0)
+GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sound(), setup_mikmod(), setup_vorbis(),
+	sound_output(44100), _resourceManager( 0 ), _quit( false ), _player( 0 )
 {
 	L = lua_open();
 	luaL_openlibs(L);
@@ -31,6 +32,10 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), _resource
 	_loggerFile = new CL_FileLogger("log.txt");
 	_loggerFile->enable();
 	// Player can only be created when there is already a GameManager instantiated
+
+	// Loads sounds and prepare
+	loadSoundEffects();
+	loadMusics();
 }
 
 
@@ -320,8 +325,8 @@ void GameManager::setupPlayer( unsigned int n )
 	CL_Rect windowViewPort = _window->get_viewport();
 	_player = new Player( 0.0f, 0.0f, startSpeedX, startSpeedY, n, resource, new PlayerModelImpl( learningRate ), lives );
 	//_player->setupCollisionOutlines();
-	_player->setPositionX( float ((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
-	_player->setPositionY(float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
+	_player->setPositionX( float((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
+	_player->setPositionY( float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
 
 	// Setting Easy
 	PlayerModelImpl* model = new PlayerModelImpl( learningRate );
@@ -384,4 +389,79 @@ CL_Logger* GameManager::getLogger()
 FadingScene* GameManager::getGameOverScene()
 {
 	return _gameOverScene;
+}
+
+
+
+void GameManager::playSoundEffect( SoundEffects sound )
+{
+	_soundEffectSessions[sound] = _soundEffects[sound].play();
+}
+
+
+
+bool GameManager::poolSoundEffect( SoundEffects sound )
+{
+	return _soundEffectSessions[sound].is_playing();
+}
+
+
+
+
+void GameManager::stopSoundEffect( SoundEffects sound )
+{
+	if (poolSoundEffect( sound ))
+	{
+		_soundEffectSessions[sound].stop();
+	}
+}
+
+
+
+void GameManager::playMusic( Musics music )
+{
+	_musicSessions[music] = _musics[music].play();
+}
+
+
+
+bool GameManager::poolMusic( Musics music )
+{
+	return _musicSessions[music].is_playing();
+}
+
+
+
+void GameManager::stopMusic( Musics music )
+{
+	if (poolMusic( music ))
+	{
+		_musicSessions[music].stop();
+	}
+}
+
+
+
+void GameManager::loadSoundEffects()
+{
+	_soundEffectSessions.resize( SFX_VECTOR_SIZE );
+
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Attention.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/PrepareForAction.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Warning.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Select.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Pick.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser1.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser3.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/slimeball.wav" ) );
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Explosion.wav" ) );
+}
+
+
+
+void GameManager::loadMusics()
+{
+	_musicSessions.resize( MUSIC_VECTOR_SIZE );
+
+	_musics.push_back( CL_SoundBuffer( "../../../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
 }

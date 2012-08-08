@@ -24,8 +24,6 @@ MenuDifficulty::MenuDifficulty() : Menu(), FadingScene( 0.0f, 1000.f, 0.0f, Fadi
 	_font = new CL_Font( gc, "Tahoma", 14 );
 #endif // _DEBUG
 
-	
-
 	MenuItem* easy = new MenuItem( 170.f, 5.f, "menu/easy_selected", "menu/easy_notselected" );
 	MenuItem* normal = new MenuItem( 170.f, easy->getPosition().y + easy->getCurrentSprite()->get_height() + 10.f,
 		"menu/normal_selected", "menu/normal_notselected" );
@@ -133,4 +131,6 @@ void MenuDifficulty::ExecuteState()
 	aiManager->updateAgents();
 	_isFading = true;
 	delete playerModels;
+
+	GameManager::getInstance()->playMusic( GameManager::STAGE_1 );
 }

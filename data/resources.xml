@@ -172,6 +172,10 @@
     <sprite name="gameover">
       <image file="/images/test/gameover.png"></image>
     </sprite>
+
+    <sprite name="congratulations">
+      <image file="/images/test/congratulations.png"></image>
+    </sprite>
 		
 	</section>
   

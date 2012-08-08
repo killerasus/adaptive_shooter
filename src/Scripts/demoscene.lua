@@ -9,12 +9,13 @@ Behaviors:
 8 - Go sinusoid down
 --]]
 
-Behavior = {}
-Behavior.Static = 0
-Behavior.Shoot = 1
-Behavior.GoDown = 2
-Behavior.GoHorizontal = 4
-Behavior.GoSinusoidDown = 8
+Behavior = {
+	Static = 0,
+	Shoot = 1,
+	GoDown = 2,
+	GoHorizontal = 4,
+	GoSinusoidDown = 8
+}
 
 --[[ 
  scene table = { 1 or more waves }

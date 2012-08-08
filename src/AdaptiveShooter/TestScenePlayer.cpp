@@ -122,6 +122,7 @@ void TestScenePlayer::update()
 
 	if (playerOne->getLives() <= 0)
 	{
+		GameManager::getInstance()->stopMusic( GameManager::STAGE_1 );
 		setNextScene( manager->getGameOverScene() );
 		changeToNextScene();
 		return;
@@ -135,6 +136,12 @@ void TestScenePlayer::update()
 		{
 			waveBegin();
 			createWave(_waveNumber);
+		}
+		else
+		{
+			GameManager::getInstance()->stopMusic( GameManager::STAGE_1 );
+			changeToNextScene();
+			return;
 		}
 	}
 	else
@@ -519,6 +526,8 @@ void TestScenePlayer::validateEnemies()
 			insertEntity( new Explosion( enemy->getPosition().x + enemy->getCurrentSprite()->get_width()*0.5f,
 				enemy->getPosition().y + enemy->getCurrentSprite()->get_height()*0.5f, enemy->getSpeed().x*enemy->getMultiplier(),
 				enemy->getSpeed().y*enemy->getMultiplier(), "sprites/explosionMedium" ) );
+			
+			GameManager::getInstance()->playSoundEffect( GameManager::SFX_EXPLOSION );
 
 			removeEntity( enemy );
 			enemyIt = _enemies.erase( enemyIt );

@@ -19,18 +19,18 @@
 #include <cmath>
 //#include "logog.hpp"
 
-TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
+TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 800.f ) )
 {
-	_weapon->setShotSpeed( 0.0f, 300.0f );
+	_weapon->setShotSpeed( 0.0f, 200.0f );
 	setCurrentWeapon( _weapon );
 }
 
 
 
 TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ),
-	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 500.f ) )
+	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 800.f ) )
 {
-	_weapon->setShotSpeed( 0.0f, 300.0f );
+	_weapon->setShotSpeed( 0.0f, 200.0f );
 	setCurrentWeapon( _weapon );
 
 	GameManager* manager = GameManager::getInstance();
@@ -48,8 +48,12 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 
 
 
-TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed)
+TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed),
+	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 800.f ) )
 {
+	_weapon->setShotSpeed( 0.0f, 200.0f );
+	setCurrentWeapon( _weapon );
+
 	GameManager* manager = GameManager::getInstance();
 	CL_GraphicContext gc = manager->getWindow()->get_gc();
 	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
@@ -91,7 +95,7 @@ void TestEnemy::update()
 
 	float dt = GameManager::getInstance()->getDeltaTime();
 
-	if((_behavior & EnemyBehavior::GOHORIZONTAL) == EnemyBehavior::GOHORIZONTAL)
+	if((_behavior & GOHORIZONTAL) == GOHORIZONTAL)
 	{
 		float before = getPosition().x;
 		setPositionX( getPosition().x + getSpeed().x * _multiplier * dt * 0.001f );
@@ -102,7 +106,7 @@ void TestEnemy::update()
 		correctHorizontalMovement();
 
 		// Checks Sinusoid movement
-		if ((_behavior & EnemyBehavior::GOSINUSOID) == EnemyBehavior::GOSINUSOID)
+		if ((_behavior & GOSINUSOID) == GOSINUSOID)
 		{
 			if (_currentAmplitude >= _amplitudeLimit)
 			{
@@ -113,12 +117,12 @@ void TestEnemy::update()
 		}
 	}
 
-	if((_behavior & EnemyBehavior::GODOWN) == EnemyBehavior::GODOWN)
+	if((_behavior & GODOWN) == GODOWN)
 	{
 		setPositionY( getPosition().y + getSpeed().y * _multiplier * dt * 0.001f );
 	}
 
-	if ((_behavior & EnemyBehavior::SHOOT) == EnemyBehavior::SHOOT)
+	if ((_behavior & SHOOT) == SHOOT)
 	{
 		addShots( _weapon->shoot( this ) );
 	}
@@ -173,6 +177,11 @@ void TestEnemy::addShots( std::vector<Shot*> shots )
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
 	{
 		currentScene->addEnemyShot( (*it) );
+	}
+
+	if (shots.size() > 0)
+	{
+		GameManager::getInstance()->playSoundEffect(GameManager::SFX_LASER_1);
 	}
 }
 
