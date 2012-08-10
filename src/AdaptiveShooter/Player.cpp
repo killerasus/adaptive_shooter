@@ -25,11 +25,13 @@
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
-	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", 500) ),
+	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", GameManager::getInstance()->getPlayerOptions()->shotDelay ) ),
 	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimerBase(1500.0f),
 	_invincibilityTimer( 0.f ), _alphaFlash( 0.5f )
 {
 	setCurrentWeapon( _weapon );
+	_weapon->setShotSpeed( GameManager::getInstance()->getPlayerOptions()->shotSpeedX,
+		GameManager::getInstance()->getPlayerOptions()->shotSpeedY );
 
 	if (_controller == NULL)
 	{
@@ -67,8 +69,17 @@ void Player::draw()
 {
 	this->DynamicEntity::draw();
 	int frame = getCurrentSprite()->get_current_frame();
-	_currentOutlines[frame]->draw( getPosition().x, getPosition().y, CL_Colorf::red,
-		GameManager::getInstance()->getWindow()->get_gc() );
+
+	float scale = GameManager::getInstance()->getPlayerOptions()->hitBoxScale;
+	float halfComplementScale = (1.0f - scale)*0.5f;
+
+	_currentOutlines[frame]->set_scale( scale, scale );
+
+	// Translate 0.125*width and height
+	_currentOutlines[frame]->draw( getPosition().x + getCurrentSprite()->get_width()*halfComplementScale, 
+		getPosition().y + getCurrentSprite()->get_height()*halfComplementScale, CL_Colorf::red, GameManager::getInstance()->getWindow()->get_gc() );
+
+	_currentOutlines[frame]->set_scale(1.0f, 1.0f);
 }
 #endif
 

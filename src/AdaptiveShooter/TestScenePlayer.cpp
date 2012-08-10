@@ -61,6 +61,7 @@ void TestScenePlayer::draw()
 	playerText.precision( 4 );
 
 	playerText << "Player " << (playerOne->getPlayerNumber() + 1) << std::endl;
+	playerText << "SpeedX = " << (playerOne->getSpeed().x) << " SpeedY = " << (playerOne->getSpeed().y) << std::endl;
 	playerText << "Shot timer: " << (playerOne->getCurrentWeapon()->getDelay() - playerOne->getCurrentWeapon()->getTimer()) << std::endl;
 	playerText << "Model = " << playerOne->getPlayerModel()->getName() << std::endl;
 	playerText << "Firing accuracy = " << playerOne->getPlayerModel()->getTraitValue( PlayerModelImpl::ACCURACY ) << std::endl;
@@ -124,6 +125,33 @@ void TestScenePlayer::update()
 	{
 		GameManager::getInstance()->stopMusic( GameManager::STAGE_1 );
 		setNextScene( manager->getGameOverScene() );
+
+		// Last log
+
+		CL_DateTime time = CL_DateTime::get_current_local_time();
+		std::ostringstream text;
+		text << "Player defeated\n";
+		text << time.to_long_time_string().c_str();
+
+		Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+		PlayerModel* model = playerOne->getPlayerModel();
+
+		text << "\nPlayer defeated\n\n ";
+		text << "Player: ";
+		text << playerOne->getPlayerNumber() + 1;
+		text << "\nStats:\n Accuracy ";
+		text << model->getTraitValue(PlayerModelImpl::ACCURACY);
+		text << "\tLives var ";
+		text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+		text << "\tEnemies total ";
+		text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
+		text << "\nModel name start: ";
+		text << model->getName();
+		text << "\n";
+		text << "==================================\n";
+
+		GameManager::getInstance()->getLogger()->log("Logging end", text.str());
+
 		changeToNextScene();
 		return;
 	}
@@ -140,6 +168,30 @@ void TestScenePlayer::update()
 		else
 		{
 			GameManager::getInstance()->stopMusic( GameManager::STAGE_1 );
+
+			CL_DateTime time = CL_DateTime::get_current_local_time();
+			std::ostringstream text;
+			text << time.to_long_time_string().c_str();
+
+			Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+			PlayerModel* model = playerOne->getPlayerModel();
+
+			text << "\nPlayer succeeded\n\n ";
+			text << "Player: ";
+			text << playerOne->getPlayerNumber() + 1;
+			text << "\nStats:\n Accuracy ";
+			text << model->getTraitValue(PlayerModelImpl::ACCURACY);
+			text << "\tLives var ";
+			text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+			text << "\tEnemies total ";
+			text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
+			text << "\nModel name start: ";
+			text << model->getName();
+			text << "\n";
+			text << "==================================\n";
+
+			GameManager::getInstance()->getLogger()->log("Logging end", text.str());
+
 			changeToNextScene();
 			return;
 		}
@@ -156,7 +208,7 @@ void TestScenePlayer::update()
 	// treating this in entities would be messy
 	playerOne->update();
 
-#if _DEBUG
+#if 0
 
 	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
@@ -356,8 +408,18 @@ void TestScenePlayer::computeShotsCollision()
 
 	// As currently there is just one player...
 	object = playerOne->getCurrentCollisionOutline();
+
+	float scale = GameManager::getInstance()->getPlayerOptions()->hitBoxScale;
+	float halfComplementScale = (1.0f - scale)*0.5f;
+
+	// Reduce player hitbox area
+	object->set_scale( scale, scale );
+
+	// Translate halfComplementScale*width and halfComplementScale*height
 	// Translation is set to the current player position
-	object->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
+	object->set_translation( playerOne->getPosition().x + playerOne->getCurrentSprite()->get_width()*halfComplementScale,
+		playerOne->getPosition().y + playerOne->getCurrentSprite()->get_height()*halfComplementScale );
+
 
 	// Enemies shots colliding with player
 	for(shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
@@ -395,6 +457,8 @@ void TestScenePlayer::computeShotsCollision()
 		}
 	}
 
+	object->set_scale( 1.0f, 1.0f );
+
 	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
 	object->set_translation(0.0f, 0.0f);
 }
@@ -411,6 +475,18 @@ void TestScenePlayer::computePlayerEnemyCollision()
 
 	// As currently there is just one player...
 	playerOutline = playerOne->getCurrentCollisionOutline();
+
+	float scale = GameManager::getInstance()->getPlayerOptions()->hitBoxScale;
+	float halfComplementScale = (1.0f - scale)*0.5f;
+
+	// Reduce player hitbox area
+	playerOutline->set_scale( scale, scale );
+
+	// Translate halfComplementScale*width and halfComplementScale*height
+	// Translation is set to the current player position
+	playerOutline->set_translation( playerOne->getPosition().x + playerOne->getCurrentSprite()->get_width()*halfComplementScale,
+		playerOne->getPosition().y + playerOne->getCurrentSprite()->get_height()*halfComplementScale );
+
 	// Translation is set to the current player position
 	playerOutline->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
 
@@ -428,12 +504,13 @@ void TestScenePlayer::computePlayerEnemyCollision()
 				computePlayerEnemyCollisionDamage( playerOne, (*enemyIt) );
 		}
 		
-		enemyOutline->set_translation(0.0f, 0.0f);
+		enemyOutline->set_translation( 0.0f, 0.0f );
 		enemyIt++;
 	}
 
 	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
-	playerOutline->set_translation(0.0f, 0.0f);
+	playerOutline->set_scale( 1.0f, 1.0f );
+	playerOutline->set_translation( 0.0f, 0.0f );
 }
 
 

@@ -16,6 +16,7 @@
 #include "GameManager.h"
 #include "MenuDifficulty.h"
 #include "MenuItem.h"
+#include "PlayerModelImpl.h"
 
 MenuDifficulty::MenuDifficulty() : Menu(), FadingScene( 0.0f, 1000.f, 0.0f, FadingScene::FM_FADE_OUT ), _isFading( false )
 {
@@ -131,6 +132,30 @@ void MenuDifficulty::ExecuteState()
 	aiManager->updateAgents();
 	_isFading = true;
 	delete playerModels;
+
+	// Logs initial values for Player
+	CL_DateTime time = CL_DateTime::get_current_local_time();
+	std::ostringstream text;
+	text << "\n==================================\n";
+	text << time.to_long_time_string().c_str();
+
+	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+	PlayerModel* model = playerOne->getPlayerModel();
+
+	text << "\nStarting game\n\n ";
+	text << "Player: ";
+	text << playerOne->getPlayerNumber() + 1;
+	text << "\nStats:\n Accuracy ";
+	text << model->getTraitValue(PlayerModelImpl::ACCURACY);
+	text << "\tLives var ";
+	text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+	text << "\tEnemies total ";
+	text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
+	text << "\nModel name start: ";
+	text << model->getName();
+	text << "\n";
+
+	GameManager::getInstance()->getLogger()->log("Logging start", text.str());
 
 	GameManager::getInstance()->playMusic( GameManager::STAGE_1 );
 }

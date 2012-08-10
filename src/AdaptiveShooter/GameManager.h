@@ -69,6 +69,29 @@ public:
 		MUSIC_VECTOR_SIZE
 	};
 
+	// Struct for player options set from config.lua
+	struct PlayerOptions{
+		float speedX;
+		float speedY;
+		std::string resource;
+		float learningRate;
+		unsigned int lives;
+		float shotSpeedX;
+		float shotSpeedY;
+		float shotDelay;
+		float hitBoxScale;
+	};
+
+	// Struct for enemy options set from config.lua
+	struct EnemyOptions{
+		float shotSpeedX;
+		float shotSpeedY;
+		float shotDelay;
+		float easyMultiplier;
+		float normalMultiplier;
+		float hardMultiplier;
+	};
+
 	static GameManager* getInstance();
 	virtual ~GameManager();
 
@@ -191,6 +214,10 @@ public:
 
 	void loadMusics();
 
+	PlayerOptions* getPlayerOptions();
+
+	EnemyOptions* getEnemyOptions();
+
 protected:
 	GameManager();
 	virtual void draw();
@@ -229,10 +256,18 @@ private:
 	//logog::LogFile* _loggerFile;
 	CL_Logger* _loggerFile;
 
+	PlayerOptions* _playerOptions;
+	EnemyOptions* _enemyOptions;
+
 	std::vector<CL_SoundBuffer> _soundEffects;
 	std::vector<CL_SoundBuffer_Session> _soundEffectSessions;
 	std::vector<CL_SoundBuffer> _musics;
 	std::vector<CL_SoundBuffer_Session> _musicSessions;
+
+	/**
+	 * Loads player and enemy options from config.lua
+	 */
+	void loadOptions();
 };
 
 #endif // GameManager_h__

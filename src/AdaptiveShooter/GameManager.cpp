@@ -18,7 +18,7 @@
 GameManager* GameManager::_instance = 0;
 
 GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sound(), setup_mikmod(), setup_vorbis(),
-	sound_output(44100), _resourceManager( 0 ), _quit( false ), _player( 0 )
+	sound_output(44100), _resourceManager( NULL ), _quit( false ), _player( NULL ), _playerOptions( NULL ), _enemyOptions ( NULL )
 {
 	L = lua_open();
 	luaL_openlibs(L);
@@ -36,6 +36,7 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	// Loads sounds and prepare
 	loadSoundEffects();
 	loadMusics();
+	loadOptions();
 }
 
 
@@ -233,6 +234,12 @@ void GameManager::getLuaState( lua_State* l )
 
 void GameManager::cleanUp()
 {
+	delete _playerOptions;
+	_playerOptions = NULL;
+
+	delete _enemyOptions;
+	_enemyOptions = NULL;
+
 	delete _aiManager;
 	_aiManager = NULL;
 
@@ -269,67 +276,16 @@ Player* GameManager::getPlayer( unsigned int n )
 
 
 void GameManager::setupPlayer( unsigned int n )
-{
-	float startSpeedX = 100.0f;
-	float startSpeedY = 100.0f;
-	std::string resource = "sprites/rwing";
-	unsigned int lives = 3;
-	float learningRate = 0.3f;
-
-	int loadResult = luaL_dofile( L, "../../../../src/Scripts/config.lua" );
-
-	if (!loadResult)
-	{
-		lua_getglobal( L, "Player" );
-
-		if (lua_istable( L, -1 ))
-		{
-			lua_getfield( L, -1, "SpeedX");
-			startSpeedX = (float) lua_tonumber( L, -1 );
-			lua_pop( L, 1 );
-
-			lua_getfield( L, -1, "SpeedY");
-			startSpeedY = (float) lua_tonumber( L, -1 );
-			lua_pop( L, 1 );
-
-			lua_getfield( L, -1, "LearningRate");
-			learningRate = (float) lua_tonumber( L, -1 );
-			lua_pop( L, 1 );
-
-			lua_getfield( L, -1, "Resource");
-			resource = lua_tostring( L, -1 );
-			lua_pop( L, 1 );
-
-			lua_getfield( L, -1, "Lives");
-			lives = (unsigned int) lua_tointeger( L, -1 );
-			lua_pop( L, 1 );
-		}
-		else
-		{
-			// Create a console window for text-output if not available
-			CL_ConsoleWindow console( "Console", 80, 160 );
-			CL_Console::write_line( "Could not load Player from config.lua" );
-		}
-
-		// Pops Player table
-		lua_pop( L, 1 );
-	}
-	else
-	{
-		// Create a console window for text-output if not available
-		CL_ConsoleWindow console( "Console", 80, 160 );
-		CL_Console::write_line( "Could not load config.lua" );
-	}
-	
-
+{	
 	CL_Rect windowViewPort = _window->get_viewport();
-	_player = new Player( 0.0f, 0.0f, startSpeedX, startSpeedY, n, resource, new PlayerModelImpl( learningRate ), lives );
+	_player = new Player( 0.0f, 0.0f, _playerOptions->speedX, _playerOptions->speedY, n, _playerOptions->resource,
+		new PlayerModelImpl( _playerOptions->learningRate ), _playerOptions->lives );
 	//_player->setupCollisionOutlines();
 	_player->setPositionX( float((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
 	_player->setPositionY( float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
 
 	// Setting Easy
-	PlayerModelImpl* model = new PlayerModelImpl( learningRate );
+	PlayerModelImpl* model = new PlayerModelImpl( _playerOptions->learningRate );
 	model->setName( "Easy" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, (0.0f + 0.3f)*0.5f );
@@ -340,7 +296,7 @@ void GameManager::setupPlayer( unsigned int n )
 	_aiManager->addPlayerModel( model );
 
 	// Setting Normal
-	model = new PlayerModelImpl( learningRate );
+	model = new PlayerModelImpl( _playerOptions->learningRate );
 	model->setName( "Normal" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, (0.3f + 0.6f)*0.5f );
@@ -351,7 +307,7 @@ void GameManager::setupPlayer( unsigned int n )
 	_aiManager->addPlayerModel( model );
 
 	// Setting Hard
-	model = new PlayerModelImpl( learningRate );
+	model = new PlayerModelImpl( _playerOptions->learningRate );
 	model->setName( "Hard" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, (0.6f + 1.0f)*0.5f );
@@ -464,4 +420,141 @@ void GameManager::loadMusics()
 	_musicSessions.resize( MUSIC_VECTOR_SIZE );
 
 	_musics.push_back( CL_SoundBuffer( "../../../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
+}
+
+
+
+GameManager::PlayerOptions* GameManager::getPlayerOptions()
+{
+	return _playerOptions;
+}
+
+
+
+GameManager::EnemyOptions* GameManager::getEnemyOptions()
+{
+	return _enemyOptions;
+}
+
+
+
+void GameManager::loadOptions()
+{
+	_playerOptions = new PlayerOptions();
+
+	_playerOptions->speedX = 100.0f;
+	_playerOptions->speedY = 100.0f;
+	_playerOptions->resource = "sprites/rwing";
+	_playerOptions->lives = 3;
+	_playerOptions->learningRate = 0.3f;
+	_playerOptions->shotSpeedX = 0.0f;
+	_playerOptions->shotSpeedY = -200.0f;
+	_playerOptions->shotDelay = 800.0f;
+	_playerOptions->hitBoxScale = 1.0f;
+
+	_enemyOptions = new EnemyOptions();
+
+	_enemyOptions->shotSpeedX = 0.0f;
+	_enemyOptions->shotSpeedY = 100.0f;
+	_enemyOptions->shotDelay = 800.0f;
+	_enemyOptions->easyMultiplier = 0.5f;
+	_enemyOptions->normalMultiplier = 1.0f;
+	_enemyOptions->hardMultiplier = 1.5f;
+
+	int loadResult = luaL_dofile( L, "../../../../src/Scripts/config.lua" );
+
+	if (!loadResult)
+	{
+		lua_getglobal( L, "Player" );
+
+		if (lua_istable( L, -1 ))
+		{
+			lua_getfield( L, -1, "SpeedX" );
+			_playerOptions->speedX = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "SpeedY" );
+			_playerOptions->speedY = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "LearningRate" );
+			_playerOptions->learningRate = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "Resource" );
+			_playerOptions->resource = lua_tostring( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "Lives" );
+			_playerOptions->lives = (unsigned int) lua_tointeger( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "ShotSpeedX" );
+			_playerOptions->shotSpeedX = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "ShotSpeedY" );
+			_playerOptions->shotSpeedY = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "ShotDelay" );
+			_playerOptions->shotDelay = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "HitBoxScale" );
+			_playerOptions->hitBoxScale = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+		}
+		else
+		{
+			// Create a console window for text-output if not available
+			CL_ConsoleWindow console( "Console", 80, 160 );
+			CL_Console::write_line( "Could not load Player from config.lua" );
+		}
+
+		// Pops Player table
+		lua_pop( L, 1 );
+
+		// Gets Enemies table
+		lua_getglobal( L, "Enemies" );
+
+		if (lua_istable( L, -1 ))
+		{
+			lua_getfield( L, -1, "ShotSpeedX" );
+			_enemyOptions->shotSpeedX = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "ShotSpeedY" );
+			_enemyOptions->shotSpeedY = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "ShotDelay" );
+			_enemyOptions->shotDelay = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "EasyMultiplier" );
+			_enemyOptions->easyMultiplier = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "NormalMultiplier" );
+			_enemyOptions->normalMultiplier = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+
+			lua_getfield( L, -1, "HardMultiplier" );
+			_enemyOptions->hardMultiplier = (float) lua_tonumber( L, -1 );
+			lua_pop( L, 1 );
+		}
+		else
+		{
+			// Create a console window for text-output if not available
+			CL_ConsoleWindow console( "Console", 80, 160 );
+			CL_Console::write_line( "Could not load Enemies from config.lua" );
+		}
+	}
+	else
+	{
+		// Create a console window for text-output if not available
+		CL_ConsoleWindow console( "Console", 80, 160 );
+		CL_Console::write_line( "Could not load config.lua" );
+	}
 }

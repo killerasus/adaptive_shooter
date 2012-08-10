@@ -19,18 +19,18 @@
 #include <cmath>
 //#include "logog.hpp"
 
-TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 800.f ) )
+TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
 {
-	_weapon->setShotSpeed( 0.0f, 200.0f );
+	_weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions()->shotSpeedY );
 	setCurrentWeapon( _weapon );
 }
 
 
 
 TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ),
-	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 800.f ) )
+	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
 {
-	_weapon->setShotSpeed( 0.0f, 200.0f );
+	_weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions()->shotSpeedY );
 	setCurrentWeapon( _weapon );
 
 	GameManager* manager = GameManager::getInstance();
@@ -49,9 +49,9 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 
 
 TestEnemy::TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource) : Enemy(position, speed),
-	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 800.f ) )
+	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
 {
-	_weapon->setShotSpeed( 0.0f, 200.0f );
+	_weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions()->shotSpeedY );
 	setCurrentWeapon( _weapon );
 
 	GameManager* manager = GameManager::getInstance();
@@ -137,21 +137,21 @@ void TestEnemy::updateStats()
 
 	if (perceptedDifficulty == "Easy")
 	{
-		_multiplier = 0.5f;
+		_multiplier = GameManager::getInstance()->getEnemyOptions()->easyMultiplier;
 		_weapon->setDelay( _weapon->getDelay()/_multiplier );
 	} 
 	else
 	{
 		if (perceptedDifficulty == "Normal")
 		{
-			_multiplier = 1.0f;
+			_multiplier = GameManager::getInstance()->getEnemyOptions()->normalMultiplier;
 			_weapon->setDelay( _weapon->getDelay()/_multiplier );
 		}
 		else
 		{
 			if (perceptedDifficulty == "Hard")
 			{
-				_multiplier = 1.5f;
+				_multiplier = GameManager::getInstance()->getEnemyOptions()->hardMultiplier;
 				_weapon->setDelay( _weapon->getDelay()/_multiplier );
 			} 
 			else
