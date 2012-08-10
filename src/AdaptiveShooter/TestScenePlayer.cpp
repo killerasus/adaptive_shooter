@@ -143,6 +143,8 @@ void TestScenePlayer::update()
 		text << model->getTraitValue(PlayerModelImpl::ACCURACY);
 		text << "\tLives var ";
 		text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+		text << "\tEnemies wave ";
+		text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE);
 		text << "\tEnemies total ";
 		text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
 		text << "\nModel name start: ";
@@ -183,6 +185,8 @@ void TestScenePlayer::update()
 			text << model->getTraitValue(PlayerModelImpl::ACCURACY);
 			text << "\tLives var ";
 			text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+			text << "\tEnemies wave ";
+			text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE);
 			text << "\tEnemies total ";
 			text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
 			text << "\nModel name start: ";
@@ -564,6 +568,8 @@ void TestScenePlayer::waveFinish()
 	text << model->getTraitValue(PlayerModelImpl::ACCURACY);
 	text << "\tLives var ";
 	text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+	text << "\tEnemies wave ";
+	text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE);
 	text << "\tEnemies total ";
 	text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
 	text << "\nModel name before update: ";

@@ -149,6 +149,8 @@ void MenuDifficulty::ExecuteState()
 	text << model->getTraitValue(PlayerModelImpl::ACCURACY);
 	text << "\tLives var ";
 	text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
+	text << "\tEnemies wave ";
+	text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE);
 	text << "\tEnemies total ";
 	text << model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL);
 	text << "\nModel name start: ";
