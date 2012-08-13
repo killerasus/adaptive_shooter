@@ -5,7 +5,7 @@ Player = {
 	SpeedY = 250,
 	Resource = "sprites/rwing",
 	Lives = 5,
-	LearningRate = 0.3,
+	LearningRate = 0,
 	ShotSpeedX = 0,
 	ShotSpeedY = -500,
 	ShotDelay = 450,
@@ -18,5 +18,5 @@ Enemies = {
 	ShotDelay = 900,
 	EasyMultiplier = 0.85,
 	NormalMultiplier = 1.0,
-	HardMultiplier = 1.15
+	HardMultiplier = 1.2
 }

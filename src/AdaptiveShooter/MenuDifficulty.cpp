@@ -134,7 +134,7 @@ void MenuDifficulty::ExecuteState()
 	delete playerModels;
 
 	// Logs initial values for Player
-	CL_DateTime time = CL_DateTime::get_current_local_time();
+	CL_DateTime time = CL_DateTime::get_current_utc_time();
 	std::ostringstream text;
 	text << "\n==================================\n";
 	text << time.to_long_time_string().c_str();

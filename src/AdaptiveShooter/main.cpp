@@ -66,7 +66,8 @@ public:
 			//LOGOG_INITIALIZE();
 	
 			GameManager* manager = GameManager::getInstance();
-			manager->loadResource("../../../../data/resources.xml");
+			//manager->loadResource("../../../../data/resources.xml");
+			manager->loadResource("./data/resources.xml");
 			manager->setupPlayer(0);
 	
 			//Splash screen

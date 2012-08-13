@@ -35,7 +35,8 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font( gc, "Tahoma", 14 );
 
-	loadScene( "../../../../src/Scripts/demoscene.lua" );
+	//loadScene( "../../../../src/Scripts/demoscene.lua" );
+	loadScene( "./Scripts/demoscene.lua" );
 }
 
 TestScenePlayer::~TestScenePlayer()
@@ -552,7 +553,9 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::LIVES_VARIATION, livesVariation );
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
+#if 0
 	GameManager::getInstance()->getAIManager()->update();
+#endif
 
 	CL_DateTime time = CL_DateTime::get_current_local_time();
 
@@ -564,7 +567,15 @@ void TestScenePlayer::waveFinish()
 	text << " finish\n\n";
 	text << "Player: ";
 	text << playerOne->getPlayerNumber() + 1;
-	text << "\nStats:\n Accuracy ";
+	text << "\nWave stats:\n Accuracy ";
+	text << accuracyWave;
+	text << "\tLives var ";
+	text << livesVariation;
+	text << "\tEnemies wave ";
+	text << enemiesWastedWave;
+	text << "\tEnemies wasted total ";
+	text << enemiesWastedTotal;
+	text << "\nPlayer model traits:\n Accuracy ";
 	text << model->getTraitValue(PlayerModelImpl::ACCURACY);
 	text << "\tLives var ";
 	text << model->getTraitValue(PlayerModelImpl::LIVES_VARIATION);
