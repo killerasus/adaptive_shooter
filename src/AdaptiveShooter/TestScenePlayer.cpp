@@ -33,7 +33,7 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	_enemiesTotal( 0 ), _enemiesTotalWasted( 0 ), _keyDelayTime ( 1000.0f ), _timer( 0.0f ), _canPressKey( true ), _waveNumber( 0 ), _waveOn(false)
 {
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
-	_font = new CL_Font( gc, "Tahoma", 14 );
+	_font = new CL_Font( gc, "Tahoma", 16 );
 
 	//loadScene( "../../../../src/Scripts/demoscene.lua" );
 	loadScene( "./Scripts/demoscene.lua" );
@@ -56,6 +56,8 @@ void TestScenePlayer::draw()
 
 	// Calls parent draw implementation for drawing entities
 	Scene::draw();
+
+	_font->draw_text( gc, 10, 440, cl_format( "Lives: %1", playerOne->getLives() ), CL_Colorf::whitesmoke );
 
 #if _DEBUG
 	std::ostringstream playerText;
@@ -553,7 +555,7 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::LIVES_VARIATION, livesVariation );
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
-#if 0
+#if 1
 	GameManager::getInstance()->getAIManager()->update();
 #endif
 
