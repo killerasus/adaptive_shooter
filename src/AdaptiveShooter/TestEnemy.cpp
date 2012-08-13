@@ -124,7 +124,19 @@ void TestEnemy::update()
 
 	if ((_behavior & SHOOT) == SHOOT)
 	{
-		addShots( _weapon->shoot( this ) );
+		if (checkWindowBoundary())
+		{
+			Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
+			float center = getPosition().x + getCurrentSprite()->get_width()*0.5f;
+			float halfRange = 200.0f/_multiplier;
+
+			if (playerOne->getPosition().x >= center - halfRange &&
+				playerOne->getPosition().x + playerOne->getCurrentSprite()->get_width() <= center + halfRange &&
+				playerOne->getPosition().y >= getPosition().y)
+			{
+				addShots( _weapon->shoot( this ) );
+			}
+		}
 	}
 }
 

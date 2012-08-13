@@ -62,7 +62,6 @@
     </sprite>
     
     <!--Explosion sprites-->
-
     <sprite name="explosionMedium">
       <image file="/images/test/explosionMedium.png">
         <grid size="89,89" array="10,1"/>

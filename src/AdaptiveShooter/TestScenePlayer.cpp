@@ -359,7 +359,7 @@ void TestScenePlayer::computeShotsCollision()
 	for(shotIt = _playerShots.begin(); shotIt != _playerShots.end(); )
 	{
 		// Checks if inside window boundaries
-		if (!(*shotIt)->checkBoundary())
+		if (!(*shotIt)->checkWindowBoundary())
 		{
 			Shot* remove = *shotIt;
 			shotIt++;
@@ -429,7 +429,7 @@ void TestScenePlayer::computeShotsCollision()
 	for(shotIt = _enemyShots.begin(); shotIt != _enemyShots.end(); )
 	{
 		// Checks if inside window boundaries
-		if (!(*shotIt)->checkBoundary())
+		if (!(*shotIt)->checkWindowBoundary())
 		{
 			Shot* remove = *shotIt;
 			shotIt++;
@@ -542,7 +542,7 @@ void TestScenePlayer::waveFinish()
 
 	_livesEndWave = playerOne->getLives();
 	
-	float livesVariation = (float) (_livesEndWave - _livesStartWave) / (float) _livesStartWave ;
+	float livesVariation = 1.0f - (float) (_livesEndWave - _livesStartWave) / (float) _livesStartWave ;
 	float accuracyWave = (float)_shotsWaveOnTarget/(float)_shotsWave;
 	float enemiesWastedWave = (float)_enemiesWaveWasted/(float)_enemiesWave;
 	float enemiesWastedTotal = (float)_enemiesTotalWasted/(float)_enemiesTotal;

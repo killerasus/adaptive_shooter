@@ -289,7 +289,8 @@ void GameManager::setupPlayer( unsigned int n )
 	model->setName( "Easy" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, (0.0f + 0.3f)*0.5f );
-	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, (0.0f + 0.3f)*0.5f );
+	//model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, (0.0f + 0.3f)*0.5f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, (0.6f + 1.0f)*0.5f );
 	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.0f, 0.3f, 0.6f, (0.0f + 0.3f)*0.5f );
 	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.0f, 0.3f, 1.0f, (0.0f + 0.3f)*0.5f );
 
@@ -311,7 +312,8 @@ void GameManager::setupPlayer( unsigned int n )
 	model->setName( "Hard" );
 
 	model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, (0.6f + 1.0f)*0.5f );
-	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, (0.6f + 1.0f)*0.5f );
+	//model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, (0.6f + 1.0f)*0.5f );
+	model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, (0.0f + 0.3f)*0.5f );
 	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.6f, 1.0f, 0.6f, (0.6f + 1.0f)*0.5f );
 	model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.6f, 1.0f, 1.0f, (0.6f + 1.0f)*0.5f );
 

@@ -88,8 +88,9 @@ public:
 			
 			newTest->setNextScene( ending );
 			difficultyMenu->setNextScene( newTest );
-			splashScreen->setNextScene( difficultyMenu );
-			manager->pushScene( splashScreen );
+			//splashScreen->setNextScene( difficultyMenu );
+			//manager->pushScene( splashScreen );
+			manager->pushScene( difficultyMenu );
 	
 			/* Main game loop */
 			ret = manager->loop();

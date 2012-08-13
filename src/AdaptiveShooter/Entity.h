@@ -121,7 +121,7 @@ public:
 	 * 
 	 * @return	  bool	true if inside graphics context window, false otherwise
 	 */
-	bool checkBoundary();
+	bool checkWindowBoundary();
 	
 	/**
 	 * Bounds the entity to screen, canceling movement that would otherwise make the entity

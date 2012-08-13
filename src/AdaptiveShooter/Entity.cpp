@@ -98,7 +98,7 @@ void Entity::setAlpha(float alpha)
 
 
 
-bool Entity::checkBoundary()
+bool Entity::checkWindowBoundary()
 {
 	CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc();
 	float top, bottom, left, right;
