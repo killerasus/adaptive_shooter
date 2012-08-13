@@ -512,6 +512,11 @@ void GameManager::loadOptions()
 			// Create a console window for text-output if not available
 			CL_ConsoleWindow console( "Console", 80, 160 );
 			CL_Console::write_line( "Could not load Player from config.lua" );
+			CL_Console::write_line( "\n%1", lua_tostring( L, -1 ) );
+			CL_Console::wait_for_key();
+
+			// Pops error message from stack
+			lua_pop( L, 1 );
 		}
 
 		// Pops Player table
@@ -551,6 +556,11 @@ void GameManager::loadOptions()
 			// Create a console window for text-output if not available
 			CL_ConsoleWindow console( "Console", 80, 160 );
 			CL_Console::write_line( "Could not load Enemies from config.lua" );
+			CL_Console::write_line( "\n%1", lua_tostring( L, -1 ) );
+			CL_Console::wait_for_key();
+
+			// Pops error message from stack
+			lua_pop( L, 1 );
 		}
 	}
 	else
@@ -558,5 +568,10 @@ void GameManager::loadOptions()
 		// Create a console window for text-output if not available
 		CL_ConsoleWindow console( "Console", 80, 160 );
 		CL_Console::write_line( "Could not load config.lua" );
+		CL_Console::write_line( "\n%1", lua_tostring( L, -1 ) );
+		CL_Console::wait_for_key();
+
+		// Pops error message from stack
+		lua_pop( L, 1 );
 	}
 }

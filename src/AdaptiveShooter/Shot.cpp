@@ -68,10 +68,6 @@ Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damag
 Shot::~Shot()
 {
 	delete _currentSprite;
-
-#ifdef _DEBUG
-	CL_Console::write_line("Deleted a shot");
-#endif
 }
 
 

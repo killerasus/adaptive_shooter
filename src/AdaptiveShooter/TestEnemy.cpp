@@ -73,10 +73,9 @@ TestEnemy::~TestEnemy()
 {
 	delete _currentSprite;
 	delete _weapon;
-#ifdef _DEBUG
-	CL_Console::write_line("Enemy deleted");
-#endif
 }
+
+
 
 #ifdef _DEBUG
 void TestEnemy::draw()

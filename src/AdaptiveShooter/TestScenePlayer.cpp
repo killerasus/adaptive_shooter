@@ -542,7 +542,7 @@ void TestScenePlayer::waveFinish()
 
 	_livesEndWave = playerOne->getLives();
 	
-	float livesVariation = 1.0f - (float) (_livesEndWave - _livesStartWave) / (float) _livesStartWave ;
+	float livesVariation = (float) (_livesEndWave - _livesStartWave) / (float) _livesStartWave ;
 	float accuracyWave = (float)_shotsWaveOnTarget/(float)_shotsWave;
 	float enemiesWastedWave = (float)_enemiesWaveWasted/(float)_enemiesWave;
 	float enemiesWastedTotal = (float)_enemiesTotalWasted/(float)_enemiesTotal;
@@ -722,6 +722,19 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 	lua_State* l = GameManager::getInstance()->getLuaState();
 
 	int loadResult = luaL_dofile( l, sceneFile.c_str() );
+
+	if(loadResult)
+	{
+		// Create a console window for text-output if not available
+		CL_ConsoleWindow console( "Console", 80, 160 );
+		CL_Console::write_line( "\nError loading %1", sceneFile );
+		CL_Console::write_line( "\n%1", lua_tostring( l, -1 ) );
+		CL_Console::wait_for_key();
+
+		// Pops error message from stack
+		lua_pop( l, 1 );
+		return;
+	}
 
 	lua_getglobal( l, "scene" );
 

@@ -29,7 +29,7 @@ local enemy1Height = 26
 local enemy2Width = 27
 local enemy2Height = 26
 
-local speedX = 100
+local speedX = 200
 local speedY = 50
 local sidestep = 24
 local incrementX = enemy2Width + 20
@@ -43,6 +43,9 @@ local startXPart3 = 479
 local startXWave3Part1 = 235 - enemy1Width
 local startXWave3Part2 = 640 - 235
 local sidestepWave2 = enemy1Width - 10
+
+local startXWave6Part1 = 60 + 141 - enemy1Width
+local startXWave6Part2 = 640 - 141 - 60 + enemy1Width
 
 scene = {
 	-- Wave 1
@@ -162,8 +165,114 @@ scene = {
 	},
 	-- Wave 6
 	{
-		{"sprites/enemy1", 40, 40, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
-		{"sprites/enemy1", 80, 80, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
-		{"sprites/enemy1", 120, 120, 300, 75, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot}
+		-- Part 1
+		{"sprites/enemy1", startXWave6Part1, startY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - sidestepWave2, startY + incrementY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - 2*sidestepWave2, startY + 2*incrementY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 2
+		{"sprites/enemy1", startXWave6Part2, 2*startY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + sidestepWave2, 2*startY + incrementY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + 2*sidestepWave2, 2*startY + 2*incrementY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 3
+		{"sprites/enemy2", startXPart1, 5*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + incrementX, 5*startY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart1 + 2*incrementX, 5*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + sidestep, 5*startY + incrementY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart1 + sidestep + incrementX, 5*startY + incrementY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart1 + 2*sidestep, 5*startY + 2*incrementY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+
+		-- Part 4
+		{"sprites/enemy1", startXWave6Part1, 8*startY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - sidestepWave2, 8*startY + incrementY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - 2*sidestepWave2, 8*startY + 2*incrementY, 1.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 5
+		{"sprites/enemy1", startXWave6Part2, 10*startY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + sidestepWave2, 10*startY + incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + 2*sidestepWave2, 10*startY + 2*incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+	},
+	-- Wave 7
+	{
+	-- Part 1
+		{"sprites/enemy1", startXWave3Part1, startY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part1 - sidestepWave2, startY + incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part1 - 2*sidestepWave2, startY + 2*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part1 - 3*sidestepWave2, startY + 3*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part1 - 4*sidestepWave2, startY + 4*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+
+		-- Part 2
+		{"sprites/enemy1", startXWave3Part2, 5*startY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2 + sidestepWave2, 5*startY + incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2 + 2*sidestepWave2, 5*startY + 2*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2 + 3*sidestepWave2, 5*startY + 3*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2 + 4*sidestepWave2, 5*startY + 4*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+
+		-- Part 3
+		{"sprites/enemy1", startXWave3Part1, 10*startY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part1 - sidestepWave2, 10*startY + incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part1 - 2*sidestepWave2, 10*startY + 2*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2, 10*startY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2 + sidestepWave2, 10*startY + incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot},
+		{"sprites/enemy1", startXWave3Part2 + 2*sidestepWave2, 10*startY + 2*incrementY, speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.Shoot}
+	},
+	-- Wave 8
+	{
+		-- Part 1
+		{"sprites/enemy1", startXWave6Part1, startY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - sidestepWave2, startY + incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - 2*sidestepWave2, startY + 2*incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 2
+		{"sprites/enemy1", startXWave6Part2, 2*startY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + sidestepWave2, 2*startY + incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + 2*sidestepWave2, 2*startY + 2*incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 3
+		{"sprites/enemy2", startXPart1, 5*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + incrementX, 5*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + 2*incrementX, 5*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + sidestep, 5*startY + incrementY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + sidestep + incrementX, 5*startY + incrementY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart1 + 2*sidestep, 5*startY + 2*incrementY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+
+		-- Part 4
+		{"sprites/enemy1", startXWave6Part1, 8*startY, 2.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - sidestepWave2, 8*startY + incrementY, 2.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - 2*sidestepWave2, 8*startY + 2*incrementY, 2.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 5
+		{"sprites/enemy1", startXWave6Part2, 8*startY, 2.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + sidestepWave2, 8*startY + incrementY, 2.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + 2*sidestepWave2, 8*startY + 2*incrementY, 2.5*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+	},
+	-- Wave 9
+	{
+		-- Part 1
+		{"sprites/enemy2", startXPart2, startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart2 + incrementX, startY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart2 + 2*incrementX, startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart2 + sidestep, startY + incrementY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart2 + sidestep + incrementX, startY + incrementY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart2 + 2*sidestep, startY + 2*incrementY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+
+		-- Part 2
+		{"sprites/enemy2", startXPart3, 2*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart3 + incrementX, 2*startY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart3 + 2*incrementX, 2*startY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+		{"sprites/enemy2", startXPart3 + sidestep, 2*startY + incrementY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart3 + sidestep + incrementX, 2*startY + incrementY, 0, speedY, Behavior.GoDown},
+		{"sprites/enemy2", startXPart3 + 2*sidestep, 2*startY + 2*incrementY, 0, speedY, Behavior.GoDown + Behavior.Shoot},
+
+		-- Part 3
+		{"sprites/enemy1", startXWave6Part1, 8*startY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - sidestepWave2, 8*startY + incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part1 - 2*sidestepWave2, 8*startY + 2*incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+
+		-- Part 4
+		{"sprites/enemy1", startXWave6Part2, 8*startY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + sidestepWave2, 8*startY + incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot},
+		{"sprites/enemy1", startXWave6Part2 + 2*sidestepWave2, 8*startY + 2*incrementY, 2*speedX, speedY, Behavior.GoDown + Behavior.GoHorizontal + Behavior.GoSinusoidDown + Behavior.Shoot}
 	}
 }
