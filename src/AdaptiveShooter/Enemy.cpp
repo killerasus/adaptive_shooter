@@ -16,7 +16,7 @@
 #include <ClanLib/core.h>
 
 
-Enemy::Enemy() : DynamicEntity(), AIAgent(), _health( 50 ), _points( 0 ), _multiplier( 1.0f ), _amplitudeLimit( 0.0f ),
+Enemy::Enemy() : DynamicEntity(), AIAgent(), _health( 50 ), _points( 100 ), _multiplier( 1.0f ), _amplitudeLimit( 0.0f ),
 	_currentAmplitude( 0.0f ), _behavior( DONTSHOOT )
 {
 

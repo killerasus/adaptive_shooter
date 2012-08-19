@@ -11,6 +11,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{794446C6-02CA-4BFB-84B2-2A81F0ADBC1B}"
 	ProjectSection(SolutionItems) = preProject
 		..\docs\AdaptiveShooter.vsd = ..\docs\AdaptiveShooter.vsd
+		..\docs\AIManager.vsd = ..\docs\AIManager.vsd
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIManager_Test", "AIManager_Test\AIManager_Test.vcxproj", "{E2C7F7D6-DDB3-41CD-80CA-C2B27D52AEB2}"

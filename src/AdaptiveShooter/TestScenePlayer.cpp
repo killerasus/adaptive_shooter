@@ -35,14 +35,21 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
 	_font = new CL_Font( gc, "Tahoma", 16 );
 
-	//loadScene( "../../../../src/Scripts/demoscene.lua" );
+#ifdef _DEBUG
+	loadScene( "../../../../src/Scripts/demoscene.lua" );
+#else
 	loadScene( "./Scripts/demoscene.lua" );
+#endif
 }
+
+
 
 TestScenePlayer::~TestScenePlayer()
 {
 	delete _font;
 }
+
+
 
 void TestScenePlayer::draw()
 {
@@ -58,6 +65,8 @@ void TestScenePlayer::draw()
 	Scene::draw();
 
 	_font->draw_text( gc, 10, 440, cl_format( "Lives: %1", playerOne->getLives() ), CL_Colorf::whitesmoke );
+
+	_font->draw_text( gc, 500, 440, cl_format( "Score: %1", playerOne->getScore() ), CL_Colorf::whitesmoke );
 
 #if _DEBUG
 	std::ostringstream playerText;
@@ -215,7 +224,7 @@ void TestScenePlayer::update()
 	// treating this in entities would be messy
 	playerOne->update();
 
-#if 0
+#if _DEBUG
 
 	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
@@ -555,7 +564,7 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::LIVES_VARIATION, livesVariation );
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
-#if 1
+#if 0
 	GameManager::getInstance()->getAIManager()->update();
 #endif
 
@@ -618,6 +627,8 @@ void TestScenePlayer::validateEnemies()
 		{
 			_enemiesTotalWasted++;
 			_enemiesWaveWasted++;
+			
+			playerOne->addToScore( enemy->getPoints() );
 
 			insertEntity( new Explosion( enemy->getPosition().x + enemy->getCurrentSprite()->get_width()*0.5f,
 				enemy->getPosition().y + enemy->getCurrentSprite()->get_height()*0.5f, enemy->getSpeed().x*enemy->getMultiplier(),

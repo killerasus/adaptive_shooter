@@ -43,7 +43,7 @@ public:
 	 * @param[in]	health	Health points
 	 * @param[in]	points	Points value
 	 */
-	Enemy(float x, float y, float speedX, float speedY, int health = 50, int points = 0);
+	Enemy(float x, float y, float speedX, float speedY, int health = 50, int points = 100);
 
 	/**
 	 * Constructor
@@ -53,7 +53,7 @@ public:
 	 * @param[in]	health	Health points
 	 * @param[in]	points	Points value
 	 */
-	Enemy(CL_Vec2f& position, CL_Vec2f& speed, int health = 50, int points = 0);
+	Enemy(CL_Vec2f& position, CL_Vec2f& speed, int health = 50, int points = 100);
 
 	virtual ~Enemy();
 

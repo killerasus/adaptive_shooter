@@ -60,14 +60,17 @@ public:
 
 		try
 		{
-
-	
 			// Starting logog service
 			//LOGOG_INITIALIZE();
 	
 			GameManager* manager = GameManager::getInstance();
-			//manager->loadResource("../../../../data/resources.xml");
+
+#ifdef _DEBUG
+			manager->loadResource("../../../../data/resources.xml");
+#else
 			manager->loadResource("./data/resources.xml");
+#endif
+
 			manager->setupPlayer(0);
 	
 			//Splash screen

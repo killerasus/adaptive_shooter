@@ -404,7 +404,8 @@ void GameManager::loadSoundEffects()
 {
 	_soundEffectSessions.resize( SFX_VECTOR_SIZE );
 
-	/*_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Attention.wav" ) );
+#ifdef _DEBUG
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Attention.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/PrepareForAction.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Warning.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Select.wav" ) );
@@ -412,8 +413,8 @@ void GameManager::loadSoundEffects()
 	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser1.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser3.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/slimeball.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Explosion.wav" ) );*/
-
+	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Explosion.wav" ) );
+#else
 	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Attention.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/PrepareForAction.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Warning.wav" ) );
@@ -423,6 +424,8 @@ void GameManager::loadSoundEffects()
 	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/laser3.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/slimeball.wav" ) );
 	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Explosion.wav" ) );
+#endif
+	
 }
 
 
@@ -431,8 +434,11 @@ void GameManager::loadMusics()
 {
 	_musicSessions.resize( MUSIC_VECTOR_SIZE );
 
-	//_musics.push_back( CL_SoundBuffer( "../../../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
+#ifdef _DEBUG
+	_musics.push_back( CL_SoundBuffer( "../../../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
+#else
 	_musics.push_back( CL_SoundBuffer( "./data/musics/DIGITAL_MEMORIES.ogg", false ) );
+#endif
 }
 
 
@@ -474,8 +480,11 @@ void GameManager::loadOptions()
 	_enemyOptions->normalMultiplier = 1.0f;
 	_enemyOptions->hardMultiplier = 1.5f;
 
-	//int loadResult = luaL_dofile( L, "../../../../src/Scripts/config.lua" );
+#ifdef _DEBUG
+	int loadResult = luaL_dofile( L, "../../../../src/Scripts/config.lua" );
+#else
 	int loadResult = luaL_dofile( L, "./Scripts/config.lua" );
+#endif
 
 	if (!loadResult)
 	{

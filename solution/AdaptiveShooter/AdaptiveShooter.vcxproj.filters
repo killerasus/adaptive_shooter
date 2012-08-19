@@ -208,5 +208,6 @@
     <None Include="..\..\src\Scripts\config.lua">
       <Filter>Script Files</Filter>
     </None>
+    <None Include="Adaptive Shooter.cd" />
   </ItemGroup>
 </Project>
