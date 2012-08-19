@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d6/db5/class_scene.html#ab94fd30420e8336c6dde7b91de209031" title="Scene::changeToNextScene" alt="" coords="203,107,389,133"/>
+<area shape="rect" id="node5" href="$db/d10/class_game_manager.html#a00509384dd65ab52c7f3d22d1c7d74f1" title="GameManager::getInstance" alt="" coords="441,56,623,83"/>
+<area shape="rect" id="node19" href="$db/d10/class_game_manager.html#a7518f0aa4e8c5d09e8daf1be8131102d" title="GameManager::getDeltaTime" alt="" coords="201,157,391,184"/>
+<area shape="rect" id="node15" href="$db/d10/class_game_manager.html#a87b2553ab3e34b82e6e143bcfb64b8c2" title="GameManager::popScene" alt="" coords="445,107,619,133"/>
+<area shape="rect" id="node17" href="$db/d10/class_game_manager.html#af7e31a2cf58582f655a165d0559e6f54" title="GameManager::pushScene" alt="" coords="442,157,622,184"/>
+<area shape="rect" id="node7" href="$db/d10/class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="672,56,872,83"/>
+<area shape="rect" id="node9" href="$db/d10/class_game_manager.html#a00a0ac98d2c59a56461635719c4f7d41" title="GameManager::loadMusics" alt="" coords="937,5,1119,32"/>
+<area shape="rect" id="node11" href="$db/d10/class_game_manager.html#a03edfa7e90687a48f676c91e09994247" title="GameManager::loadSoundEffects" alt="" coords="920,56,1136,83"/>
+<area shape="rect" id="node13" href="$df/dca/luafunctions_8cpp.html#a7b22845d516b0d255a2ae4f1b57770ac" title="RegisterLuaCLHelper" alt="" coords="956,107,1100,133"/>
+</map>

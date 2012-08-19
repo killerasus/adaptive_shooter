@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$db/d10/class_game_manager.html#a00509384dd65ab52c7f3d22d1c7d74f1" title="GameManager::getInstance" alt="" coords="177,56,359,83"/>
+<area shape="rect" id="node13" href="$db/d10/class_game_manager.html#af2909d5c142a689f1e2c36dc5fc951bc" title="GameManager::playSoundEffect" alt="" coords="163,107,373,133"/>
+<area shape="rect" id="node5" href="$db/d10/class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="421,56,621,83"/>
+<area shape="rect" id="node7" href="$db/d10/class_game_manager.html#a00a0ac98d2c59a56461635719c4f7d41" title="GameManager::loadMusics" alt="" coords="687,5,868,32"/>
+<area shape="rect" id="node9" href="$db/d10/class_game_manager.html#a03edfa7e90687a48f676c91e09994247" title="GameManager::loadSoundEffects" alt="" coords="669,56,885,83"/>
+<area shape="rect" id="node11" href="$df/dca/luafunctions_8cpp.html#a7b22845d516b0d255a2ae4f1b57770ac" title="RegisterLuaCLHelper" alt="" coords="705,107,849,133"/>
+</map>

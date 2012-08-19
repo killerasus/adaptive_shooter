@@ -1,0 +1,228 @@
+\hypertarget{class_shooter}{
+\section{Shooter Class Reference}
+\label{dd/d07/class_shooter}\index{Shooter@{Shooter}}
+}
+
+
+{\ttfamily \#include $<$Shooter.h$>$}
+
+
+
+Inheritance diagram for Shooter:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{d0/d65/class_shooter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Shooter:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{dc/d6d/class_shooter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_shooter_acc429ebafcc36bb592c752097c22657f}{Shooter} ()
+\item 
+\hyperlink{class_shooter_a39a077b2465094f00a5968b64aac2f4a}{Shooter} (\hyperlink{class_weapon}{Weapon} $\ast$weapon)
+\item 
+\hyperlink{class_shooter_a721a5786ef137f1b27f634988cc12f7e}{$\sim$Shooter} ()
+\item 
+void \hyperlink{class_shooter_a415971cd8d63fdc0c37b53063d66d2d5}{setCurrentWeapon} (\hyperlink{class_weapon}{Weapon} $\ast$newWeapon)
+\item 
+\hyperlink{class_weapon}{Weapon} $\ast$ \hyperlink{class_shooter_ab56d6bb20dbdd701f52d834a55442a7e}{getCurrentWeapon} () const 
+\item 
+void \hyperlink{class_shooter_ad54acbfebea8daef85de72c649482a73}{update} ()
+\item 
+virtual void \hyperlink{class_shooter_ac632e56f3cc571f6d140767ba33053e8}{addShots} (std::vector$<$ \hyperlink{class_shot}{Shot} $\ast$ $>$ shots)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_shooter_acc429ebafcc36bb592c752097c22657f}{
+\index{Shooter@{Shooter}!Shooter@{Shooter}}
+\index{Shooter@{Shooter}!Shooter@{Shooter}}
+\subsubsection[{Shooter}]{\setlength{\rightskip}{0pt plus 5cm}Shooter::Shooter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d07/class_shooter_acc429ebafcc36bb592c752097c22657f}
+Constructor 
+\begin{DoxyCode}
+                 : _currentWeapon( NULL )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_shooter_a39a077b2465094f00a5968b64aac2f4a}{
+\index{Shooter@{Shooter}!Shooter@{Shooter}}
+\index{Shooter@{Shooter}!Shooter@{Shooter}}
+\subsubsection[{Shooter}]{\setlength{\rightskip}{0pt plus 5cm}Shooter::Shooter (
+\begin{DoxyParamCaption}
+\item[{{\bf Weapon} $\ast$}]{weapon}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d07/class_shooter_a39a077b2465094f00a5968b64aac2f4a}
+Constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em weapon} & Pointer to current weapon \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                                 : _currentWeapon( weapon )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_shooter_a721a5786ef137f1b27f634988cc12f7e}{
+\index{Shooter@{Shooter}!$\sim$Shooter@{$\sim$Shooter}}
+\index{$\sim$Shooter@{$\sim$Shooter}!Shooter@{Shooter}}
+\subsubsection[{$\sim$Shooter}]{\setlength{\rightskip}{0pt plus 5cm}Shooter::$\sim$Shooter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d07/class_shooter_a721a5786ef137f1b27f634988cc12f7e}
+Destructor 
+\begin{DoxyCode}
+{
+
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_shooter_ac632e56f3cc571f6d140767ba33053e8}{
+\index{Shooter@{Shooter}!addShots@{addShots}}
+\index{addShots@{addShots}!Shooter@{Shooter}}
+\subsubsection[{addShots}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Shooter::addShots (
+\begin{DoxyParamCaption}
+\item[{std::vector$<$ {\bf Shot} $\ast$ $>$}]{shots}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{dd/d07/class_shooter_ac632e56f3cc571f6d140767ba33053e8}
+Add shots from the weapon to the scene's correct shot list
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em shots} & Vector of shots to be added to the scene \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_player_a47ca4197c52a2ee0952abddd519d8506}{Player}, and \hyperlink{class_test_enemy_a384031359eccc8648ecdfa533911e0a0}{TestEnemy}.
+
+\hypertarget{class_shooter_ab56d6bb20dbdd701f52d834a55442a7e}{
+\index{Shooter@{Shooter}!getCurrentWeapon@{getCurrentWeapon}}
+\index{getCurrentWeapon@{getCurrentWeapon}!Shooter@{Shooter}}
+\subsubsection[{getCurrentWeapon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Weapon} $\ast$ Shooter::getCurrentWeapon (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{dd/d07/class_shooter_ab56d6bb20dbdd701f52d834a55442a7e}
+Gets Entity's current weapon
+
+\begin{DoxyReturn}{Returns}
+Weapon$\ast$ Current weapon 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _currentWeapon;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d07/class_shooter_ab56d6bb20dbdd701f52d834a55442a7e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_shooter_a415971cd8d63fdc0c37b53063d66d2d5}{
+\index{Shooter@{Shooter}!setCurrentWeapon@{setCurrentWeapon}}
+\index{setCurrentWeapon@{setCurrentWeapon}!Shooter@{Shooter}}
+\subsubsection[{setCurrentWeapon}]{\setlength{\rightskip}{0pt plus 5cm}void Shooter::setCurrentWeapon (
+\begin{DoxyParamCaption}
+\item[{{\bf Weapon} $\ast$}]{newWeapon}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d07/class_shooter_a415971cd8d63fdc0c37b53063d66d2d5}
+Set's the Entity's current weapon
+
+
+\begin{DoxyParams}{Parameters}
+{\em newWeapon} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _currentWeapon = newWeapon;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=376pt]{dd/d07/class_shooter_a415971cd8d63fdc0c37b53063d66d2d5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_shooter_ad54acbfebea8daef85de72c649482a73}{
+\index{Shooter@{Shooter}!update@{update}}
+\index{update@{update}!Shooter@{Shooter}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Shooter::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d07/class_shooter_ad54acbfebea8daef85de72c649482a73}
+Calls current weapon update 
+
+Reimplemented in \hyperlink{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}{Player}, and \hyperlink{class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da}{TestEnemy}.
+
+
+\begin{DoxyCode}
+{
+        if (_currentWeapon)
+                _currentWeapon->update();
+}\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d07/class_shooter_ad54acbfebea8daef85de72c649482a73_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_shooter_8h}{Shooter.h}\item 
+\hyperlink{_shooter_8cpp}{Shooter.cpp}\end{DoxyCompactItemize}

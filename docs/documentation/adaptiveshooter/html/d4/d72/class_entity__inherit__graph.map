@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d6/da4/class_dynamic_entity.html" title="DynamicEntity" alt="" coords="137,80,244,107"/>
+<area shape="rect" id="node15" href="$dc/d9c/class_menu_item.html" title="MenuItem" alt="" coords="269,80,347,107"/>
+<area shape="rect" id="node17" href="$de/d0a/class_static_entity.html" title="StaticEntity" alt="" coords="372,80,463,107"/>
+<area shape="rect" id="node5" href="$dd/d7a/class_enemy.html" title="Enemy" alt="" coords="18,155,80,181"/>
+<area shape="rect" id="node9" href="$d1/da8/class_explosion.html" title="Explosion" alt="" coords="105,155,183,181"/>
+<area shape="rect" id="node11" href="$d8/d53/class_player.html" title="Player" alt="" coords="208,155,267,181"/>
+<area shape="rect" id="node13" href="$de/d74/class_shot.html" title="Shot" alt="" coords="291,155,340,181"/>
+<area shape="rect" id="node7" href="$dd/d78/class_test_enemy.html" title="TestEnemy" alt="" coords="5,229,93,256"/>
+</map>

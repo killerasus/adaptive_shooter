@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d4/dd4/_keyboard_controller_8h.html" title="KeyboardController.h" alt="" coords="1226,155,1368,181"/>
+<area shape="rect" id="node11" href="$d0/d96/_game_manager_8h.html" title="GameManager.h" alt="" coords="587,80,705,107"/>
+<area shape="rect" id="node5" href="$d4/d79/_controller_interface_8h.html" title="ControllerInterface.h" alt="" coords="1174,229,1311,256"/>
+<area shape="rect" id="node25" href="$de/d56/_scene_8h.html" title="Scene.h" alt="" coords="587,453,657,480"/>
+<area shape="rect" id="node33" href="$d0/da2/_fading_scene_8h.html" title="FadingScene.h" alt="" coords="640,379,749,405"/>
+<area shape="rect" id="node40" href="$d1/d39/_player_8h.html" title="Player.h" alt="" coords="953,155,1023,181"/>
+<area shape="rect" id="node27" href="$db/d3a/_entity_8h.html" title="Entity.h" alt="" coords="733,528,800,555"/>
+<area shape="rect" id="node44" href="$da/d23/_dynamic_entity_8h.html" title="DynamicEntity.h" alt="" coords="875,453,993,480"/>
+<area shape="rect" id="node47" href="$df/d53/_shooter_8h.html" title="Shooter.h" alt="" coords="1019,229,1097,256"/>
+<area shape="rect" id="node49" href="$d4/d3c/_weapon_8h.html" title="Weapon.h" alt="" coords="993,304,1073,331"/>
+<area shape="rect" id="node52" href="$dd/dbc/_shot_8h.html" title="Shot.h" alt="" coords="921,379,980,405"/>
+</map>

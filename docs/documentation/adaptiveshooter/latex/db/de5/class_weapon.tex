@@ -1,0 +1,637 @@
+\hypertarget{class_weapon}{
+\section{Weapon Class Reference}
+\label{db/de5/class_weapon}\index{Weapon@{Weapon}}
+}
+
+
+{\ttfamily \#include $<$Weapon.h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08}{WeaponLevel} \{ \hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08ac2a3392cc19560e56036c42dc8ec4b1d}{WL\_\-LEVEL\_\-0} =  0, 
+\hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08aeed19eebb90475552d27cab4898a9263}{WL\_\-LEVEL\_\-1}, 
+\hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08a6febe43cc8f5d6340bb5262954e74bfa}{WL\_\-LEVEL\_\-2}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_weapon_ab4b3563b5a33565e7d1a4b6fb57e2cd1}{Weapon} (std::string name, std::string shotResource, float delay, int damage=50, \hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08}{WeaponLevel} level=WL\_\-LEVEL\_\-0, float speedX=0.0f, float speedY=-\/300.0f)
+\item 
+virtual \hyperlink{class_weapon_a420e7ba3d2017e6de3e93eb579cfd3fa}{$\sim$Weapon} ()
+\item 
+virtual void \hyperlink{class_weapon_a1b3f76c5275b67f0bb8073157a27e736}{update} ()
+\item 
+void \hyperlink{class_weapon_abcbbdb991394a963f7cf8d1585d10f49}{setCanShoot} (bool can)
+\item 
+bool \hyperlink{class_weapon_afd98e4ce63e16c705c905ace92008ab0}{getCanShoot} () const 
+\item 
+void \hyperlink{class_weapon_a89ee2083d898147a3b9b81772360dcd1}{setDelay} (float delay)
+\item 
+float \hyperlink{class_weapon_a810d3b7900f80e0d5442a7b64fb821de}{getDelay} () const 
+\item 
+float \hyperlink{class_weapon_a969c097dea5e6758464729a70d25abb3}{getTimer} () const 
+\item 
+void \hyperlink{class_weapon_a54e4b500dcc3f5c3d02df6f1c29ddbea}{setDamage} (int damage)
+\item 
+int \hyperlink{class_weapon_a2ca6127e73e6afe823b5daf59d9e93c5}{getDamage} () const 
+\item 
+void \hyperlink{class_weapon_aaf7e542b8a4cc373ee03e3b3cc049064}{setWeaponLevel} (\hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08}{WeaponLevel} level)
+\item 
+\hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08}{WeaponLevel} \hyperlink{class_weapon_a72b2684194963c4a2816a6cc80785fac}{getWeaponLevel} () const 
+\item 
+virtual std::vector$<$ \hyperlink{class_shot}{Shot} $\ast$ $>$ \hyperlink{class_weapon_a7d8147f09d84813b47fdd57bea34e800}{shoot} (\hyperlink{class_entity}{Entity} $\ast$entity)
+\item 
+void \hyperlink{class_weapon_aad6104491364c92ec52e5a930d80c6b6}{setName} (std::string name)
+\item 
+std::string \hyperlink{class_weapon_a4460496820d443081e7a5446bf3ba473}{getName} () const 
+\item 
+void \hyperlink{class_weapon_a62e3119e661e057f2f2223b01f84c67d}{setShotSpeed} (float x, float y)
+\item 
+void \hyperlink{class_weapon_a43582f3968383919f67976c09d2d71ea}{setShotSpeed} (CL\_\-Vec2f \&speed)
+\item 
+CL\_\-Vec2f \hyperlink{class_weapon_ac97cb1672a349da38e9b40886520e049}{getShotSpeed} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_weapon_a72f39b8add8bdd807d7fe4337c07da08}{
+\index{Weapon@{Weapon}!WeaponLevel@{WeaponLevel}}
+\index{WeaponLevel@{WeaponLevel}!Weapon@{Weapon}}
+\subsubsection[{WeaponLevel}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Weapon::WeaponLevel}}}
+\label{db/de5/class_weapon_a72f39b8add8bdd807d7fe4337c07da08}
+Describes weapon level \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{WL\_\-LEVEL\_\-0@{WL\_\-LEVEL\_\-0}!Weapon@{Weapon}}\index{Weapon@{Weapon}!WL\_\-LEVEL\_\-0@{WL\_\-LEVEL\_\-0}}\item[{\em 
+\hypertarget{class_weapon_a72f39b8add8bdd807d7fe4337c07da08ac2a3392cc19560e56036c42dc8ec4b1d}{
+WL\_\-LEVEL\_\-0}
+\label{db/de5/class_weapon_a72f39b8add8bdd807d7fe4337c07da08ac2a3392cc19560e56036c42dc8ec4b1d}
+}]\index{WL\_\-LEVEL\_\-1@{WL\_\-LEVEL\_\-1}!Weapon@{Weapon}}\index{Weapon@{Weapon}!WL\_\-LEVEL\_\-1@{WL\_\-LEVEL\_\-1}}\item[{\em 
+\hypertarget{class_weapon_a72f39b8add8bdd807d7fe4337c07da08aeed19eebb90475552d27cab4898a9263}{
+WL\_\-LEVEL\_\-1}
+\label{db/de5/class_weapon_a72f39b8add8bdd807d7fe4337c07da08aeed19eebb90475552d27cab4898a9263}
+}]\index{WL\_\-LEVEL\_\-2@{WL\_\-LEVEL\_\-2}!Weapon@{Weapon}}\index{Weapon@{Weapon}!WL\_\-LEVEL\_\-2@{WL\_\-LEVEL\_\-2}}\item[{\em 
+\hypertarget{class_weapon_a72f39b8add8bdd807d7fe4337c07da08a6febe43cc8f5d6340bb5262954e74bfa}{
+WL\_\-LEVEL\_\-2}
+\label{db/de5/class_weapon_a72f39b8add8bdd807d7fe4337c07da08a6febe43cc8f5d6340bb5262954e74bfa}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+        {
+                WL_LEVEL_0 = 0,
+                WL_LEVEL_1,
+                WL_LEVEL_2
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_weapon_ab4b3563b5a33565e7d1a4b6fb57e2cd1}{
+\index{Weapon@{Weapon}!Weapon@{Weapon}}
+\index{Weapon@{Weapon}!Weapon@{Weapon}}
+\subsubsection[{Weapon}]{\setlength{\rightskip}{0pt plus 5cm}Weapon::Weapon (
+\begin{DoxyParamCaption}
+\item[{std::string}]{name, }
+\item[{std::string}]{shotResource, }
+\item[{float}]{delay, }
+\item[{int}]{damage = {\ttfamily 50}, }
+\item[{{\bf WeaponLevel}}]{level = {\ttfamily WL\_\-LEVEL\_\-0}, }
+\item[{float}]{speedX = {\ttfamily 0.0f}, }
+\item[{float}]{speedY = {\ttfamily -\/300.0f}}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_ab4b3563b5a33565e7d1a4b6fb57e2cd1}
+Constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & Weapon's name \\
+\hline
+\mbox{\tt in}  & {\em shotResource} & Resource string \\
+\hline
+\mbox{\tt in}  & {\em delay} & Delay between shots in miliseconds \\
+\hline
+\mbox{\tt in}  & {\em damage} & Base damage caused by each shot \\
+\hline
+\mbox{\tt in}  & {\em level} & Weapon's level \\
+\hline
+\mbox{\tt in}  & {\em speedX} & Shot's speed in x axis in pixels per second \\
+\hline
+\mbox{\tt in}  & {\em speedY} & Shot's speed in y axis in pixels per second \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+        : _canShoot( true ), _damage( damage ), _level( level ), _delay( delay ),
+       _timer ( 0.0f ), _name( name ),
+        _shotResource( shotResource ), _shotSpeed( speedX, speedY )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a420e7ba3d2017e6de3e93eb579cfd3fa}{
+\index{Weapon@{Weapon}!$\sim$Weapon@{$\sim$Weapon}}
+\index{$\sim$Weapon@{$\sim$Weapon}!Weapon@{Weapon}}
+\subsubsection[{$\sim$Weapon}]{\setlength{\rightskip}{0pt plus 5cm}Weapon::$\sim$Weapon (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{db/de5/class_weapon_a420e7ba3d2017e6de3e93eb579cfd3fa}
+Destructor 
+\begin{DoxyCode}
+{
+
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_weapon_afd98e4ce63e16c705c905ace92008ab0}{
+\index{Weapon@{Weapon}!getCanShoot@{getCanShoot}}
+\index{getCanShoot@{getCanShoot}!Weapon@{Weapon}}
+\subsubsection[{getCanShoot}]{\setlength{\rightskip}{0pt plus 5cm}bool Weapon::getCanShoot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_afd98e4ce63e16c705c905ace92008ab0}
+Gets weapon's shooting state
+
+\begin{DoxyReturn}{Returns}
+bool true if weapon can shoot right now 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _canShoot;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a2ca6127e73e6afe823b5daf59d9e93c5}{
+\index{Weapon@{Weapon}!getDamage@{getDamage}}
+\index{getDamage@{getDamage}!Weapon@{Weapon}}
+\subsubsection[{getDamage}]{\setlength{\rightskip}{0pt plus 5cm}int Weapon::getDamage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_a2ca6127e73e6afe823b5daf59d9e93c5}
+Gets weapon's current shoot damage
+
+\begin{DoxyReturn}{Returns}
+int Damage amount 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _damage;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a810d3b7900f80e0d5442a7b64fb821de}{
+\index{Weapon@{Weapon}!getDelay@{getDelay}}
+\index{getDelay@{getDelay}!Weapon@{Weapon}}
+\subsubsection[{getDelay}]{\setlength{\rightskip}{0pt plus 5cm}float Weapon::getDelay (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_a810d3b7900f80e0d5442a7b64fb821de}
+Gets weapon's current time delay between shoots
+
+\begin{DoxyReturn}{Returns}
+float \hyperlink{class_weapon}{Weapon} delay between shoots in miliseconds 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _delay;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{db/de5/class_weapon_a810d3b7900f80e0d5442a7b64fb821de_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_weapon_a4460496820d443081e7a5446bf3ba473}{
+\index{Weapon@{Weapon}!getName@{getName}}
+\index{getName@{getName}!Weapon@{Weapon}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}std::string Weapon::getName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_a4460496820d443081e7a5446bf3ba473}
+Gets the weapon's name
+
+\begin{DoxyReturn}{Returns}
+std::string Weapon's name 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _name;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_ac97cb1672a349da38e9b40886520e049}{
+\index{Weapon@{Weapon}!getShotSpeed@{getShotSpeed}}
+\index{getShotSpeed@{getShotSpeed}!Weapon@{Weapon}}
+\subsubsection[{getShotSpeed}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-Vec2f Weapon::getShotSpeed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_ac97cb1672a349da38e9b40886520e049}
+Gets current shot's speed
+
+\begin{DoxyReturn}{Returns}
+CL\_\-Vec2f Current shot's speed 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _shotSpeed;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a969c097dea5e6758464729a70d25abb3}{
+\index{Weapon@{Weapon}!getTimer@{getTimer}}
+\index{getTimer@{getTimer}!Weapon@{Weapon}}
+\subsubsection[{getTimer}]{\setlength{\rightskip}{0pt plus 5cm}float Weapon::getTimer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_a969c097dea5e6758464729a70d25abb3}
+Gets current timer
+
+\begin{DoxyReturn}{Returns}
+float Current timer value in miliseconds 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _timer;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{db/de5/class_weapon_a969c097dea5e6758464729a70d25abb3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_weapon_a72b2684194963c4a2816a6cc80785fac}{
+\index{Weapon@{Weapon}!getWeaponLevel@{getWeaponLevel}}
+\index{getWeaponLevel@{getWeaponLevel}!Weapon@{Weapon}}
+\subsubsection[{getWeaponLevel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Weapon::WeaponLevel} Weapon::getWeaponLevel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{db/de5/class_weapon_a72b2684194963c4a2816a6cc80785fac}
+Gets weapon's current level
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_weapon_a72f39b8add8bdd807d7fe4337c07da08}{Weapon::WeaponLevel} Weapon's current level 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _level;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_abcbbdb991394a963f7cf8d1585d10f49}{
+\index{Weapon@{Weapon}!setCanShoot@{setCanShoot}}
+\index{setCanShoot@{setCanShoot}!Weapon@{Weapon}}
+\subsubsection[{setCanShoot}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setCanShoot (
+\begin{DoxyParamCaption}
+\item[{bool}]{can}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_abcbbdb991394a963f7cf8d1585d10f49}
+Sets if weapon can shoot. Resets current weapon timer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em can} & true or false \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _canShoot = can;
+        _timer = 0.0f;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/de5/class_weapon_abcbbdb991394a963f7cf8d1585d10f49_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_weapon_a54e4b500dcc3f5c3d02df6f1c29ddbea}{
+\index{Weapon@{Weapon}!setDamage@{setDamage}}
+\index{setDamage@{setDamage}!Weapon@{Weapon}}
+\subsubsection[{setDamage}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setDamage (
+\begin{DoxyParamCaption}
+\item[{int}]{damage}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_a54e4b500dcc3f5c3d02df6f1c29ddbea}
+Sets weapon's shoot damage. If damage is negative, it's set to 1.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em damage} & Damage amount \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _damage = (damage > 0? damage : 1);
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a89ee2083d898147a3b9b81772360dcd1}{
+\index{Weapon@{Weapon}!setDelay@{setDelay}}
+\index{setDelay@{setDelay}!Weapon@{Weapon}}
+\subsubsection[{setDelay}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setDelay (
+\begin{DoxyParamCaption}
+\item[{float}]{delay}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_a89ee2083d898147a3b9b81772360dcd1}
+Sets weapon's delay between shoots timer. If delay is negative, it's set to 0.0f.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em delay} & Delay in miliseconds \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _delay = (delay >= 0.0f? delay : 0.0f);
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{db/de5/class_weapon_a89ee2083d898147a3b9b81772360dcd1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_weapon_aad6104491364c92ec52e5a930d80c6b6}{
+\index{Weapon@{Weapon}!setName@{setName}}
+\index{setName@{setName}!Weapon@{Weapon}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setName (
+\begin{DoxyParamCaption}
+\item[{std::string}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_aad6104491364c92ec52e5a930d80c6b6}
+Sets the weapon's name
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & New name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _name = name;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a43582f3968383919f67976c09d2d71ea}{
+\index{Weapon@{Weapon}!setShotSpeed@{setShotSpeed}}
+\index{setShotSpeed@{setShotSpeed}!Weapon@{Weapon}}
+\subsubsection[{setShotSpeed}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setShotSpeed (
+\begin{DoxyParamCaption}
+\item[{CL\_\-Vec2f \&}]{speed}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_a43582f3968383919f67976c09d2d71ea}
+Sets current shot's speed
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em speed} & Speed in pixels per second \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _shotSpeed = speed;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a62e3119e661e057f2f2223b01f84c67d}{
+\index{Weapon@{Weapon}!setShotSpeed@{setShotSpeed}}
+\index{setShotSpeed@{setShotSpeed}!Weapon@{Weapon}}
+\subsubsection[{setShotSpeed}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setShotSpeed (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_a62e3119e661e057f2f2223b01f84c67d}
+Sets current shot's speed
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Speed in x axis, in pixels per second \\
+\hline
+\mbox{\tt in}  & {\em y} & Speed in y axis, in pixels per second \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _shotSpeed.x = x;
+        _shotSpeed.y = y;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=358pt]{db/de5/class_weapon_a62e3119e661e057f2f2223b01f84c67d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_weapon_aaf7e542b8a4cc373ee03e3b3cc049064}{
+\index{Weapon@{Weapon}!setWeaponLevel@{setWeaponLevel}}
+\index{setWeaponLevel@{setWeaponLevel}!Weapon@{Weapon}}
+\subsubsection[{setWeaponLevel}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::setWeaponLevel (
+\begin{DoxyParamCaption}
+\item[{{\bf WeaponLevel}}]{level}
+\end{DoxyParamCaption}
+)}}
+\label{db/de5/class_weapon_aaf7e542b8a4cc373ee03e3b3cc049064}
+Sets weapon's current level
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em level} & Weapon's level \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _level = level;
+}
+\end{DoxyCode}
+\hypertarget{class_weapon_a7d8147f09d84813b47fdd57bea34e800}{
+\index{Weapon@{Weapon}!shoot@{shoot}}
+\index{shoot@{shoot}!Weapon@{Weapon}}
+\subsubsection[{shoot}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ {\bf Shot} $\ast$ $>$ Weapon::shoot (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity} $\ast$}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{db/de5/class_weapon_a7d8147f09d84813b47fdd57bea34e800}
+Makes weapon shoot. Returns new \hyperlink{class_shot}{Shot} objects for adding to current \hyperlink{class_scene}{Scene}. Delegates deletion to \hyperlink{class_scene}{Scene}. Shots created in this method are centered to the \hyperlink{class_entity}{Entity}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Entity$\ast$} & \hyperlink{class_shot}{Shot} owner \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::vector$<$Shot$\ast$$>$ How many shots were created. 0 if canShoot returns false 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        std::vector<Shot*> shots;
+
+        if (_canShoot)
+        {
+                TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( 
+      GameManager::getInstance()->peekScene() );
+
+                if (currentScene != NULL )
+                {
+                        Shot* newShot = new Shot(entity->getPosition().x + entity
+      ->getCurrentSprite()->get_width()*0.5f,
+                                entity->getPosition().y, _shotSpeed.x, _shotSpeed
+      .y, _shotResource, _damage);
+                        newShot->setPositionX( newShot->getPosition().x - newShot
+      ->getCurrentSprite()->get_width()*0.5f );
+                        shots.push_back( newShot );
+
+                        setCanShoot( false );
+                }
+        }
+
+        return shots;
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/de5/class_weapon_a7d8147f09d84813b47fdd57bea34e800_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{db/de5/class_weapon_a7d8147f09d84813b47fdd57bea34e800_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_weapon_a1b3f76c5275b67f0bb8073157a27e736}{
+\index{Weapon@{Weapon}!update@{update}}
+\index{update@{update}!Weapon@{Weapon}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Weapon::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{db/de5/class_weapon_a1b3f76c5275b67f0bb8073157a27e736}
+Updates weapon's timer 
+\begin{DoxyCode}
+{
+        // Only updates timer if has shooted
+        if (!_canShoot)
+        {
+                float dt = GameManager::getInstance()->getDeltaTime();
+                _timer += dt;
+
+                if (_timer >= _delay)
+                {
+                        setCanShoot( true );
+                }
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/de5/class_weapon_a1b3f76c5275b67f0bb8073157a27e736_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{db/de5/class_weapon_a1b3f76c5275b67f0bb8073157a27e736_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_weapon_8h}{Weapon.h}\item 
+\hyperlink{_weapon_8cpp}{Weapon.cpp}\end{DoxyCompactItemize}

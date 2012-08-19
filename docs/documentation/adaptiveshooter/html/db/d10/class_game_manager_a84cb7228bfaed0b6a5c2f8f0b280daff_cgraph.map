@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d2/d96/class_entity.html#a6eb1336884974ce38a2a5f2959e3f2c2" title="Entity::getCurrentSprite" alt="" coords="238,5,397,32"/>
+<area shape="rect" id="node5" href="$d8/d53/class_player.html#af7d45973f07ac7cb1035c5e652e04f24" title="Player::getPlayerModel" alt="" coords="239,56,396,83"/>
+<area shape="rect" id="node7" href="$d6/db5/class_scene.html#ab07cbd5e581f410ea77f86591764435b" title="Scene::insertEntity" alt="" coords="251,107,384,133"/>
+<area shape="rect" id="node9" href="$d2/d96/class_entity.html#a93a379ff0b5eb9557831abe2674bdd46" title="Entity::setAlpha" alt="" coords="260,157,375,184"/>
+<area shape="rect" id="node11" href="$d2/d96/class_entity.html#a4de8724a35a2035f18afca7d95f5bd3a" title="Entity::setPositionX" alt="" coords="249,208,385,235"/>
+<area shape="rect" id="node13" href="$d2/d96/class_entity.html#afae7da405b8456d03fc8ddea62ce0898" title="Entity::setPositionY" alt="" coords="248,259,387,285"/>
+</map>

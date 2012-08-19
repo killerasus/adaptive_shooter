@@ -1,0 +1,627 @@
+\hypertarget{class_entity}{
+\section{Entity Class Reference}
+\label{d2/d96/class_entity}\index{Entity@{Entity}}
+}
+
+
+{\ttfamily \#include $<$Entity.h$>$}
+
+
+
+Inheritance diagram for Entity:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d4/d72/class_entity__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_entity_a5931bff11a8d923b7af036a4344a2f89}{CollisionDirection} \{ \par
+\hyperlink{class_entity_a5931bff11a8d923b7af036a4344a2f89acf9c0ab6b10506be862ab29d6191acbb}{CD\_\-NOCOLLISION} =  0, 
+\hyperlink{class_entity_a5931bff11a8d923b7af036a4344a2f89a911697f02adea3d6c9c78fb5fcc778ad}{CD\_\-LEFT} =  1, 
+\hyperlink{class_entity_a5931bff11a8d923b7af036a4344a2f89abad79a7716b05b024950c1e40c20fa46}{CD\_\-RIGHT} =  2, 
+\hyperlink{class_entity_a5931bff11a8d923b7af036a4344a2f89a84fb96736cf7f8f7e199c4c3b6c99f1a}{CD\_\-TOP} =  4, 
+\par
+\hyperlink{class_entity_a5931bff11a8d923b7af036a4344a2f89a372dbad49c5f25e214a96934676e311b}{CD\_\-BOTTOM} =  8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity} ()
+\item 
+\hyperlink{class_entity_aec213f431f76b0d62c95c3a1bcbdc42b}{Entity} (CL\_\-Vec2f \&position)
+\item 
+\hyperlink{class_entity_ae5a9ed9b94b78f5f89b177a611689e5f}{Entity} (float x, float y)
+\item 
+virtual \hyperlink{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{$\sim$Entity} ()
+\item 
+CL\_\-Vec2f \hyperlink{class_entity_ac474e0352dea30dfac812c10a792949c}{getPosition} () const 
+\item 
+void \hyperlink{class_entity_a6d7e2b94f0843532154866ff0d838167}{setPosition} (CL\_\-Vec2f \&position)
+\item 
+void \hyperlink{class_entity_a93306ecdce9446da37560f5f2b5307c0}{setPosition} (float x, float y)
+\item 
+void \hyperlink{class_entity_a4de8724a35a2035f18afca7d95f5bd3a}{setPositionX} (float x)
+\item 
+void \hyperlink{class_entity_afae7da405b8456d03fc8ddea62ce0898}{setPositionY} (float y)
+\item 
+CL\_\-Sprite $\ast$ \hyperlink{class_entity_a6eb1336884974ce38a2a5f2959e3f2c2}{getCurrentSprite} () const 
+\item 
+float \hyperlink{class_entity_a68e01997ca6ee8e9df7599ac629c9ce9}{getAlpha} () const 
+\item 
+void \hyperlink{class_entity_a93a379ff0b5eb9557831abe2674bdd46}{setAlpha} (float alpha)
+\item 
+virtual void \hyperlink{class_entity_a2e9a2986527958f0b0c43239efe9b270}{draw} ()=0
+\item 
+virtual void \hyperlink{class_entity_a59a29d9b7474baf13c9c76859242287d}{update} ()=0
+\item 
+bool \hyperlink{class_entity_a028c1bf9276905b5401de80ec88cfaa3}{checkWindowBoundary} ()
+\item 
+unsigned int \hyperlink{class_entity_aef338be6e4f5f4c95edd5ff91098cd84}{boundToScreen} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+CL\_\-Sprite $\ast$ \hyperlink{class_entity_a7afb2848e246a8c39ca0d3503d97b51d}{\_\-currentSprite}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_entity_a5931bff11a8d923b7af036a4344a2f89}{
+\index{Entity@{Entity}!CollisionDirection@{CollisionDirection}}
+\index{CollisionDirection@{CollisionDirection}!Entity@{Entity}}
+\subsubsection[{CollisionDirection}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Entity::CollisionDirection}}}
+\label{d2/d96/class_entity_a5931bff11a8d923b7af036a4344a2f89}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{CD\_\-NOCOLLISION@{CD\_\-NOCOLLISION}!Entity@{Entity}}\index{Entity@{Entity}!CD\_\-NOCOLLISION@{CD\_\-NOCOLLISION}}\item[{\em 
+\hypertarget{class_entity_a5931bff11a8d923b7af036a4344a2f89acf9c0ab6b10506be862ab29d6191acbb}{
+CD\_\-NOCOLLISION}
+\label{d2/d96/class_entity_a5931bff11a8d923b7af036a4344a2f89acf9c0ab6b10506be862ab29d6191acbb}
+}]\index{CD\_\-LEFT@{CD\_\-LEFT}!Entity@{Entity}}\index{Entity@{Entity}!CD\_\-LEFT@{CD\_\-LEFT}}\item[{\em 
+\hypertarget{class_entity_a5931bff11a8d923b7af036a4344a2f89a911697f02adea3d6c9c78fb5fcc778ad}{
+CD\_\-LEFT}
+\label{d2/d96/class_entity_a5931bff11a8d923b7af036a4344a2f89a911697f02adea3d6c9c78fb5fcc778ad}
+}]\index{CD\_\-RIGHT@{CD\_\-RIGHT}!Entity@{Entity}}\index{Entity@{Entity}!CD\_\-RIGHT@{CD\_\-RIGHT}}\item[{\em 
+\hypertarget{class_entity_a5931bff11a8d923b7af036a4344a2f89abad79a7716b05b024950c1e40c20fa46}{
+CD\_\-RIGHT}
+\label{d2/d96/class_entity_a5931bff11a8d923b7af036a4344a2f89abad79a7716b05b024950c1e40c20fa46}
+}]\index{CD\_\-TOP@{CD\_\-TOP}!Entity@{Entity}}\index{Entity@{Entity}!CD\_\-TOP@{CD\_\-TOP}}\item[{\em 
+\hypertarget{class_entity_a5931bff11a8d923b7af036a4344a2f89a84fb96736cf7f8f7e199c4c3b6c99f1a}{
+CD\_\-TOP}
+\label{d2/d96/class_entity_a5931bff11a8d923b7af036a4344a2f89a84fb96736cf7f8f7e199c4c3b6c99f1a}
+}]\index{CD\_\-BOTTOM@{CD\_\-BOTTOM}!Entity@{Entity}}\index{Entity@{Entity}!CD\_\-BOTTOM@{CD\_\-BOTTOM}}\item[{\em 
+\hypertarget{class_entity_a5931bff11a8d923b7af036a4344a2f89a372dbad49c5f25e214a96934676e311b}{
+CD\_\-BOTTOM}
+\label{d2/d96/class_entity_a5931bff11a8d923b7af036a4344a2f89a372dbad49c5f25e214a96934676e311b}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+                               {
+                CD_NOCOLLISION = 0,
+                CD_LEFT = 1,
+                CD_RIGHT = 2,
+                CD_TOP = 4,
+                CD_BOTTOM = 8
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_entity_a980f368aa07ce358583982821533a54a}{
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\subsubsection[{Entity}]{\setlength{\rightskip}{0pt plus 5cm}Entity::Entity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_a980f368aa07ce358583982821533a54a}
+Constructor 
+\begin{DoxyCode}
+               : _currentSprite(0), _position(0.0f, 0.0f)
+{
+}
+\end{DoxyCode}
+\hypertarget{class_entity_aec213f431f76b0d62c95c3a1bcbdc42b}{
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\subsubsection[{Entity}]{\setlength{\rightskip}{0pt plus 5cm}Entity::Entity (
+\begin{DoxyParamCaption}
+\item[{CL\_\-Vec2f \&}]{position}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_aec213f431f76b0d62c95c3a1bcbdc42b}
+Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position vector \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                                  :_currentSprite(0), _position(position)
+{
+}
+\end{DoxyCode}
+\hypertarget{class_entity_ae5a9ed9b94b78f5f89b177a611689e5f}{
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\subsubsection[{Entity}]{\setlength{\rightskip}{0pt plus 5cm}Entity::Entity (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_ae5a9ed9b94b78f5f89b177a611689e5f}
+Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Position in the x axis \\
+\hline
+{\em y} & Position in the y axis \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                                :_currentSprite(0), _position(x, y)
+{
+}
+\end{DoxyCode}
+\hypertarget{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{
+\index{Entity@{Entity}!$\sim$Entity@{$\sim$Entity}}
+\index{$\sim$Entity@{$\sim$Entity}!Entity@{Entity}}
+\subsubsection[{$\sim$Entity}]{\setlength{\rightskip}{0pt plus 5cm}Entity::$\sim$Entity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d2/d96/class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}
+
+\begin{DoxyCode}
+{
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_entity_aef338be6e4f5f4c95edd5ff91098cd84}{
+\index{Entity@{Entity}!boundToScreen@{boundToScreen}}
+\index{boundToScreen@{boundToScreen}!Entity@{Entity}}
+\subsubsection[{boundToScreen}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Entity::boundToScreen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_aef338be6e4f5f4c95edd5ff91098cd84}
+Bounds the entity to screen, canceling movement that would otherwise make the entity outside of screen boundaries
+
+\begin{DoxyReturn}{Returns}
+unsigned int Directions where a collision has occurred. Check CollisionDirection for values. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        unsigned int collision = CD_NOCOLLISION;
+        CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc()
+      ;
+        float top, bottom, left, right;
+
+        top = _position.y;
+        left = _position.x;
+        right = left + _currentSprite->get_width();
+        bottom = top + _currentSprite->get_height();
+
+        if (bottom > gc.get_height())
+        {
+                _position.y = (float)(gc.get_height() - _currentSprite->get_heigh
+      t());
+                collision |= CD_BOTTOM;
+        } 
+        
+        if (right > gc.get_width())
+        {
+                _position.x = (float)(gc.get_width() - _currentSprite->get_width(
+      ));
+                collision |= CD_RIGHT;
+        }
+        
+        if (top < 0.0f)
+        {
+                _position.y = 0.0f;
+                collision |= CD_TOP;
+        }
+        
+        if (left < 0.0f)
+        {
+                _position.x = 0.0f;
+                collision |= CD_LEFT;
+        }
+
+        return collision;
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_aef338be6e4f5f4c95edd5ff91098cd84_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_aef338be6e4f5f4c95edd5ff91098cd84_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_a028c1bf9276905b5401de80ec88cfaa3}{
+\index{Entity@{Entity}!checkWindowBoundary@{checkWindowBoundary}}
+\index{checkWindowBoundary@{checkWindowBoundary}!Entity@{Entity}}
+\subsubsection[{checkWindowBoundary}]{\setlength{\rightskip}{0pt plus 5cm}bool Entity::checkWindowBoundary (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_a028c1bf9276905b5401de80ec88cfaa3}
+Checks if current sprite is still visible in screen boundaries
+
+\begin{DoxyReturn}{Returns}
+bool true if inside graphics context window, false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc()
+      ;
+        float top, bottom, left, right;
+
+        top = _position.y;
+        left = _position.x;
+        right = left + _currentSprite->get_width();
+        bottom = top + _currentSprite->get_height();
+
+        if (bottom < 0.0f || right < 0.0f || top > gc.get_height() || left > gc.g
+      et_width())
+        {
+                return false;
+        } 
+        else
+        {
+                return true;
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_a028c1bf9276905b5401de80ec88cfaa3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=368pt]{d2/d96/class_entity_a028c1bf9276905b5401de80ec88cfaa3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_a2e9a2986527958f0b0c43239efe9b270}{
+\index{Entity@{Entity}!draw@{draw}}
+\index{draw@{draw}!Entity@{Entity}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Entity::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{d2/d96/class_entity_a2e9a2986527958f0b0c43239efe9b270}
+Draws the current sprite to the screen 
+
+Implemented in \hyperlink{class_dynamic_entity_a806fdc6fbe393bc6862d5cf7e6c699e8}{DynamicEntity}, \hyperlink{class_menu_item_af1e7bf9b4451876735cf2baea06cee3d}{MenuItem}, and \hyperlink{class_static_entity_a793e20c198a86859c27202065861475b}{StaticEntity}.
+
+\hypertarget{class_entity_a68e01997ca6ee8e9df7599ac629c9ce9}{
+\index{Entity@{Entity}!getAlpha@{getAlpha}}
+\index{getAlpha@{getAlpha}!Entity@{Entity}}
+\subsubsection[{getAlpha}]{\setlength{\rightskip}{0pt plus 5cm}float Entity::getAlpha (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d2/d96/class_entity_a68e01997ca6ee8e9df7599ac629c9ce9}
+Gets the alpha value of the current sprite.
+
+\begin{DoxyReturn}{Returns}
+float Alpha value of the current sprite, -\/1 if no current sprite set 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if (_currentSprite)
+                return _currentSprite->get_alpha();
+        else
+                return -1;
+}
+\end{DoxyCode}
+\hypertarget{class_entity_a6eb1336884974ce38a2a5f2959e3f2c2}{
+\index{Entity@{Entity}!getCurrentSprite@{getCurrentSprite}}
+\index{getCurrentSprite@{getCurrentSprite}!Entity@{Entity}}
+\subsubsection[{getCurrentSprite}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-Sprite $\ast$ Entity::getCurrentSprite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d2/d96/class_entity_a6eb1336884974ce38a2a5f2959e3f2c2}
+Gets current sprite in use
+
+\begin{DoxyReturn}{Returns}
+CL\_\-Sprite$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _currentSprite;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_a6eb1336884974ce38a2a5f2959e3f2c2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_ac474e0352dea30dfac812c10a792949c}{
+\index{Entity@{Entity}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Entity@{Entity}}
+\subsubsection[{getPosition}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-Vec2f Entity::getPosition (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d2/d96/class_entity_ac474e0352dea30dfac812c10a792949c}
+Gets the position of the \hyperlink{class_entity}{Entity}
+
+\begin{DoxyReturn}{Returns}
+CL\_\-Vec2f Position 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _position;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_ac474e0352dea30dfac812c10a792949c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_a93a379ff0b5eb9557831abe2674bdd46}{
+\index{Entity@{Entity}!setAlpha@{setAlpha}}
+\index{setAlpha@{setAlpha}!Entity@{Entity}}
+\subsubsection[{setAlpha}]{\setlength{\rightskip}{0pt plus 5cm}void Entity::setAlpha (
+\begin{DoxyParamCaption}
+\item[{float}]{alpha}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_a93a379ff0b5eb9557831abe2674bdd46}
+Sets the alpha value of the current sprite
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & New alpha value in the range \mbox{[}0.0, 1.0\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        if (_currentSprite)
+                _currentSprite->set_alpha( alpha );
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_a93a379ff0b5eb9557831abe2674bdd46_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_a6d7e2b94f0843532154866ff0d838167}{
+\index{Entity@{Entity}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Entity@{Entity}}
+\subsubsection[{setPosition}]{\setlength{\rightskip}{0pt plus 5cm}void Entity::setPosition (
+\begin{DoxyParamCaption}
+\item[{CL\_\-Vec2f \&}]{position}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_a6d7e2b94f0843532154866ff0d838167}
+Sets the entity position
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & New position \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _position = position;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{d2/d96/class_entity_a6d7e2b94f0843532154866ff0d838167_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_a93306ecdce9446da37560f5f2b5307c0}{
+\index{Entity@{Entity}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Entity@{Entity}}
+\subsubsection[{setPosition}]{\setlength{\rightskip}{0pt plus 5cm}void Entity::setPosition (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_a93306ecdce9446da37560f5f2b5307c0}
+Sets the entity position
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & New x axis position \\
+\hline
+{\em y} & New y axis position \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _position.x = x;
+        _position.y = y;
+}
+\end{DoxyCode}
+\hypertarget{class_entity_a4de8724a35a2035f18afca7d95f5bd3a}{
+\index{Entity@{Entity}!setPositionX@{setPositionX}}
+\index{setPositionX@{setPositionX}!Entity@{Entity}}
+\subsubsection[{setPositionX}]{\setlength{\rightskip}{0pt plus 5cm}void Entity::setPositionX (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_a4de8724a35a2035f18afca7d95f5bd3a}
+Sets x axis position
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _position.x = x;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_a4de8724a35a2035f18afca7d95f5bd3a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_afae7da405b8456d03fc8ddea62ce0898}{
+\index{Entity@{Entity}!setPositionY@{setPositionY}}
+\index{setPositionY@{setPositionY}!Entity@{Entity}}
+\subsubsection[{setPositionY}]{\setlength{\rightskip}{0pt plus 5cm}void Entity::setPositionY (
+\begin{DoxyParamCaption}
+\item[{float}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{d2/d96/class_entity_afae7da405b8456d03fc8ddea62ce0898}
+Sets y axis position
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _position.y = y;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d2/d96/class_entity_afae7da405b8456d03fc8ddea62ce0898_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_entity_a59a29d9b7474baf13c9c76859242287d}{
+\index{Entity@{Entity}!update@{update}}
+\index{update@{update}!Entity@{Entity}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Entity::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{d2/d96/class_entity_a59a29d9b7474baf13c9c76859242287d}
+Updates the entity 
+
+Implemented in \hyperlink{class_dynamic_entity_a80ad0626e1c2167efa049c580c0d466c}{DynamicEntity}, \hyperlink{class_enemy_ad3187ead8c132957d3123a64ff5977d6}{Enemy}, \hyperlink{class_explosion_af67e5ab127b69a90b9bf1dad03c56ca4}{Explosion}, \hyperlink{class_menu_item_a43fdba2b1737ecad9af4e507c01c66f7}{MenuItem}, \hyperlink{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}{Player}, \hyperlink{class_shot_a5073ee7ba59e6f6a8c7702ff7c9ad960}{Shot}, \hyperlink{class_static_entity_ab86e4f6e1d453fcd46e81e55373c359e}{StaticEntity}, and \hyperlink{class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da}{TestEnemy}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_entity_a7afb2848e246a8c39ca0d3503d97b51d}{
+\index{Entity@{Entity}!\_\-currentSprite@{\_\-currentSprite}}
+\index{\_\-currentSprite@{\_\-currentSprite}!Entity@{Entity}}
+\subsubsection[{\_\-currentSprite}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-Sprite$\ast$ {\bf Entity::\_\-currentSprite}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d2/d96/class_entity_a7afb2848e246a8c39ca0d3503d97b51d}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_entity_8h}{Entity.h}\item 
+\hyperlink{_entity_8cpp}{Entity.cpp}\end{DoxyCompactItemize}

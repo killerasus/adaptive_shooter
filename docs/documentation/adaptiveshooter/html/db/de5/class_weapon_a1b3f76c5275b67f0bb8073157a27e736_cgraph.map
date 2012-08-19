@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$db/d10/class_game_manager.html#a7518f0aa4e8c5d09e8daf1be8131102d" title="GameManager::getDeltaTime" alt="" coords="171,5,362,32"/>
+<area shape="rect" id="node5" href="$db/d10/class_game_manager.html#a00509384dd65ab52c7f3d22d1c7d74f1" title="GameManager::getInstance" alt="" coords="175,56,358,83"/>
+<area shape="rect" id="node15" href="$db/de5/class_weapon.html#abcbbdb991394a963f7cf8d1585d10f49" title="Weapon::setCanShoot" alt="" coords="190,107,343,133"/>
+<area shape="rect" id="node7" href="$db/d10/class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="411,56,611,83"/>
+<area shape="rect" id="node9" href="$db/d10/class_game_manager.html#a00a0ac98d2c59a56461635719c4f7d41" title="GameManager::loadMusics" alt="" coords="676,5,857,32"/>
+<area shape="rect" id="node11" href="$db/d10/class_game_manager.html#a03edfa7e90687a48f676c91e09994247" title="GameManager::loadSoundEffects" alt="" coords="659,56,875,83"/>
+<area shape="rect" id="node13" href="$df/dca/luafunctions_8cpp.html#a7b22845d516b0d255a2ae4f1b57770ac" title="RegisterLuaCLHelper" alt="" coords="695,107,839,133"/>
+</map>

@@ -1,0 +1,93 @@
+\hypertarget{struct_trait}{
+\section{Trait Struct Reference}
+\label{d2/dab/struct_trait}\index{Trait@{Trait}}
+}
+
+
+{\ttfamily \#include $<$Trait.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_trait_aa90163722904e7d5fe18415cc2919c34}{Trait} (float current=0.0f, float minimal=0.0f, float maximal=0.0f, float weight=1.0f)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{struct_trait_a1b41aeaad4c3eb2a9fa6dc2c7b01add4}{\_\-minValue}
+\item 
+float \hyperlink{struct_trait_aac03d70d4f669f36d8aaf40747df42fe}{\_\-maxValue}
+\item 
+float \hyperlink{struct_trait_ad3edb188a38caca17a4a947be9667f04}{\_\-currentValue}
+\item 
+float \hyperlink{struct_trait_a53d78764a07dd12fa421ddac0f198d34}{\_\-weight}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{struct_trait}{Trait} struct represents a trait with diffent interpretations: In an observed player model, just \_\-currentValue has a meaning In a reference player model, \_\-minValue and \_\-maxValue represent minimal and maximal values of the trait for that player model
+
+Ex: In a reference model for Easy player, the trait accuracy could have a min of 0 and a max of 0.33 In an observed model for a player, min and max doesn't have any meaning, but \_\-currentValue represents the current observed value for that trait. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{struct_trait_aa90163722904e7d5fe18415cc2919c34}{
+\index{Trait@{Trait}!Trait@{Trait}}
+\index{Trait@{Trait}!Trait@{Trait}}
+\subsubsection[{Trait}]{\setlength{\rightskip}{0pt plus 5cm}Trait::Trait (
+\begin{DoxyParamCaption}
+\item[{float}]{current = {\ttfamily 0.0f}, }
+\item[{float}]{minimal = {\ttfamily 0.0f}, }
+\item[{float}]{maximal = {\ttfamily 0.0f}, }
+\item[{float}]{weight = {\ttfamily 1.0f}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{d2/dab/struct_trait_aa90163722904e7d5fe18415cc2919c34}
+Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em current} & \hyperlink{struct_trait}{Trait} current / starting value \\
+\hline
+{\em minimal} & \hyperlink{struct_trait}{Trait} minimum value \\
+\hline
+{\em maximal} & \hyperlink{struct_trait}{Trait} maximum value \\
+\hline
+{\em weight} & \hyperlink{struct_trait}{Trait} weight \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                : _minValue(minimal), _maxValue(maximal), _currentValue(current),
+       _weight(weight)
+        {
+
+        }
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_trait_ad3edb188a38caca17a4a947be9667f04}{
+\index{Trait@{Trait}!\_\-currentValue@{\_\-currentValue}}
+\index{\_\-currentValue@{\_\-currentValue}!Trait@{Trait}}
+\subsubsection[{\_\-currentValue}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Trait::\_\-currentValue}}}
+\label{d2/dab/struct_trait_ad3edb188a38caca17a4a947be9667f04}
+\hypertarget{struct_trait_aac03d70d4f669f36d8aaf40747df42fe}{
+\index{Trait@{Trait}!\_\-maxValue@{\_\-maxValue}}
+\index{\_\-maxValue@{\_\-maxValue}!Trait@{Trait}}
+\subsubsection[{\_\-maxValue}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Trait::\_\-maxValue}}}
+\label{d2/dab/struct_trait_aac03d70d4f669f36d8aaf40747df42fe}
+\hypertarget{struct_trait_a1b41aeaad4c3eb2a9fa6dc2c7b01add4}{
+\index{Trait@{Trait}!\_\-minValue@{\_\-minValue}}
+\index{\_\-minValue@{\_\-minValue}!Trait@{Trait}}
+\subsubsection[{\_\-minValue}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Trait::\_\-minValue}}}
+\label{d2/dab/struct_trait_a1b41aeaad4c3eb2a9fa6dc2c7b01add4}
+\hypertarget{struct_trait_a53d78764a07dd12fa421ddac0f198d34}{
+\index{Trait@{Trait}!\_\-weight@{\_\-weight}}
+\index{\_\-weight@{\_\-weight}!Trait@{Trait}}
+\subsubsection[{\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Trait::\_\-weight}}}
+\label{d2/dab/struct_trait_a53d78764a07dd12fa421ddac0f198d34}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_trait_8h}{Trait.h}\end{DoxyCompactItemize}

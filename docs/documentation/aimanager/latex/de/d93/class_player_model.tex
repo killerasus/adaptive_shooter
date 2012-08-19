@@ -1,0 +1,737 @@
+\hypertarget{class_player_model}{
+\section{PlayerModel Class Reference}
+\label{de/d93/class_player_model}\index{PlayerModel@{PlayerModel}}
+}
+
+
+{\ttfamily \#include $<$PlayerModel.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player_model_aa14718e35d660f2c0dd52fef781ed5e7}{PlayerModel} (unsigned int numberOfTraits, float learningRate)
+\item 
+virtual \hyperlink{class_player_model_ac72aa34f2769aff6bed1ebe198454769}{$\sim$PlayerModel} ()
+\item 
+void \hyperlink{class_player_model_ac11028344d538fad0a2688fcfd4d47d9}{resetTraits} ()
+\item 
+std::string \hyperlink{class_player_model_abe91969a3824190bc385c0944f37faf6}{getName} () const 
+\item 
+void \hyperlink{class_player_model_ab7829d2b2cf9fb73fab6e7be253b83ad}{setName} (std::string name)
+\item 
+void \hyperlink{class_player_model_a4ad3b83f22c1befc44d7d92b5f1ca743}{updateTrait} (unsigned int trait, float observedValue)
+\item 
+\hyperlink{struct_trait}{Trait} \hyperlink{class_player_model_aa704b2b339f518d1a1873a6030deae22}{getTrait} (unsigned int trait) const 
+\item 
+float \hyperlink{class_player_model_aca0b90dbad6f7457dea6650d49878091}{getTraitValue} (unsigned int trait) const 
+\item 
+float \hyperlink{class_player_model_ab023d5221a4b45e907b750dc5d2bbfaa}{getTraitMinimum} (unsigned int trait) const 
+\item 
+float \hyperlink{class_player_model_a39ddf0e8975c03a4dc286fbd566db736}{getTraitMaximum} (unsigned int trait) const 
+\item 
+float \hyperlink{class_player_model_a5e3f6d68b1ee086a73fd731262aeebf2}{getTraitWeight} (unsigned int trait) const 
+\item 
+void \hyperlink{class_player_model_accc42590cd874df5af3a9c09e50b4d83}{setTrait} (unsigned int trait, float minimum, float maximum, float weight, float newValue)
+\item 
+void \hyperlink{class_player_model_a05d8fa61789f7039a2014795941db265}{setTraitValue} (unsigned int trait, float newValue)
+\item 
+void \hyperlink{class_player_model_a4c3675cd0ba5f1482a82f3e49302fe2f}{setTraitMinimum} (unsigned int trait, float newValue)
+\item 
+void \hyperlink{class_player_model_aed72c4bbe9cdf7dda403fcbac9642752}{setTraitMaximum} (unsigned int trait, float newValue)
+\item 
+void \hyperlink{class_player_model_a9930270969306bd0b1c47da760ad05d8}{setTraitWeight} (unsigned int trait, float newValue)
+\item 
+const unsigned int \hyperlink{class_player_model_acf695d8ad6e0cb334bd45aef347dc293}{getNumberOfTraits} () const 
+\item 
+float \hyperlink{class_player_model_a32137417ecb58b298bbb13d942ef5e8c}{getLearningRate} () const 
+\item 
+void \hyperlink{class_player_model_a9df3b250299b86bcf8fa366878daf135}{setLearningRate} (float rate)
+\item 
+virtual float \hyperlink{class_player_model_aec726dba02afa6557b8874e52a2fa98c}{compare} (\hyperlink{class_player_model}{PlayerModel} $\ast$comparable)=0
+\item 
+void \hyperlink{class_player_model_a29d1000dda2318f019f3828d5e1febe5}{setTraitsToReferenceAverage} (\hyperlink{class_player_model}{PlayerModel} $\ast$referenced)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_player_model_aa14718e35d660f2c0dd52fef781ed5e7}{
+\index{PlayerModel@{PlayerModel}!PlayerModel@{PlayerModel}}
+\index{PlayerModel@{PlayerModel}!PlayerModel@{PlayerModel}}
+\subsubsection[{PlayerModel}]{\setlength{\rightskip}{0pt plus 5cm}PlayerModel::PlayerModel (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{numberOfTraits, }
+\item[{float}]{learningRate}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_aa14718e35d660f2c0dd52fef781ed5e7}
+Constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em numberOfTraits} & Number of traits to be observed, initialized to 0.5f \\
+\hline
+\mbox{\tt in}  & {\em learningRate} & Learning rate for the traits \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                                                                         :_traits
+      ( numberOfTraits ), _learningRate( learningRate )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_ac72aa34f2769aff6bed1ebe198454769}{
+\index{PlayerModel@{PlayerModel}!$\sim$PlayerModel@{$\sim$PlayerModel}}
+\index{$\sim$PlayerModel@{$\sim$PlayerModel}!PlayerModel@{PlayerModel}}
+\subsubsection[{$\sim$PlayerModel}]{\setlength{\rightskip}{0pt plus 5cm}PlayerModel::$\sim$PlayerModel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{de/d93/class_player_model_ac72aa34f2769aff6bed1ebe198454769}
+Destructor 
+\begin{DoxyCode}
+{
+
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_player_model_aec726dba02afa6557b8874e52a2fa98c}{
+\index{PlayerModel@{PlayerModel}!compare@{compare}}
+\index{compare@{compare}!PlayerModel@{PlayerModel}}
+\subsubsection[{compare}]{\setlength{\rightskip}{0pt plus 5cm}virtual float PlayerModel::compare (
+\begin{DoxyParamCaption}
+\item[{{\bf PlayerModel} $\ast$}]{comparable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{de/d93/class_player_model_aec726dba02afa6557b8874e52a2fa98c}
+Compares the current model to a reference model under a tolerance.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em comparable} & The player model to compare to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 0 if the models match, $<$ 0 if current model is under the comparable, $>$ 0 if current model is above 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{de/d93/class_player_model_aec726dba02afa6557b8874e52a2fa98c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_a32137417ecb58b298bbb13d942ef5e8c}{
+\index{PlayerModel@{PlayerModel}!getLearningRate@{getLearningRate}}
+\index{getLearningRate@{getLearningRate}!PlayerModel@{PlayerModel}}
+\subsubsection[{getLearningRate}]{\setlength{\rightskip}{0pt plus 5cm}float PlayerModel::getLearningRate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_a32137417ecb58b298bbb13d942ef5e8c}
+Gets the learning rate
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _learningRate;
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_abe91969a3824190bc385c0944f37faf6}{
+\index{PlayerModel@{PlayerModel}!getName@{getName}}
+\index{getName@{getName}!PlayerModel@{PlayerModel}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}std::string PlayerModel::getName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_abe91969a3824190bc385c0944f37faf6}
+Returns the name of the player model
+
+\begin{DoxyReturn}{Returns}
+std::string 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _name;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{de/d93/class_player_model_abe91969a3824190bc385c0944f37faf6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_acf695d8ad6e0cb334bd45aef347dc293}{
+\index{PlayerModel@{PlayerModel}!getNumberOfTraits@{getNumberOfTraits}}
+\index{getNumberOfTraits@{getNumberOfTraits}!PlayerModel@{PlayerModel}}
+\subsubsection[{getNumberOfTraits}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int PlayerModel::getNumberOfTraits (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_acf695d8ad6e0cb334bd45aef347dc293}
+Gets the number of traits observed
+
+\begin{DoxyReturn}{Returns}
+const unsigned int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _traits.size();
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{de/d93/class_player_model_acf695d8ad6e0cb334bd45aef347dc293_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_aa704b2b339f518d1a1873a6030deae22}{
+\index{PlayerModel@{PlayerModel}!getTrait@{getTrait}}
+\index{getTrait@{getTrait}!PlayerModel@{PlayerModel}}
+\subsubsection[{getTrait}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Trait} PlayerModel::getTrait (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_aa704b2b339f518d1a1873a6030deae22}
+Gets a copy of the trait
+
+
+\begin{DoxyParams}{Parameters}
+{\em trait} & Position of the trait in the collection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{struct_trait}{Trait} Copy of the trait 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _traits[trait];
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_a39ddf0e8975c03a4dc286fbd566db736}{
+\index{PlayerModel@{PlayerModel}!getTraitMaximum@{getTraitMaximum}}
+\index{getTraitMaximum@{getTraitMaximum}!PlayerModel@{PlayerModel}}
+\subsubsection[{getTraitMaximum}]{\setlength{\rightskip}{0pt plus 5cm}float PlayerModel::getTraitMaximum (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_a39ddf0e8975c03a4dc286fbd566db736}
+Gets the trait maximum value
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em trait} & The trait position in the collection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float \hyperlink{struct_trait}{Trait} maximum value in range \mbox{[}0..1\mbox{]} if trait is \mbox{[}0..\_\-traitValues.size()) 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _traits[trait]._maxValue;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{de/d93/class_player_model_a39ddf0e8975c03a4dc286fbd566db736_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_ab023d5221a4b45e907b750dc5d2bbfaa}{
+\index{PlayerModel@{PlayerModel}!getTraitMinimum@{getTraitMinimum}}
+\index{getTraitMinimum@{getTraitMinimum}!PlayerModel@{PlayerModel}}
+\subsubsection[{getTraitMinimum}]{\setlength{\rightskip}{0pt plus 5cm}float PlayerModel::getTraitMinimum (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_ab023d5221a4b45e907b750dc5d2bbfaa}
+Gets the trait minimum value
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em trait} & The trait position in the collection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float \hyperlink{struct_trait}{Trait} minimum value in range \mbox{[}0..1\mbox{]} if trait is \mbox{[}0..\_\-traitValues.size()) 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _traits[trait]._minValue;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{de/d93/class_player_model_ab023d5221a4b45e907b750dc5d2bbfaa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_aca0b90dbad6f7457dea6650d49878091}{
+\index{PlayerModel@{PlayerModel}!getTraitValue@{getTraitValue}}
+\index{getTraitValue@{getTraitValue}!PlayerModel@{PlayerModel}}
+\subsubsection[{getTraitValue}]{\setlength{\rightskip}{0pt plus 5cm}float PlayerModel::getTraitValue (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_aca0b90dbad6f7457dea6650d49878091}
+Gets the trait value
+
+
+\begin{DoxyParams}{Parameters}
+{\em trait} & The trait position from the collection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float \hyperlink{struct_trait}{Trait} value in range \mbox{[}0..1\mbox{]} if trait is \mbox{[}0..\_\-traitValues.size()) 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _traits[trait]._currentValue;
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_a5e3f6d68b1ee086a73fd731262aeebf2}{
+\index{PlayerModel@{PlayerModel}!getTraitWeight@{getTraitWeight}}
+\index{getTraitWeight@{getTraitWeight}!PlayerModel@{PlayerModel}}
+\subsubsection[{getTraitWeight}]{\setlength{\rightskip}{0pt plus 5cm}float PlayerModel::getTraitWeight (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait}
+\end{DoxyParamCaption}
+) const}}
+\label{de/d93/class_player_model_a5e3f6d68b1ee086a73fd731262aeebf2}
+Gets trait weight
+
+
+\begin{DoxyParams}{Parameters}
+{\em trait} & The trait position in the collection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float Weight value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _traits[trait]._weight;
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_ac11028344d538fad0a2688fcfd4d47d9}{
+\index{PlayerModel@{PlayerModel}!resetTraits@{resetTraits}}
+\index{resetTraits@{resetTraits}!PlayerModel@{PlayerModel}}
+\subsubsection[{resetTraits}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::resetTraits (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_ac11028344d538fad0a2688fcfd4d47d9}
+
+\begin{DoxyCode}
+{
+        for (unsigned int i = 0; i < _traits.size(); i++)
+        {
+                _traits[i]._currentValue = 0.5f;
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_a9df3b250299b86bcf8fa366878daf135}{
+\index{PlayerModel@{PlayerModel}!setLearningRate@{setLearningRate}}
+\index{setLearningRate@{setLearningRate}!PlayerModel@{PlayerModel}}
+\subsubsection[{setLearningRate}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setLearningRate (
+\begin{DoxyParamCaption}
+\item[{float}]{rate}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_a9df3b250299b86bcf8fa366878daf135}
+Sets new learning rate for the player model
+
+
+\begin{DoxyParams}{Parameters}
+{\em rate} & Value in the range (0..1\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _learningRate = rate;
+}
+\end{DoxyCode}
+\hypertarget{class_player_model_ab7829d2b2cf9fb73fab6e7be253b83ad}{
+\index{PlayerModel@{PlayerModel}!setName@{setName}}
+\index{setName@{setName}!PlayerModel@{PlayerModel}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setName (
+\begin{DoxyParamCaption}
+\item[{std::string}]{name}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_ab7829d2b2cf9fb73fab6e7be253b83ad}
+Sets the name of the player model
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & New name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _name = name;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{de/d93/class_player_model_ab7829d2b2cf9fb73fab6e7be253b83ad_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_accc42590cd874df5af3a9c09e50b4d83}{
+\index{PlayerModel@{PlayerModel}!setTrait@{setTrait}}
+\index{setTrait@{setTrait}!PlayerModel@{PlayerModel}}
+\subsubsection[{setTrait}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setTrait (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait, }
+\item[{float}]{minimum, }
+\item[{float}]{maximum, }
+\item[{float}]{weight, }
+\item[{float}]{newValue}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_accc42590cd874df5af3a9c09e50b4d83}
+Sets trait with values
+
+
+\begin{DoxyParams}{Parameters}
+{\em trait} & The trait position in the collection \\
+\hline
+{\em minimum} & Minimum value \\
+\hline
+{\em maximum} & Maximum value \\
+\hline
+{\em weight} & Weight value \\
+\hline
+{\em newValue} & Current value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        setTraitValue( trait, newValue );
+        setTraitMinimum( trait, minimum );
+        setTraitMaximum( trait, maximum );
+        setTraitWeight( trait, weight );
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=378pt]{de/d93/class_player_model_accc42590cd874df5af3a9c09e50b4d83_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_aed72c4bbe9cdf7dda403fcbac9642752}{
+\index{PlayerModel@{PlayerModel}!setTraitMaximum@{setTraitMaximum}}
+\index{setTraitMaximum@{setTraitMaximum}!PlayerModel@{PlayerModel}}
+\subsubsection[{setTraitMaximum}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setTraitMaximum (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait, }
+\item[{float}]{newValue}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_aed72c4bbe9cdf7dda403fcbac9642752}
+Sets trait maximum with new value
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em trait} & The trait position in the collection \\
+\hline
+\mbox{\tt in}  & {\em newValue} & New trait maximum value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _traits[trait]._maxValue = newValue;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=378pt]{de/d93/class_player_model_aed72c4bbe9cdf7dda403fcbac9642752_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_a4c3675cd0ba5f1482a82f3e49302fe2f}{
+\index{PlayerModel@{PlayerModel}!setTraitMinimum@{setTraitMinimum}}
+\index{setTraitMinimum@{setTraitMinimum}!PlayerModel@{PlayerModel}}
+\subsubsection[{setTraitMinimum}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setTraitMinimum (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait, }
+\item[{float}]{newValue}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_a4c3675cd0ba5f1482a82f3e49302fe2f}
+Sets trait minimum with new value
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em trait} & The trait position in the collection \\
+\hline
+\mbox{\tt in}  & {\em newValue} & New trait minimum value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _traits[trait]._minValue = newValue;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=376pt]{de/d93/class_player_model_a4c3675cd0ba5f1482a82f3e49302fe2f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_a29d1000dda2318f019f3828d5e1febe5}{
+\index{PlayerModel@{PlayerModel}!setTraitsToReferenceAverage@{setTraitsToReferenceAverage}}
+\index{setTraitsToReferenceAverage@{setTraitsToReferenceAverage}!PlayerModel@{PlayerModel}}
+\subsubsection[{setTraitsToReferenceAverage}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setTraitsToReferenceAverage (
+\begin{DoxyParamCaption}
+\item[{{\bf PlayerModel} $\ast$}]{referenced}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_a29d1000dda2318f019f3828d5e1febe5}
+Sets player model traits to the average of the reference
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em referenced} & Referenced model \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        for (unsigned int i = 0; i < referenced->getNumberOfTraits(); i++)
+        {
+                float average = 0.5f * ( referenced->getTraitMaximum( i ) + refer
+      enced->getTraitMinimum( i ) );
+                setTraitValue( i , average );
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{de/d93/class_player_model_a29d1000dda2318f019f3828d5e1febe5_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_a05d8fa61789f7039a2014795941db265}{
+\index{PlayerModel@{PlayerModel}!setTraitValue@{setTraitValue}}
+\index{setTraitValue@{setTraitValue}!PlayerModel@{PlayerModel}}
+\subsubsection[{setTraitValue}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setTraitValue (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait, }
+\item[{float}]{newValue}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_a05d8fa61789f7039a2014795941db265}
+Sets trait with new value
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em trait} & The trait position in the collection \\
+\hline
+\mbox{\tt in}  & {\em newValue} & New trait value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        // Trimming the value to range.
+        if (newValue >= 0.0f && newValue <= 1.0f)
+        {
+                _traits[trait]._currentValue = newValue;
+        }
+        else
+        {
+                if (newValue > 1.0f)
+                {
+                        _traits[trait]._currentValue = 1.0f;
+                }
+                else
+                {
+                        _traits[trait]._currentValue = 0.0f;
+                }
+        }
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{de/d93/class_player_model_a05d8fa61789f7039a2014795941db265_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_a9930270969306bd0b1c47da760ad05d8}{
+\index{PlayerModel@{PlayerModel}!setTraitWeight@{setTraitWeight}}
+\index{setTraitWeight@{setTraitWeight}!PlayerModel@{PlayerModel}}
+\subsubsection[{setTraitWeight}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::setTraitWeight (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait, }
+\item[{float}]{newValue}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_a9930270969306bd0b1c47da760ad05d8}
+Sets trait weight
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em trait} & The trait position in the collection \\
+\hline
+\mbox{\tt in}  & {\em newValue} & New trait weight value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _traits[trait]._weight = newWeight;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=366pt]{de/d93/class_player_model_a9930270969306bd0b1c47da760ad05d8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_model_a4ad3b83f22c1befc44d7d92b5f1ca743}{
+\index{PlayerModel@{PlayerModel}!updateTrait@{updateTrait}}
+\index{updateTrait@{updateTrait}!PlayerModel@{PlayerModel}}
+\subsubsection[{updateTrait}]{\setlength{\rightskip}{0pt plus 5cm}void PlayerModel::updateTrait (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{trait, }
+\item[{float}]{observedValue}
+\end{DoxyParamCaption}
+)}}
+\label{de/d93/class_player_model_a4ad3b83f22c1befc44d7d92b5f1ca743}
+Updates the trait with the given value using LMS
+
+
+\begin{DoxyParams}{Parameters}
+{\em trait} & Position of the trait in the collection \\
+\hline
+{\em observedValue} & Value observed of the trait \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        float currentValue = _traits[trait]._currentValue;
+        float delta = observedValue - currentValue;
+        float weightedDelta = _learningRate * delta;
+
+        setTraitValue( trait, _traits[trait]._currentValue + weightedDelta );
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=376pt]{de/d93/class_player_model_a4ad3b83f22c1befc44d7d92b5f1ca743_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_player_model_8h}{PlayerModel.h}\item 
+\hyperlink{_player_model_8cpp}{PlayerModel.cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,424 @@
+\hypertarget{class_test_enemy}{
+\section{TestEnemy Class Reference}
+\label{dd/d78/class_test_enemy}\index{TestEnemy@{TestEnemy}}
+}
+
+
+{\ttfamily \#include $<$TestEnemy.h$>$}
+
+
+
+Inheritance diagram for TestEnemy:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{df/d9a/class_test_enemy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for TestEnemy:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{de/d82/class_test_enemy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_test_enemy_a9754c03b4f80454013e079f7531204f4}{TestEnemy} ()
+\item 
+\hyperlink{class_test_enemy_a7dc9e2ef884bb514c0aeed3a18870bc4}{TestEnemy} (float x, float y, float speedX, float speedY, std::string resource)
+\item 
+\hyperlink{class_test_enemy_a15a87a62fff0dfd4718080967f0d1a29}{TestEnemy} (CL\_\-Vec2f \&position, CL\_\-Vec2f \&speed, std::string resource)
+\item 
+virtual \hyperlink{class_test_enemy_aa8dd4a8e010bba7b58c8745544e1d6e0}{$\sim$TestEnemy} ()
+\item 
+virtual void \hyperlink{class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da}{update} ()
+\item 
+virtual void \hyperlink{class_test_enemy_a1c7eaf9e99a58a5815d14c929c09cf38}{updateStats} ()
+\item 
+virtual void \hyperlink{class_test_enemy_a384031359eccc8648ecdfa533911e0a0}{addShots} (std::vector$<$ \hyperlink{class_shot}{Shot} $\ast$ $>$ shots)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_test_enemy_a9754c03b4f80454013e079f7531204f4}{
+\index{TestEnemy@{TestEnemy}!TestEnemy@{TestEnemy}}
+\index{TestEnemy@{TestEnemy}!TestEnemy@{TestEnemy}}
+\subsubsection[{TestEnemy}]{\setlength{\rightskip}{0pt plus 5cm}TestEnemy::TestEnemy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d78/class_test_enemy_a9754c03b4f80454013e079f7531204f4}
+
+\begin{DoxyCode}
+                     : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/r
+      oundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
+{
+        _weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions(
+      )->shotSpeedY );
+        setCurrentWeapon( _weapon );
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d78/class_test_enemy_a9754c03b4f80454013e079f7531204f4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_test_enemy_a7dc9e2ef884bb514c0aeed3a18870bc4}{
+\index{TestEnemy@{TestEnemy}!TestEnemy@{TestEnemy}}
+\index{TestEnemy@{TestEnemy}!TestEnemy@{TestEnemy}}
+\subsubsection[{TestEnemy}]{\setlength{\rightskip}{0pt plus 5cm}TestEnemy::TestEnemy (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{float}]{speedX, }
+\item[{float}]{speedY, }
+\item[{std::string}]{resource}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d78/class_test_enemy_a7dc9e2ef884bb514c0aeed3a18870bc4}
+
+\begin{DoxyCode}
+                                                                                 
+          : Enemy ( x, y, speedX, speedY ),
+        _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 
+      GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
+{
+        _weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions(
+      )->shotSpeedY );
+        setCurrentWeapon( _weapon );
+
+        GameManager* manager = GameManager::getInstance();
+        CL_GraphicContext gc = manager->getWindow()->get_gc();
+        _currentSprite = new CL_Sprite( gc, resource, manager->
+      getResourceManager() );
+
+        CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+
+        for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+        {
+                CL_String collisionResource = cl_format( "outlines/enemies/%1/%2_
+      00%3", descriptor, descriptor, i );
+                _currentOutlines.push_back( new CL_CollisionOutline(collisionReso
+      urce.c_str(), manager->getResourceManager()) );
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d78/class_test_enemy_a7dc9e2ef884bb514c0aeed3a18870bc4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_test_enemy_a15a87a62fff0dfd4718080967f0d1a29}{
+\index{TestEnemy@{TestEnemy}!TestEnemy@{TestEnemy}}
+\index{TestEnemy@{TestEnemy}!TestEnemy@{TestEnemy}}
+\subsubsection[{TestEnemy}]{\setlength{\rightskip}{0pt plus 5cm}TestEnemy::TestEnemy (
+\begin{DoxyParamCaption}
+\item[{CL\_\-Vec2f \&}]{position, }
+\item[{CL\_\-Vec2f \&}]{speed, }
+\item[{std::string}]{resource}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d78/class_test_enemy_a15a87a62fff0dfd4718080967f0d1a29}
+
+\begin{DoxyCode}
+                                                                            : 
+      Enemy(position, speed),
+        _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", 
+      GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
+{
+        _weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions(
+      )->shotSpeedY );
+        setCurrentWeapon( _weapon );
+
+        GameManager* manager = GameManager::getInstance();
+        CL_GraphicContext gc = manager->getWindow()->get_gc();
+        _currentSprite = new CL_Sprite( gc, resource, manager->
+      getResourceManager() );
+
+        CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+
+        for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+        {
+                CL_String collisionResource = cl_format( "outlines/enemies/%1/%2_
+      00%3", descriptor, descriptor, i );
+                _currentOutlines.push_back( new CL_CollisionOutline(collisionReso
+      urce.c_str(), manager->getResourceManager()) );
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d78/class_test_enemy_a15a87a62fff0dfd4718080967f0d1a29_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_test_enemy_aa8dd4a8e010bba7b58c8745544e1d6e0}{
+\index{TestEnemy@{TestEnemy}!$\sim$TestEnemy@{$\sim$TestEnemy}}
+\index{$\sim$TestEnemy@{$\sim$TestEnemy}!TestEnemy@{TestEnemy}}
+\subsubsection[{$\sim$TestEnemy}]{\setlength{\rightskip}{0pt plus 5cm}TestEnemy::$\sim$TestEnemy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{dd/d78/class_test_enemy_aa8dd4a8e010bba7b58c8745544e1d6e0}
+
+\begin{DoxyCode}
+{
+        delete _currentSprite;
+        delete _weapon;
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_test_enemy_a384031359eccc8648ecdfa533911e0a0}{
+\index{TestEnemy@{TestEnemy}!addShots@{addShots}}
+\index{addShots@{addShots}!TestEnemy@{TestEnemy}}
+\subsubsection[{addShots}]{\setlength{\rightskip}{0pt plus 5cm}void TestEnemy::addShots (
+\begin{DoxyParamCaption}
+\item[{std::vector$<$ {\bf Shot} $\ast$ $>$}]{shots}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{dd/d78/class_test_enemy_a384031359eccc8648ecdfa533911e0a0}
+Add shots from the weapon to the scene's correct shot list
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em shots} & Vector of shots to be added to the scene \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_shooter_ac632e56f3cc571f6d140767ba33053e8}{Shooter}.
+
+
+\begin{DoxyCode}
+{
+        TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( 
+      GameManager::getInstance()->peekScene() );
+
+        for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); 
+      it++)
+        {
+                currentScene->addEnemyShot( (*it) );
+        }
+
+        if (shots.size() > 0)
+        {
+                GameManager::getInstance()->playSoundEffect(
+      GameManager::SFX_LASER_1);
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d78/class_test_enemy_a384031359eccc8648ecdfa533911e0a0_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{dd/d78/class_test_enemy_a384031359eccc8648ecdfa533911e0a0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da}{
+\index{TestEnemy@{TestEnemy}!update@{update}}
+\index{update@{update}!TestEnemy@{TestEnemy}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void TestEnemy::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{dd/d78/class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da}
+Updates the entity 
+
+Implements \hyperlink{class_enemy_ad3187ead8c132957d3123a64ff5977d6}{Enemy}.
+
+
+\begin{DoxyCode}
+{
+        Shooter::update();
+
+        float dt = GameManager::getInstance()->getDeltaTime();
+
+        if((_behavior & GOHORIZONTAL) == GOHORIZONTAL)
+        {
+                float before = getPosition().x;
+                setPositionX( getPosition().x + getSpeed().x * _multiplier * dt *
+       0.001f );
+                float after = getPosition().x;
+
+                _currentAmplitude +=  fabs(after - before);
+
+                correctHorizontalMovement();
+
+                // Checks Sinusoid movement
+                if ((_behavior & GOSINUSOID) == GOSINUSOID)
+                {
+                        if (_currentAmplitude >= _amplitudeLimit)
+                        {
+                                CL_Vec2f speed = getSpeed();
+                                setSpeed( -(speed.x), speed.y ); //Changing movem
+      ent direction
+                                _currentAmplitude = 0.0f;
+                        }
+                }
+        }
+
+        if((_behavior & GODOWN) == GODOWN)
+        {
+                setPositionY( getPosition().y + getSpeed().y * _multiplier * dt *
+       0.001f );
+        }
+
+        if ((_behavior & SHOOT) == SHOOT)
+        {
+                if (checkWindowBoundary())
+                {
+                        Player* playerOne = GameManager::getInstance()->
+      getPlayer( 0 );
+                        float center = getPosition().x + getCurrentSprite()->get_
+      width()*0.5f;
+                        float halfRange = 200.0f/_multiplier;
+
+                        if (playerOne->getPosition().x >= center - halfRange &&
+                                playerOne->getPosition().x + playerOne->
+      getCurrentSprite()->get_width() <= center + halfRange &&
+                                playerOne->getPosition().y >= getPosition().y)
+                        {
+                                addShots( _weapon->shoot( this ) );
+                        }
+                }
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d78/class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_test_enemy_a1c7eaf9e99a58a5815d14c929c09cf38}{
+\index{TestEnemy@{TestEnemy}!updateStats@{updateStats}}
+\index{updateStats@{updateStats}!TestEnemy@{TestEnemy}}
+\subsubsection[{updateStats}]{\setlength{\rightskip}{0pt plus 5cm}void TestEnemy::updateStats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{dd/d78/class_test_enemy_a1c7eaf9e99a58a5815d14c929c09cf38}
+
+
+Implements \hyperlink{class_enemy_aacf879e206cf65f3a6eef441539ab79a}{Enemy}.
+
+
+\begin{DoxyCode}
+{
+        PlayerModel* current = GameManager::getInstance()->getAIManager()->getCur
+      rentPlayerModel();
+        std::string perceptedDifficulty = current->getName();
+
+        if (perceptedDifficulty == "Easy")
+        {
+                _multiplier = GameManager::getInstance()->getEnemyOptions()->easy
+      Multiplier;
+                _weapon->setDelay( _weapon->getDelay()/_multiplier );
+        } 
+        else
+        {
+                if (perceptedDifficulty == "Normal")
+                {
+                        _multiplier = GameManager::getInstance()->
+      getEnemyOptions()->normalMultiplier;
+                        _weapon->setDelay( _weapon->getDelay()/_multiplier );
+                }
+                else
+                {
+                        if (perceptedDifficulty == "Hard")
+                        {
+                                _multiplier = GameManager::getInstance()->
+      getEnemyOptions()->hardMultiplier;
+                                _weapon->setDelay( _weapon->getDelay()/
+      _multiplier );
+                        } 
+                        else
+                        {
+                                //LOGOG_ERROR( "\nUnknown difficulty: %s\n", perc
+      eptedDifficulty );
+                                std::ostringstream text;
+                                text << CL_DateTime().get_current_local_time().to
+      _long_time_string().c_str();
+                                text <<"\nUnknown difficulty: ";
+                                text << perceptedDifficulty;
+                                text << "\n";
+                                GameManager::getInstance()->getLogger()->log("Err
+      or", text.str());
+                        }
+                }
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{dd/d78/class_test_enemy_a1c7eaf9e99a58a5815d14c929c09cf38_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_test_enemy_8h}{TestEnemy.h}\item 
+\hyperlink{_test_enemy_8cpp}{TestEnemy.cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,468 @@
+\hypertarget{class_fading_scene}{
+\section{FadingScene Class Reference}
+\label{d0/d30/class_fading_scene}\index{FadingScene@{FadingScene}}
+}
+
+
+{\ttfamily \#include $<$FadingScene.h$>$}
+
+
+
+Inheritance diagram for FadingScene:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{d9/d0a/class_fading_scene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FadingScene:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d2/d75/class_fading_scene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805}{FadingMode} \{ \hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805ade23a94dc2771731e41396ce29d8d599}{FM\_\-NO\_\-FADE} =  0, 
+\hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805aa381e093a62a4bed2b5399915471cc7b}{FM\_\-FADE\_\-IN}, 
+\hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805ac388465394f4da88a6d914281d1a4744}{FM\_\-FADE\_\-OUT}, 
+\hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805ac4346adcfc9e9bf2d1f9cce304058912}{FM\_\-FADE\_\-INOUT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_fading_scene_ac2e17e101c77a8c3dace9bbea8d54f27}{FadingScene} ()
+\item 
+\hyperlink{class_fading_scene_a9ac1472cbd35acb25bce080e6279ca87}{FadingScene} (float fadein, float fadeout, float waittime, \hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805}{FadingScene::FadingMode} mode)
+\item 
+virtual \hyperlink{class_fading_scene_aad75b17457eccb13910230f77ff3cc71}{$\sim$FadingScene} ()
+\item 
+void \hyperlink{class_fading_scene_a9fc4f665d09a7d45867817d098f5ffd4}{SetBackgroundColor} (CL\_\-Color color)
+\item 
+CL\_\-Color \hyperlink{class_fading_scene_af79e9c4d787167ac2068db010843b647}{GetBackgroundColor} ()
+\item 
+void \hyperlink{class_fading_scene_a7442c6e14409bb3d19f9e7b2e5d90297}{SetFadeInTime} (float time\_\-ms)
+\item 
+float \hyperlink{class_fading_scene_ab14f983d9e1666684d6a7d41b2575519}{GetFadeInTime} ()
+\item 
+void \hyperlink{class_fading_scene_af5fc2ed76481ad4217914398b56f832a}{SetFadeOutTime} (float time\_\-ms)
+\item 
+float \hyperlink{class_fading_scene_ac0aa93b2522ece6052c518f3e17e1d44}{GetFadeOutTime} ()
+\item 
+void \hyperlink{class_fading_scene_a393089e50d6acebb9811f77e13996948}{SetWaitTime} (float time\_\-ms)
+\item 
+float \hyperlink{class_fading_scene_ad5359f9c482dc1e309ce3c28063ad2c0}{GetWaitTime} ()
+\item 
+void \hyperlink{class_fading_scene_af492fb8d42550f7e70c2f87abb6bdcaa}{SetFadeMode} (\hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805}{FadingScene::FadingMode} mode)
+\item 
+\hyperlink{class_fading_scene_aac44cee699d9da962cfd083422808805}{FadingScene::FadingMode} \hyperlink{class_fading_scene_a555c56c485e4cf2194d6f8797fb4db2d}{GetFadeMode} ()
+\item 
+virtual void \hyperlink{class_fading_scene_a87df73975854a1170eef8b5fadd63b92}{update} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_fading_scene_a7de69df5a2dced68333b84561224e4c8}{FadingState} \{ \hyperlink{class_fading_scene_a7de69df5a2dced68333b84561224e4c8aa4a68082e8e8f6b4900ff975f0e3e11f}{FS\_\-FADE\_\-IN} =  0, 
+\hyperlink{class_fading_scene_a7de69df5a2dced68333b84561224e4c8a71ad620245f2347d1bcf8c6fabc1cacc}{FS\_\-FADE\_\-OUT}, 
+\hyperlink{class_fading_scene_a7de69df5a2dced68333b84561224e4c8a7aa5ec7f3130536a8393fda4abe3dc10}{FS\_\-WAITING}, 
+\hyperlink{class_fading_scene_a7de69df5a2dced68333b84561224e4c8aaff6e6dada7c51d90f422e6b170b8e71}{FS\_\-COMPLETED}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_fading_scene_aac44cee699d9da962cfd083422808805}{
+\index{FadingScene@{FadingScene}!FadingMode@{FadingMode}}
+\index{FadingMode@{FadingMode}!FadingScene@{FadingScene}}
+\subsubsection[{FadingMode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FadingScene::FadingMode}}}
+\label{d0/d30/class_fading_scene_aac44cee699d9da962cfd083422808805}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{FM\_\-NO\_\-FADE@{FM\_\-NO\_\-FADE}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FM\_\-NO\_\-FADE@{FM\_\-NO\_\-FADE}}\item[{\em 
+\hypertarget{class_fading_scene_aac44cee699d9da962cfd083422808805ade23a94dc2771731e41396ce29d8d599}{
+FM\_\-NO\_\-FADE}
+\label{d0/d30/class_fading_scene_aac44cee699d9da962cfd083422808805ade23a94dc2771731e41396ce29d8d599}
+}]\index{FM\_\-FADE\_\-IN@{FM\_\-FADE\_\-IN}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FM\_\-FADE\_\-IN@{FM\_\-FADE\_\-IN}}\item[{\em 
+\hypertarget{class_fading_scene_aac44cee699d9da962cfd083422808805aa381e093a62a4bed2b5399915471cc7b}{
+FM\_\-FADE\_\-IN}
+\label{d0/d30/class_fading_scene_aac44cee699d9da962cfd083422808805aa381e093a62a4bed2b5399915471cc7b}
+}]\index{FM\_\-FADE\_\-OUT@{FM\_\-FADE\_\-OUT}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FM\_\-FADE\_\-OUT@{FM\_\-FADE\_\-OUT}}\item[{\em 
+\hypertarget{class_fading_scene_aac44cee699d9da962cfd083422808805ac388465394f4da88a6d914281d1a4744}{
+FM\_\-FADE\_\-OUT}
+\label{d0/d30/class_fading_scene_aac44cee699d9da962cfd083422808805ac388465394f4da88a6d914281d1a4744}
+}]\index{FM\_\-FADE\_\-INOUT@{FM\_\-FADE\_\-INOUT}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FM\_\-FADE\_\-INOUT@{FM\_\-FADE\_\-INOUT}}\item[{\em 
+\hypertarget{class_fading_scene_aac44cee699d9da962cfd083422808805ac4346adcfc9e9bf2d1f9cce304058912}{
+FM\_\-FADE\_\-INOUT}
+\label{d0/d30/class_fading_scene_aac44cee699d9da962cfd083422808805ac4346adcfc9e9bf2d1f9cce304058912}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+                        {
+                FM_NO_FADE = 0,
+                FM_FADE_IN,
+                FM_FADE_OUT,
+                FM_FADE_INOUT
+        };
+\end{DoxyCode}
+\hypertarget{class_fading_scene_a7de69df5a2dced68333b84561224e4c8}{
+\index{FadingScene@{FadingScene}!FadingState@{FadingState}}
+\index{FadingState@{FadingState}!FadingScene@{FadingScene}}
+\subsubsection[{FadingState}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf FadingScene::FadingState}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d0/d30/class_fading_scene_a7de69df5a2dced68333b84561224e4c8}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{FS\_\-FADE\_\-IN@{FS\_\-FADE\_\-IN}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FS\_\-FADE\_\-IN@{FS\_\-FADE\_\-IN}}\item[{\em 
+\hypertarget{class_fading_scene_a7de69df5a2dced68333b84561224e4c8aa4a68082e8e8f6b4900ff975f0e3e11f}{
+FS\_\-FADE\_\-IN}
+\label{d0/d30/class_fading_scene_a7de69df5a2dced68333b84561224e4c8aa4a68082e8e8f6b4900ff975f0e3e11f}
+}]\index{FS\_\-FADE\_\-OUT@{FS\_\-FADE\_\-OUT}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FS\_\-FADE\_\-OUT@{FS\_\-FADE\_\-OUT}}\item[{\em 
+\hypertarget{class_fading_scene_a7de69df5a2dced68333b84561224e4c8a71ad620245f2347d1bcf8c6fabc1cacc}{
+FS\_\-FADE\_\-OUT}
+\label{d0/d30/class_fading_scene_a7de69df5a2dced68333b84561224e4c8a71ad620245f2347d1bcf8c6fabc1cacc}
+}]\index{FS\_\-WAITING@{FS\_\-WAITING}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FS\_\-WAITING@{FS\_\-WAITING}}\item[{\em 
+\hypertarget{class_fading_scene_a7de69df5a2dced68333b84561224e4c8a7aa5ec7f3130536a8393fda4abe3dc10}{
+FS\_\-WAITING}
+\label{d0/d30/class_fading_scene_a7de69df5a2dced68333b84561224e4c8a7aa5ec7f3130536a8393fda4abe3dc10}
+}]\index{FS\_\-COMPLETED@{FS\_\-COMPLETED}!FadingScene@{FadingScene}}\index{FadingScene@{FadingScene}!FS\_\-COMPLETED@{FS\_\-COMPLETED}}\item[{\em 
+\hypertarget{class_fading_scene_a7de69df5a2dced68333b84561224e4c8aaff6e6dada7c51d90f422e6b170b8e71}{
+FS\_\-COMPLETED}
+\label{d0/d30/class_fading_scene_a7de69df5a2dced68333b84561224e4c8aaff6e6dada7c51d90f422e6b170b8e71}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+                         {
+                FS_FADE_IN = 0,
+                FS_FADE_OUT,
+                FS_WAITING,
+                FS_COMPLETED
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_fading_scene_ac2e17e101c77a8c3dace9bbea8d54f27}{
+\index{FadingScene@{FadingScene}!FadingScene@{FadingScene}}
+\index{FadingScene@{FadingScene}!FadingScene@{FadingScene}}
+\subsubsection[{FadingScene}]{\setlength{\rightskip}{0pt plus 5cm}FadingScene::FadingScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_ac2e17e101c77a8c3dace9bbea8d54f27}
+
+\begin{DoxyCode}
+                        :_fadein(0.0f),_fadeout(0.0f),_waittime(0.0f),_mode(
+      FM_NO_FADE),_fadingState(FS_COMPLETED),_backgroundColor(0,0,0),_timer(0.0f)
+{
+        _sceneState = SS_RUNNING;
+}
+\end{DoxyCode}
+\hypertarget{class_fading_scene_a9ac1472cbd35acb25bce080e6279ca87}{
+\index{FadingScene@{FadingScene}!FadingScene@{FadingScene}}
+\index{FadingScene@{FadingScene}!FadingScene@{FadingScene}}
+\subsubsection[{FadingScene}]{\setlength{\rightskip}{0pt plus 5cm}FadingScene::FadingScene (
+\begin{DoxyParamCaption}
+\item[{float}]{fadein, }
+\item[{float}]{fadeout, }
+\item[{float}]{waittime, }
+\item[{{\bf FadingScene::FadingMode}}]{mode}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_a9ac1472cbd35acb25bce080e6279ca87}
+
+\begin{DoxyCode}
+                                                                                 
+           :_fadein(fadein),_fadeout(fadeout),_waittime(waittime),_mode(mode),_backgrou
+      ndColor(0,0,0),_timer(0.0f)
+{
+        _sceneState = SS_RUNNING;
+
+        switch(mode)
+        {
+                case FM_NO_FADE:
+                        _fadingState = FS_COMPLETED;
+                        break;
+                case FM_FADE_IN:
+                        _fadingState = FS_FADE_IN;
+                        break;
+                case FM_FADE_OUT:
+                        _fadingState = FS_FADE_OUT;
+                        break;
+                case FM_FADE_INOUT:
+                        _fadingState = FS_FADE_IN;
+                        break;
+                default:
+                        _fadingState = FS_COMPLETED;
+                        _sceneState = SS_COMPLETED;
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_fading_scene_aad75b17457eccb13910230f77ff3cc71}{
+\index{FadingScene@{FadingScene}!$\sim$FadingScene@{$\sim$FadingScene}}
+\index{$\sim$FadingScene@{$\sim$FadingScene}!FadingScene@{FadingScene}}
+\subsubsection[{$\sim$FadingScene}]{\setlength{\rightskip}{0pt plus 5cm}FadingScene::$\sim$FadingScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d0/d30/class_fading_scene_aad75b17457eccb13910230f77ff3cc71}
+
+\begin{DoxyCode}
+{
+
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_fading_scene_af79e9c4d787167ac2068db010843b647}{
+\index{FadingScene@{FadingScene}!GetBackgroundColor@{GetBackgroundColor}}
+\index{GetBackgroundColor@{GetBackgroundColor}!FadingScene@{FadingScene}}
+\subsubsection[{GetBackgroundColor}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-Color FadingScene::GetBackgroundColor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_af79e9c4d787167ac2068db010843b647}
+
+\begin{DoxyCode}
+{
+        return _backgroundColor;
+}
+\end{DoxyCode}
+\hypertarget{class_fading_scene_ab14f983d9e1666684d6a7d41b2575519}{
+\index{FadingScene@{FadingScene}!GetFadeInTime@{GetFadeInTime}}
+\index{GetFadeInTime@{GetFadeInTime}!FadingScene@{FadingScene}}
+\subsubsection[{GetFadeInTime}]{\setlength{\rightskip}{0pt plus 5cm}float FadingScene::GetFadeInTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_ab14f983d9e1666684d6a7d41b2575519}
+\hypertarget{class_fading_scene_a555c56c485e4cf2194d6f8797fb4db2d}{
+\index{FadingScene@{FadingScene}!GetFadeMode@{GetFadeMode}}
+\index{GetFadeMode@{GetFadeMode}!FadingScene@{FadingScene}}
+\subsubsection[{GetFadeMode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FadingScene::FadingMode} FadingScene::GetFadeMode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_a555c56c485e4cf2194d6f8797fb4db2d}
+
+\begin{DoxyCode}
+{
+        return _mode;
+}
+\end{DoxyCode}
+\hypertarget{class_fading_scene_ac0aa93b2522ece6052c518f3e17e1d44}{
+\index{FadingScene@{FadingScene}!GetFadeOutTime@{GetFadeOutTime}}
+\index{GetFadeOutTime@{GetFadeOutTime}!FadingScene@{FadingScene}}
+\subsubsection[{GetFadeOutTime}]{\setlength{\rightskip}{0pt plus 5cm}float FadingScene::GetFadeOutTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_ac0aa93b2522ece6052c518f3e17e1d44}
+\hypertarget{class_fading_scene_ad5359f9c482dc1e309ce3c28063ad2c0}{
+\index{FadingScene@{FadingScene}!GetWaitTime@{GetWaitTime}}
+\index{GetWaitTime@{GetWaitTime}!FadingScene@{FadingScene}}
+\subsubsection[{GetWaitTime}]{\setlength{\rightskip}{0pt plus 5cm}float FadingScene::GetWaitTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_ad5359f9c482dc1e309ce3c28063ad2c0}
+\hypertarget{class_fading_scene_a9fc4f665d09a7d45867817d098f5ffd4}{
+\index{FadingScene@{FadingScene}!SetBackgroundColor@{SetBackgroundColor}}
+\index{SetBackgroundColor@{SetBackgroundColor}!FadingScene@{FadingScene}}
+\subsubsection[{SetBackgroundColor}]{\setlength{\rightskip}{0pt plus 5cm}void FadingScene::SetBackgroundColor (
+\begin{DoxyParamCaption}
+\item[{CL\_\-Color}]{color}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_a9fc4f665d09a7d45867817d098f5ffd4}
+
+\begin{DoxyCode}
+{
+        _backgroundColor = color;
+}
+\end{DoxyCode}
+\hypertarget{class_fading_scene_a7442c6e14409bb3d19f9e7b2e5d90297}{
+\index{FadingScene@{FadingScene}!SetFadeInTime@{SetFadeInTime}}
+\index{SetFadeInTime@{SetFadeInTime}!FadingScene@{FadingScene}}
+\subsubsection[{SetFadeInTime}]{\setlength{\rightskip}{0pt plus 5cm}void FadingScene::SetFadeInTime (
+\begin{DoxyParamCaption}
+\item[{float}]{time\_\-ms}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_a7442c6e14409bb3d19f9e7b2e5d90297}
+\hypertarget{class_fading_scene_af492fb8d42550f7e70c2f87abb6bdcaa}{
+\index{FadingScene@{FadingScene}!SetFadeMode@{SetFadeMode}}
+\index{SetFadeMode@{SetFadeMode}!FadingScene@{FadingScene}}
+\subsubsection[{SetFadeMode}]{\setlength{\rightskip}{0pt plus 5cm}void FadingScene::SetFadeMode (
+\begin{DoxyParamCaption}
+\item[{{\bf FadingScene::FadingMode}}]{mode}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_af492fb8d42550f7e70c2f87abb6bdcaa}
+
+\begin{DoxyCode}
+{
+        _mode = mode;
+}
+\end{DoxyCode}
+\hypertarget{class_fading_scene_af5fc2ed76481ad4217914398b56f832a}{
+\index{FadingScene@{FadingScene}!SetFadeOutTime@{SetFadeOutTime}}
+\index{SetFadeOutTime@{SetFadeOutTime}!FadingScene@{FadingScene}}
+\subsubsection[{SetFadeOutTime}]{\setlength{\rightskip}{0pt plus 5cm}void FadingScene::SetFadeOutTime (
+\begin{DoxyParamCaption}
+\item[{float}]{time\_\-ms}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_af5fc2ed76481ad4217914398b56f832a}
+\hypertarget{class_fading_scene_a393089e50d6acebb9811f77e13996948}{
+\index{FadingScene@{FadingScene}!SetWaitTime@{SetWaitTime}}
+\index{SetWaitTime@{SetWaitTime}!FadingScene@{FadingScene}}
+\subsubsection[{SetWaitTime}]{\setlength{\rightskip}{0pt plus 5cm}void FadingScene::SetWaitTime (
+\begin{DoxyParamCaption}
+\item[{float}]{time\_\-ms}
+\end{DoxyParamCaption}
+)}}
+\label{d0/d30/class_fading_scene_a393089e50d6acebb9811f77e13996948}
+\hypertarget{class_fading_scene_a87df73975854a1170eef8b5fadd63b92}{
+\index{FadingScene@{FadingScene}!update@{update}}
+\index{update@{update}!FadingScene@{FadingScene}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void FadingScene::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d0/d30/class_fading_scene_a87df73975854a1170eef8b5fadd63b92}
+
+
+Reimplemented from \hyperlink{class_scene_aa24c7e636c10e4e42650c1374b90bb80}{Scene}.
+
+
+
+Reimplemented in \hyperlink{class_menu_difficulty_a59ae5cf3b618e32ac3a009e644123ab4}{MenuDifficulty}.
+
+
+\begin{DoxyCode}
+{
+        if (_sceneState == SS_COMPLETED)
+        {
+                changeToNextScene();
+        }
+
+        float alpha = 1;
+
+        if(_fadingState != FS_COMPLETED)
+        {
+                _timer += GameManager::getInstance()->getDeltaTime();
+
+                switch(_fadingState)
+                {
+                        case FS_FADE_IN:
+                                if (_timer >= _fadein)
+                                {
+                                        if (_mode == FM_FADE_IN)
+                                        {
+                                                _fadingState = FS_COMPLETED;
+                                                _sceneState = SS_COMPLETED;
+                                        } 
+                                        else
+                                        {
+                                                _fadingState = FS_WAITING;
+                                        }//if
+
+                                        _timer = 0.0f;
+                                }
+                                else
+                                {
+                                        //alpha = 1 - _timer/_fadein;
+                                        alpha = _timer/_fadein;
+                                }//if
+
+                                break;
+
+                        case FS_FADE_OUT:
+                                if (_timer >= _fadeout)
+                                {
+                                        _fadingState = FS_COMPLETED;
+                                        _sceneState = SS_COMPLETED;
+                                        _timer = 0.0f;
+                                        alpha = 0.0f;
+                                }
+                                else
+                                {
+                                        alpha = 1 - _timer/_fadeout;
+                                }//if
+
+                                break;
+                        case FS_WAITING:
+                                if (_timer >= _waittime)
+                                {
+                                        _fadingState = FS_FADE_OUT;
+                                        _timer = 0.0f;
+                                }//if
+
+                                break;
+                        case FS_COMPLETED:
+                                //For compiler warnings
+                        default:
+                                /* default */
+                                break;
+                }//switch-case
+        }
+        else
+        {
+                if (_mode == FM_FADE_IN)
+                {
+                        alpha = 1.0f;
+                } 
+                else
+                {
+                        alpha = 0.0f;
+                }//if
+        }//if
+
+        for (std::list<Entity*>::iterator it = _entities.begin(); it != 
+      _entities.end(); it++)
+        {
+                (*it)->setAlpha(alpha);
+                (*it)->update();
+        }
+
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d0/d30/class_fading_scene_a87df73975854a1170eef8b5fadd63b92_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_fading_scene_8h}{FadingScene.h}\item 
+\hyperlink{_fading_scene_8cpp}{FadingScene.cpp}\end{DoxyCompactItemize}

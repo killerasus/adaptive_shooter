@@ -1,0 +1,664 @@
+\hypertarget{class_player}{
+\section{Player Class Reference}
+\label{d8/d53/class_player}\index{Player@{Player}}
+}
+
+
+{\ttfamily \#include $<$Player.h$>$}
+
+
+
+Inheritance diagram for Player:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{d9/d6c/class_player__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Player:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d6/db3/class_player__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player_a28f6d1f3509fc57c77784b1d540c0dbf}{Player} (float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel $\ast$model, unsigned int lives=2)
+\item 
+virtual \hyperlink{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$Player} ()
+\item 
+virtual void \hyperlink{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}{update} ()
+\item 
+unsigned int \hyperlink{class_player_af680a046d4597e159956da95b07a87e3}{getPlayerNumber} () const 
+\item 
+void \hyperlink{class_player_a8201669c6096fa5cf902652a385cc863}{setPlayerNumber} (unsigned int val)
+\item 
+unsigned int \hyperlink{class_player_a1cb5543d570ece1148d46d571937f56b}{getLives} () const 
+\item 
+void \hyperlink{class_player_a98f2db1c28350e43745cb0c49282c7cb}{setLives} (unsigned int val)
+\item 
+void \hyperlink{class_player_a2c0f29adffb4f7eee3ee334cf66db499}{addLives} (unsigned int val)
+\item 
+void \hyperlink{class_player_a54ee3ef0e752924759ed61a1ca7bf59f}{subtractLives} (unsigned int val)
+\item 
+PlayerModel $\ast$ \hyperlink{class_player_af7d45973f07ac7cb1035c5e652e04f24}{getPlayerModel} () const 
+\item 
+void \hyperlink{class_player_a23c9b25aeb8dd1ff86d03d993e07a73d}{setScore} (int score)
+\item 
+int \hyperlink{class_player_ac10eb9fb0387f565134958d129585ac6}{getScore} () const 
+\item 
+void \hyperlink{class_player_ae9f35befb9fb4239cab7a3f5553b8ac2}{addToScore} (int value)
+\item 
+virtual void \hyperlink{class_player_a47ca4197c52a2ee0952abddd519d8506}{addShots} (std::vector$<$ \hyperlink{class_shot}{Shot} $\ast$ $>$ shots)
+\item 
+bool \hyperlink{class_player_a35c75510e8be559cb1f9272bfc11d026}{getInvincible} ()
+\item 
+void \hyperlink{class_player_af85decd14ae3ac2785feecf73bd75c5c}{setInvincible} (bool status)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_player_a28f6d1f3509fc57c77784b1d540c0dbf}{
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{Player}]{\setlength{\rightskip}{0pt plus 5cm}Player::Player (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{float}]{speedX, }
+\item[{float}]{speedY, }
+\item[{unsigned int}]{number, }
+\item[{std::string}]{sprite, }
+\item[{PlayerModel $\ast$}]{model, }
+\item[{unsigned int}]{lives = {\ttfamily 2}}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a28f6d1f3509fc57c77784b1d540c0dbf}
+Constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & Starting x position \\
+\hline
+\mbox{\tt in}  & {\em y} & Starting y position \\
+\hline
+\mbox{\tt in}  & {\em speedX} & Starting x speed \\
+\hline
+\mbox{\tt in}  & {\em speedY} & Starting y speed \\
+\hline
+\mbox{\tt in}  & {\em number} & \hyperlink{class_player}{Player} number, from 0 to max\_\-players -\/ 1 \\
+\hline
+\mbox{\tt in}  & {\em sprite} & Sprite path in resource file \\
+\hline
+\mbox{\tt in}  & {\em model} & Implementation of PlayerModel interface, \hyperlink{class_player}{Player} takes care of deleting \\
+\hline
+\mbox{\tt in}  & {\em lives} & Number of starting lives, defaulted to 2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+        : DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives(
+       lives ), _score( 0 ) ,_model( model ),
+        _spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "spri
+      tes/shot", GameManager::getInstance()->getPlayerOptions()->shotDelay ) ),
+        _controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false 
+      ), _invincibilityTimerBase(1500.0f),
+        _invincibilityTimer( 0.f ), _alphaFlash( 0.5f )
+{
+        setCurrentWeapon( _weapon );
+        _weapon->setShotSpeed( GameManager::getInstance()->getPlayerOptions()->sh
+      otSpeedX,
+                GameManager::getInstance()->getPlayerOptions()->shotSpeedY );
+
+        if (_controller == NULL)
+        {
+                _controller = new KeyboardController();
+        }
+
+        GameManager* manager = GameManager::getInstance();
+        CL_GraphicContext gc = manager->getWindow()->get_gc();
+        _currentSprite = new CL_Sprite( gc, sprite, manager->getResourceManager()
+       );
+
+        CL_String descriptor = sprite.substr( sprite.find_last_of( "/" ) + 1 );
+
+        for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+        {
+                CL_String collisionResource = cl_format( "outlines/player/%1_00%2
+      ", descriptor, i );
+                _currentOutlines.push_back( new CL_CollisionOutline( collisionRes
+      ource.c_str(), manager->getResourceManager() ) );
+        }
+
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/d53/class_player_a28f6d1f3509fc57c77784b1d540c0dbf_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{
+\index{Player@{Player}!$\sim$Player@{$\sim$Player}}
+\index{$\sim$Player@{$\sim$Player}!Player@{Player}}
+\subsubsection[{$\sim$Player}]{\setlength{\rightskip}{0pt plus 5cm}Player::$\sim$Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d8/d53/class_player_a749d2c00e1fe0f5c2746f7505a58c062}
+Destructor 
+\begin{DoxyCode}
+{
+        delete _model;
+        delete _currentSprite;
+        delete _weapon;
+        delete _controller;
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_player_a2c0f29adffb4f7eee3ee334cf66db499}{
+\index{Player@{Player}!addLives@{addLives}}
+\index{addLives@{addLives}!Player@{Player}}
+\subsubsection[{addLives}]{\setlength{\rightskip}{0pt plus 5cm}void Player::addLives (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{val}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a2c0f29adffb4f7eee3ee334cf66db499}
+Add val lives to player lives pool
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Number of lives to add \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _lives += val;
+}
+\end{DoxyCode}
+\hypertarget{class_player_a47ca4197c52a2ee0952abddd519d8506}{
+\index{Player@{Player}!addShots@{addShots}}
+\index{addShots@{addShots}!Player@{Player}}
+\subsubsection[{addShots}]{\setlength{\rightskip}{0pt plus 5cm}void Player::addShots (
+\begin{DoxyParamCaption}
+\item[{std::vector$<$ {\bf Shot} $\ast$ $>$}]{shots}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d8/d53/class_player_a47ca4197c52a2ee0952abddd519d8506}
+Add shots from the weapon to the scene's correct shot list
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em shots} & Vector of shots to be added to the scene \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_shooter_ac632e56f3cc571f6d140767ba33053e8}{Shooter}.
+
+
+\begin{DoxyCode}
+{
+        TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( 
+      GameManager::getInstance()->peekScene() );
+
+        for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); 
+      it++)
+        {
+                currentScene->addPlayerShot( (*it) );
+        }
+
+        if (shots.size() > 0)
+        {
+                GameManager::getInstance()->playSoundEffect(
+      GameManager::SFX_BLASTER);
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/d53/class_player_a47ca4197c52a2ee0952abddd519d8506_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/d53/class_player_a47ca4197c52a2ee0952abddd519d8506_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_ae9f35befb9fb4239cab7a3f5553b8ac2}{
+\index{Player@{Player}!addToScore@{addToScore}}
+\index{addToScore@{addToScore}!Player@{Player}}
+\subsubsection[{addToScore}]{\setlength{\rightskip}{0pt plus 5cm}void Player::addToScore (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_ae9f35befb9fb4239cab7a3f5553b8ac2}
+Add points to player's score
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & Points to add \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _score += value;
+}
+\end{DoxyCode}
+\hypertarget{class_player_a35c75510e8be559cb1f9272bfc11d026}{
+\index{Player@{Player}!getInvincible@{getInvincible}}
+\index{getInvincible@{getInvincible}!Player@{Player}}
+\subsubsection[{getInvincible}]{\setlength{\rightskip}{0pt plus 5cm}bool Player::getInvincible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a35c75510e8be559cb1f9272bfc11d026}
+Gets invincibility
+
+\begin{DoxyReturn}{Returns}
+bool True if invincible, false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _invincible;
+}
+\end{DoxyCode}
+\hypertarget{class_player_a1cb5543d570ece1148d46d571937f56b}{
+\index{Player@{Player}!getLives@{getLives}}
+\index{getLives@{getLives}!Player@{Player}}
+\subsubsection[{getLives}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Player::getLives (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d8/d53/class_player_a1cb5543d570ece1148d46d571937f56b}
+Gets Player's lives
+
+\begin{DoxyReturn}{Returns}
+unsigned int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{ 
+        return _lives; 
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{d8/d53/class_player_a1cb5543d570ece1148d46d571937f56b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_af7d45973f07ac7cb1035c5e652e04f24}{
+\index{Player@{Player}!getPlayerModel@{getPlayerModel}}
+\index{getPlayerModel@{getPlayerModel}!Player@{Player}}
+\subsubsection[{getPlayerModel}]{\setlength{\rightskip}{0pt plus 5cm}PlayerModel $\ast$ Player::getPlayerModel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d8/d53/class_player_af7d45973f07ac7cb1035c5e652e04f24}
+Gets current player's model
+
+\begin{DoxyReturn}{Returns}
+PlayerModel$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _model;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/d53/class_player_af7d45973f07ac7cb1035c5e652e04f24_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_af680a046d4597e159956da95b07a87e3}{
+\index{Player@{Player}!getPlayerNumber@{getPlayerNumber}}
+\index{getPlayerNumber@{getPlayerNumber}!Player@{Player}}
+\subsubsection[{getPlayerNumber}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Player::getPlayerNumber (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d8/d53/class_player_af680a046d4597e159956da95b07a87e3}
+Gets \hyperlink{class_player}{Player} number (0 to max\_\-players -\/ 1)
+
+\begin{DoxyReturn}{Returns}
+unsigned int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{ 
+        return _playerNumber; 
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=386pt]{d8/d53/class_player_af680a046d4597e159956da95b07a87e3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_ac10eb9fb0387f565134958d129585ac6}{
+\index{Player@{Player}!getScore@{getScore}}
+\index{getScore@{getScore}!Player@{Player}}
+\subsubsection[{getScore}]{\setlength{\rightskip}{0pt plus 5cm}int Player::getScore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{d8/d53/class_player_ac10eb9fb0387f565134958d129585ac6}
+Gets player's score
+
+\begin{DoxyReturn}{Returns}
+int Player's score 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _score;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{d8/d53/class_player_ac10eb9fb0387f565134958d129585ac6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_af85decd14ae3ac2785feecf73bd75c5c}{
+\index{Player@{Player}!setInvincible@{setInvincible}}
+\index{setInvincible@{setInvincible}!Player@{Player}}
+\subsubsection[{setInvincible}]{\setlength{\rightskip}{0pt plus 5cm}void Player::setInvincible (
+\begin{DoxyParamCaption}
+\item[{bool}]{status}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_af85decd14ae3ac2785feecf73bd75c5c}
+Enable or disable invincibility
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em status} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _invincible = status;
+
+        if (_invincible)
+        {
+                _invincibilityTimer = 0.0f;
+                _alphaFlash = 0.5f;
+                _currentSprite->set_alpha( _alphaFlash );
+        }
+        else
+        {
+                _alphaFlash = 1.0f;
+                _currentSprite->set_alpha( 1.0f );
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_player_a98f2db1c28350e43745cb0c49282c7cb}{
+\index{Player@{Player}!setLives@{setLives}}
+\index{setLives@{setLives}!Player@{Player}}
+\subsubsection[{setLives}]{\setlength{\rightskip}{0pt plus 5cm}void Player::setLives (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{val}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a98f2db1c28350e43745cb0c49282c7cb}
+Sets Players lives
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{ 
+        _lives = val; 
+}
+\end{DoxyCode}
+\hypertarget{class_player_a8201669c6096fa5cf902652a385cc863}{
+\index{Player@{Player}!setPlayerNumber@{setPlayerNumber}}
+\index{setPlayerNumber@{setPlayerNumber}!Player@{Player}}
+\subsubsection[{setPlayerNumber}]{\setlength{\rightskip}{0pt plus 5cm}void Player::setPlayerNumber (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{val}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a8201669c6096fa5cf902652a385cc863}
+Sets \hyperlink{class_player}{Player} number (0 to max\_\-players -\/ 1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{ 
+        _playerNumber = val; 
+}
+\end{DoxyCode}
+\hypertarget{class_player_a23c9b25aeb8dd1ff86d03d993e07a73d}{
+\index{Player@{Player}!setScore@{setScore}}
+\index{setScore@{setScore}!Player@{Player}}
+\subsubsection[{setScore}]{\setlength{\rightskip}{0pt plus 5cm}void Player::setScore (
+\begin{DoxyParamCaption}
+\item[{int}]{score}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a23c9b25aeb8dd1ff86d03d993e07a73d}
+Sets player's score
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em score} & New value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _score = score;
+}
+\end{DoxyCode}
+\hypertarget{class_player_a54ee3ef0e752924759ed61a1ca7bf59f}{
+\index{Player@{Player}!subtractLives@{subtractLives}}
+\index{subtractLives@{subtractLives}!Player@{Player}}
+\subsubsection[{subtractLives}]{\setlength{\rightskip}{0pt plus 5cm}void Player::subtractLives (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{val}
+\end{DoxyParamCaption}
+)}}
+\label{d8/d53/class_player_a54ee3ef0e752924759ed61a1ca7bf59f}
+Subtracts val lives from lives pool
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Number of lives to subtract \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        if (val <= _lives)
+        {
+                _lives -= val;
+        }
+        else
+        {
+                _lives = 0;
+        }
+
+        if (_lives == 1)
+        {
+                GameManager::getInstance()->playSoundEffect( 
+      GameManager::SFX_WARNING );
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/d53/class_player_a54ee3ef0e752924759ed61a1ca7bf59f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}{
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Player::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d8/d53/class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}
+Updates the entity 
+
+Implements \hyperlink{class_dynamic_entity_a80ad0626e1c2167efa049c580c0d466c}{DynamicEntity}.
+
+
+\begin{DoxyCode}
+{
+        float dt = GameManager::getInstance()->getDeltaTime();
+
+        Shooter::update();
+
+        updateInvincibility(dt);
+
+        if (_controller)
+        {
+                if (_controller->isControllerLeft())
+                {
+                        setPositionX( getPosition().x - getSpeed().x * dt * 0.001
+      f );
+                }
+
+                if (_controller->isControllerRight())
+                {
+                        setPositionX( getPosition().x + getSpeed().x * dt * 0.001
+      f );
+                }
+
+                if (_controller->isControllerUp())
+                {
+                        setPositionY( getPosition().y - getSpeed().y * dt * 0.001
+      f );
+                }
+
+                if (_controller->isControllerDown())
+                {
+                        setPositionY( getPosition().y + getSpeed().y * dt * 0.001
+      f );
+                }
+
+                if (_controller->isControllerFire())
+                {
+                        addShots( getCurrentWeapon()->shoot( this ) );
+                }
+        }
+
+        _currentSprite->update();
+
+        boundToScreen();
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/d53/class_player_a82c3476f3e65a4e2ac6bcd040771bdd4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{d8/d53/class_player_a82c3476f3e65a4e2ac6bcd040771bdd4_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_player_8h}{Player.h}\item 
+\hyperlink{_player_8cpp}{Player.cpp}\end{DoxyCompactItemize}

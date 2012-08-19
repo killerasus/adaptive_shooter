@@ -1,0 +1,474 @@
+\hypertarget{class_scene}{
+\section{Scene Class Reference}
+\label{d6/db5/class_scene}\index{Scene@{Scene}}
+}
+
+
+{\ttfamily \#include $<$Scene.h$>$}
+
+
+
+Inheritance diagram for Scene:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d8/de6/class_scene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scene:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{d4/d7f/class_scene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_scene_a390db78d3a8e0fa83e861074e8690e87}{SceneState} \{ \hyperlink{class_scene_a390db78d3a8e0fa83e861074e8690e87a611c1c6bfa45ffad37f37bb811edfe2b}{SS\_\-RUNNING} =  0, 
+\hyperlink{class_scene_a390db78d3a8e0fa83e861074e8690e87a267743ea3f16b889bf84127cb107ab9b}{SS\_\-COMPLETED}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene} ()
+\item 
+virtual \hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{$\sim$Scene} ()
+\item 
+virtual void \hyperlink{class_scene_ac0e3d2c98ba6063a086467fb2c19142f}{draw} ()
+\item 
+virtual void \hyperlink{class_scene_aa24c7e636c10e4e42650c1374b90bb80}{update} ()
+\item 
+void \hyperlink{class_scene_ab07cbd5e581f410ea77f86591764435b}{insertEntity} (\hyperlink{class_entity}{Entity} $\ast$entity)
+\item 
+void \hyperlink{class_scene_a82c59d10dd6682fbb5d16e695b43cae4}{removeEntity} (\hyperlink{class_entity}{Entity} $\ast$entity)
+\item 
+\hyperlink{class_entity}{Entity} $\ast$ \hyperlink{class_scene_a5107f038eebdad8e7ab38ca2cd4371eb}{getEntity} (unsigned int i)
+\item 
+\hyperlink{class_scene}{Scene} $\ast$ \hyperlink{class_scene_a354843218b84e9cbe96172b0967ae4ae}{getNextScene} ()
+\item 
+void \hyperlink{class_scene_ac742b3975e402ae4172f47359f9370c9}{setNextScene} (\hyperlink{class_scene}{Scene} $\ast$next)
+\item 
+void \hyperlink{class_scene_aa215f0a9dae942612c175b686669498b}{pushEntityToDelete} (\hyperlink{class_entity}{Entity} $\ast$entity)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_scene_ab94fd30420e8336c6dde7b91de209031}{changeToNextScene} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::list$<$ \hyperlink{class_entity}{Entity} $\ast$ $>$ \hyperlink{class_scene_a0819f6cd7c31259233dc36be35288118}{\_\-entities}
+\item 
+std::list$<$ \hyperlink{class_entity}{Entity} $\ast$ $>$ \hyperlink{class_scene_a886d916ab7695db8a4103b8a5fc2e098}{\_\-deleteEntities}
+\item 
+\hyperlink{class_scene_a390db78d3a8e0fa83e861074e8690e87}{SceneState} \hyperlink{class_scene_a2e429bb792232007aa02c7dd544cfc90}{\_\-sceneState}
+\item 
+\hyperlink{class_scene}{Scene} $\ast$ \hyperlink{class_scene_a93ba696da115a11e84d696be7f35c3d6}{\_\-nextScene}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_scene_a390db78d3a8e0fa83e861074e8690e87}{
+\index{Scene@{Scene}!SceneState@{SceneState}}
+\index{SceneState@{SceneState}!Scene@{Scene}}
+\subsubsection[{SceneState}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Scene::SceneState}}}
+\label{d6/db5/class_scene_a390db78d3a8e0fa83e861074e8690e87}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SS\_\-RUNNING@{SS\_\-RUNNING}!Scene@{Scene}}\index{Scene@{Scene}!SS\_\-RUNNING@{SS\_\-RUNNING}}\item[{\em 
+\hypertarget{class_scene_a390db78d3a8e0fa83e861074e8690e87a611c1c6bfa45ffad37f37bb811edfe2b}{
+SS\_\-RUNNING}
+\label{d6/db5/class_scene_a390db78d3a8e0fa83e861074e8690e87a611c1c6bfa45ffad37f37bb811edfe2b}
+}]\index{SS\_\-COMPLETED@{SS\_\-COMPLETED}!Scene@{Scene}}\index{Scene@{Scene}!SS\_\-COMPLETED@{SS\_\-COMPLETED}}\item[{\em 
+\hypertarget{class_scene_a390db78d3a8e0fa83e861074e8690e87a267743ea3f16b889bf84127cb107ab9b}{
+SS\_\-COMPLETED}
+\label{d6/db5/class_scene_a390db78d3a8e0fa83e861074e8690e87a267743ea3f16b889bf84127cb107ab9b}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+        {
+                SS_RUNNING = 0,
+                SS_COMPLETED
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_scene_ad10176d75a9cc0da56626f682d083507}{
+\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\subsubsection[{Scene}]{\setlength{\rightskip}{0pt plus 5cm}Scene::Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_ad10176d75a9cc0da56626f682d083507}
+
+\begin{DoxyCode}
+             : _nextScene( NULL )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_scene_a3b8cec2e32546713915f8c6303c951f1}{
+\index{Scene@{Scene}!$\sim$Scene@{$\sim$Scene}}
+\index{$\sim$Scene@{$\sim$Scene}!Scene@{Scene}}
+\subsubsection[{$\sim$Scene}]{\setlength{\rightskip}{0pt plus 5cm}Scene::$\sim$Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d6/db5/class_scene_a3b8cec2e32546713915f8c6303c951f1}
+Calls each of \_\-entities destructor 
+\begin{DoxyCode}
+{
+        for (std::list<Entity*>::iterator it = _entities.begin(); it != 
+      _entities.end(); )
+        {
+                delete (*it);
+                it = _entities.erase( it );
+        }
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scene_ab94fd30420e8336c6dde7b91de209031}{
+\index{Scene@{Scene}!changeToNextScene@{changeToNextScene}}
+\index{changeToNextScene@{changeToNextScene}!Scene@{Scene}}
+\subsubsection[{changeToNextScene}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::changeToNextScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d6/db5/class_scene_ab94fd30420e8336c6dde7b91de209031}
+Changes to the next scene in the stack 
+\begin{DoxyCode}
+{
+        GameManager* manager = GameManager::getInstance();
+        manager->popScene();
+        manager->pushScene( _nextScene );
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d6/db5/class_scene_ab94fd30420e8336c6dde7b91de209031_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=382pt]{d6/db5/class_scene_ab94fd30420e8336c6dde7b91de209031_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_scene_ac0e3d2c98ba6063a086467fb2c19142f}{
+\index{Scene@{Scene}!draw@{draw}}
+\index{draw@{draw}!Scene@{Scene}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d6/db5/class_scene_ac0e3d2c98ba6063a086467fb2c19142f}
+
+
+Reimplemented in \hyperlink{class_menu_a2cd7ab9901a8f42a3ae977d0774398a6}{Menu}, \hyperlink{class_menu_difficulty_a8529ac80e7e626b5beb005d622d4dd5c}{MenuDifficulty}, \hyperlink{class_test_scene_a18633fba568283d4e2b7c4d6ff2aec23}{TestScene}, and \hyperlink{class_test_scene_player_a17140146d2a39f10eb3aed81c067ec24}{TestScenePlayer}.
+
+
+\begin{DoxyCode}
+{
+        for ( std::list<Entity*>::iterator it = _entities.begin(); it != 
+      _entities.end(); it++ )
+        {
+                (*it)->draw();
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_scene_a5107f038eebdad8e7ab38ca2cd4371eb}{
+\index{Scene@{Scene}!getEntity@{getEntity}}
+\index{getEntity@{getEntity}!Scene@{Scene}}
+\subsubsection[{getEntity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Entity} $\ast$ Scene::getEntity (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_a5107f038eebdad8e7ab38ca2cd4371eb}
+Gets an \hyperlink{class_entity}{Entity} from the control list
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & Position of the entity in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Entity$\ast$ Pointer to the entity. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        Entity* ret = NULL;
+        int j = 0;
+
+        for ( std::list<Entity*>::iterator it = _entities.begin(); it != 
+      _entities.end(); it++, j++ )
+        {
+                if ( j == i )
+                {
+                        ret = *it;
+                        break;
+                }
+        }
+
+        return ret;
+}
+\end{DoxyCode}
+\hypertarget{class_scene_a354843218b84e9cbe96172b0967ae4ae}{
+\index{Scene@{Scene}!getNextScene@{getNextScene}}
+\index{getNextScene@{getNextScene}!Scene@{Scene}}
+\subsubsection[{getNextScene}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene} $\ast$ Scene::getNextScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_a354843218b84e9cbe96172b0967ae4ae}
+Gets the pointer to the next scene
+
+\begin{DoxyReturn}{Returns}
+Scene$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _nextScene;
+}
+\end{DoxyCode}
+\hypertarget{class_scene_ab07cbd5e581f410ea77f86591764435b}{
+\index{Scene@{Scene}!insertEntity@{insertEntity}}
+\index{insertEntity@{insertEntity}!Scene@{Scene}}
+\subsubsection[{insertEntity}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::insertEntity (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity} $\ast$}]{entity}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_ab07cbd5e581f410ea77f86591764435b}
+Inserts an \hyperlink{class_entity}{Entity} in list control.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em entity} & Pointer to entity to add \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _entities.push_back(entity);
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d6/db5/class_scene_ab07cbd5e581f410ea77f86591764435b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_scene_aa215f0a9dae942612c175b686669498b}{
+\index{Scene@{Scene}!pushEntityToDelete@{pushEntityToDelete}}
+\index{pushEntityToDelete@{pushEntityToDelete}!Scene@{Scene}}
+\subsubsection[{pushEntityToDelete}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::pushEntityToDelete (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity} $\ast$}]{entity}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_aa215f0a9dae942612c175b686669498b}
+Inserts an entity into the post update delete list
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em entity} & \hyperlink{class_entity}{Entity} to be deleted \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _deleteEntities.push_back( entity );
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{d6/db5/class_scene_aa215f0a9dae942612c175b686669498b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_scene_a82c59d10dd6682fbb5d16e695b43cae4}{
+\index{Scene@{Scene}!removeEntity@{removeEntity}}
+\index{removeEntity@{removeEntity}!Scene@{Scene}}
+\subsubsection[{removeEntity}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::removeEntity (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity} $\ast$}]{entity}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_a82c59d10dd6682fbb5d16e695b43cae4}
+Removes an \hyperlink{class_entity}{Entity} from the control list. Does not call entity's destructor.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em entity} & Pointer to entity to remove \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _entities.remove( entity );
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{d6/db5/class_scene_a82c59d10dd6682fbb5d16e695b43cae4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_scene_ac742b3975e402ae4172f47359f9370c9}{
+\index{Scene@{Scene}!setNextScene@{setNextScene}}
+\index{setNextScene@{setNextScene}!Scene@{Scene}}
+\subsubsection[{setNextScene}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::setNextScene (
+\begin{DoxyParamCaption}
+\item[{{\bf Scene} $\ast$}]{next}
+\end{DoxyParamCaption}
+)}}
+\label{d6/db5/class_scene_ac742b3975e402ae4172f47359f9370c9}
+Sets next scene 
+\begin{DoxyParams}{Parameters}
+{\em next} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _nextScene = next;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=354pt]{d6/db5/class_scene_ac742b3975e402ae4172f47359f9370c9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_scene_aa24c7e636c10e4e42650c1374b90bb80}{
+\index{Scene@{Scene}!update@{update}}
+\index{update@{update}!Scene@{Scene}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Scene::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d6/db5/class_scene_aa24c7e636c10e4e42650c1374b90bb80}
+
+
+Reimplemented in \hyperlink{class_fading_scene_a87df73975854a1170eef8b5fadd63b92}{FadingScene}, \hyperlink{class_menu_a8446e8a1e56e9cf1db93790067510a61}{Menu}, \hyperlink{class_menu_difficulty_a59ae5cf3b618e32ac3a009e644123ab4}{MenuDifficulty}, \hyperlink{class_test_scene_a7bfc7a796b5837eb35b03f878d623fe1}{TestScene}, and \hyperlink{class_test_scene_player_a8285c9f16119d8423a0ed4858327097c}{TestScenePlayer}.
+
+
+\begin{DoxyCode}
+{
+        for ( std::list<Entity*>::iterator it = _entities.begin(); it != 
+      _entities.end(); it++ )
+        {
+                (*it)->update();
+        }
+
+        // Deletes entities pushed into _deleteEntities list
+        for ( std::list<Entity*>::iterator it = _deleteEntities.begin(); it!= 
+      _deleteEntities.end(); it++)
+        {
+                removeEntity( (*it) );
+        }
+
+        _deleteEntities.clear();
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{d6/db5/class_scene_aa24c7e636c10e4e42650c1374b90bb80_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_scene_a886d916ab7695db8a4103b8a5fc2e098}{
+\index{Scene@{Scene}!\_\-deleteEntities@{\_\-deleteEntities}}
+\index{\_\-deleteEntities@{\_\-deleteEntities}!Scene@{Scene}}
+\subsubsection[{\_\-deleteEntities}]{\setlength{\rightskip}{0pt plus 5cm}std::list$<$ {\bf Entity}$\ast$ $>$ {\bf Scene::\_\-deleteEntities}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d6/db5/class_scene_a886d916ab7695db8a4103b8a5fc2e098}
+\hypertarget{class_scene_a0819f6cd7c31259233dc36be35288118}{
+\index{Scene@{Scene}!\_\-entities@{\_\-entities}}
+\index{\_\-entities@{\_\-entities}!Scene@{Scene}}
+\subsubsection[{\_\-entities}]{\setlength{\rightskip}{0pt plus 5cm}std::list$<$ {\bf Entity}$\ast$ $>$ {\bf Scene::\_\-entities}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d6/db5/class_scene_a0819f6cd7c31259233dc36be35288118}
+\hypertarget{class_scene_a93ba696da115a11e84d696be7f35c3d6}{
+\index{Scene@{Scene}!\_\-nextScene@{\_\-nextScene}}
+\index{\_\-nextScene@{\_\-nextScene}!Scene@{Scene}}
+\subsubsection[{\_\-nextScene}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene}$\ast$ {\bf Scene::\_\-nextScene}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d6/db5/class_scene_a93ba696da115a11e84d696be7f35c3d6}
+\hypertarget{class_scene_a2e429bb792232007aa02c7dd544cfc90}{
+\index{Scene@{Scene}!\_\-sceneState@{\_\-sceneState}}
+\index{\_\-sceneState@{\_\-sceneState}!Scene@{Scene}}
+\subsubsection[{\_\-sceneState}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SceneState} {\bf Scene::\_\-sceneState}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{d6/db5/class_scene_a2e429bb792232007aa02c7dd544cfc90}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_scene_8h}{Scene.h}\item 
+\hyperlink{_scene_8cpp}{Scene.cpp}\end{DoxyCompactItemize}

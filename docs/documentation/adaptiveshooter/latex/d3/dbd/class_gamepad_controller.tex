@@ -1,0 +1,454 @@
+\hypertarget{class_gamepad_controller}{
+\section{GamepadController Class Reference}
+\label{d3/dbd/class_gamepad_controller}\index{GamepadController@{GamepadController}}
+}
+
+
+{\ttfamily \#include $<$GamepadController.h$>$}
+
+
+
+Inheritance diagram for GamepadController:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{d3/d01/class_gamepad_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for GamepadController:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{d3/d5e/class_gamepad_controller__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4}{GamepadKeys} \{ \par
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a30c59da8731ead8f981a38d862664bb7}{GP\_\-X\_\-AXIS} =  0, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a5fec23e980381a919b31785de65b7905}{GP\_\-Y\_\-AXIS}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4abeaade299142d60f1ce727386ff1d653}{GP\_\-Z\_\-AXIS}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ac5b30269f44138c055491c16d481f194}{GP\_\-BUTTON\_\-A} =  0, 
+\par
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a1e5280510be9bea6cf4ab497729433cf}{GP\_\-BUTTON\_\-B}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4aae8397393de539e564947d585f673e57}{GP\_\-BUTTON\_\-X}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a0dc723fae4fb3f8060ba5fb83928fc08}{GP\_\-BUTTON\_\-Y}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ab3ad24c254f7374593168ea94a7a1a05}{GP\_\-BUTTON\_\-L}, 
+\par
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ad12855e0a153507d7260df570c46698e}{GP\_\-BUTTON\_\-R}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4adb2043b202b439500b6d4cea7cf9cd12}{GP\_\-BUTTON\_\-SELECT}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a63ef264bc68c70d6ff3a010b8b0967ea}{GP\_\-BUTTON\_\-START}, 
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a47b88cd63bd57c83b7c7d6cdedc2b260}{GP\_\-BUTTON\_\-L\_\-HATCH}, 
+\par
+\hyperlink{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4afba22a1e04fdf399caac955224d0099c}{GP\_\-BUTTON\_\-R\_\-HATCH}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_gamepad_controller_af1c33038129ba047fed7541a4003d4a3}{$\sim$GamepadController} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_a7654b6d043a2e7fb7420c87d1d7431bc}{isControllerUp} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_ab64775ec0bf9239e45a05aab1f4724bc}{isControllerDown} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_af7a4347ea33875e931cf7c5afca53780}{isControllerLeft} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_ac5e39d22bb7db5a2e06d4886ce56a6e6}{isControllerRight} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_a229821d3d8b9c792fb226bddfe9ea2af}{isControllerFire} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_a24b688420baa64b45b80ddd981567b8d}{isControllerBomb} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_a010033951bcaf5668eb26a18a0c2f56d}{isControllerBack} ()
+\item 
+virtual bool \hyperlink{class_gamepad_controller_ae89dfce3e5a5e4afe342ad69435f8367}{isControllerStart} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_gamepad_controller}{GamepadController} $\ast$ \hyperlink{class_gamepad_controller_a81c336796d793e486d2ccf3db49a35c7}{getNewGamepad} (int number)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4}{
+\index{GamepadController@{GamepadController}!GamepadKeys@{GamepadKeys}}
+\index{GamepadKeys@{GamepadKeys}!GamepadController@{GamepadController}}
+\subsubsection[{GamepadKeys}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf GamepadController::GamepadKeys}}}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{GP\_\-X\_\-AXIS@{GP\_\-X\_\-AXIS}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-X\_\-AXIS@{GP\_\-X\_\-AXIS}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a30c59da8731ead8f981a38d862664bb7}{
+GP\_\-X\_\-AXIS}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a30c59da8731ead8f981a38d862664bb7}
+}]\index{GP\_\-Y\_\-AXIS@{GP\_\-Y\_\-AXIS}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-Y\_\-AXIS@{GP\_\-Y\_\-AXIS}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a5fec23e980381a919b31785de65b7905}{
+GP\_\-Y\_\-AXIS}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a5fec23e980381a919b31785de65b7905}
+}]\index{GP\_\-Z\_\-AXIS@{GP\_\-Z\_\-AXIS}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-Z\_\-AXIS@{GP\_\-Z\_\-AXIS}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4abeaade299142d60f1ce727386ff1d653}{
+GP\_\-Z\_\-AXIS}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4abeaade299142d60f1ce727386ff1d653}
+}]\index{GP\_\-BUTTON\_\-A@{GP\_\-BUTTON\_\-A}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-A@{GP\_\-BUTTON\_\-A}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ac5b30269f44138c055491c16d481f194}{
+GP\_\-BUTTON\_\-A}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ac5b30269f44138c055491c16d481f194}
+}]\index{GP\_\-BUTTON\_\-B@{GP\_\-BUTTON\_\-B}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-B@{GP\_\-BUTTON\_\-B}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a1e5280510be9bea6cf4ab497729433cf}{
+GP\_\-BUTTON\_\-B}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a1e5280510be9bea6cf4ab497729433cf}
+}]\index{GP\_\-BUTTON\_\-X@{GP\_\-BUTTON\_\-X}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-X@{GP\_\-BUTTON\_\-X}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4aae8397393de539e564947d585f673e57}{
+GP\_\-BUTTON\_\-X}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4aae8397393de539e564947d585f673e57}
+}]\index{GP\_\-BUTTON\_\-Y@{GP\_\-BUTTON\_\-Y}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-Y@{GP\_\-BUTTON\_\-Y}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a0dc723fae4fb3f8060ba5fb83928fc08}{
+GP\_\-BUTTON\_\-Y}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a0dc723fae4fb3f8060ba5fb83928fc08}
+}]\index{GP\_\-BUTTON\_\-L@{GP\_\-BUTTON\_\-L}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-L@{GP\_\-BUTTON\_\-L}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ab3ad24c254f7374593168ea94a7a1a05}{
+GP\_\-BUTTON\_\-L}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ab3ad24c254f7374593168ea94a7a1a05}
+}]\index{GP\_\-BUTTON\_\-R@{GP\_\-BUTTON\_\-R}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-R@{GP\_\-BUTTON\_\-R}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ad12855e0a153507d7260df570c46698e}{
+GP\_\-BUTTON\_\-R}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4ad12855e0a153507d7260df570c46698e}
+}]\index{GP\_\-BUTTON\_\-SELECT@{GP\_\-BUTTON\_\-SELECT}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-SELECT@{GP\_\-BUTTON\_\-SELECT}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4adb2043b202b439500b6d4cea7cf9cd12}{
+GP\_\-BUTTON\_\-SELECT}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4adb2043b202b439500b6d4cea7cf9cd12}
+}]\index{GP\_\-BUTTON\_\-START@{GP\_\-BUTTON\_\-START}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-START@{GP\_\-BUTTON\_\-START}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a63ef264bc68c70d6ff3a010b8b0967ea}{
+GP\_\-BUTTON\_\-START}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a63ef264bc68c70d6ff3a010b8b0967ea}
+}]\index{GP\_\-BUTTON\_\-L\_\-HATCH@{GP\_\-BUTTON\_\-L\_\-HATCH}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-L\_\-HATCH@{GP\_\-BUTTON\_\-L\_\-HATCH}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a47b88cd63bd57c83b7c7d6cdedc2b260}{
+GP\_\-BUTTON\_\-L\_\-HATCH}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4a47b88cd63bd57c83b7c7d6cdedc2b260}
+}]\index{GP\_\-BUTTON\_\-R\_\-HATCH@{GP\_\-BUTTON\_\-R\_\-HATCH}!GamepadController@{GamepadController}}\index{GamepadController@{GamepadController}!GP\_\-BUTTON\_\-R\_\-HATCH@{GP\_\-BUTTON\_\-R\_\-HATCH}}\item[{\em 
+\hypertarget{class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4afba22a1e04fdf399caac955224d0099c}{
+GP\_\-BUTTON\_\-R\_\-HATCH}
+\label{d3/dbd/class_gamepad_controller_aa2a6f2322fe27329a1a4a77cf35000b4afba22a1e04fdf399caac955224d0099c}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+        {
+                GP_X_AXIS = 0,
+                GP_Y_AXIS,
+                GP_Z_AXIS,
+                GP_BUTTON_A = 0,
+                GP_BUTTON_B,
+                GP_BUTTON_X,
+                GP_BUTTON_Y,
+                GP_BUTTON_L,
+                GP_BUTTON_R,
+                GP_BUTTON_SELECT,
+                GP_BUTTON_START,
+                GP_BUTTON_L_HATCH,
+                GP_BUTTON_R_HATCH
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_gamepad_controller_af1c33038129ba047fed7541a4003d4a3}{
+\index{GamepadController@{GamepadController}!$\sim$GamepadController@{$\sim$GamepadController}}
+\index{$\sim$GamepadController@{$\sim$GamepadController}!GamepadController@{GamepadController}}
+\subsubsection[{$\sim$GamepadController}]{\setlength{\rightskip}{0pt plus 5cm}GamepadController::$\sim$GamepadController (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{d3/dbd/class_gamepad_controller_af1c33038129ba047fed7541a4003d4a3}
+
+\begin{DoxyCode}
+{
+
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_gamepad_controller_a81c336796d793e486d2ccf3db49a35c7}{
+\index{GamepadController@{GamepadController}!getNewGamepad@{getNewGamepad}}
+\index{getNewGamepad@{getNewGamepad}!GamepadController@{GamepadController}}
+\subsubsection[{getNewGamepad}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GamepadController} $\ast$ GamepadController::getNewGamepad (
+\begin{DoxyParamCaption}
+\item[{int}]{number}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_a81c336796d793e486d2ccf3db49a35c7}
+Creates a new controller for the controller number passed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em number} & Number of the controller to get. Range: \mbox{[}0..3\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GamepadController$\ast$ Pointer to controller. NULL if no controller with the number passed. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        int numJoysticks = GameManager::getInstance()->getWindow()->get_ic().get_
+      joystick_count();
+
+        if ( numJoysticks > 0 && number < numJoysticks )
+        {
+                return new GamepadController( number );
+        } 
+        else
+        {
+                return NULL;
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{d3/dbd/class_gamepad_controller_a81c336796d793e486d2ccf3db49a35c7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_gamepad_controller_a010033951bcaf5668eb26a18a0c2f56d}{
+\index{GamepadController@{GamepadController}!isControllerBack@{isControllerBack}}
+\index{isControllerBack@{isControllerBack}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerBack}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerBack (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_a010033951bcaf5668eb26a18a0c2f56d}
+Checks if Back is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_a159f05315dcb80cf0729e80454072228}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        return _gamepad.get_keycode( GP_BUTTON_B );
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_a24b688420baa64b45b80ddd981567b8d}{
+\index{GamepadController@{GamepadController}!isControllerBomb@{isControllerBomb}}
+\index{isControllerBomb@{isControllerBomb}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerBomb}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerBomb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_a24b688420baa64b45b80ddd981567b8d}
+Checks if Bomb is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_a8f63bccb0547500f0e27451890400dc5}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        return _gamepad.get_keycode( GP_BUTTON_A );
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_ab64775ec0bf9239e45a05aab1f4724bc}{
+\index{GamepadController@{GamepadController}!isControllerDown@{isControllerDown}}
+\index{isControllerDown@{isControllerDown}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerDown}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerDown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_ab64775ec0bf9239e45a05aab1f4724bc}
+Checks if Down is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_aab99aa7e15178e81aec724648be7039e}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        if ( _gamepad.get_axis( GP_Y_AXIS ) > _deadzone )
+        {
+                return true;
+        }
+        else
+        {
+                return false;
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_a229821d3d8b9c792fb226bddfe9ea2af}{
+\index{GamepadController@{GamepadController}!isControllerFire@{isControllerFire}}
+\index{isControllerFire@{isControllerFire}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerFire}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerFire (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_a229821d3d8b9c792fb226bddfe9ea2af}
+Checks if Fire is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_aac960ad36a741e4f05651fbfd020f0d1}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        return _gamepad.get_keycode( GP_BUTTON_X );
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_af7a4347ea33875e931cf7c5afca53780}{
+\index{GamepadController@{GamepadController}!isControllerLeft@{isControllerLeft}}
+\index{isControllerLeft@{isControllerLeft}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerLeft}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerLeft (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_af7a4347ea33875e931cf7c5afca53780}
+Checks if Left is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_a145bb4c3c50672bee5bc83db57099aa3}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        if ( _gamepad.get_axis( GP_X_AXIS ) < -_deadzone )
+        {
+                return true;
+        }
+        else
+        {
+                return false;
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_ac5e39d22bb7db5a2e06d4886ce56a6e6}{
+\index{GamepadController@{GamepadController}!isControllerRight@{isControllerRight}}
+\index{isControllerRight@{isControllerRight}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerRight}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerRight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_ac5e39d22bb7db5a2e06d4886ce56a6e6}
+Checks if Right is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_ab4a13d332fc323a5db76be9af054b781}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        if ( _gamepad.get_axis( GP_X_AXIS ) > _deadzone )
+        {
+                return true;
+        }
+        else
+        {
+                return false;
+        }
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_ae89dfce3e5a5e4afe342ad69435f8367}{
+\index{GamepadController@{GamepadController}!isControllerStart@{isControllerStart}}
+\index{isControllerStart@{isControllerStart}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerStart}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerStart (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_ae89dfce3e5a5e4afe342ad69435f8367}
+Checks if Start is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_a4fb10447e2ea63eb48565a91e8936e6e}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        return _gamepad.get_keycode( GP_BUTTON_START );
+}
+\end{DoxyCode}
+\hypertarget{class_gamepad_controller_a7654b6d043a2e7fb7420c87d1d7431bc}{
+\index{GamepadController@{GamepadController}!isControllerUp@{isControllerUp}}
+\index{isControllerUp@{isControllerUp}!GamepadController@{GamepadController}}
+\subsubsection[{isControllerUp}]{\setlength{\rightskip}{0pt plus 5cm}bool GamepadController::isControllerUp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{d3/dbd/class_gamepad_controller_a7654b6d043a2e7fb7420c87d1d7431bc}
+Checks if Up is pressed
+
+\begin{DoxyReturn}{Returns}
+bool True if key is pressed 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_controller_interface_a1a139422246c70afd79c9c575643da9e}{ControllerInterface}.
+
+
+\begin{DoxyCode}
+{
+        if ( _gamepad.get_axis( GP_Y_AXIS ) < -_deadzone )
+        {
+                return true;
+        }
+        else
+        {
+                return false;
+        }
+}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_gamepad_controller_8h}{GamepadController.h}\item 
+\hyperlink{_gamepad_controller_8cpp}{GamepadController.cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$db/d10/class_game_manager.html#a1079d139dd9264e90cf5e7a9d5b92cc3" title="GameManager::getAIManager" alt="" coords="233,5,428,32"/>
+<area shape="rect" id="node5" href="$db/de5/class_weapon.html#a810d3b7900f80e0d5442a7b64fb821de" title="Weapon::getDelay" alt="" coords="266,56,395,83"/>
+<area shape="rect" id="node7" href="$db/d10/class_game_manager.html#a2b31b2b116000fd2a46d2da2132122ff" title="GameManager::getEnemyOptions" alt="" coords="221,107,440,133"/>
+<area shape="rect" id="node9" href="$db/d10/class_game_manager.html#a00509384dd65ab52c7f3d22d1c7d74f1" title="GameManager::getInstance" alt="" coords="239,157,422,184"/>
+<area shape="rect" id="node19" href="$db/d10/class_game_manager.html#a418d779fe3dcef2894477ad597ecca91" title="GameManager::getLogger" alt="" coords="245,208,417,235"/>
+<area shape="rect" id="node21" href="$db/de5/class_weapon.html#a89ee2083d898147a3b9b81772360dcd1" title="Weapon::setDelay" alt="" coords="266,259,395,285"/>
+<area shape="rect" id="node11" href="$db/d10/class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="488,157,688,184"/>
+<area shape="rect" id="node13" href="$db/d10/class_game_manager.html#a00a0ac98d2c59a56461635719c4f7d41" title="GameManager::loadMusics" alt="" coords="753,107,935,133"/>
+<area shape="rect" id="node15" href="$db/d10/class_game_manager.html#a03edfa7e90687a48f676c91e09994247" title="GameManager::loadSoundEffects" alt="" coords="736,157,952,184"/>
+<area shape="rect" id="node17" href="$df/dca/luafunctions_8cpp.html#a7b22845d516b0d255a2ae4f1b57770ac" title="RegisterLuaCLHelper" alt="" coords="772,208,916,235"/>
+</map>

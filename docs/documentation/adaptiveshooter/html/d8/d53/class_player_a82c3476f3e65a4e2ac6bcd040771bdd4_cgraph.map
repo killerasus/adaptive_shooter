@@ -1,0 +1,25 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d8/d53/class_player.html#a47ca4197c52a2ee0952abddd519d8506" title="Player::addShots" alt="" coords="215,107,337,133"/>
+<area shape="rect" id="node9" href="$db/d10/class_game_manager.html#a00509384dd65ab52c7f3d22d1c7d74f1" title="GameManager::getInstance" alt="" coords="457,157,639,184"/>
+<area shape="rect" id="node23" href="$d2/d96/class_entity.html#aef338be6e4f5f4c95edd5ff91098cd84" title="Entity::boundToScreen" alt="" coords="199,208,353,235"/>
+<area shape="rect" id="node28" href="$dd/d07/class_shooter.html#ab56d6bb20dbdd701f52d834a55442a7e" title="Shooter::getCurrentWeapon" alt="" coords="185,259,367,285"/>
+<area shape="rect" id="node30" href="$db/d10/class_game_manager.html#a7518f0aa4e8c5d09e8daf1be8131102d" title="GameManager::getDeltaTime" alt="" coords="181,309,371,336"/>
+<area shape="rect" id="node33" href="$d2/d96/class_entity.html#ac474e0352dea30dfac812c10a792949c" title="Entity::getPosition" alt="" coords="211,360,341,387"/>
+<area shape="rect" id="node35" href="$d6/da4/class_dynamic_entity.html#a7a16cf6f1909b9a49c81b4bcf98c29e0" title="DynamicEntity::getSpeed" alt="" coords="191,411,361,437"/>
+<area shape="rect" id="node37" href="$de/d7f/class_controller_interface.html#aab99aa7e15178e81aec724648be7039e" title="ControllerInterface::isControllerDown" alt="" coords="161,461,391,488"/>
+<area shape="rect" id="node39" href="$de/d7f/class_controller_interface.html#aac960ad36a741e4f05651fbfd020f0d1" title="ControllerInterface::isControllerFire" alt="" coords="165,512,387,539"/>
+<area shape="rect" id="node41" href="$de/d7f/class_controller_interface.html#a145bb4c3c50672bee5bc83db57099aa3" title="ControllerInterface::isControllerLeft" alt="" coords="166,563,386,589"/>
+<area shape="rect" id="node43" href="$de/d7f/class_controller_interface.html#ab4a13d332fc323a5db76be9af054b781" title="ControllerInterface::isControllerRight" alt="" coords="161,613,391,640"/>
+<area shape="rect" id="node45" href="$de/d7f/class_controller_interface.html#a1a139422246c70afd79c9c575643da9e" title="ControllerInterface::isControllerUp" alt="" coords="169,664,383,691"/>
+<area shape="rect" id="node47" href="$d2/d96/class_entity.html#a4de8724a35a2035f18afca7d95f5bd3a" title="Entity::setPositionX" alt="" coords="208,715,344,741"/>
+<area shape="rect" id="node49" href="$d2/d96/class_entity.html#afae7da405b8456d03fc8ddea62ce0898" title="Entity::setPositionY" alt="" coords="207,765,345,792"/>
+<area shape="rect" id="node5" href="$d1/d1a/class_test_scene_player.html#add7c45987005966e06ce65159f4cd343" title="TestScenePlayer::addPlayerShot" alt="" coords="441,56,655,83"/>
+<area shape="rect" id="node19" href="$db/d10/class_game_manager.html#a2c3d7a054450743f83764181d81a08b4" title="GameManager::peekScene" alt="" coords="458,107,638,133"/>
+<area shape="rect" id="node21" href="$db/d10/class_game_manager.html#af2909d5c142a689f1e2c36dc5fc951bc" title="GameManager::playSoundEffect" alt="" coords="443,5,653,32"/>
+<area shape="rect" id="node7" href="$d6/db5/class_scene.html#ab07cbd5e581f410ea77f86591764435b" title="Scene::insertEntity" alt="" coords="737,56,871,83"/>
+<area shape="rect" id="node11" href="$db/d10/class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="704,157,904,184"/>
+<area shape="rect" id="node13" href="$db/d10/class_game_manager.html#a00a0ac98d2c59a56461635719c4f7d41" title="GameManager::loadMusics" alt="" coords="969,107,1151,133"/>
+<area shape="rect" id="node15" href="$db/d10/class_game_manager.html#a03edfa7e90687a48f676c91e09994247" title="GameManager::loadSoundEffects" alt="" coords="952,157,1168,184"/>
+<area shape="rect" id="node17" href="$df/dca/luafunctions_8cpp.html#a7b22845d516b0d255a2ae4f1b57770ac" title="RegisterLuaCLHelper" alt="" coords="988,208,1132,235"/>
+<area shape="rect" id="node26" href="$db/d10/class_game_manager.html#aa81d1f4b98f9a3d365ca77a6c787b9a9" title="GameManager::getWindow" alt="" coords="459,208,637,235"/>
+</map>

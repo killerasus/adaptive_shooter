@@ -1,0 +1,59 @@
+\hypertarget{luafunctions_8cpp}{
+\section{luafunctions.cpp File Reference}
+\label{df/dca/luafunctions_8cpp}\index{luafunctions.cpp@{luafunctions.cpp}}
+}
+{\ttfamily \#include \char`\"{}luafunctions.h\char`\"{}}\par
+{\ttfamily \#include $<$ClanLib/core.h$>$}\par
+Include dependency graph for luafunctions.cpp:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{d2/ddb/luafunctions_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{luafunctions_8cpp_a7b22845d516b0d255a2ae4f1b57770ac}{RegisterLuaCLHelper} (lua\_\-State $\ast$L)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{luafunctions_8cpp_a7b22845d516b0d255a2ae4f1b57770ac}{
+\index{luafunctions.cpp@{luafunctions.cpp}!RegisterLuaCLHelper@{RegisterLuaCLHelper}}
+\index{RegisterLuaCLHelper@{RegisterLuaCLHelper}!luafunctions.cpp@{luafunctions.cpp}}
+\subsubsection[{RegisterLuaCLHelper}]{\setlength{\rightskip}{0pt plus 5cm}int RegisterLuaCLHelper (
+\begin{DoxyParamCaption}
+\item[{lua\_\-State $\ast$}]{L}
+\end{DoxyParamCaption}
+)}}
+\label{df/dca/luafunctions_8cpp_a7b22845d516b0d255a2ae4f1b57770ac}
+Registers Lua helper functions at a given Lua state under the CL table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & Lua state to register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        luaL_register(L, "CL", CLHelper);
+        return 1;
+}\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{df/dca/luafunctions_8cpp_a7b22845d516b0d255a2ae4f1b57770ac_icgraph}
+\end{center}
+\end{figure}
+
+

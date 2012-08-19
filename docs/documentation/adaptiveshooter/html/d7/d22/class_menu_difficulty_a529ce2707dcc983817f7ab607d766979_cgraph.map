@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$db/d10/class_game_manager.html#a1079d139dd9264e90cf5e7a9d5b92cc3" title="GameManager::getAIManager" alt="" coords="245,5,440,32"/>
+<area shape="rect" id="node5" href="$db/d10/class_game_manager.html#a00509384dd65ab52c7f3d22d1c7d74f1" title="GameManager::getInstance" alt="" coords="251,56,434,83"/>
+<area shape="rect" id="node15" href="$db/d10/class_game_manager.html#a418d779fe3dcef2894477ad597ecca91" title="GameManager::getLogger" alt="" coords="257,107,429,133"/>
+<area shape="rect" id="node17" href="$d2/db8/class_menu.html#aad5664a2bff376e5d50e2fc671d233b6" title="Menu::getMenuState" alt="" coords="271,157,414,184"/>
+<area shape="rect" id="node19" href="$db/d10/class_game_manager.html#a070533a7d2443a6b7e3e12ee1690c8d8" title="GameManager::getPlayer" alt="" coords="257,208,428,235"/>
+<area shape="rect" id="node21" href="$d8/d53/class_player.html#af7d45973f07ac7cb1035c5e652e04f24" title="Player::getPlayerModel" alt="" coords="264,259,421,285"/>
+<area shape="rect" id="node23" href="$d8/d53/class_player.html#af680a046d4597e159956da95b07a87e3" title="Player::getPlayerNumber" alt="" coords="259,309,426,336"/>
+<area shape="rect" id="node25" href="$db/d10/class_game_manager.html#a3e7ea15c8a3018776552571120bb08be" title="GameManager::playMusic" alt="" coords="255,360,430,387"/>
+<area shape="rect" id="node7" href="$db/d10/class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="488,56,688,83"/>
+<area shape="rect" id="node9" href="$db/d10/class_game_manager.html#a00a0ac98d2c59a56461635719c4f7d41" title="GameManager::loadMusics" alt="" coords="753,5,935,32"/>
+<area shape="rect" id="node11" href="$db/d10/class_game_manager.html#a03edfa7e90687a48f676c91e09994247" title="GameManager::loadSoundEffects" alt="" coords="736,56,952,83"/>
+<area shape="rect" id="node13" href="$df/dca/luafunctions_8cpp.html#a7b22845d516b0d255a2ae4f1b57770ac" title="RegisterLuaCLHelper" alt="" coords="772,107,916,133"/>
+</map>

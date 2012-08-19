@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d0/d30/class_fading_scene.html" title="FadingScene" alt="" coords="5,187,104,213"/>
+<area shape="rect" id="node5" href="$d6/db5/class_scene.html" title="Scene" alt="" coords="25,96,84,123"/>
+<area shape="rect" id="node8" href="$d9/dd3/struct_game_manager_1_1_enemy_options.html" title="GameManager::EnemyOptions" alt="" coords="129,187,329,213"/>
+<area shape="rect" id="node10" href="$d8/d53/class_player.html" title="Player" alt="" coords="355,187,413,213"/>
+<area shape="rect" id="node12" href="$d6/da4/class_dynamic_entity.html" title="DynamicEntity" alt="" coords="215,96,321,123"/>
+<area shape="rect" id="node14" href="$d2/d96/class_entity.html" title="Entity" alt="" coords="240,5,296,32"/>
+<area shape="rect" id="node16" href="$dd/d07/class_shooter.html" title="Shooter" alt="" coords="445,96,512,123"/>
+<area shape="rect" id="node18" href="$db/de5/class_weapon.html" title="Weapon" alt="" coords="371,5,441,32"/>
+<area shape="rect" id="node20" href="$de/d7f/class_controller_interface.html" title="ControllerInterface" alt="" coords="537,96,663,123"/>
+<area shape="rect" id="node23" href="$d1/d06/struct_game_manager_1_1_player_options.html" title="GameManager::PlayerOptions" alt="" coords="437,187,635,213"/>
+</map>

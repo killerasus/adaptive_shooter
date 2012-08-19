@@ -1,0 +1,1441 @@
+\hypertarget{class_game_manager}{
+\section{GameManager Class Reference}
+\label{db/d10/class_game_manager}\index{GameManager@{GameManager}}
+}
+
+
+{\ttfamily \#include $<$GameManager.h$>$}
+
+
+
+Collaboration diagram for GameManager:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{da/d7e/class_game_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_game_manager_1_1_enemy_options}{EnemyOptions}
+\item 
+struct \hyperlink{struct_game_manager_1_1_player_options}{PlayerOptions}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66}{SoundEffects} \{ \par
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66a2b520ff841f1b690ca7b28dde2660cb9}{SFX\_\-ATTENTION} =  0, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66a7cf46fb544500d9f398de9fb14f8996c}{SFX\_\-PREPARE}, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66a7e403c120fd618ad5674cfecbd28000e}{SFX\_\-WARNING}, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66a0cfd2d59e73b5c90ef41c144cab14034}{SFX\_\-MENU\_\-SELECT}, 
+\par
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66aa5bb70a6e6695b6e7a7f488556c6b8ae}{SFX\_\-MENU\_\-PICK}, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66ac3c1bb60488e003764da31227e9fe99d}{SFX\_\-LASER\_\-1}, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66af53ffa66d8d71e7dbac985d6664b0f97}{SFX\_\-LASER\_\-3}, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66af8678ef3ba2ed09af691bad0b42e59d6}{SFX\_\-BLASTER}, 
+\par
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66a0a0b7fd223a27de97010a2394cfd2661}{SFX\_\-EXPLOSION}, 
+\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66a64a48e4c7a4a5c990833b8fee81ef343}{SFX\_\-VECTOR\_\-SIZE}
+ \}
+\item 
+enum \hyperlink{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8}{Musics} \{ \hyperlink{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8a69f8325e5dbc50689055a6bbf0cee788}{STAGE\_\-1} =  0, 
+\hyperlink{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8a23cd0d54021a0734d4850c518d9cbba3}{MUSIC\_\-VECTOR\_\-SIZE}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_game_manager_aaae63e38e358379c1fe507c5197a8435}{$\sim$GameManager} ()
+\item 
+int \hyperlink{class_game_manager_a69bf2ea16980b4ea7f7020a7224275d7}{loop} ()
+\item 
+void \hyperlink{class_game_manager_adefa0357d0e0e1ae80b02923f438404e}{loadResource} (std::string resourceFile)
+\item 
+void \hyperlink{class_game_manager_a1fbf4d4fe6005ce04d5ce9891dfe9fd7}{cleanUp} ()
+\item 
+void \hyperlink{class_game_manager_af7e31a2cf58582f655a165d0559e6f54}{pushScene} (\hyperlink{class_scene}{Scene} $\ast$)
+\item 
+\hyperlink{class_scene}{Scene} $\ast$ \hyperlink{class_game_manager_a87b2553ab3e34b82e6e143bcfb64b8c2}{popScene} ()
+\item 
+\hyperlink{class_scene}{Scene} $\ast$ \hyperlink{class_game_manager_a2c3d7a054450743f83764181d81a08b4}{peekScene} ()
+\item 
+CL\_\-DisplayWindow $\ast$ \hyperlink{class_game_manager_aa81d1f4b98f9a3d365ca77a6c787b9a9}{getWindow} ()
+\item 
+CL\_\-ResourceManager $\ast$ \hyperlink{class_game_manager_a2729794ac0c5ece657ba5f06ea9866ac}{getResourceManager} ()
+\item 
+lua\_\-State $\ast$ \hyperlink{class_game_manager_aa3dc43fd55a2a8c026e7d0bad7d340f5}{getLuaState} ()
+\item 
+void \hyperlink{class_game_manager_ae4315c195be165ee5b91dbaae4a93433}{getLuaState} (lua\_\-State $\ast$l)
+\item 
+float \hyperlink{class_game_manager_a7518f0aa4e8c5d09e8daf1be8131102d}{getDeltaTime} ()
+\item 
+\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_game_manager_a070533a7d2443a6b7e3e12ee1690c8d8}{getPlayer} (unsigned int n)
+\item 
+void \hyperlink{class_game_manager_a84cb7228bfaed0b6a5c2f8f0b280daff}{setupPlayer} (unsigned int n)
+\item 
+AIManager $\ast$ \hyperlink{class_game_manager_a1079d139dd9264e90cf5e7a9d5b92cc3}{getAIManager} ()
+\item 
+CL\_\-Logger $\ast$ \hyperlink{class_game_manager_a418d779fe3dcef2894477ad597ecca91}{getLogger} ()
+\item 
+\hyperlink{class_fading_scene}{FadingScene} $\ast$ \hyperlink{class_game_manager_a03758aa600489f5d67df8e2d0d7097b8}{getGameOverScene} ()
+\item 
+void \hyperlink{class_game_manager_af2909d5c142a689f1e2c36dc5fc951bc}{playSoundEffect} (\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66}{SoundEffects} sound)
+\item 
+bool \hyperlink{class_game_manager_aaf2e99636e9ab6bee0c6aff9ff8b3011}{poolSoundEffect} (\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66}{SoundEffects} sound)
+\item 
+void \hyperlink{class_game_manager_a2c9e7c83d21d5733a6b3b68c801ae4b1}{stopSoundEffect} (\hyperlink{class_game_manager_a941d946acccde34eec72708b60aeca66}{SoundEffects} sound)
+\item 
+void \hyperlink{class_game_manager_a3e7ea15c8a3018776552571120bb08be}{playMusic} (\hyperlink{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8}{Musics} music)
+\item 
+bool \hyperlink{class_game_manager_a7cb966aa36acd137fc11a1dd3300802d}{poolMusic} (\hyperlink{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8}{Musics} music)
+\item 
+void \hyperlink{class_game_manager_a2c061a57ecae805d2ecbb48e3ec32638}{stopMusic} (\hyperlink{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8}{Musics} music)
+\item 
+void \hyperlink{class_game_manager_a03edfa7e90687a48f676c91e09994247}{loadSoundEffects} ()
+\item 
+void \hyperlink{class_game_manager_a00a0ac98d2c59a56461635719c4f7d41}{loadMusics} ()
+\item 
+\hyperlink{struct_game_manager_1_1_player_options}{PlayerOptions} $\ast$ \hyperlink{class_game_manager_a80241730dffcd7ae249aca34a2a1e6b3}{getPlayerOptions} ()
+\item 
+\hyperlink{struct_game_manager_1_1_enemy_options}{EnemyOptions} $\ast$ \hyperlink{class_game_manager_a2b31b2b116000fd2a46d2da2132122ff}{getEnemyOptions} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_game_manager}{GameManager} $\ast$ \hyperlink{class_game_manager_a00509384dd65ab52c7f3d22d1c7d74f1}{getInstance} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_manager_aa0e2424dc1a39d380e5b6605b179bf05}{GameManager} ()
+\item 
+virtual void \hyperlink{class_game_manager_a4fa99153e63dc3419ba126af71188cfa}{draw} ()
+\item 
+virtual void \hyperlink{class_game_manager_a7ecc3a14cd9e92f50729b37d1364953f}{update} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_game_manager}{GameManager} provides a Singleton interface for manipulating elements common to the game 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8}{
+\index{GameManager@{GameManager}!Musics@{Musics}}
+\index{Musics@{Musics}!GameManager@{GameManager}}
+\subsubsection[{Musics}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf GameManager::Musics}}}
+\label{db/d10/class_game_manager_a7fccedb9176b0430b47f50982a89a1d8}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{STAGE\_\-1@{STAGE\_\-1}!GameManager@{GameManager}}\index{GameManager@{GameManager}!STAGE\_\-1@{STAGE\_\-1}}\item[{\em 
+\hypertarget{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8a69f8325e5dbc50689055a6bbf0cee788}{
+STAGE\_\-1}
+\label{db/d10/class_game_manager_a7fccedb9176b0430b47f50982a89a1d8a69f8325e5dbc50689055a6bbf0cee788}
+}]\index{MUSIC\_\-VECTOR\_\-SIZE@{MUSIC\_\-VECTOR\_\-SIZE}!GameManager@{GameManager}}\index{GameManager@{GameManager}!MUSIC\_\-VECTOR\_\-SIZE@{MUSIC\_\-VECTOR\_\-SIZE}}\item[{\em 
+\hypertarget{class_game_manager_a7fccedb9176b0430b47f50982a89a1d8a23cd0d54021a0734d4850c518d9cbba3}{
+MUSIC\_\-VECTOR\_\-SIZE}
+\label{db/d10/class_game_manager_a7fccedb9176b0430b47f50982a89a1d8a23cd0d54021a0734d4850c518d9cbba3}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+                   {
+                STAGE_1 = 0,
+                MUSIC_VECTOR_SIZE
+        };
+\end{DoxyCode}
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66}{
+\index{GameManager@{GameManager}!SoundEffects@{SoundEffects}}
+\index{SoundEffects@{SoundEffects}!GameManager@{GameManager}}
+\subsubsection[{SoundEffects}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf GameManager::SoundEffects}}}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SFX\_\-ATTENTION@{SFX\_\-ATTENTION}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-ATTENTION@{SFX\_\-ATTENTION}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66a2b520ff841f1b690ca7b28dde2660cb9}{
+SFX\_\-ATTENTION}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66a2b520ff841f1b690ca7b28dde2660cb9}
+}]\index{SFX\_\-PREPARE@{SFX\_\-PREPARE}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-PREPARE@{SFX\_\-PREPARE}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66a7cf46fb544500d9f398de9fb14f8996c}{
+SFX\_\-PREPARE}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66a7cf46fb544500d9f398de9fb14f8996c}
+}]\index{SFX\_\-WARNING@{SFX\_\-WARNING}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-WARNING@{SFX\_\-WARNING}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66a7e403c120fd618ad5674cfecbd28000e}{
+SFX\_\-WARNING}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66a7e403c120fd618ad5674cfecbd28000e}
+}]\index{SFX\_\-MENU\_\-SELECT@{SFX\_\-MENU\_\-SELECT}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-MENU\_\-SELECT@{SFX\_\-MENU\_\-SELECT}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66a0cfd2d59e73b5c90ef41c144cab14034}{
+SFX\_\-MENU\_\-SELECT}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66a0cfd2d59e73b5c90ef41c144cab14034}
+}]\index{SFX\_\-MENU\_\-PICK@{SFX\_\-MENU\_\-PICK}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-MENU\_\-PICK@{SFX\_\-MENU\_\-PICK}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66aa5bb70a6e6695b6e7a7f488556c6b8ae}{
+SFX\_\-MENU\_\-PICK}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66aa5bb70a6e6695b6e7a7f488556c6b8ae}
+}]\index{SFX\_\-LASER\_\-1@{SFX\_\-LASER\_\-1}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-LASER\_\-1@{SFX\_\-LASER\_\-1}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66ac3c1bb60488e003764da31227e9fe99d}{
+SFX\_\-LASER\_\-1}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66ac3c1bb60488e003764da31227e9fe99d}
+}]\index{SFX\_\-LASER\_\-3@{SFX\_\-LASER\_\-3}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-LASER\_\-3@{SFX\_\-LASER\_\-3}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66af53ffa66d8d71e7dbac985d6664b0f97}{
+SFX\_\-LASER\_\-3}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66af53ffa66d8d71e7dbac985d6664b0f97}
+}]\index{SFX\_\-BLASTER@{SFX\_\-BLASTER}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-BLASTER@{SFX\_\-BLASTER}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66af8678ef3ba2ed09af691bad0b42e59d6}{
+SFX\_\-BLASTER}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66af8678ef3ba2ed09af691bad0b42e59d6}
+}]\index{SFX\_\-EXPLOSION@{SFX\_\-EXPLOSION}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-EXPLOSION@{SFX\_\-EXPLOSION}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66a0a0b7fd223a27de97010a2394cfd2661}{
+SFX\_\-EXPLOSION}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66a0a0b7fd223a27de97010a2394cfd2661}
+}]\index{SFX\_\-VECTOR\_\-SIZE@{SFX\_\-VECTOR\_\-SIZE}!GameManager@{GameManager}}\index{GameManager@{GameManager}!SFX\_\-VECTOR\_\-SIZE@{SFX\_\-VECTOR\_\-SIZE}}\item[{\em 
+\hypertarget{class_game_manager_a941d946acccde34eec72708b60aeca66a64a48e4c7a4a5c990833b8fee81ef343}{
+SFX\_\-VECTOR\_\-SIZE}
+\label{db/d10/class_game_manager_a941d946acccde34eec72708b60aeca66a64a48e4c7a4a5c990833b8fee81ef343}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+                         {
+                SFX_ATTENTION = 0,
+                SFX_PREPARE,
+                SFX_WARNING,
+                SFX_MENU_SELECT,
+                SFX_MENU_PICK,
+                SFX_LASER_1,
+                SFX_LASER_3,
+                SFX_BLASTER,
+                SFX_EXPLOSION,
+                SFX_VECTOR_SIZE
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_game_manager_aaae63e38e358379c1fe507c5197a8435}{
+\index{GameManager@{GameManager}!$\sim$GameManager@{$\sim$GameManager}}
+\index{$\sim$GameManager@{$\sim$GameManager}!GameManager@{GameManager}}
+\subsubsection[{$\sim$GameManager}]{\setlength{\rightskip}{0pt plus 5cm}GameManager::$\sim$GameManager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{db/d10/class_game_manager_aaae63e38e358379c1fe507c5197a8435}
+
+\begin{DoxyCode}
+{
+        cleanUp();
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=394pt]{db/d10/class_game_manager_aaae63e38e358379c1fe507c5197a8435_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_aa0e2424dc1a39d380e5b6605b179bf05}{
+\index{GameManager@{GameManager}!GameManager@{GameManager}}
+\index{GameManager@{GameManager}!GameManager@{GameManager}}
+\subsubsection[{GameManager}]{\setlength{\rightskip}{0pt plus 5cm}GameManager::GameManager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{db/d10/class_game_manager_aa0e2424dc1a39d380e5b6605b179bf05}
+
+\begin{DoxyCode}
+                        : setup_core(), setup_display(), setup_gl(), setup_sound(
+      ), setup_mikmod(), setup_vorbis(),
+        sound_output(44100), _resourceManager( NULL ), _quit( false ), _player( N
+      ULL ), _playerOptions( NULL ), _enemyOptions ( NULL )
+{
+        L = lua_open();
+        luaL_openlibs(L);
+        RegisterLuaCLHelper(L);
+
+        // Creates window
+        _window = new CL_DisplayWindow("Adaptive Shooter - Bruno Baere", 640, 480
+      );
+
+        _aiManager = new AIManager(L);
+        //_loggerFile = new logog::LogFile("test.txt");
+        _loggerFile = new CL_FileLogger("log.txt");
+        _loggerFile->enable();
+        // Player can only be created when there is already a GameManager instant
+      iated
+
+        // Loads sounds and prepare
+        loadSoundEffects();
+        loadMusics();
+        loadOptions();
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_aa0e2424dc1a39d380e5b6605b179bf05_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=600pt]{db/d10/class_game_manager_aa0e2424dc1a39d380e5b6605b179bf05_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_game_manager_a1fbf4d4fe6005ce04d5ce9891dfe9fd7}{
+\index{GameManager@{GameManager}!cleanUp@{cleanUp}}
+\index{cleanUp@{cleanUp}!GameManager@{GameManager}}
+\subsubsection[{cleanUp}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::cleanUp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a1fbf4d4fe6005ce04d5ce9891dfe9fd7}
+
+
+: Check if there is memory leak 
+
+
+\begin{DoxyCode}
+{
+        delete _playerOptions;
+        _playerOptions = NULL;
+
+        delete _enemyOptions;
+        _enemyOptions = NULL;
+
+        delete _aiManager;
+        _aiManager = NULL;
+
+        lua_close(L);
+        L = NULL;
+
+        delete _gameOverScene;
+        _gameOverScene = NULL;
+        delete _resourceManager;
+        _resourceManager = NULL;
+
+        /*while(!_sceneStack.empty())
+        {
+                _sceneStack.pop();
+        }*/
+
+        // Closes log operation
+        delete _loggerFile;
+        _loggerFile = NULL;
+
+        delete _window;
+        _window = NULL;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a1fbf4d4fe6005ce04d5ce9891dfe9fd7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a4fa99153e63dc3419ba126af71188cfa}{
+\index{GameManager@{GameManager}!draw@{draw}}
+\index{draw@{draw}!GameManager@{GameManager}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{db/d10/class_game_manager_a4fa99153e63dc3419ba126af71188cfa}
+
+\begin{DoxyCode}
+{
+        _window->get_gc().clear(CL_Colorf::black);
+
+        if (!_sceneStack.empty() && _sceneStack.top() != NULL)
+        {
+                _sceneStack.top()->draw();
+        }
+
+        // Make the stuff visible:
+        _window->flip();
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a4fa99153e63dc3419ba126af71188cfa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a1079d139dd9264e90cf5e7a9d5b92cc3}{
+\index{GameManager@{GameManager}!getAIManager@{getAIManager}}
+\index{getAIManager@{getAIManager}!GameManager@{GameManager}}
+\subsubsection[{getAIManager}]{\setlength{\rightskip}{0pt plus 5cm}AIManager $\ast$ GameManager::getAIManager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a1079d139dd9264e90cf5e7a9d5b92cc3}
+Gets AIManager for the game
+
+\begin{DoxyReturn}{Returns}
+AIManager$\ast$ Pointer to AIManager object 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _aiManager;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a1079d139dd9264e90cf5e7a9d5b92cc3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a7518f0aa4e8c5d09e8daf1be8131102d}{
+\index{GameManager@{GameManager}!getDeltaTime@{getDeltaTime}}
+\index{getDeltaTime@{getDeltaTime}!GameManager@{GameManager}}
+\subsubsection[{getDeltaTime}]{\setlength{\rightskip}{0pt plus 5cm}float GameManager::getDeltaTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a7518f0aa4e8c5d09e8daf1be8131102d}
+Gets current loop delta time
+
+\begin{DoxyReturn}{Returns}
+float time since last loop in miliseconds 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _time_delta_ms;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a7518f0aa4e8c5d09e8daf1be8131102d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a2b31b2b116000fd2a46d2da2132122ff}{
+\index{GameManager@{GameManager}!getEnemyOptions@{getEnemyOptions}}
+\index{getEnemyOptions@{getEnemyOptions}!GameManager@{GameManager}}
+\subsubsection[{getEnemyOptions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GameManager::EnemyOptions} $\ast$ GameManager::getEnemyOptions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a2b31b2b116000fd2a46d2da2132122ff}
+
+\begin{DoxyCode}
+{
+        return _enemyOptions;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a2b31b2b116000fd2a46d2da2132122ff_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a03758aa600489f5d67df8e2d0d7097b8}{
+\index{GameManager@{GameManager}!getGameOverScene@{getGameOverScene}}
+\index{getGameOverScene@{getGameOverScene}!GameManager@{GameManager}}
+\subsubsection[{getGameOverScene}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FadingScene} $\ast$ GameManager::getGameOverScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a03758aa600489f5d67df8e2d0d7097b8}
+Gets the GameOver scene
+
+\begin{DoxyReturn}{Returns}
+FadingScene$\ast$ Game over, man, game over 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _gameOverScene;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a03758aa600489f5d67df8e2d0d7097b8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a00509384dd65ab52c7f3d22d1c7d74f1}{
+\index{GameManager@{GameManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!GameManager@{GameManager}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GameManager} $\ast$ GameManager::getInstance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{db/d10/class_game_manager_a00509384dd65ab52c7f3d22d1c7d74f1}
+
+\begin{DoxyCode}
+{
+        if(_instance == 0)
+        {
+                _instance = new GameManager();
+        }
+
+        return _instance;
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a00509384dd65ab52c7f3d22d1c7d74f1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=600pt]{db/d10/class_game_manager_a00509384dd65ab52c7f3d22d1c7d74f1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a418d779fe3dcef2894477ad597ecca91}{
+\index{GameManager@{GameManager}!getLogger@{getLogger}}
+\index{getLogger@{getLogger}!GameManager@{GameManager}}
+\subsubsection[{getLogger}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-Logger $\ast$ GameManager::getLogger (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a418d779fe3dcef2894477ad597ecca91}
+Gets logger
+
+\begin{DoxyReturn}{Returns}
+CL\_\-Logger$\ast$ Pointer to logger object 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _loggerFile;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=390pt]{db/d10/class_game_manager_a418d779fe3dcef2894477ad597ecca91_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_aa3dc43fd55a2a8c026e7d0bad7d340f5}{
+\index{GameManager@{GameManager}!getLuaState@{getLuaState}}
+\index{getLuaState@{getLuaState}!GameManager@{GameManager}}
+\subsubsection[{getLuaState}]{\setlength{\rightskip}{0pt plus 5cm}lua\_\-State $\ast$ GameManager::getLuaState (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_aa3dc43fd55a2a8c026e7d0bad7d340f5}
+Gets current Lua state
+
+\begin{DoxyReturn}{Returns}
+lua\_\-State$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return L;
+}
+\end{DoxyCode}
+\hypertarget{class_game_manager_ae4315c195be165ee5b91dbaae4a93433}{
+\index{GameManager@{GameManager}!getLuaState@{getLuaState}}
+\index{getLuaState@{getLuaState}!GameManager@{GameManager}}
+\subsubsection[{getLuaState}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::getLuaState (
+\begin{DoxyParamCaption}
+\item[{lua\_\-State $\ast$}]{l}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_ae4315c195be165ee5b91dbaae4a93433}
+Sets current Lua state
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Lua state \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        if (L != NULL)
+        {
+                lua_close(L);
+        }
+
+        L = l;
+}
+\end{DoxyCode}
+\hypertarget{class_game_manager_a070533a7d2443a6b7e3e12ee1690c8d8}{
+\index{GameManager@{GameManager}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!GameManager@{GameManager}}
+\subsubsection[{getPlayer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} $\ast$ GameManager::getPlayer (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a070533a7d2443a6b7e3e12ee1690c8d8}
+Gets \hyperlink{class_player}{Player} n
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Number of the player, from 0 to max\_\-players -\/ 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Player$\ast$ Pointer to player, null if not instanced
+\end{DoxyReturn}
+TODO: Rewrite when more players are supported 
+\begin{DoxyCode}
+{
+        return _player;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=388pt]{db/d10/class_game_manager_a070533a7d2443a6b7e3e12ee1690c8d8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a80241730dffcd7ae249aca34a2a1e6b3}{
+\index{GameManager@{GameManager}!getPlayerOptions@{getPlayerOptions}}
+\index{getPlayerOptions@{getPlayerOptions}!GameManager@{GameManager}}
+\subsubsection[{getPlayerOptions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GameManager::PlayerOptions} $\ast$ GameManager::getPlayerOptions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a80241730dffcd7ae249aca34a2a1e6b3}
+
+\begin{DoxyCode}
+{
+        return _playerOptions;
+}
+\end{DoxyCode}
+\hypertarget{class_game_manager_a2729794ac0c5ece657ba5f06ea9866ac}{
+\index{GameManager@{GameManager}!getResourceManager@{getResourceManager}}
+\index{getResourceManager@{getResourceManager}!GameManager@{GameManager}}
+\subsubsection[{getResourceManager}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-ResourceManager $\ast$ GameManager::getResourceManager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a2729794ac0c5ece657ba5f06ea9866ac}
+Gets resource manager
+
+\begin{DoxyReturn}{Returns}
+CL\_\-ResourceManager$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _resourceManager;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a2729794ac0c5ece657ba5f06ea9866ac_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_aa81d1f4b98f9a3d365ca77a6c787b9a9}{
+\index{GameManager@{GameManager}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!GameManager@{GameManager}}
+\subsubsection[{getWindow}]{\setlength{\rightskip}{0pt plus 5cm}CL\_\-DisplayWindow $\ast$ GameManager::getWindow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_aa81d1f4b98f9a3d365ca77a6c787b9a9}
+Gets current game window
+
+\begin{DoxyReturn}{Returns}
+CL\_\-DisplayWindow$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _window;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_aa81d1f4b98f9a3d365ca77a6c787b9a9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a00a0ac98d2c59a56461635719c4f7d41}{
+\index{GameManager@{GameManager}!loadMusics@{loadMusics}}
+\index{loadMusics@{loadMusics}!GameManager@{GameManager}}
+\subsubsection[{loadMusics}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::loadMusics (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a00a0ac98d2c59a56461635719c4f7d41}
+
+\begin{DoxyCode}
+{
+        _musicSessions.resize( MUSIC_VECTOR_SIZE );
+
+#ifdef _DEBUG
+        _musics.push_back( CL_SoundBuffer( "../../../../data/musics/DIGITAL_MEMOR
+      IES.ogg", false ) );
+#else
+        _musics.push_back( CL_SoundBuffer( "./data/musics/DIGITAL_MEMORIES.ogg", 
+      false ) );
+#endif
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a00a0ac98d2c59a56461635719c4f7d41_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_adefa0357d0e0e1ae80b02923f438404e}{
+\index{GameManager@{GameManager}!loadResource@{loadResource}}
+\index{loadResource@{loadResource}!GameManager@{GameManager}}
+\subsubsection[{loadResource}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::loadResource (
+\begin{DoxyParamCaption}
+\item[{std::string}]{resourceFile}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_adefa0357d0e0e1ae80b02923f438404e}
+
+\begin{DoxyCode}
+{
+        if (_resourceManager)
+        {
+                delete _resourceManager;
+        }
+
+        _resourceManager = new CL_ResourceManager(resourceFile);
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=376pt]{db/d10/class_game_manager_adefa0357d0e0e1ae80b02923f438404e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a03edfa7e90687a48f676c91e09994247}{
+\index{GameManager@{GameManager}!loadSoundEffects@{loadSoundEffects}}
+\index{loadSoundEffects@{loadSoundEffects}!GameManager@{GameManager}}
+\subsubsection[{loadSoundEffects}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::loadSoundEffects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a03edfa7e90687a48f676c91e09994247}
+
+\begin{DoxyCode}
+{
+        _soundEffectSessions.resize( SFX_VECTOR_SIZE );
+
+#ifdef _DEBUG
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Attenti
+      on.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Prepare
+      ForAction.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Warning
+      .wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Se
+      lect.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Pi
+      ck.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser1.
+      wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser3.
+      wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/slimeba
+      ll.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Explosi
+      on.wav" ) );
+#else
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Attention.wav" ) 
+      );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/PrepareForAction.
+      wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Warning.wav" ) );
+      
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/MENU_Select.wav" 
+      ) );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/MENU_Pick.wav" ) 
+      );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/laser1.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/laser3.wav" ) );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/slimeball.wav" ) 
+      );
+        _soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Explosion.wav" ) 
+      );
+#endif
+        
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a03edfa7e90687a48f676c91e09994247_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a69bf2ea16980b4ea7f7020a7224275d7}{
+\index{GameManager@{GameManager}!loop@{loop}}
+\index{loop@{loop}!GameManager@{GameManager}}
+\subsubsection[{loop}]{\setlength{\rightskip}{0pt plus 5cm}int GameManager::loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a69bf2ea16980b4ea7f7020a7224275d7}
+Main game loop implementation
+
+\begin{DoxyReturn}{Returns}
+int Loop result. 0 if ok, other in case of error 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        try
+        {
+                _last_time = CL_System::get_time();
+
+                while (!_quit)
+                {
+                        if(_window->get_ic().get_keyboard().get_keycode(CL_KEY_ES
+      CAPE) == true)
+                        {
+                                _quit = true;
+                                break;
+                        }
+
+                        update();
+
+                        if (_quit)
+                        {
+                                return 0;
+                        }
+
+                        draw();
+
+                        // Read messages from the windowing system message queue,
+       if any are available:
+                        CL_KeepAlive::process();
+
+                        // Avoid using 100% CPU in the loop:
+                        CL_System::sleep(10);
+                }
+        }
+        catch(CL_Exception &exception)
+        {
+                // Create a console window for text-output if not available
+                CL_ConsoleWindow console("Console", 80, 160);
+                CL_Console::write_line("Exception caught: " + exception.get_messa
+      ge_and_stack_trace());
+                console.display_close_message();
+                
+                cleanUp();
+
+                return -1;
+        }
+
+        return 0;
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{db/d10/class_game_manager_a69bf2ea16980b4ea7f7020a7224275d7_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{db/d10/class_game_manager_a69bf2ea16980b4ea7f7020a7224275d7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a2c3d7a054450743f83764181d81a08b4}{
+\index{GameManager@{GameManager}!peekScene@{peekScene}}
+\index{peekScene@{peekScene}!GameManager@{GameManager}}
+\subsubsection[{peekScene}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene} $\ast$ GameManager::peekScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a2c3d7a054450743f83764181d81a08b4}
+Gets the scene from the top of the scene stack. Does not pop.
+
+\begin{DoxyReturn}{Returns}
+Scene$\ast$ \hyperlink{class_scene}{Scene} on the top of the stack. Null if no scene is in stack. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        Scene* top = NULL;
+
+        if (!_sceneStack.empty())
+        {
+                top = _sceneStack.top();
+        }
+
+        return top;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a2c3d7a054450743f83764181d81a08b4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a3e7ea15c8a3018776552571120bb08be}{
+\index{GameManager@{GameManager}!playMusic@{playMusic}}
+\index{playMusic@{playMusic}!GameManager@{GameManager}}
+\subsubsection[{playMusic}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::playMusic (
+\begin{DoxyParamCaption}
+\item[{{\bf Musics}}]{music}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a3e7ea15c8a3018776552571120bb08be}
+
+\begin{DoxyCode}
+{
+        _musicSessions[music] = _musics[music].play();
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=392pt]{db/d10/class_game_manager_a3e7ea15c8a3018776552571120bb08be_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_af2909d5c142a689f1e2c36dc5fc951bc}{
+\index{GameManager@{GameManager}!playSoundEffect@{playSoundEffect}}
+\index{playSoundEffect@{playSoundEffect}!GameManager@{GameManager}}
+\subsubsection[{playSoundEffect}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::playSoundEffect (
+\begin{DoxyParamCaption}
+\item[{{\bf SoundEffects}}]{sound}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_af2909d5c142a689f1e2c36dc5fc951bc}
+
+\begin{DoxyCode}
+{
+        _soundEffectSessions[sound] = _soundEffects[sound].play();
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_af2909d5c142a689f1e2c36dc5fc951bc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a7cb966aa36acd137fc11a1dd3300802d}{
+\index{GameManager@{GameManager}!poolMusic@{poolMusic}}
+\index{poolMusic@{poolMusic}!GameManager@{GameManager}}
+\subsubsection[{poolMusic}]{\setlength{\rightskip}{0pt plus 5cm}bool GameManager::poolMusic (
+\begin{DoxyParamCaption}
+\item[{{\bf Musics}}]{music}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a7cb966aa36acd137fc11a1dd3300802d}
+
+\begin{DoxyCode}
+{
+        return _musicSessions[music].is_playing();
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a7cb966aa36acd137fc11a1dd3300802d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_aaf2e99636e9ab6bee0c6aff9ff8b3011}{
+\index{GameManager@{GameManager}!poolSoundEffect@{poolSoundEffect}}
+\index{poolSoundEffect@{poolSoundEffect}!GameManager@{GameManager}}
+\subsubsection[{poolSoundEffect}]{\setlength{\rightskip}{0pt plus 5cm}bool GameManager::poolSoundEffect (
+\begin{DoxyParamCaption}
+\item[{{\bf SoundEffects}}]{sound}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_aaf2e99636e9ab6bee0c6aff9ff8b3011}
+
+\begin{DoxyCode}
+{
+        return _soundEffectSessions[sound].is_playing();
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_aaf2e99636e9ab6bee0c6aff9ff8b3011_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a87b2553ab3e34b82e6e143bcfb64b8c2}{
+\index{GameManager@{GameManager}!popScene@{popScene}}
+\index{popScene@{popScene}!GameManager@{GameManager}}
+\subsubsection[{popScene}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene} $\ast$ GameManager::popScene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a87b2553ab3e34b82e6e143bcfb64b8c2}
+Pops the scene from the top of the scene stack.
+
+\begin{DoxyReturn}{Returns}
+Scene$\ast$ \hyperlink{class_scene}{Scene} popped. Null if no scene is in stack. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        Scene* top = NULL;
+
+        if (!_sceneStack.empty())
+        {
+                top = _sceneStack.top();
+                _sceneStack.pop();
+        }
+
+        return top;
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a87b2553ab3e34b82e6e143bcfb64b8c2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_af7e31a2cf58582f655a165d0559e6f54}{
+\index{GameManager@{GameManager}!pushScene@{pushScene}}
+\index{pushScene@{pushScene}!GameManager@{GameManager}}
+\subsubsection[{pushScene}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::pushScene (
+\begin{DoxyParamCaption}
+\item[{{\bf Scene} $\ast$}]{scene}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_af7e31a2cf58582f655a165d0559e6f54}
+Pushes a scene into stack. Top of the stack scene is rendered and updated.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Scene$\ast$} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _sceneStack.push(scene);
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_af7e31a2cf58582f655a165d0559e6f54_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a84cb7228bfaed0b6a5c2f8f0b280daff}{
+\index{GameManager@{GameManager}!setupPlayer@{setupPlayer}}
+\index{setupPlayer@{setupPlayer}!GameManager@{GameManager}}
+\subsubsection[{setupPlayer}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::setupPlayer (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a84cb7228bfaed0b6a5c2f8f0b280daff}
+Setup player n. Call just when \hyperlink{class_game_manager}{GameManager} is instanced.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Number of player, from 0 to max\_\-players -\/ 1 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{       
+        CL_Rect windowViewPort = _window->get_viewport();
+        _player = new Player( 0.0f, 0.0f, _playerOptions->speedX, _playerOptions-
+      >speedY, n, _playerOptions->resource,
+                new PlayerModelImpl( _playerOptions->learningRate ), _playerOptio
+      ns->lives );
+        //_player->setupCollisionOutlines();
+        _player->setPositionX( float((windowViewPort.get_width() >> 1) - (_player
+      ->getCurrentSprite()->get_width() >> 1)) );
+        _player->setPositionY( float(windowViewPort.get_height() - _player->
+      getCurrentSprite()->get_height()) );
+
+        // Setting Easy
+        PlayerModelImpl* model = new PlayerModelImpl( _playerOptions->
+      learningRate );
+        model->setName( "Easy" );
+
+        model->setTrait( PlayerModelImpl::ACCURACY, 0.0f, 0.3f, 0.5f, (0.0f + 0.3
+      f)*0.5f );
+        //model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, (0
+      .0f + 0.3f)*0.5f );
+        model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, (0.6
+      f + 1.0f)*0.5f );
+        model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.0f, 0.3f, 0.6f, 
+      (0.0f + 0.3f)*0.5f );
+        model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.0f, 0.3f, 1.0f,
+       (0.0f + 0.3f)*0.5f );
+
+        _aiManager->addPlayerModel( model );
+
+        // Setting Normal
+        model = new PlayerModelImpl( _playerOptions->learningRate );
+        model->setName( "Normal" );
+
+        model->setTrait( PlayerModelImpl::ACCURACY, 0.3f, 0.6f, 0.5f, (0.3f + 0.6
+      f)*0.5f );
+        model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.3f, 0.6f, 1.0f, (0.3
+      f + 0.6f)*0.5f );
+        model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.3f, 0.6f, 0.6f, 
+      (0.3f + 0.6f)*0.5f );
+        model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.3f, 0.6f, 1.0f,
+       (0.3f + 0.6f)*0.5f );
+
+        _aiManager->addPlayerModel( model );
+
+        // Setting Hard
+        model = new PlayerModelImpl( _playerOptions->learningRate );
+        model->setName( "Hard" );
+
+        model->setTrait( PlayerModelImpl::ACCURACY, 0.6f, 1.0f, 0.5f, (0.6f + 1.0
+      f)*0.5f );
+        //model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.6f, 1.0f, 1.0f, (0
+      .6f + 1.0f)*0.5f );
+        model->setTrait( PlayerModelImpl::LIVES_VARIATION, 0.0f, 0.3f, 1.0f, (0.0
+      f + 0.3f)*0.5f );
+        model->setTrait( PlayerModelImpl::ENEMIES_WASTED_WAVE, 0.6f, 1.0f, 0.6f, 
+      (0.6f + 1.0f)*0.5f );
+        model->setTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, 0.6f, 1.0f, 1.0f,
+       (0.6f + 1.0f)*0.5f );
+
+        _aiManager->addPlayerModel( model );
+        _aiManager->setCurrentPlayerModel( _player->getPlayerModel() );
+
+        // TODO: Should not be here!!!!
+        _gameOverScene = new FadingScene( 2000.0f, 2000.0f, 2000.0f, 
+      FadingScene::FM_FADE_INOUT );
+        StaticEntity* newEntity = new StaticEntity( 0.0f, 0.0f, "scenes/gameover"
+       ); // Fading scene deletes this
+        newEntity->setAlpha( 0.0f );
+        _gameOverScene->insertEntity( newEntity );
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=374pt]{db/d10/class_game_manager_a84cb7228bfaed0b6a5c2f8f0b280daff_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=368pt]{db/d10/class_game_manager_a84cb7228bfaed0b6a5c2f8f0b280daff_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a2c061a57ecae805d2ecbb48e3ec32638}{
+\index{GameManager@{GameManager}!stopMusic@{stopMusic}}
+\index{stopMusic@{stopMusic}!GameManager@{GameManager}}
+\subsubsection[{stopMusic}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::stopMusic (
+\begin{DoxyParamCaption}
+\item[{{\bf Musics}}]{music}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a2c061a57ecae805d2ecbb48e3ec32638}
+
+\begin{DoxyCode}
+{
+        if (poolMusic( music ))
+        {
+                _musicSessions[music].stop();
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=380pt]{db/d10/class_game_manager_a2c061a57ecae805d2ecbb48e3ec32638_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=374pt]{db/d10/class_game_manager_a2c061a57ecae805d2ecbb48e3ec32638_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a2c9e7c83d21d5733a6b3b68c801ae4b1}{
+\index{GameManager@{GameManager}!stopSoundEffect@{stopSoundEffect}}
+\index{stopSoundEffect@{stopSoundEffect}!GameManager@{GameManager}}
+\subsubsection[{stopSoundEffect}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::stopSoundEffect (
+\begin{DoxyParamCaption}
+\item[{{\bf SoundEffects}}]{sound}
+\end{DoxyParamCaption}
+)}}
+\label{db/d10/class_game_manager_a2c9e7c83d21d5733a6b3b68c801ae4b1}
+
+\begin{DoxyCode}
+{
+        if (poolSoundEffect( sound ))
+        {
+                _soundEffectSessions[sound].stop();
+        }
+}
+\end{DoxyCode}
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a2c9e7c83d21d5733a6b3b68c801ae4b1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_game_manager_a7ecc3a14cd9e92f50729b37d1364953f}{
+\index{GameManager@{GameManager}!update@{update}}
+\index{update@{update}!GameManager@{GameManager}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void GameManager::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{db/d10/class_game_manager_a7ecc3a14cd9e92f50729b37d1364953f}
+
+\begin{DoxyCode}
+{
+        _current_time = CL_System::get_time();
+        unsigned int time_difference = _current_time - _last_time;
+        if (time_difference > 1000)
+                time_difference = 1000;         // Limit the time difference, if 
+      the application was paused (eg, moving the window on WIN32)
+        _time_delta_ms = static_cast<float> (time_difference);
+        _last_time = _current_time;
+
+        //Update
+        if (!_sceneStack.empty() && _sceneStack.top() != NULL)
+        {
+                _sceneStack.top()->update();
+        } 
+        else
+        {
+                _quit = true;
+        }
+}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{db/d10/class_game_manager_a7ecc3a14cd9e92f50729b37d1364953f_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_game_manager_8h}{GameManager.h}\item 
+\hyperlink{_game_manager_8cpp}{GameManager.cpp}\end{DoxyCompactItemize}

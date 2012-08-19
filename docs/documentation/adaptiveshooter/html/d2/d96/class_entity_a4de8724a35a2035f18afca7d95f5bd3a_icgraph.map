@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$db/d10/class_game_manager.html#a84cb7228bfaed0b6a5c2f8f0b280daff" title="GameManager::setupPlayer" alt="" coords="189,5,373,32"/>
+<area shape="rect" id="node7" href="$db/de5/class_weapon.html#a7d8147f09d84813b47fdd57bea34e800" title="Weapon::shoot" alt="" coords="226,56,337,83"/>
+<area shape="rect" id="node9" href="$dd/d78/class_test_enemy.html#aa9f7df4bebeed481e823cb9c03dc82da" title="TestEnemy::update" alt="" coords="438,81,573,108"/>
+<area shape="rect" id="node12" href="$d8/d53/class_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4" title="Player::update" alt="" coords="228,157,335,184"/>
+<area shape="rect" id="node5" href="$d9/d69/class_display_program.html#a4794ecc3b07210628a3eba8415993e1d" title="DisplayProgram::main" alt="" coords="430,5,581,32"/>
+<area shape="rect" id="node14" href="$d1/d1a/class_test_scene_player.html#a8285c9f16119d8423a0ed4858327097c" title="TestScenePlayer::update" alt="" coords="421,157,589,184"/>
+</map>

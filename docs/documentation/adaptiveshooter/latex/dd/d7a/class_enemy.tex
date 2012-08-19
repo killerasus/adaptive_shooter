@@ -1,0 +1,473 @@
+\hypertarget{class_enemy}{
+\section{Enemy Class Reference}
+\label{dd/d7a/class_enemy}\index{Enemy@{Enemy}}
+}
+
+
+{\ttfamily \#include $<$Enemy.h$>$}
+
+
+
+Inheritance diagram for Enemy:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{de/ded/class_enemy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Enemy:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{d6/dc1/class_enemy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150d}{EnemyBehavior} \{ \par
+\hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150dae93ec5a5ff9d28f3304914469a94dbc7}{DONTSHOOT} =  0, 
+\hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150dacc6cf73406f7239ae190ad8734cf3126}{SHOOT} =  1, 
+\hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150daa06c1e85818b1e847c9e7fbb8af44fde}{GODOWN} =  2, 
+\hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150daae083aa385ad29e0827b0ee3d26c6b02}{GOHORIZONTAL} =  4, 
+\par
+\hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150dada16e0f48368c09a17be644121f20f30}{GOSINUSOID} =  8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_enemy_a94f30d348b6d2840fd71675472ba38dd}{Enemy} ()
+\item 
+\hyperlink{class_enemy_a5c78135be747dcb15ac30342da817598}{Enemy} (float x, float y, float speedX, float speedY, int health=50, int points=100)
+\item 
+\hyperlink{class_enemy_a8f13c84c25adf7f0aea049d0d52f4e0e}{Enemy} (CL\_\-Vec2f \&position, CL\_\-Vec2f \&speed, int health=50, int points=100)
+\item 
+virtual \hyperlink{class_enemy_ac0eec4755e28c02688065f9657150ac3}{$\sim$Enemy} ()
+\item 
+virtual void \hyperlink{class_enemy_ad3187ead8c132957d3123a64ff5977d6}{update} ()=0
+\item 
+virtual void \hyperlink{class_enemy_aacf879e206cf65f3a6eef441539ab79a}{updateStats} ()=0
+\item 
+void \hyperlink{class_enemy_a415ec24ecd55de8b1a3e6c7eb15be7ef}{setPoints} (int points)
+\item 
+virtual int \hyperlink{class_enemy_a5e0122fd418463449c03131663f81a1b}{getPoints} ()
+\item 
+void \hyperlink{class_enemy_a48f9331e93449f27c8d6374c75c81363}{setHealth} (int health)
+\item 
+int \hyperlink{class_enemy_a46341636350ca2bc6aac929b2a84f215}{getHealth} ()
+\item 
+float \hyperlink{class_enemy_a44aea16416a79f0e2152f0fd109c0d97}{getMultiplier} ()
+\item 
+unsigned int \hyperlink{class_enemy_a3d8b091cf6da7be89f75eab556cf5e8a}{getBehavior} ()
+\item 
+void \hyperlink{class_enemy_ad7d6519a6663730c8efe612b050e2497}{setBehavior} (unsigned int behavior)
+\item 
+void \hyperlink{class_enemy_a20b47e28e5abb3712161aa579f436185}{setAmplitudeLimit} (float limit)
+\item 
+float \hyperlink{class_enemy_aae76587ef1760daf0a854c0efc5231f5}{getAmplitudeLimit} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{class_enemy_a406a6763891be117437959060c9c1fba}{\_\-multiplier}
+\item 
+unsigned int \hyperlink{class_enemy_a4d3938717ffc4bd2078e9033490d3b8f}{\_\-behavior}
+\item 
+float \hyperlink{class_enemy_ae05acccfefed105855fa5a7461785757}{\_\-amplitudeLimit}
+\item 
+float \hyperlink{class_enemy_aa3a2a0d5590a8acae7b387aa0e19eacd}{\_\-currentAmplitude}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_enemy_adb5a490a94eea508ae08cfb4191c150d}{
+\index{Enemy@{Enemy}!EnemyBehavior@{EnemyBehavior}}
+\index{EnemyBehavior@{EnemyBehavior}!Enemy@{Enemy}}
+\subsubsection[{EnemyBehavior}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Enemy::EnemyBehavior}}}
+\label{dd/d7a/class_enemy_adb5a490a94eea508ae08cfb4191c150d}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{DONTSHOOT@{DONTSHOOT}!Enemy@{Enemy}}\index{Enemy@{Enemy}!DONTSHOOT@{DONTSHOOT}}\item[{\em 
+\hypertarget{class_enemy_adb5a490a94eea508ae08cfb4191c150dae93ec5a5ff9d28f3304914469a94dbc7}{
+DONTSHOOT}
+\label{dd/d7a/class_enemy_adb5a490a94eea508ae08cfb4191c150dae93ec5a5ff9d28f3304914469a94dbc7}
+}]\index{SHOOT@{SHOOT}!Enemy@{Enemy}}\index{Enemy@{Enemy}!SHOOT@{SHOOT}}\item[{\em 
+\hypertarget{class_enemy_adb5a490a94eea508ae08cfb4191c150dacc6cf73406f7239ae190ad8734cf3126}{
+SHOOT}
+\label{dd/d7a/class_enemy_adb5a490a94eea508ae08cfb4191c150dacc6cf73406f7239ae190ad8734cf3126}
+}]\index{GODOWN@{GODOWN}!Enemy@{Enemy}}\index{Enemy@{Enemy}!GODOWN@{GODOWN}}\item[{\em 
+\hypertarget{class_enemy_adb5a490a94eea508ae08cfb4191c150daa06c1e85818b1e847c9e7fbb8af44fde}{
+GODOWN}
+\label{dd/d7a/class_enemy_adb5a490a94eea508ae08cfb4191c150daa06c1e85818b1e847c9e7fbb8af44fde}
+}]\index{GOHORIZONTAL@{GOHORIZONTAL}!Enemy@{Enemy}}\index{Enemy@{Enemy}!GOHORIZONTAL@{GOHORIZONTAL}}\item[{\em 
+\hypertarget{class_enemy_adb5a490a94eea508ae08cfb4191c150daae083aa385ad29e0827b0ee3d26c6b02}{
+GOHORIZONTAL}
+\label{dd/d7a/class_enemy_adb5a490a94eea508ae08cfb4191c150daae083aa385ad29e0827b0ee3d26c6b02}
+}]\index{GOSINUSOID@{GOSINUSOID}!Enemy@{Enemy}}\index{Enemy@{Enemy}!GOSINUSOID@{GOSINUSOID}}\item[{\em 
+\hypertarget{class_enemy_adb5a490a94eea508ae08cfb4191c150dada16e0f48368c09a17be644121f20f30}{
+GOSINUSOID}
+\label{dd/d7a/class_enemy_adb5a490a94eea508ae08cfb4191c150dada16e0f48368c09a17be644121f20f30}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+                          {
+                DONTSHOOT = 0,
+                SHOOT = 1,
+                GODOWN = 2,
+                GOHORIZONTAL = 4,
+                GOSINUSOID = 8
+        };
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_enemy_a94f30d348b6d2840fd71675472ba38dd}{
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\subsubsection[{Enemy}]{\setlength{\rightskip}{0pt plus 5cm}Enemy::Enemy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a94f30d348b6d2840fd71675472ba38dd}
+Constructor 
+\begin{DoxyCode}
+             : DynamicEntity(), AIAgent(), _health( 50 ), _points( 100 ), 
+      _multiplier( 1.0f ), _amplitudeLimit( 0.0f ),
+        _currentAmplitude( 0.0f ), _behavior( DONTSHOOT )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a5c78135be747dcb15ac30342da817598}{
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\subsubsection[{Enemy}]{\setlength{\rightskip}{0pt plus 5cm}Enemy::Enemy (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{float}]{speedX, }
+\item[{float}]{speedY, }
+\item[{int}]{health = {\ttfamily 50}, }
+\item[{int}]{points = {\ttfamily 100}}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a5c78135be747dcb15ac30342da817598}
+Constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & \\
+\hline
+\mbox{\tt in}  & {\em y} & \\
+\hline
+\mbox{\tt in}  & {\em speedX} & In pixels per second \\
+\hline
+\mbox{\tt in}  & {\em speedY} & In pixels per second \\
+\hline
+\mbox{\tt in}  & {\em health} & Health points \\
+\hline
+\mbox{\tt in}  & {\em points} & Points value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                                                                                 
+        : DynamicEntity( x, y, speedX, speedY ),
+        AIAgent(), _health ( health ), _points( points ), _multiplier( 1.0f ), 
+      _amplitudeLimit( 0.0f ), _currentAmplitude( 0.0f ),
+        _behavior( DONTSHOOT )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a8f13c84c25adf7f0aea049d0d52f4e0e}{
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\subsubsection[{Enemy}]{\setlength{\rightskip}{0pt plus 5cm}Enemy::Enemy (
+\begin{DoxyParamCaption}
+\item[{CL\_\-Vec2f \&}]{position, }
+\item[{CL\_\-Vec2f \&}]{speed, }
+\item[{int}]{health = {\ttfamily 50}, }
+\item[{int}]{points = {\ttfamily 100}}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a8f13c84c25adf7f0aea049d0d52f4e0e}
+Constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em position} & \\
+\hline
+\mbox{\tt in}  & {\em speed} & In pixels per second \\
+\hline
+\mbox{\tt in}  & {\em health} & Health points \\
+\hline
+\mbox{\tt in}  & {\em points} & Points value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+                                                                          : 
+      DynamicEntity ( position, speed ),
+        AIAgent(), _health( health ), _points( points ), _multiplier( 1.0f ), 
+      _amplitudeLimit( 0.0f ), _currentAmplitude( 0.0f ),
+        _behavior( DONTSHOOT )
+{
+
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_ac0eec4755e28c02688065f9657150ac3}{
+\index{Enemy@{Enemy}!$\sim$Enemy@{$\sim$Enemy}}
+\index{$\sim$Enemy@{$\sim$Enemy}!Enemy@{Enemy}}
+\subsubsection[{$\sim$Enemy}]{\setlength{\rightskip}{0pt plus 5cm}Enemy::$\sim$Enemy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{dd/d7a/class_enemy_ac0eec4755e28c02688065f9657150ac3}
+
+\begin{DoxyCode}
+{
+
+}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_enemy_aae76587ef1760daf0a854c0efc5231f5}{
+\index{Enemy@{Enemy}!getAmplitudeLimit@{getAmplitudeLimit}}
+\index{getAmplitudeLimit@{getAmplitudeLimit}!Enemy@{Enemy}}
+\subsubsection[{getAmplitudeLimit}]{\setlength{\rightskip}{0pt plus 5cm}float Enemy::getAmplitudeLimit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_aae76587ef1760daf0a854c0efc5231f5}
+
+\begin{DoxyCode}
+{
+        return _amplitudeLimit;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a3d8b091cf6da7be89f75eab556cf5e8a}{
+\index{Enemy@{Enemy}!getBehavior@{getBehavior}}
+\index{getBehavior@{getBehavior}!Enemy@{Enemy}}
+\subsubsection[{getBehavior}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Enemy::getBehavior (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a3d8b091cf6da7be89f75eab556cf5e8a}
+Gets the enemy's behavior
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_enemy_adb5a490a94eea508ae08cfb4191c150d}{Enemy::EnemyBehavior} The current behavior 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _behavior;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a46341636350ca2bc6aac929b2a84f215}{
+\index{Enemy@{Enemy}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Enemy@{Enemy}}
+\subsubsection[{getHealth}]{\setlength{\rightskip}{0pt plus 5cm}int Enemy::getHealth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a46341636350ca2bc6aac929b2a84f215}
+Gets enemy's current health value
+
+\begin{DoxyReturn}{Returns}
+int Health value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _health;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a44aea16416a79f0e2152f0fd109c0d97}{
+\index{Enemy@{Enemy}!getMultiplier@{getMultiplier}}
+\index{getMultiplier@{getMultiplier}!Enemy@{Enemy}}
+\subsubsection[{getMultiplier}]{\setlength{\rightskip}{0pt plus 5cm}float Enemy::getMultiplier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a44aea16416a79f0e2152f0fd109c0d97}
+Gets the multiplier value
+
+\begin{DoxyReturn}{Returns}
+float The multiplier value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _multiplier;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a5e0122fd418463449c03131663f81a1b}{
+\index{Enemy@{Enemy}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!Enemy@{Enemy}}
+\subsubsection[{getPoints}]{\setlength{\rightskip}{0pt plus 5cm}int Enemy::getPoints (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{dd/d7a/class_enemy_a5e0122fd418463449c03131663f81a1b}
+Gets enemy points value
+
+\begin{DoxyReturn}{Returns}
+int \hyperlink{class_enemy}{Enemy} points value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return _points;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a20b47e28e5abb3712161aa579f436185}{
+\index{Enemy@{Enemy}!setAmplitudeLimit@{setAmplitudeLimit}}
+\index{setAmplitudeLimit@{setAmplitudeLimit}!Enemy@{Enemy}}
+\subsubsection[{setAmplitudeLimit}]{\setlength{\rightskip}{0pt plus 5cm}void Enemy::setAmplitudeLimit (
+\begin{DoxyParamCaption}
+\item[{float}]{limit}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a20b47e28e5abb3712161aa579f436185}
+
+\begin{DoxyCode}
+{
+        _amplitudeLimit = limit;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_ad7d6519a6663730c8efe612b050e2497}{
+\index{Enemy@{Enemy}!setBehavior@{setBehavior}}
+\index{setBehavior@{setBehavior}!Enemy@{Enemy}}
+\subsubsection[{setBehavior}]{\setlength{\rightskip}{0pt plus 5cm}void Enemy::setBehavior (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{behavior}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_ad7d6519a6663730c8efe612b050e2497}
+Sets the enemy behavior 
+\begin{DoxyCode}
+{
+        _behavior = behavior;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a48f9331e93449f27c8d6374c75c81363}{
+\index{Enemy@{Enemy}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Enemy@{Enemy}}
+\subsubsection[{setHealth}]{\setlength{\rightskip}{0pt plus 5cm}void Enemy::setHealth (
+\begin{DoxyParamCaption}
+\item[{int}]{health}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a48f9331e93449f27c8d6374c75c81363}
+Sets enemy health value
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em health} & New health \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _health = health;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_a415ec24ecd55de8b1a3e6c7eb15be7ef}{
+\index{Enemy@{Enemy}!setPoints@{setPoints}}
+\index{setPoints@{setPoints}!Enemy@{Enemy}}
+\subsubsection[{setPoints}]{\setlength{\rightskip}{0pt plus 5cm}void Enemy::setPoints (
+\begin{DoxyParamCaption}
+\item[{int}]{points}
+\end{DoxyParamCaption}
+)}}
+\label{dd/d7a/class_enemy_a415ec24ecd55de8b1a3e6c7eb15be7ef}
+Modifies enemy's points value
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+{
+        _points = points;
+}
+\end{DoxyCode}
+\hypertarget{class_enemy_ad3187ead8c132957d3123a64ff5977d6}{
+\index{Enemy@{Enemy}!update@{update}}
+\index{update@{update}!Enemy@{Enemy}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Enemy::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{dd/d7a/class_enemy_ad3187ead8c132957d3123a64ff5977d6}
+Updates the entity 
+
+Implements \hyperlink{class_dynamic_entity_a80ad0626e1c2167efa049c580c0d466c}{DynamicEntity}.
+
+
+
+Implemented in \hyperlink{class_test_enemy_aa9f7df4bebeed481e823cb9c03dc82da}{TestEnemy}.
+
+\hypertarget{class_enemy_aacf879e206cf65f3a6eef441539ab79a}{
+\index{Enemy@{Enemy}!updateStats@{updateStats}}
+\index{updateStats@{updateStats}!Enemy@{Enemy}}
+\subsubsection[{updateStats}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Enemy::updateStats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{dd/d7a/class_enemy_aacf879e206cf65f3a6eef441539ab79a}
+
+
+Implemented in \hyperlink{class_test_enemy_a1c7eaf9e99a58a5815d14c929c09cf38}{TestEnemy}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_enemy_ae05acccfefed105855fa5a7461785757}{
+\index{Enemy@{Enemy}!\_\-amplitudeLimit@{\_\-amplitudeLimit}}
+\index{\_\-amplitudeLimit@{\_\-amplitudeLimit}!Enemy@{Enemy}}
+\subsubsection[{\_\-amplitudeLimit}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Enemy::\_\-amplitudeLimit}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{dd/d7a/class_enemy_ae05acccfefed105855fa5a7461785757}
+\hypertarget{class_enemy_a4d3938717ffc4bd2078e9033490d3b8f}{
+\index{Enemy@{Enemy}!\_\-behavior@{\_\-behavior}}
+\index{\_\-behavior@{\_\-behavior}!Enemy@{Enemy}}
+\subsubsection[{\_\-behavior}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf Enemy::\_\-behavior}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{dd/d7a/class_enemy_a4d3938717ffc4bd2078e9033490d3b8f}
+\hypertarget{class_enemy_aa3a2a0d5590a8acae7b387aa0e19eacd}{
+\index{Enemy@{Enemy}!\_\-currentAmplitude@{\_\-currentAmplitude}}
+\index{\_\-currentAmplitude@{\_\-currentAmplitude}!Enemy@{Enemy}}
+\subsubsection[{\_\-currentAmplitude}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Enemy::\_\-currentAmplitude}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{dd/d7a/class_enemy_aa3a2a0d5590a8acae7b387aa0e19eacd}
+\hypertarget{class_enemy_a406a6763891be117437959060c9c1fba}{
+\index{Enemy@{Enemy}!\_\-multiplier@{\_\-multiplier}}
+\index{\_\-multiplier@{\_\-multiplier}!Enemy@{Enemy}}
+\subsubsection[{\_\-multiplier}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Enemy::\_\-multiplier}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{dd/d7a/class_enemy_a406a6763891be117437959060c9c1fba}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_enemy_8h}{Enemy.h}\item 
+\hyperlink{_enemy_8cpp}{Enemy.cpp}\end{DoxyCompactItemize}
