@@ -33,7 +33,7 @@ Enemy::Enemy( float x, float y, float speedX, float speedY, int health, int poin
 
 
 
-Enemy::Enemy( CL_Vec2f& position, CL_Vec2f& speed, int health, int points ) : DynamicEntity ( position, speed ),
+Enemy::Enemy( clan::Vec2f& position, clan::Vec2f& speed, int health, int points ) : DynamicEntity ( position, speed ),
 	AIAgent(), _health( health ), _points( points ), _multiplier( 1.0f ), _amplitudeLimit( 0.0f ), _currentAmplitude( 0.0f ),
 	_behavior( DONTSHOOT )
 {

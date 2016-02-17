@@ -144,8 +144,8 @@ private:
 	Weapon* _weapon;
 	ControllerInterface* _controller;
 	bool _invincible;
-	float _invincibilityTimerBase;
-	float _invincibilityTimer;
+	int _invincibilityTimerBase;
+	int _invincibilityTimer;
 	float _alphaFlash;
 
 	/**
@@ -153,7 +153,7 @@ private:
 	 * 
 	 * @param[in]	dt	Time delta since last update
 	 */
-	void updateInvincibility( float dt );
+	void updateInvincibility( int dt );
 };
 
 #endif // Player_h__

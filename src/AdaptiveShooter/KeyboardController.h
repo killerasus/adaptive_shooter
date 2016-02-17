@@ -43,7 +43,7 @@ public:
 protected:
 	
 private:
-	CL_InputDevice _keyboard;
+	clan::InputDevice _keyboard;
 };
 
 #endif // KeyboardController_h__

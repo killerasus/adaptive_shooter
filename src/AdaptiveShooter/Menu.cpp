@@ -46,7 +46,7 @@ void Menu::update()
 
 	if (!_canExecute)
 	{
-		float dt = GameManager::getInstance()->getDeltaTime();
+		int dt = GameManager::getInstance()->getDeltaTime();
 		_inputeTimer += dt;
 
 		if (_inputeTimer >= _inputDelay)

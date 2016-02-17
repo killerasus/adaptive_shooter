@@ -18,15 +18,7 @@
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
 #include "ClanLib/sound.h"
-#include "ClanLib/mikmod.h"
-#include "ClanLib/vorbis.h"
-
-#ifdef _GL1
-	#include "ClanLib/gl1.h"
-#else
-	#include "ClanLib/gl.h"
-#endif
-
+#include "ClanLib/gl.h"
 #include "Scene.h"
 #include "FadingScene.h"
 #include "AIManager/AIManager.h"
@@ -102,7 +94,7 @@ public:
 	 */
 	int loop();
 
-	void loadResource(std::string resourceFile);
+	void loadXMLResource(std::string resourceFile);
 
 	void cleanUp();
 
@@ -132,14 +124,27 @@ public:
 	 * 
 	 * @return	  CL_DisplayWindow*
 	 */
-	CL_DisplayWindow* getWindow();
+	clan::DisplayWindow* getWindow();
+
+	/**
+	 * Gets the current canvas
+	 * @return clan::Canvas*
+	 */
+	clan::Canvas& getCanvas();
 
 	/**
 	 * Gets resource manager
 	 * 
 	 * @return	  CL_ResourceManager*
 	 */
-	CL_ResourceManager* getResourceManager();
+	const clan::ResourceManager& getResourceManager() const;
+
+	/**
+	 * Gets the resource document used to create the resource manager 
+	 *
+	 * @return Reference to the XML Resource Document
+	 */
+	const clan::XMLResourceDocument& getResourceDocument() const;
 
 	/**
 	 * Gets current Lua state
@@ -160,7 +165,7 @@ public:
 	 * 
 	 * @return	  float	time since last loop in miliseconds
 	 */
-	float getDeltaTime();
+	int getDeltaTime();
 
 	/**
 	 * Gets Player n
@@ -189,7 +194,7 @@ public:
 	 *
 	 * @return	CL_Logger*	Pointer to logger object
 	 */
-	CL_Logger* getLogger();
+	clan::Logger* getLogger();
 
 	/**
 	 * Gets the GameOver scene
@@ -223,27 +228,24 @@ protected:
 	virtual void draw();
 	virtual void update();
 private:
-	CL_SetupCore setup_core;
-	CL_SetupDisplay setup_display;
-	CL_SetupSound setup_sound;
-	CL_SetupMikMod setup_mikmod;
-	CL_SetupVorbis setup_vorbis;
-	CL_SoundOutput sound_output;
-#ifdef _GL1
-	CL_SetupGL1 setup_gl;
-#else
-	CL_SetupGL setup_gl;
-#endif // _GL1
+	clan::SetupCore setup_core;
+	clan::SetupDisplay setup_display;
+	clan::SetupSound setup_sound;
+	clan::SoundOutput sound_output;
+	clan::SetupGL setup_gl;
 
-	CL_ResourceManager* _resourceManager;
-	CL_DisplayWindow* _window;
+	clan::XMLResourceDocument _resourceDocument;
+	clan::ResourceManager _resourceManager;
+	clan::DisplayWindow* _window;
+	clan::Canvas* _canvas;
 
 	lua_State *L;
 	bool _quit;
 
+	clan::GameTime _game_time;
 	unsigned int _last_time;
 	unsigned int _current_time;
-	float _time_delta_ms;
+	int _time_delta_ms;
 
 	std::stack<Scene*> _sceneStack;
 	AIManager* _aiManager;
@@ -254,15 +256,15 @@ private:
 	FadingScene* _gameOverScene;
 
 	//logog::LogFile* _loggerFile;
-	CL_Logger* _loggerFile;
+	clan::Logger* _loggerFile;
 
 	PlayerOptions* _playerOptions;
 	EnemyOptions* _enemyOptions;
 
-	std::vector<CL_SoundBuffer> _soundEffects;
-	std::vector<CL_SoundBuffer_Session> _soundEffectSessions;
-	std::vector<CL_SoundBuffer> _musics;
-	std::vector<CL_SoundBuffer_Session> _musicSessions;
+	std::vector<clan::SoundBuffer> _soundEffects;
+	std::vector<clan::SoundBuffer_Session> _soundEffectSessions;
+	std::vector<clan::SoundBuffer> _musics;
+	std::vector<clan::SoundBuffer_Session> _musicSessions;
 
 	/**
 	 * Loads player and enemy options from config.lua

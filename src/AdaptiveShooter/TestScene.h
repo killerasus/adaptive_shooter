@@ -31,8 +31,8 @@ protected:
 private:
 	float _x, _y;
 	float _speed;
-	CL_Font* _font;
-	CL_Sprite* _boatSprite;
+	clan::Font* _font;
+	clan::Sprite _boatSprite;
 };
 
 #endif // TestScene_h__

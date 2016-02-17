@@ -44,7 +44,7 @@ private:
 	bool _isFading;
 
 #ifdef _DEBUG
-	CL_Font* _font;
+	clan::Font* _font;
 #endif
 };
 

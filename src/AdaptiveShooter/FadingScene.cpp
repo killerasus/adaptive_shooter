@@ -52,14 +52,14 @@ FadingScene::~FadingScene()
 
 
 
-void FadingScene::SetBackgroundColor( CL_Color color )
+void FadingScene::SetBackgroundColor( clan::Color color )
 {
 	_backgroundColor = color;
 }
 
 
 
-CL_Color FadingScene::GetBackgroundColor()
+clan::Color FadingScene::GetBackgroundColor()
 {
 	return _backgroundColor;
 }

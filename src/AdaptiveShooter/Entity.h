@@ -12,8 +12,8 @@
 #ifndef Entity_h__
 #define Entity_h__
 
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
+#include "ClanLib/core.h"
+#include "ClanLib/display.h"
 
 class Entity
 {
@@ -37,7 +37,7 @@ public:
 	 * 
 	 * @param	  position	Position vector
 	 */
-	Entity(CL_Vec2f& position);
+	Entity(clan::Vec2f& position);
 
 	/**
 	 * Constructor
@@ -54,14 +54,14 @@ public:
 	 *
 	 * @return	  CL_Vec2f	Position
 	 */
-	CL_Vec2f getPosition() const;
+	clan::Vec2f getPosition() const;
 
 	/**
 	 * Sets the entity position
 	 * 
 	 * @param	  position	New position
 	 */
-	void setPosition(CL_Vec2f& position);
+	void setPosition(clan::Vec2f& position);
 
 	/**
 	 * Sets the entity position
@@ -90,7 +90,7 @@ public:
 	 *
 	 * @return	  CL_Sprite*
 	 */
-	CL_Sprite* getCurrentSprite() const;
+	clan::Sprite& getCurrentSprite() const;
 
 	/**
 	 * Gets the alpha value of the current sprite.
@@ -132,9 +132,9 @@ public:
 	unsigned int boundToScreen();
 
 protected:
-	CL_Sprite* _currentSprite;
+	clan::Sprite _currentSprite;
 private:
-	CL_Vec2f _position;
+	clan::Vec2f _position;
 };
 
 #endif // Entity_h__

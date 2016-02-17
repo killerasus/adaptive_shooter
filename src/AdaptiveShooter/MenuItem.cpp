@@ -17,9 +17,9 @@ MenuItem::MenuItem( float x, float y, std::string selectedResource_id, std::stri
 Entity( x, y ), _isSelected( false )
 {
 	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_notSelected = new CL_Sprite( gc, notSelectedResource_id, manager->getResourceManager() );
-	_selected = new CL_Sprite( gc, selectedResource_id, manager->getResourceManager() );
+	clan::Canvas& gc = manager->getCanvas();
+	_notSelected = clan::Sprite::resource( gc, notSelectedResource_id, manager->getResourceManager() );
+	_selected = clan::Sprite::resource( gc, selectedResource_id, manager->getResourceManager() );
 	_currentSprite = _notSelected;
 }
 
@@ -27,22 +27,20 @@ Entity( x, y ), _isSelected( false )
 
 MenuItem::~MenuItem()
 {
-	delete _notSelected;
-	delete _selected;
 }
 
 
 
 void MenuItem::draw()
 {
-	getCurrentSprite()->draw( GameManager::getInstance()->getWindow()->get_gc(), getPosition().x, getPosition().y );
+	getCurrentSprite().draw( GameManager::getInstance()->getCanvas(), getPosition().x, getPosition().y );
 }
 
 
 
 void MenuItem::update()
 {
-	getCurrentSprite()->update();
+	getCurrentSprite().update( GameManager::getInstance()->getDeltaTime() );
 }
 
 

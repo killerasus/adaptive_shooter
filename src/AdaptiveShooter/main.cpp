@@ -11,16 +11,16 @@
 *********************************************************************/
 
 // ClanLib engine includes
-#include <ClanLib/core.h>
-#include <ClanLib/display.h>
-#include <ClanLib/application.h>
+#include "ClanLib/core.h"
+#include "ClanLib/display.h"
+#include "ClanLib/application.h"
 
 // Std Lib includes
 #include <string>
 
 // Logging tool
-#define LOGOG_USE_PREFIX 1
-#include "logog.hpp" 
+//#define LOGOG_USE_PREFIX 1
+//#include "logog.hpp" 
 
 
 // Project includes
@@ -39,20 +39,20 @@
 class DisplayProgram
 {
 public:
-	static int main(const std::vector<CL_String> &args){
+	static int main(const std::vector<std::string> &args){
 
 #if _DEBUG
-		CL_ConsoleWindow console("Debug Console", 80, 160);
-		CL_Console::write_line("Arguments: %1", args.size());
+		clan::ConsoleWindow console("Debug Console", 80, 160);
+		clan::Console::write_line("Arguments: %1", args.size());
 
 		std::cout << "Arguments: " + args.size();
 
 		for( unsigned int i = 0; i < args.size(); i++ )
 		{
-			CL_Console::write( "[%1] = %2\n", i, args[i] );
+			clan::Console::write( "[%1] = %2\n", i, args[i] );
 		}
 
-		CL_Console::write_line("");
+		clan::Console::write_line("");
 #endif
 
 		int ret = 0;
@@ -66,9 +66,9 @@ public:
 			GameManager* manager = GameManager::getInstance();
 
 #ifdef _DEBUG
-			manager->loadResource("../../../../data/resources.xml");
+			manager->loadXMLResource("../../data/resources.xml");
 #else
-			manager->loadResource("./data/resources.xml");
+			manager->loadXMLResource("./data/resources.xml");
 #endif
 
 			manager->setupPlayer(0);
@@ -92,8 +92,8 @@ public:
 			
 			newTest->setNextScene( ending );
 			difficultyMenu->setNextScene( newTest );
-			//splashScreen->setNextScene( difficultyMenu );
-			//manager->pushScene( splashScreen );
+			splashScreen->setNextScene( difficultyMenu );
+			manager->pushScene( splashScreen );
 			manager->pushScene( difficultyMenu );
 	
 			/* Main game loop */
@@ -105,11 +105,11 @@ public:
 			delete manager;
 
 		}
-		catch(CL_Exception &exception)
+		catch(clan::Exception &exception)
 		{
 			// Create a console window for text-output if not available
-			CL_ConsoleWindow console("Console", 80, 160);
-			CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
+			clan::ConsoleWindow console("Console", 80, 160);
+			clan::Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
 			console.display_close_message();
 
 			return -1;
@@ -135,4 +135,4 @@ public:
 };
 
 // Create global application object, you MUST include this line or the application start-up will fail to locate your application object.
-CL_ClanApplication app(&DisplayProgram::main);
+clan::Application app(&DisplayProgram::main);

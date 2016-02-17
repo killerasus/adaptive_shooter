@@ -40,7 +40,7 @@ public:
 	 * @param[in]	resource	Resource location in resource file
 	 * @param[in]	damage		Amount of damage caused to Entity
 	 */
-	Shot(CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damage);
+	Shot(clan::Vec2f& position, clan::Vec2f& speed, std::string resource, int damage);
 
 	virtual ~Shot();
 

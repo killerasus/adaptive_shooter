@@ -16,28 +16,27 @@
 StaticEntity::StaticEntity(float x, float y, std::string resource_id):Entity( x, y )
 {
 	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
+	clan::Canvas& gc = manager->getCanvas();
 
-	_currentSprite = new CL_Sprite(gc, resource_id, manager->getResourceManager());
+	_currentSprite = clan::Sprite::resource(gc, resource_id, manager->getResourceManager());
 }
 
 
 
 StaticEntity::~StaticEntity()
 {
-	delete _currentSprite;
 }
 
 
 
 void StaticEntity::draw()
 {
-	_currentSprite->draw( GameManager::getInstance()->getWindow()->get_gc(), getPosition().x, getPosition().y );
+	_currentSprite.draw( GameManager::getInstance()->getCanvas(), getPosition().x, getPosition().y );
 }
 
 
 
 void StaticEntity::update()
 {
-	_currentSprite->update();
+	_currentSprite.update( GameManager::getInstance()->getDeltaTime() );
 }

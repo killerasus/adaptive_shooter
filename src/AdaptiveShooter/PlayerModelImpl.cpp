@@ -28,7 +28,6 @@ PlayerModelImpl::~PlayerModelImpl()
 
 float PlayerModelImpl::compare( PlayerModel* comparable )
 {
-	float traitValue;
 	float total = 0.0f;
 	float totalCompareMin = 0.0f;
 	float totalCompareMax = 0.0f;

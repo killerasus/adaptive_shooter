@@ -25,7 +25,7 @@ DynamicEntity::DynamicEntity( float x, float y, float speedX, float speedY ) : E
 
 
 
-DynamicEntity::DynamicEntity( CL_Vec2f& position, CL_Vec2f& speed ) : Entity( position ), _speed( speed )
+DynamicEntity::DynamicEntity( clan::Vec2f& position, clan::Vec2f& speed ) : Entity( position ), _speed( speed )
 {
 }
 
@@ -39,17 +39,14 @@ DynamicEntity::~DynamicEntity()
 
 void DynamicEntity::draw()
 {
-	if (_currentSprite)
-	{
-		GameManager* manager = GameManager::getInstance();
-		CL_GraphicContext gc = manager->getWindow()->get_gc();
-		_currentSprite->draw( gc, getPosition().x, getPosition().y );
-	}
+	GameManager* manager = GameManager::getInstance();
+	clan::Canvas& canvas = manager->getCanvas();
+	_currentSprite.draw( canvas, getPosition().x, getPosition().y );
 }
 
 
 
-CL_Vec2f DynamicEntity::getSpeed() const
+clan::Vec2f DynamicEntity::getSpeed() const
 {
 	return _speed;
 }
@@ -64,7 +61,7 @@ void DynamicEntity::setSpeed( float x, float y )
 
 
 
-void DynamicEntity::setSpeed( CL_Vec2f& speed )
+void DynamicEntity::setSpeed( clan::Vec2f& speed )
 {
 	_speed = speed;
 }
@@ -85,8 +82,8 @@ void DynamicEntity::setSpeedY( float y )
 
 
 
-CL_CollisionOutline* DynamicEntity::getCurrentCollisionOutline() const
+const clan::CollisionOutline& DynamicEntity::getCurrentCollisionOutline() const
 {
-	int i = getCurrentSprite()->get_current_frame();
+	int i = getCurrentSprite().get_current_frame();
 	return _currentOutlines[i];
 }

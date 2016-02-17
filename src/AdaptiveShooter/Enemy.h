@@ -53,7 +53,7 @@ public:
 	 * @param[in]	health	Health points
 	 * @param[in]	points	Points value
 	 */
-	Enemy(CL_Vec2f& position, CL_Vec2f& speed, int health = 50, int points = 100);
+	Enemy(clan::Vec2f& position, clan::Vec2f& speed, int health = 50, int points = 100);
 
 	virtual ~Enemy();
 

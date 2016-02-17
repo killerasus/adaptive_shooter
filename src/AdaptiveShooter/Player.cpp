@@ -26,8 +26,8 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
 	_spriteResourceKey( sprite ), _weapon( new Weapon("Standard laser", "sprites/shot", GameManager::getInstance()->getPlayerOptions()->shotDelay ) ),
-	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimerBase(1500.0f),
-	_invincibilityTimer( 0.f ), _alphaFlash( 0.5f )
+	_controller( GamepadController::getNewGamepad( 0 ) ), _invincible( false ), _invincibilityTimerBase(1500),
+	_invincibilityTimer( 0 ), _alphaFlash( 0.5f )
 {
 	setCurrentWeapon( _weapon );
 	_weapon->setShotSpeed( GameManager::getInstance()->getPlayerOptions()->shotSpeedX,
@@ -39,15 +39,15 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 	}
 
 	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_currentSprite = new CL_Sprite( gc, sprite, manager->getResourceManager() );
+	clan::Canvas& gc = manager->getCanvas();
+	_currentSprite = clan::Sprite::resource( gc, sprite, manager->getResourceManager() );
 
-	CL_String descriptor = sprite.substr( sprite.find_last_of( "/" ) + 1 );
+	std::string descriptor = sprite.substr( sprite.find_last_of( "/" ) + 1 );
 
-	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	for (int i = 0; i < _currentSprite.get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/player/%1_00%2", descriptor, i );
-		_currentOutlines.push_back( new CL_CollisionOutline( collisionResource.c_str(), manager->getResourceManager() ) );
+		std::string collisionResource = clan::string_format( "outlines/player/%1_00%2", descriptor, i );
+		_currentOutlines.push_back( clan::CollisionOutline::load( collisionResource.c_str(), manager->getResourceDocument() ) );
 	}
 
 }
@@ -57,7 +57,6 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 Player::~Player()
 {
 	delete _model;
-	delete _currentSprite;
 	delete _weapon;
 	delete _controller;
 }
@@ -68,25 +67,25 @@ Player::~Player()
 void Player::draw()
 {
 	this->DynamicEntity::draw();
-	int frame = getCurrentSprite()->get_current_frame();
+	int frame = getCurrentSprite().get_current_frame();
 
 	float scale = GameManager::getInstance()->getPlayerOptions()->hitBoxScale;
 	float halfComplementScale = (1.0f - scale)*0.5f;
 
-	_currentOutlines[frame]->set_scale( scale, scale );
+	_currentOutlines[frame].set_scale( scale, scale );
 
 	// Translate 0.125*width and height
-	_currentOutlines[frame]->draw( getPosition().x + getCurrentSprite()->get_width()*halfComplementScale, 
-		getPosition().y + getCurrentSprite()->get_height()*halfComplementScale, CL_Colorf::red, GameManager::getInstance()->getWindow()->get_gc() );
+	_currentOutlines[frame].draw( getPosition().x + getCurrentSprite().get_width()*halfComplementScale, 
+		getPosition().y + getCurrentSprite().get_height()*halfComplementScale, clan::Colorf::red, GameManager::getInstance()->getCanvas() );
 
-	_currentOutlines[frame]->set_scale(1.0f, 1.0f);
+	_currentOutlines[frame].set_scale(1.0f, 1.0f);
 }
 #endif
 
 
 void Player::update()
 {
-	float dt = GameManager::getInstance()->getDeltaTime();
+	int dt = GameManager::getInstance()->getDeltaTime();
 
 	Shooter::update();
 
@@ -120,7 +119,7 @@ void Player::update()
 		}
 	}
 
-	_currentSprite->update();
+	_currentSprite.update( dt );
 
 	boundToScreen();
 }
@@ -239,20 +238,20 @@ void Player::setInvincible( bool status )
 
 	if (_invincible)
 	{
-		_invincibilityTimer = 0.0f;
+		_invincibilityTimer = 0;
 		_alphaFlash = 0.5f;
-		_currentSprite->set_alpha( _alphaFlash );
+		_currentSprite.set_alpha( _alphaFlash );
 	}
 	else
 	{
 		_alphaFlash = 1.0f;
-		_currentSprite->set_alpha( 1.0f );
+		_currentSprite.set_alpha( 1.0f );
 	}
 }
 
 
 
-void Player::updateInvincibility( float dt )
+void Player::updateInvincibility( int dt )
 {
 	static int direction = 1;
 
@@ -282,7 +281,7 @@ void Player::updateInvincibility( float dt )
 				}
 			}
 
-			_currentSprite->set_alpha( _alphaFlash );
+			_currentSprite.set_alpha( _alphaFlash );
 		}
 	}
 }

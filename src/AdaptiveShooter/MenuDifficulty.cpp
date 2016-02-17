@@ -21,14 +21,14 @@
 MenuDifficulty::MenuDifficulty() : Menu(), FadingScene( 0.0f, 1000.f, 0.0f, FadingScene::FM_FADE_OUT ), _isFading( false )
 {
 #ifdef _DEBUG
-	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
-	_font = new CL_Font( gc, "Tahoma", 14 );
+	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
+	_font = new clan::Font( gc, "Tahoma", 14 );
 #endif // _DEBUG
 
 	MenuItem* easy = new MenuItem( 170.f, 5.f, "menu/easy_selected", "menu/easy_notselected" );
-	MenuItem* normal = new MenuItem( 170.f, easy->getPosition().y + easy->getCurrentSprite()->get_height() + 10.f,
+	MenuItem* normal = new MenuItem( 170.f, easy->getPosition().y + easy->getCurrentSprite().get_height() + 10.f,
 		"menu/normal_selected", "menu/normal_notselected" );
-	MenuItem* hard = new MenuItem( 170.f, normal->getPosition().y + normal->getCurrentSprite()->get_height() + 10.f,
+	MenuItem* hard = new MenuItem( 170.f, normal->getPosition().y + normal->getCurrentSprite().get_height() + 10.f,
 		"menu/hard_selected", "menu/hard_notselected" );
 
 	easy->setSelected( true );
@@ -49,7 +49,6 @@ MenuDifficulty::MenuDifficulty() : Menu(), FadingScene( 0.0f, 1000.f, 0.0f, Fadi
 
 MenuDifficulty::~MenuDifficulty()
 {
-
 }
 
 
@@ -68,7 +67,7 @@ void MenuDifficulty::draw()
 
 
 #ifdef _DEBUG
-	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
+	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
 
 	std::ostringstream menuText;
 	menuText.precision( 4 );
@@ -82,7 +81,7 @@ void MenuDifficulty::draw()
 	float textX = 640.0f - _font->get_text_size(gc, drawableText).width - 10.f; 
 	float textY = 110.0f;
 
-	_font->draw_text(gc, textX, textY, drawableText, CL_Colorf::red);
+	_font->draw_text(gc, textX, textY, drawableText, clan::Colorf::red);
 #endif
 }
 
@@ -134,7 +133,7 @@ void MenuDifficulty::ExecuteState()
 	delete playerModels;
 
 	// Logs initial values for Player
-	CL_DateTime time = CL_DateTime::get_current_utc_time();
+	clan::DateTime time = clan::DateTime::get_current_utc_time();
 	std::ostringstream text;
 	text << "\n==================================\n";
 	text << time.to_long_time_string().c_str();

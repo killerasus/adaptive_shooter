@@ -22,7 +22,7 @@ public:
 
 	TestEnemy(float x, float y, float speedX, float speedY, std::string resource);
 
-	TestEnemy(CL_Vec2f& position, CL_Vec2f& speed, std::string resource);
+	TestEnemy(clan::Vec2f& position, clan::Vec2f& speed, std::string resource);
 
 	virtual ~TestEnemy();
 

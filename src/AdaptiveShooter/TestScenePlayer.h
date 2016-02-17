@@ -79,7 +79,7 @@ public:
 	void addEnemyShot(Shot* newShot);
 
 private:
-	CL_Font* _font;
+	clan::Font* _font;
 	std::vector<Enemy*> _enemies;
 	std::list<Shot*> _playerShots;
 	std::list<Shot*> _enemyShots;

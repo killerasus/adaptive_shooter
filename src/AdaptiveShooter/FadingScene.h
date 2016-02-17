@@ -32,8 +32,8 @@ public:
 	FadingScene(float fadein, float fadeout, float waittime, FadingScene::FadingMode mode);
 	virtual ~FadingScene();
 
-	void SetBackgroundColor(CL_Color color);
-	CL_Color GetBackgroundColor();
+	void SetBackgroundColor(clan::Color color);
+	clan::Color GetBackgroundColor();
 	void SetFadeInTime(float time_ms);
 	float GetFadeInTime();
 	void SetFadeOutTime(float time_ms);
@@ -55,7 +55,7 @@ protected:
 	};
 	
 private:
-	CL_Color _backgroundColor;
+	clan::Color _backgroundColor;
 	float _fadein;
 	float _fadeout;
 	float _waittime;

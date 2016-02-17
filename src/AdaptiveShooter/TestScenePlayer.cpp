@@ -32,11 +32,11 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	_shotsTotalOnTarget( 0 ), _livesStartWave( 0 ), _livesEndWave( 0 ), _enemiesWave( 0 ), _enemiesWaveWasted( 0 ),
 	_enemiesTotal( 0 ), _enemiesTotalWasted( 0 ), _keyDelayTime ( 1000.0f ), _timer( 0.0f ), _canPressKey( true ), _waveNumber( 0 ), _waveOn(false)
 {
-	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
-	_font = new CL_Font( gc, "Tahoma", 16 );
+	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
+	_font = new clan::Font( gc, "Tahoma", 16 );
 
 #ifdef _DEBUG
-	loadScene( "../../../../src/Scripts/demoscene.lua" );
+	loadScene( "../../src/Scripts/demoscene.lua" );
 #else
 	loadScene( "./Scripts/demoscene.lua" );
 #endif
@@ -53,7 +53,7 @@ TestScenePlayer::~TestScenePlayer()
 
 void TestScenePlayer::draw()
 {
-	CL_GraphicContext gc = GameManager::getInstance()->getWindow()->get_gc();
+	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
 
 	/*CL_Draw::line(gc, 0, 110, 640, 110, CL_Colorf::yellow);
 	_font->draw_text(gc, 100, 100, "Hello World!", CL_Colorf::lightseagreen);*/
@@ -64,9 +64,8 @@ void TestScenePlayer::draw()
 	// Calls parent draw implementation for drawing entities
 	Scene::draw();
 
-	_font->draw_text( gc, 10, 440, cl_format( "Lives: %1", playerOne->getLives() ), CL_Colorf::whitesmoke );
-
-	_font->draw_text( gc, 500, 440, cl_format( "Score: %1", playerOne->getScore() ), CL_Colorf::whitesmoke );
+	_font->draw_text( gc, 10, 440, clan::string_format( "Lives: %1", playerOne->getLives() ), clan::Colorf::whitesmoke );
+	_font->draw_text( gc, 500, 440, clan::string_format( "Score: %1", playerOne->getScore() ), clan::Colorf::whitesmoke );
 
 #if _DEBUG
 	std::ostringstream playerText;
@@ -83,7 +82,7 @@ void TestScenePlayer::draw()
 
 	if (GameManager::getInstance()->getWindow()->get_ic().get_joystick_count() > 0)
 	{
-		CL_InputDevice joystick = GameManager::getInstance()->getWindow()->get_ic().get_joystick();
+		clan::InputDevice joystick = GameManager::getInstance()->getWindow()->get_ic().get_joystick();
 		playerText << "Joystick name = " << joystick.get_name().c_str() << std::endl;
 
 		for (int i = 0; i < joystick.get_button_count(); i++)
@@ -94,7 +93,7 @@ void TestScenePlayer::draw()
 			}
 		}
 
-		for (int i = 0; i < joystick.get_axis_count(); i++)
+		for (unsigned int i = 0; i < joystick.get_axis_ids().size(); i++)
 		{
 			playerText << "Joystick axis " << i << " = " << joystick.get_axis( i ) << std::endl;
 		}
@@ -104,7 +103,7 @@ void TestScenePlayer::draw()
 	float textX = 640.0f - _font->get_text_size(gc, drawableText).width - 10.f; 
 	float textY = 110.0f;
 
-	_font->draw_text(gc, textX, textY, drawableText, CL_Colorf::red);
+	_font->draw_text(gc, textX, textY, drawableText, clan::Colorf::red);
 
 	std::ostringstream waveText;
 	waveText.precision( 4 );
@@ -121,7 +120,7 @@ void TestScenePlayer::draw()
 
 	std::string waveDrawableText = waveText.str();
 
-	_font->draw_text(gc, 0.0f, 110.0f, waveDrawableText, CL_Colorf::green);
+	_font->draw_text(gc, 0.0f, 110.0f, waveDrawableText, clan::Colorf::green);
 
 #endif
 }
@@ -130,7 +129,7 @@ void TestScenePlayer::update()
 {
 	GameManager* manager = GameManager::getInstance();
 	Player* playerOne = manager->getPlayer(0);
-	float dt = manager->getDeltaTime();
+	int dt = manager->getDeltaTime();
 	PlayerModel* model = playerOne->getPlayerModel();
 
 	if (playerOne->getLives() <= 0)
@@ -140,7 +139,7 @@ void TestScenePlayer::update()
 
 		// Last log
 
-		CL_DateTime time = CL_DateTime::get_current_local_time();
+		clan::DateTime time = clan::DateTime::get_current_local_time();
 		std::ostringstream text;
 		text << "Player defeated\n";
 		text << time.to_long_time_string().c_str();
@@ -183,7 +182,7 @@ void TestScenePlayer::update()
 		{
 			GameManager::getInstance()->stopMusic( GameManager::STAGE_1 );
 
-			CL_DateTime time = CL_DateTime::get_current_local_time();
+			clan::DateTime time = clan::DateTime::get_current_local_time();
 			std::ostringstream text;
 			text << time.to_long_time_string().c_str();
 
@@ -226,61 +225,61 @@ void TestScenePlayer::update()
 
 #if _DEBUG
 
-	CL_InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
+	clan::InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
 	const float variation = 0.001f;
 
-	if (keyboard.get_keycode(CL_KEY_Y))
+	if (keyboard.get_keycode(clan::keycode_y))
 	{
 		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) + dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_U))
+	if (keyboard.get_keycode(clan::keycode_u))
 	{
 		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) + dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_I))
+	if (keyboard.get_keycode(clan::keycode_i))
 	{
 		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) + dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_O))
+	if (keyboard.get_keycode(clan::keycode_o))
 	{
 		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) + dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_H))
+	if (keyboard.get_keycode(clan::keycode_h))
 	{
 		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) - dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_J))
+	if (keyboard.get_keycode(clan::keycode_j))
 	{
 		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) - dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_K))
+	if (keyboard.get_keycode(clan::keycode_k))
 	{
 		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) - dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_L))
+	if (keyboard.get_keycode(clan::keycode_l))
 	{
 		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) - dt*variation);
 	}
 
-	if (keyboard.get_keycode(CL_KEY_P))
+	if (keyboard.get_keycode(clan::keycode_p))
 	{
 		model->resetTraits();
 	}
 
-	if (keyboard.get_keycode(CL_KEY_E))
+	if (keyboard.get_keycode(clan::keycode_e))
 	{
 		createDebugEnemy();
 	}
 
-	if (keyboard.get_keycode(CL_KEY_SPACE))
+	if (keyboard.get_keycode(clan::keycode_space))
 	{
 		std::string modelName = model->getName();
 
@@ -362,9 +361,6 @@ void TestScenePlayer::computeShotsCollision()
 	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
 	std::list<Shot*>::iterator shotIt;
 	std::vector<Enemy*>::iterator enemyIt;
-
-	CL_CollisionOutline* shot = NULL;
-	CL_CollisionOutline* object = NULL;
 	bool remove;
 
 	// Player shots colliding with enemies
@@ -381,32 +377,32 @@ void TestScenePlayer::computeShotsCollision()
 		}
 
 		remove = false;
-		shot = (*shotIt)->getCurrentCollisionOutline();
+		clan::CollisionOutline& shot = const_cast<clan::CollisionOutline&>((*shotIt)->getCurrentCollisionOutline());
 
 		// Translates outlines to their current sprite position as outlines start in 0,0
-		CL_Vec2f pos = (*shotIt)->getPosition();
-		shot->set_translation(pos.x, pos.y);
+		clan::Vec2f pos = (*shotIt)->getPosition();
+		shot.set_translation(pos.x, pos.y);
 
 		for (enemyIt = _enemies.begin(); enemyIt != _enemies.end(); enemyIt++)
 		{
-			object = (*enemyIt)->getCurrentCollisionOutline();
+			clan::CollisionOutline& object = const_cast<clan::CollisionOutline&>((*enemyIt)->getCurrentCollisionOutline());
 
-			CL_Vec2f posEnemy = (*enemyIt)->getPosition();
-			object->set_translation(posEnemy.x, posEnemy.y);
+			clan::Vec2f posEnemy = (*enemyIt)->getPosition();
+			object.set_translation(posEnemy.x, posEnemy.y);
 
-			if (shot->collide( *object ))
+			if (shot.collide( object ))
 			{
 				// Applies damage to enemy
 				computeShotHitEnemy( (*shotIt), (*enemyIt) );
-				object->set_translation(0.0f, 0.0f);
+				object.set_translation(0.0f, 0.0f);
 				remove = true;
 				break;
 			}
 
-			object->set_translation(0.0f, 0.0f);
+			object.set_translation(0.0f, 0.0f);
 		}
 
-		shot->set_translation(0.0f, 0.0f);
+		shot.set_translation(0.0f, 0.0f);
 
 		if (remove)
 		{
@@ -423,18 +419,18 @@ void TestScenePlayer::computeShotsCollision()
 	}
 
 	// As currently there is just one player...
-	object = playerOne->getCurrentCollisionOutline();
+	clan::CollisionOutline& player = const_cast<clan::CollisionOutline&>(playerOne->getCurrentCollisionOutline());
 
 	float scale = GameManager::getInstance()->getPlayerOptions()->hitBoxScale;
 	float halfComplementScale = (1.0f - scale)*0.5f;
 
 	// Reduce player hitbox area
-	object->set_scale( scale, scale );
+	player.set_scale( scale, scale );
 
 	// Translate halfComplementScale*width and halfComplementScale*height
 	// Translation is set to the current player position
-	object->set_translation( playerOne->getPosition().x + playerOne->getCurrentSprite()->get_width()*halfComplementScale,
-		playerOne->getPosition().y + playerOne->getCurrentSprite()->get_height()*halfComplementScale );
+	player.set_translation( playerOne->getPosition().x + playerOne->getCurrentSprite().get_width()*halfComplementScale,
+		playerOne->getPosition().y + playerOne->getCurrentSprite().get_height()*halfComplementScale );
 
 
 	// Enemies shots colliding with player
@@ -450,12 +446,12 @@ void TestScenePlayer::computeShotsCollision()
 			continue;
 		}
 
-		shot = (*shotIt)->getCurrentCollisionOutline();
+		clan::CollisionOutline& shot = const_cast<clan::CollisionOutline&>((*shotIt)->getCurrentCollisionOutline());
 
-		CL_Vec2f pos = (*shotIt)->getPosition();
-		shot->set_translation(pos.x, pos.y);
+		clan::Vec2f pos = (*shotIt)->getPosition();
+		shot.set_translation(pos.x, pos.y);
 
-		if (shot->collide( *object ))
+		if (shot.collide( player ))
 		{
 			if (!playerOne->getInvincible())
 				computeShotHitPlayer( (*shotIt), playerOne );
@@ -468,15 +464,15 @@ void TestScenePlayer::computeShotsCollision()
 		}
 		else
 		{
-			shot->set_translation(0.0f, 0.0f);
+			shot.set_translation(0.0f, 0.0f);
 			shotIt++;
 		}
 	}
 
-	object->set_scale( 1.0f, 1.0f );
+	player.set_scale( 1.0f, 1.0f );
 
 	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
-	object->set_translation(0.0f, 0.0f);
+	player.set_translation(0.0f, 0.0f);
 }
 
 
@@ -486,47 +482,44 @@ void TestScenePlayer::computePlayerEnemyCollision()
 	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
 	std::vector< Enemy* >::iterator enemyIt;
 
-	CL_CollisionOutline* playerOutline = NULL;
-	CL_CollisionOutline* enemyOutline = NULL;
-
 	// As currently there is just one player...
-	playerOutline = playerOne->getCurrentCollisionOutline();
+	clan::CollisionOutline& playerOutline = const_cast<clan::CollisionOutline&>(playerOne->getCurrentCollisionOutline());
 
 	float scale = GameManager::getInstance()->getPlayerOptions()->hitBoxScale;
 	float halfComplementScale = (1.0f - scale)*0.5f;
 
 	// Reduce player hitbox area
-	playerOutline->set_scale( scale, scale );
+	playerOutline.set_scale( scale, scale );
 
 	// Translate halfComplementScale*width and halfComplementScale*height
 	// Translation is set to the current player position
-	playerOutline->set_translation( playerOne->getPosition().x + playerOne->getCurrentSprite()->get_width()*halfComplementScale,
-		playerOne->getPosition().y + playerOne->getCurrentSprite()->get_height()*halfComplementScale );
+	playerOutline.set_translation( playerOne->getPosition().x + playerOne->getCurrentSprite().get_width()*halfComplementScale,
+		playerOne->getPosition().y + playerOne->getCurrentSprite().get_height()*halfComplementScale );
 
 	// Translation is set to the current player position
-	playerOutline->set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
+	playerOutline.set_translation( playerOne->getPosition().x, playerOne->getPosition().y );
 
 	// Enemies colliding with player
 	for(enemyIt = _enemies.begin(); enemyIt != _enemies.end(); )
 	{
-		enemyOutline = (*enemyIt)->getCurrentCollisionOutline();
+		clan::CollisionOutline& enemyOutline = const_cast<clan::CollisionOutline&>((*enemyIt)->getCurrentCollisionOutline());
 
-		CL_Vec2f pos = (*enemyIt)->getPosition();
-		enemyOutline->set_translation(pos.x, pos.y);
+		clan::Vec2f pos = (*enemyIt)->getPosition();
+		enemyOutline.set_translation(pos.x, pos.y);
 
-		if (enemyOutline->collide( *playerOutline ))
+		if (enemyOutline.collide( playerOutline ))
 		{
 			if (!playerOne->getInvincible())
 				computePlayerEnemyCollisionDamage( playerOne, (*enemyIt) );
 		}
 		
-		enemyOutline->set_translation( 0.0f, 0.0f );
+		enemyOutline.set_translation( 0.0f, 0.0f );
 		enemyIt++;
 	}
 
 	// Returns player outline to 0,0 (drawing uses translation on x,y drawing point)
-	playerOutline->set_scale( 1.0f, 1.0f );
-	playerOutline->set_translation( 0.0f, 0.0f );
+	playerOutline.set_scale( 1.0f, 1.0f );
+	playerOutline.set_translation( 0.0f, 0.0f );
 }
 
 
@@ -568,7 +561,7 @@ void TestScenePlayer::waveFinish()
 	GameManager::getInstance()->getAIManager()->update();
 #endif
 
-	CL_DateTime time = CL_DateTime::get_current_local_time();
+	clan::DateTime time = clan::DateTime::get_current_local_time();
 
 	std::ostringstream text;
 	text << time.to_long_time_string().c_str();
@@ -630,8 +623,8 @@ void TestScenePlayer::validateEnemies()
 			
 			playerOne->addToScore( enemy->getPoints() );
 
-			insertEntity( new Explosion( enemy->getPosition().x + enemy->getCurrentSprite()->get_width()*0.5f,
-				enemy->getPosition().y + enemy->getCurrentSprite()->get_height()*0.5f, enemy->getSpeed().x*enemy->getMultiplier(),
+			insertEntity( new Explosion( enemy->getPosition().x + enemy->getCurrentSprite().get_width()*0.5f,
+				enemy->getPosition().y + enemy->getCurrentSprite().get_height()*0.5f, enemy->getSpeed().x*enemy->getMultiplier(),
 				enemy->getSpeed().y*enemy->getMultiplier(), "sprites/explosionMedium" ) );
 			
 			GameManager::getInstance()->playSoundEffect( GameManager::SFX_EXPLOSION );
@@ -643,7 +636,7 @@ void TestScenePlayer::validateEnemies()
 		} 
 		else
 		{
-			CL_GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc();
+			clan::GraphicContext& gc = GameManager::getInstance()->getWindow()->get_gc();
 			// Checks if enemy still above the bottom of the window
 			if (enemy->getPosition().y > (float)gc.get_height())
 			{
@@ -710,11 +703,11 @@ void TestScenePlayer::computePlayerEnemyCollisionDamage( Player* player, Enemy* 
 void TestScenePlayer::createDebugEnemy()
 {
 
-	CL_Rect windowArea = GameManager::getInstance()->getWindow()->get_viewport();
+	clan::Rect windowArea = GameManager::getInstance()->getWindow()->get_viewport();
 	TestEnemy* enemy = new TestEnemy( 0.0f, 0.0f, 50.0f, 50.0f, "sprites/enemy1"  );
 
 	// Adjusts enemy position to the horizontal center of the window
-	enemy->setPositionX( windowArea.get_width()*0.5f - enemy->getCurrentSprite()->get_width()*0.5f );
+	enemy->setPositionX( windowArea.get_width()*0.5f - enemy->getCurrentSprite().get_width()*0.5f );
 
 	addWaveEnemy( enemy );
 }
@@ -750,10 +743,10 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 	if(loadResult)
 	{
 		// Create a console window for text-output if not available
-		CL_ConsoleWindow console( "Console", 80, 160 );
-		CL_Console::write_line( "\nError loading %1", sceneFile );
-		CL_Console::write_line( "\n%1", lua_tostring( l, -1 ) );
-		CL_Console::wait_for_key();
+		clan::ConsoleWindow console( "Console", 80, 160 );
+		clan::Console::write_line( "\nError loading %1", sceneFile );
+		clan::Console::write_line( "\n%1", lua_tostring( l, -1 ) );
+		clan::Console::wait_for_key();
 
 		// Pops error message from stack
 		lua_pop( l, 1 );

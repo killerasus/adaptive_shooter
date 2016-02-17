@@ -37,7 +37,7 @@ public:
 	 * @param	  speed		In pixels per second
 	 * @return	  
 	 */
-	DynamicEntity(CL_Vec2f& position, CL_Vec2f& speed);
+	DynamicEntity(clan::Vec2f& position, clan::Vec2f& speed);
 
 	virtual ~DynamicEntity();
 
@@ -50,7 +50,7 @@ public:
 	 *
 	 * @return	  CL_Vec2f
 	 */
-	CL_Vec2f getSpeed() const;
+	clan::Vec2f getSpeed() const;
 
 	/**
 	 * Sets speed
@@ -65,7 +65,7 @@ public:
 	 *
 	 * @param	  speed	In pixels per second
 	 */
-	void setSpeed(CL_Vec2f& speed);
+	void setSpeed(clan::Vec2f& speed);
 
 	/**
 	 * Sets speed x component
@@ -86,12 +86,12 @@ public:
 	 * 
 	 * @return	  const CL_CollisionOutline*	Const pointer to current collision outline
 	 */
-	CL_CollisionOutline* getCurrentCollisionOutline() const;
+	const clan::CollisionOutline& getCurrentCollisionOutline() const;
 
 protected:
-	std::vector<CL_CollisionOutline*> _currentOutlines;
+	std::vector<clan::CollisionOutline> _currentOutlines;
 private:
-	CL_Vec2f _speed;
+	clan::Vec2f _speed;
 };
 
 #endif // DynamicEntity_h__

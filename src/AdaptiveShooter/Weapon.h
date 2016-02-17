@@ -40,7 +40,7 @@ public:
 	 * @param[in]	speedX			Shot's speed in x axis in pixels per second
 	 * @param[in]	speedY			Shot's speed in y axis in pixels per second
 	 */
-	Weapon( std::string name, std::string shotResource, float delay, int damage = 50, WeaponLevel level = WL_LEVEL_0,
+	Weapon( std::string name, std::string shotResource, int delay, int damage = 50, WeaponLevel level = WL_LEVEL_0,
 		float speedX = 0.0f, float speedY = -300.0f );
 
 	/** Destructor */
@@ -70,21 +70,21 @@ public:
 	 * 
 	 * @param[in]  delay	Delay in miliseconds
 	 */
-	void setDelay( float delay );
+	void setDelay( int delay );
 
 	/**
 	 * Gets weapon's current time delay between shoots
 	 * 
-	 * @return	  float	Weapon delay between shoots in miliseconds
+	 * @return	  int	Weapon delay between shoots in miliseconds
 	 */
-	float getDelay() const;
+	int getDelay() const;
 
 	/**
 	 * Gets current timer
 	 * 
-	 * @return	float	Current timer value in miliseconds
+	 * @return	int	Current timer value in miliseconds
 	 */
-	float getTimer() const;
+	int getTimer() const;
 
 	/**
 	 * Sets weapon's shoot damage. If damage is negative, it's set to 1.
@@ -150,14 +150,14 @@ public:
 	 * 
 	 * @param[in]	speed	Speed in pixels per second
 	 */
-	void setShotSpeed( CL_Vec2f& speed );
+	void setShotSpeed( clan::Vec2f& speed );
 
 	/**
 	 * Gets current shot's speed
 	 * 
 	 * @return	CL_Vec2f	Current shot's speed
 	 */
-	CL_Vec2f getShotSpeed() const;
+	clan::Vec2f getShotSpeed() const;
 
 protected:
 	
@@ -165,11 +165,11 @@ private:
 	bool _canShoot; // Indicates if weapon is ready to shoot
 	int _damage; // Damage caused by each shot
 	WeaponLevel _level; // Weapon's level
-	float _delay; // Indicates delay between shots in miliseconds
-	float _timer; // Current weapon timer in miliseconds.
+	int _delay; // Indicates delay between shots in miliseconds
+	int _timer; // Current weapon timer in miliseconds.
 	std::string _name; // Weapon's name
 	std::string _shotResource; // Resource file for creating shots
-	CL_Vec2f _shotSpeed; // Current shot's speed in pixels per second
+	clan::Vec2f _shotSpeed; // Current shot's speed in pixels per second
 };
 
 #endif // Weapon_h__

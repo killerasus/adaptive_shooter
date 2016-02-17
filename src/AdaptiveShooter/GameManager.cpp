@@ -14,22 +14,24 @@
 #include "luafunctions.h"
 #include "PlayerModelImpl.h"
 #include "StaticEntity.h"
+#include "ClanLib/core.h"
 
 GameManager* GameManager::_instance = 0;
 
-GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sound(), setup_mikmod(), setup_vorbis(),
-	sound_output(44100), _resourceManager( NULL ), _quit( false ), _player( NULL ), _playerOptions( NULL ), _enemyOptions ( NULL )
+GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sound(), sound_output(44100),
+	_canvas( NULL ), _quit( false ), _player( NULL ), _playerOptions( NULL ), _enemyOptions ( NULL )
 {
 	L = lua_open();
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
 	// Creates window
-	_window = new CL_DisplayWindow("Adaptive Shooter - Bruno Baere", 640, 480);
+	_window = new clan::DisplayWindow("Adaptive Shooter - Bruno Baere", 640, 480);
+	_canvas = new clan::Canvas( *_window );
 
 	_aiManager = new AIManager(L);
 	//_loggerFile = new logog::LogFile("test.txt");
-	_loggerFile = new CL_FileLogger("log.txt");
+	_loggerFile = new clan::FileLogger("log.txt");
 	_loggerFile->enable();
 	// Player can only be created when there is already a GameManager instantiated
 
@@ -48,14 +50,10 @@ GameManager::~GameManager()
 
 
 
-void GameManager::loadResource( std::string resourceFile )
+void GameManager::loadXMLResource( std::string resourceFile )
 {
-	if (_resourceManager)
-	{
-		delete _resourceManager;
-	}
-
-	_resourceManager = new CL_ResourceManager(resourceFile);
+	_resourceDocument = clan::XMLResourceDocument(resourceFile);
+	_resourceManager = clan::XMLResourceManager::create( _resourceDocument );
 }
 
 
@@ -64,11 +62,11 @@ int GameManager::loop()
 {
 	try
 	{
-		_last_time = CL_System::get_time();
+		_last_time = _game_time.get_time_elapsed_ms();
 
 		while (!_quit)
 		{
-			if(_window->get_ic().get_keyboard().get_keycode(CL_KEY_ESCAPE) == true)
+			if(_window->get_ic().get_keyboard().get_keycode(clan::keycode_escape) == true)
 			{
 				_quit = true;
 				break;
@@ -84,17 +82,17 @@ int GameManager::loop()
 			draw();
 
 			// Read messages from the windowing system message queue, if any are available:
-			CL_KeepAlive::process();
+			clan::KeepAlive::process();
 
 			// Avoid using 100% CPU in the loop:
-			CL_System::sleep(10);
+			clan::System::sleep(10);
 		}
 	}
-	catch(CL_Exception &exception)
+	catch(clan::Exception &exception)
 	{
 		// Create a console window for text-output if not available
-		CL_ConsoleWindow console("Console", 80, 160);
-		CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
+		clan::ConsoleWindow console("Console", 80, 160);
+		clan::Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
 		console.display_close_message();
 		
 		cleanUp();
@@ -145,7 +143,7 @@ Scene* GameManager::peekScene()
 
 void GameManager::draw()
 {
-	_window->get_gc().clear(CL_Colorf::black);
+	_window->get_gc().clear(clan::Colorf::black);
 
 	if (!_sceneStack.empty() && _sceneStack.top() != NULL)
 	{
@@ -160,12 +158,10 @@ void GameManager::draw()
 
 void GameManager::update()
 {
-	_current_time = CL_System::get_time();
-	unsigned int time_difference = _current_time - _last_time;
-	if (time_difference > 1000)
-		time_difference = 1000;		// Limit the time difference, if the application was paused (eg, moving the window on WIN32)
-	_time_delta_ms = static_cast<float> (time_difference);
-	_last_time = _current_time;
+	_time_delta_ms = _game_time.get_tick_time_elapsed_ms();
+
+	if (_time_delta_ms > 1000)
+		_time_delta_ms = 1000;		// Limit the time difference, if the application was paused (eg, moving the window on WIN32)
 
 	//Update
 	if (!_sceneStack.empty() && _sceneStack.top() != NULL)
@@ -192,21 +188,26 @@ GameManager* GameManager::getInstance()
 
 
 
-CL_DisplayWindow* GameManager::getWindow()
+clan::DisplayWindow* GameManager::getWindow()
 {
 	return _window;
 }
 
 
 
-CL_ResourceManager* GameManager::getResourceManager()
+const clan::ResourceManager& GameManager::getResourceManager() const
 {
 	return _resourceManager;
 }
 
 
+const clan::XMLResourceDocument& GameManager::getResourceDocument() const
+{
+	return _resourceDocument;
+}
 
-float GameManager::getDeltaTime()
+
+int GameManager::getDeltaTime()
 {
 	return _time_delta_ms;
 }
@@ -248,8 +249,6 @@ void GameManager::cleanUp()
 
 	delete _gameOverScene;
 	_gameOverScene = NULL;
-	delete _resourceManager;
-	_resourceManager = NULL;
 
 	/** @TODO: Check if there is memory leak */
 	/*while(!_sceneStack.empty())
@@ -277,12 +276,12 @@ Player* GameManager::getPlayer( unsigned int n )
 
 void GameManager::setupPlayer( unsigned int n )
 {	
-	CL_Rect windowViewPort = _window->get_viewport();
+	clan::Rect windowViewPort = _window->get_viewport();
 	_player = new Player( 0.0f, 0.0f, _playerOptions->speedX, _playerOptions->speedY, n, _playerOptions->resource,
 		new PlayerModelImpl( _playerOptions->learningRate ), _playerOptions->lives );
 	//_player->setupCollisionOutlines();
-	_player->setPositionX( float((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite()->get_width() >> 1)) );
-	_player->setPositionY( float(windowViewPort.get_height() - _player->getCurrentSprite()->get_height()) );
+	_player->setPositionX( float((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite().get_width() >> 1)) );
+	_player->setPositionY( float(windowViewPort.get_height() - _player->getCurrentSprite().get_height()) );
 
 	// Setting Easy
 	PlayerModelImpl* model = new PlayerModelImpl( _playerOptions->learningRate );
@@ -336,7 +335,7 @@ AIManager* GameManager::getAIManager()
 
 
 
-CL_Logger* GameManager::getLogger()
+clan::Logger* GameManager::getLogger()
 {
 	return _loggerFile;
 }
@@ -405,25 +404,25 @@ void GameManager::loadSoundEffects()
 	_soundEffectSessions.resize( SFX_VECTOR_SIZE );
 
 #ifdef _DEBUG
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Attention.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/PrepareForAction.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Warning.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Select.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/MENU_Pick.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser1.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/laser3.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/slimeball.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "../../../../data/sounds/Explosion.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/Attention.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/PrepareForAction.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/Warning.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/MENU_Select.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/MENU_Pick.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/laser1.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/laser3.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/slimeball.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/Explosion.wav" ) );
 #else
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Attention.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/PrepareForAction.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Warning.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/MENU_Select.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/MENU_Pick.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/laser1.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/laser3.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/slimeball.wav" ) );
-	_soundEffects.push_back( CL_SoundBuffer( "./data/sounds/Explosion.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Attention.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/PrepareForAction.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Warning.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/MENU_Select.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/MENU_Pick.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/laser1.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/laser3.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/slimeball.wav" ) );
+	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Explosion.wav" ) );
 #endif
 	
 }
@@ -435,9 +434,9 @@ void GameManager::loadMusics()
 	_musicSessions.resize( MUSIC_VECTOR_SIZE );
 
 #ifdef _DEBUG
-	_musics.push_back( CL_SoundBuffer( "../../../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
+	_musics.push_back( clan::SoundBuffer( "../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
 #else
-	_musics.push_back( CL_SoundBuffer( "./data/musics/DIGITAL_MEMORIES.ogg", false ) );
+	_musics.push_back( clan::SoundBuffer( "./data/musics/DIGITAL_MEMORIES.ogg", false ) );
 #endif
 }
 
@@ -481,7 +480,7 @@ void GameManager::loadOptions()
 	_enemyOptions->hardMultiplier = 1.5f;
 
 #ifdef _DEBUG
-	int loadResult = luaL_dofile( L, "../../../../src/Scripts/config.lua" );
+	int loadResult = luaL_dofile( L, "../../src/Scripts/config.lua" );
 #else
 	int loadResult = luaL_dofile( L, "./Scripts/config.lua" );
 #endif
@@ -531,10 +530,10 @@ void GameManager::loadOptions()
 		else
 		{
 			// Create a console window for text-output if not available
-			CL_ConsoleWindow console( "Console", 80, 160 );
-			CL_Console::write_line( "Could not load Player from config.lua" );
-			CL_Console::write_line( "\n%1", lua_tostring( L, -1 ) );
-			CL_Console::wait_for_key();
+			clan::ConsoleWindow console( "Console", 80, 160 );
+			clan::Console::write_line( "Could not load Player from config.lua" );
+			clan::Console::write_line( "\n%1", lua_tostring( L, -1 ) );
+			clan::Console::wait_for_key();
 
 			// Pops error message from stack
 			lua_pop( L, 1 );
@@ -575,10 +574,10 @@ void GameManager::loadOptions()
 		else
 		{
 			// Create a console window for text-output if not available
-			CL_ConsoleWindow console( "Console", 80, 160 );
-			CL_Console::write_line( "Could not load Enemies from config.lua" );
-			CL_Console::write_line( "\n%1", lua_tostring( L, -1 ) );
-			CL_Console::wait_for_key();
+			clan::ConsoleWindow console( "Console", 80, 160 );
+			clan::Console::write_line( "Could not load Enemies from config.lua" );
+			clan::Console::write_line( "\n%1", lua_tostring( L, -1 ) );
+			clan::Console::wait_for_key();
 
 			// Pops error message from stack
 			lua_pop( L, 1 );
@@ -587,12 +586,17 @@ void GameManager::loadOptions()
 	else
 	{
 		// Create a console window for text-output if not available
-		CL_ConsoleWindow console( "Console", 80, 160 );
-		CL_Console::write_line( "Could not load config.lua" );
-		CL_Console::write_line( "\n%1", lua_tostring( L, -1 ) );
-		CL_Console::wait_for_key();
+		clan::ConsoleWindow console( "Console", 80, 160 );
+		clan::Console::write_line( "Could not load config.lua" );
+		clan::Console::write_line( "\n%1", lua_tostring( L, -1 ) );
+		clan::Console::wait_for_key();
 
 		// Pops error message from stack
 		lua_pop( L, 1 );
 	}
+}
+
+clan::Canvas& GameManager::getCanvas()
+{
+	return *_canvas;
 }

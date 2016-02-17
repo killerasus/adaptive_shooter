@@ -38,13 +38,13 @@ static int l_CLconsoleprint (lua_State* L)
 			return luaL_error(L, LUA_QL("tostring") " must return a string to " LUA_QL("print"));
 
 		if (i>1) 
-			CL_Console::write("\t");
+			clan::Console::write("\t");
 
-		CL_Console::write(s);
+		clan::Console::write(s);
 		lua_pop(L, 1);  /* pop result */
 	}
 
-	CL_Console::write_line("");
+	clan::Console::write_line("");
 	return 0;
 }
 

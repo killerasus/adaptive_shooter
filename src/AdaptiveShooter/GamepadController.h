@@ -72,7 +72,7 @@ private:
 	 */
 	GamepadController( int number );
 
-	CL_InputDevice _gamepad;
+	clan::InputDevice _gamepad;
 	float _deadzone;
 };
 

@@ -51,8 +51,8 @@ public:
 protected:
 	
 private:
-	CL_Sprite *_selected;
-	CL_Sprite *_notSelected;
+	clan::Sprite _selected;
+	clan::Sprite _notSelected;
 	bool _isSelected;
 };
 

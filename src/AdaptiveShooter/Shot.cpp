@@ -17,15 +17,15 @@
 Shot::Shot( std::string resource ) : DynamicEntity(), _damage( 0 )
 {
 	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
+	clan::Canvas& gc = manager->getCanvas();
+	_currentSprite = clan::Sprite::resource( gc, resource, manager->getResourceManager() );
 
-	CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+	std::string descriptor = resource.substr(resource.find_last_of("/") + 1);
 
-	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	for (int i = 0; i < _currentSprite.get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
-		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		std::string collisionResource = clan::string_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
+		_currentOutlines.push_back( clan::CollisionOutline::load(collisionResource.c_str(), manager->getResourceDocument()) );
 	}
 }
 
@@ -34,32 +34,32 @@ Shot::Shot( std::string resource ) : DynamicEntity(), _damage( 0 )
 Shot::Shot( float x, float y, float speedX, float speedY, std::string resource, int damage ) : DynamicEntity( x, y, speedX, speedY ), _damage( damage )
 {
 	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
+	clan::Canvas& gc = manager->getCanvas();
+	_currentSprite = clan::Sprite::resource( gc, resource, manager->getResourceManager() );
 
-	CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+	std::string descriptor = resource.substr(resource.find_last_of("/") + 1);
 
-	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	for (int i = 0; i < _currentSprite.get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
-		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		std::string collisionResource = clan::string_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
+		_currentOutlines.push_back( clan::CollisionOutline::load(collisionResource.c_str(), manager->getResourceDocument()) );
 	}
 }
 
 
 
-Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damage ) : DynamicEntity( position, speed ), _damage( damage )
+Shot::Shot( clan::Vec2f& position, clan::Vec2f& speed, std::string resource, int damage ) : DynamicEntity( position, speed ), _damage( damage )
 {
 	GameManager* manager = GameManager::getInstance();
-	CL_GraphicContext gc = manager->getWindow()->get_gc();
-	_currentSprite = new CL_Sprite( gc, resource, manager->getResourceManager() );
+	clan::Canvas& gc = manager->getCanvas();
+	_currentSprite = clan::Sprite::resource( gc, resource, manager->getResourceManager() );
 
-	CL_String descriptor = resource.substr(resource.find_last_of("/") + 1);
+	std::string descriptor = resource.substr(resource.find_last_of("/") + 1);
 
-	for (int i = 0; i < _currentSprite->get_frame_count(); i++)
+	for (int i = 0; i < _currentSprite.get_frame_count(); i++)
 	{
-		CL_String collisionResource = cl_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
-		_currentOutlines.push_back( new CL_CollisionOutline(collisionResource.c_str(), manager->getResourceManager()) );
+		std::string collisionResource = clan::string_format( "outlines/%1/%2_00%3", descriptor, descriptor, i );
+		_currentOutlines.push_back( clan::CollisionOutline::load(collisionResource.c_str(), manager->getResourceDocument()) );
 	}
 }
 
@@ -67,7 +67,6 @@ Shot::Shot( CL_Vec2f& position, CL_Vec2f& speed, std::string resource, int damag
 
 Shot::~Shot()
 {
-	delete _currentSprite;
 }
 
 
@@ -76,18 +75,18 @@ Shot::~Shot()
 void Shot::draw()
 {
 	this->DynamicEntity::draw();
-	int frame = getCurrentSprite()->get_current_frame();
-	_currentOutlines[frame]->draw( getPosition().x, getPosition().y, CL_Colorf::red,
-		GameManager::getInstance()->getWindow()->get_gc() );
+	int frame = getCurrentSprite().get_current_frame();
+	_currentOutlines[frame].draw( getPosition().x, getPosition().y, clan::Colorf::red,
+		GameManager::getInstance()->getCanvas() );
 }
 #endif
 
 
 void Shot::update()
 {
-	float dt = GameManager::getInstance()->getDeltaTime();
+	int dt = GameManager::getInstance()->getDeltaTime();
 	setPosition( getPosition().x + getSpeed().x * dt * 0.001f, getPosition().y + getSpeed().y * dt * 0.001f );
-	_currentSprite->update();
+	_currentSprite.update( dt );
 }
 
 
