@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$d2/db8/class_menu.html" title="Menu" alt="" coords="173,96,227,123"/>
-<area shape="rect" id="node4" href="$d6/db5/class_scene.html" title="Scene" alt="" coords="5,5,64,32"/>
-<area shape="rect" id="node11" href="$d0/d30/class_fading_scene.html" title="FadingScene" alt="" coords="31,96,129,123"/>
-<area shape="rect" id="node7" href="$d2/d96/class_entity.html" title="Entity" alt="" coords="181,5,237,32"/>
-<area shape="rect" id="node9" href="$de/d7f/class_controller_interface.html" title="ControllerInterface" alt="" coords="262,5,388,32"/>
-</map>

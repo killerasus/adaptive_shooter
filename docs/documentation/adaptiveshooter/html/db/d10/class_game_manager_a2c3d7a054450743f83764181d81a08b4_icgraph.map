@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$dd/d78/class_test_enemy.html#a384031359eccc8648ecdfa533911e0a0" title="TestEnemy::addShots" alt="" coords="235,5,386,32"/>
-<area shape="rect" id="node7" href="$d8/d53/class_player.html#a47ca4197c52a2ee0952abddd519d8506" title="Player::addShots" alt="" coords="249,107,372,133"/>
-<area shape="rect" id="node13" href="$db/de5/class_weapon.html#a7d8147f09d84813b47fdd57bea34e800" title="Weapon::shoot" alt="" coords="255,56,366,83"/>
-<area shape="rect" id="node16" href="$d1/da8/class_explosion.html#af67e5ab127b69a90b9bf1dad03c56ca4" title="Explosion::update" alt="" coords="247,157,374,184"/>
-<area shape="rect" id="node5" href="$dd/d78/class_test_enemy.html#aa9f7df4bebeed481e823cb9c03dc82da" title="TestEnemy::update" alt="" coords="435,31,570,57"/>
-<area shape="rect" id="node9" href="$d8/d53/class_player.html#a82c3476f3e65a4e2ac6bcd040771bdd4" title="Player::update" alt="" coords="449,107,556,133"/>
-<area shape="rect" id="node11" href="$d1/d1a/class_test_scene_player.html#a8285c9f16119d8423a0ed4858327097c" title="TestScenePlayer::update" alt="" coords="619,107,787,133"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$d6/db5/class_scene.html#ab94fd30420e8336c6dde7b91de209031" title="Scene::changeToNextScene" alt="" coords="235,31,421,57"/>
-<area shape="rect" id="node9" href="$d9/d69/class_display_program.html#a4794ecc3b07210628a3eba8415993e1d" title="DisplayProgram::main" alt="" coords="253,81,403,108"/>
-<area shape="rect" id="node5" href="$d1/d1a/class_test_scene_player.html#a8285c9f16119d8423a0ed4858327097c" title="TestScenePlayer::update" alt="" coords="469,5,637,32"/>
-<area shape="rect" id="node7" href="$d0/d30/class_fading_scene.html#a87df73975854a1170eef8b5fadd63b92" title="FadingScene::update" alt="" coords="481,56,626,83"/>
-</map>

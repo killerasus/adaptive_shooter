@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$d4/d1e/_enemy_8h.html" title="Enemy.h" alt="" coords="57,80,132,107"/>
-<area shape="rect" id="node15" href="$df/d53/_shooter_8h.html" title="Shooter.h" alt="" coords="174,80,252,107"/>
-<area shape="rect" id="node5" href="$da/d23/_dynamic_entity_8h.html" title="DynamicEntity.h" alt="" coords="52,304,170,331"/>
-<area shape="rect" id="node7" href="$db/d3a/_entity_8h.html" title="Entity.h" alt="" coords="78,379,145,405"/>
-<area shape="rect" id="node17" href="$d4/d3c/_weapon_8h.html" title="Weapon.h" alt="" coords="191,155,272,181"/>
-<area shape="rect" id="node20" href="$dd/dbc/_shot_8h.html" title="Shot.h" alt="" coords="99,229,158,256"/>
-</map>

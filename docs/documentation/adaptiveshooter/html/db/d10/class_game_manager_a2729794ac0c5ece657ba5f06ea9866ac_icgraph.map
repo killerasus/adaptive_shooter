@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$d1/da8/class_explosion.html#afd2625b669166c8fd498cf7f5ba5a071" title="Explosion::Explosion" alt="" coords="305,5,449,32"/>
-<area shape="rect" id="node5" href="$dc/d9c/class_menu_item.html#a9b6b2653264304bdbf2b0ef6be04e96b" title="MenuItem::MenuItem" alt="" coords="305,56,449,83"/>
-<area shape="rect" id="node7" href="$d8/d53/class_player.html#a28f6d1f3509fc57c77784b1d540c0dbf" title="Player::Player" alt="" coords="325,107,429,133"/>
-<area shape="rect" id="node9" href="$de/d74/class_shot.html#ae4466fb0d91282f897ad241a344ba3b8" title="Shot::Shot" alt="" coords="335,157,419,184"/>
-<area shape="rect" id="node11" href="$de/d0a/class_static_entity.html#a6d4e3476505249fb9cb1ecc68b443f44" title="StaticEntity::StaticEntity" alt="" coords="294,208,461,235"/>
-<area shape="rect" id="node13" href="$dd/d78/class_test_enemy.html#a7dc9e2ef884bb514c0aeed3a18870bc4" title="TestEnemy::TestEnemy" alt="" coords="296,259,459,285"/>
-<area shape="rect" id="node15" href="$de/d8c/class_test_scene.html#a04fd916e8e52cd1335fc05e2ebf1c8df" title="TestScene::TestScene" alt="" coords="300,309,455,336"/>
-</map>

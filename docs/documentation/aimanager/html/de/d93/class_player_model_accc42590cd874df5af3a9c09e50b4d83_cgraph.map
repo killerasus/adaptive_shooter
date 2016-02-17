@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$de/d93/class_player_model.html#aed72c4bbe9cdf7dda403fcbac9642752" title="PlayerModel::setTraitMaximum" alt="" coords="200,5,403,32"/>
-<area shape="rect" id="node5" href="$de/d93/class_player_model.html#a4c3675cd0ba5f1482a82f3e49302fe2f" title="PlayerModel::setTraitMinimum" alt="" coords="202,56,401,83"/>
-<area shape="rect" id="node7" href="$de/d93/class_player_model.html#a05d8fa61789f7039a2014795941db265" title="PlayerModel::setTraitValue" alt="" coords="212,107,391,133"/>
-<area shape="rect" id="node9" href="$de/d93/class_player_model.html#a9930270969306bd0b1c47da760ad05d8" title="PlayerModel::setTraitWeight" alt="" coords="208,157,395,184"/>
-</map>

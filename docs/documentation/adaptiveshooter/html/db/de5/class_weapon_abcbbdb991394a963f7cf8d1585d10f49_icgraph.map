@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$db/de5/class_weapon.html#a7d8147f09d84813b47fdd57bea34e800" title="Weapon::shoot" alt="" coords="211,5,322,32"/>
-<area shape="rect" id="node7" href="$db/de5/class_weapon.html#a1b3f76c5275b67f0bb8073157a27e736" title="Weapon::update" alt="" coords="208,56,325,83"/>
-<area shape="rect" id="node5" href="$dd/d78/class_test_enemy.html#aa9f7df4bebeed481e823cb9c03dc82da" title="TestEnemy::update" alt="" coords="374,5,509,32"/>
-<area shape="rect" id="node9" href="$dd/d07/class_shooter.html#ad54acbfebea8daef85de72c649482a73" title="Shooter::update" alt="" coords="384,56,499,83"/>
-</map>

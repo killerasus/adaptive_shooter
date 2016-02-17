@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$db/d10/class_game_manager.html#a1fbf4d4fe6005ce04d5ce9891dfe9fd7" title="GameManager::cleanUp" alt="" coords="192,5,355,32"/>
-<area shape="rect" id="node5" href="$db/d10/class_game_manager.html#a4fa99153e63dc3419ba126af71188cfa" title="GameManager::draw" alt="" coords="202,56,345,83"/>
-<area shape="rect" id="node7" href="$db/d10/class_game_manager.html#a7ecc3a14cd9e92f50729b37d1364953f" title="GameManager::update" alt="" coords="196,107,351,133"/>
-</map>
