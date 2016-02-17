@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+
 	<section name="sprites">
-    
+
 		<!--Test sprite-->
 		<sprite name="boat">
-			<image file="/images/test/example3boat.png">
+			<image file="images/test/example3boat.png">
 				<grid size="159,91" array="4,1" />
 			</image>
 			<animation speed="100" loop="yes" pingpong="no" />
@@ -13,7 +13,7 @@
 
     <!--Player sprite-->
 		<sprite name="rwing">
-			<image file="/images/stepdragon/starfox50.png">
+			<image file="images/stepdragon/starfox50.png">
 				<grid size="49,49" array="8,1" />
 			</image>
 			<animation speed="60" loop="yes" pingpong="no" />
@@ -21,7 +21,7 @@
 
     <!--Shot sprite-->
     <sprite name="shot">
-      <image file="/images/test/shot.png">
+      <image file="images/test/shot.png">
         <grid size="7,19" array="1,1"/>
       </image>
     </sprite>
@@ -60,7 +60,7 @@
       </image>
       <animation speed="100" loop="yes" pingpong="no" />
     </sprite>
-    
+
     <!--Explosion sprites-->
     <sprite name="explosionMedium">
       <image file="/images/test/explosionMedium.png">
@@ -68,11 +68,15 @@
       </image>
       <animation speed="100" loop="no" pingpong="no" />
     </sprite>
-    
+
 	</section>
 
   <!-- Menu thinghies -->
   <section name="menu">
+
+		<sprite name="background">
+			<image file="/images/test/background_menu.png"></image>
+		</sprite>
 
     <sprite name="easy_selected">
       <image file="/images/test/easy_selected.png">
@@ -109,7 +113,7 @@
         <grid size="300,150" array="1,1"/>
       </image>
     </sprite>
-    
+
   </section>
 
   <section name="outlines">
@@ -157,13 +161,13 @@
         <collisionoutline name="enemy2_000" file="/images/test/collisiondata/enemy2_000.out"/>
         <collisionoutline name="enemy2_001" file="/images/test/collisiondata/enemy2_001.out"/>
       </section>
-      
+
     </section>
-    
+
   </section>
-	
+
 	<section name="scenes">
-		
+
 		<sprite name="logo">
 			<image file="/images/test/ludobardos.png"></image>
 		</sprite>
@@ -175,16 +179,7 @@
     <sprite name="congratulations">
       <image file="/images/test/congratulations.png"></image>
     </sprite>
-		
+
 	</section>
-  
-  <!--Menu images-->
-	<section name="menu">
-		
-		<sprite name="background">
-			<image file="/images/test/background_menu.png"></image>
-		</sprite>
-		
-	</section>
-	
+
 </resources>
