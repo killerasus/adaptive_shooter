@@ -22,6 +22,8 @@
 //#define LOGOG_USE_PREFIX 1
 //#include "logog.hpp"
 
+#define ADAPTIVE 1
+
 extern "C"
 {
 #include "lua.h"
@@ -557,7 +559,7 @@ void TestScenePlayer::waveFinish()
 	model->updateTrait( PlayerModelImpl::LIVES_VARIATION, livesVariation );
 	model->updateTrait( PlayerModelImpl::ENEMIES_WASTED_TOTAL, enemiesWastedTotal );
 
-#if 0
+#if ADAPTIVE
 	GameManager::getInstance()->getAIManager()->update();
 #endif
 

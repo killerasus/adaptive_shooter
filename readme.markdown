@@ -5,11 +5,19 @@ Adaptive Shooter is a 2D shoot'em up game developed by Bruno Baère Pederassi Lo
 
 The game uses artificial intelligence (dynamic difficulty adaptivity) to detect player performance and adapt enemies stats to better suit the player's skills. The paper generated from this work can be accessed at [Research Gate](https://www.researchgate.net/publication/261550744_Evaluating_dynamic_difficulty_adaptivity_in_shoot%27em_up_games).
 
+Compiling
+---------------------
+Visual Studio 2010 was used to generate solution and project files.
+
+For the ADAPTIVE version, you must define ADAPTIVE in src/Scene/TesteScenePlayer.cpp as 1.
+
+For the NON-ADAPTIVE version, you must define ADAPTIVE in src/Scene/TestScenePlayer.cpp as 0.
+
 Running the game
 ---------------------
 In Release mode, the game executable file should be put in a directory with copies of data directory and Scripts directory.
 
-Ex: 
+Ex:
 AdaptiveShooter.exe data/ Scripts/
 
 Dependencies
