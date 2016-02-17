@@ -89,13 +89,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\src\AIManager;..\..\dependences\lua\include;..\..\dependences\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src\AIManager;..\..\dependencies\lua\include;..\..\dependencies\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependences\gtest-1.6.0\lib\$(Platform);..\..\dependences\lua\lib\$(Platform);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependencies\gtest-1.6.0\lib\$(Platform);..\..\dependencies\lua\lib\$(Platform);</AdditionalLibraryDirectories>
       <AdditionalDependencies>AIManager.lib;lua51.lib;gtestd.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -125,7 +125,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\src\AIManager;..\..\dependences\lua\include;..\..\dependences\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\src\AIManager;..\..\dependencies\lua\include;..\..\dependencies\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependences\gtest-1.6.0\lib\$(Platform);..\..\dependences\lua\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependencies\gtest-1.6.0\lib\$(Platform);..\..\dependencies\lua\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>aimanager.lib;lua51.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
