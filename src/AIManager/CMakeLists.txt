@@ -1,17 +1,35 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required( VERSION 3.0 )
 
-add_library( AIManager STATIC
-   AIAgent.cpp
-   AIManager.cpp
-   PlayerModel.cpp 
+set( HEADERS
+    AIAgent.h
+    AIManager.h
+    PlayerModel.h
+    Trait.h
 )
 
-find_package(Lua51 REQUIRED)
+set( SOURCES
+    AIAgent.cpp
+    AIManager.cpp
+    PlayerModel.cpp
+)
 
-if (LUA51_FOUND)
+source_group( "sources" FILES ${SOURCES} )
+source_group( "headers" FILES ${HEADERS} )
+
+add_library( AIManager STATIC
+    ${SOURCES}
+    ${HEADERS}
+)
+
+find_package( Lua51 REQUIRED )
+
+if( LUA51_FOUND )
     include_directories( ${LUA_INCLUDE_DIR} )
-    #message( STATUS ${LUA_INCLUDE_DIR} )
     target_link_libraries( AIManager
         LUA_LIBRARIES
     ) 
 endif()
+
+set_property( TARGET AIManager PROPERTY FOLDER "${CMAKE_BINARY_DIR}/solution/AIManager" )
+
+install( TARGETS AIManager ARCHIVE DESTINATION ${CMAKE_BINARY_DIR}/bin/lib )
