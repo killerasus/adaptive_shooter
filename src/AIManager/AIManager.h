@@ -15,8 +15,8 @@
 #define AIManager_h__
 
 #include <vector>
-#include "aiagent.h"
-#include "playermodel.h"
+#include "AIAgent.h"
+#include "PlayerModel.h"
 
 extern "C" {
 #include "lua.h"
