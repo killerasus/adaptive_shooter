@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.0 )
+cmake_minimum_required( VERSION 2.8 )
 
 include_directories( "${CMAKE_BINARY_DIR}/src/AIManager" )
 
@@ -66,8 +66,8 @@ source_group( "headers" FILES ${HEADERS} )
 source_group( "sources" FILES ${SOURCES} )
 
 add_executable( AdaptiveShooter
-    HEADERS
-    SOURCES
+    ${HEADERS}
+    ${SOURCES}
 )
 
 # Missing other libraries
