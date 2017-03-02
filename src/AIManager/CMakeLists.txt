@@ -26,7 +26,7 @@ find_package( Lua51 REQUIRED )
 if( LUA51_FOUND )
     include_directories( ${LUA_INCLUDE_DIR} )
     target_link_libraries( AIManager
-        LUA_LIBRARIES
+        ${LUA_LIBRARIES}
     ) 
 endif()
 
