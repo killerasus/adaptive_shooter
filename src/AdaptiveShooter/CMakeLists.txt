@@ -62,19 +62,20 @@ add_executable( AdaptiveShooter
     ${SOURCES}
 )
 
+set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD 11 )
+set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD_REQUIRED ON )
+
 # Missing other libraries
 
 target_link_libraries( AdaptiveShooter AIManager )
 
 if( LUA51_FOUND )
-    include_directories( ${LUA_INCLUDE_DIR} )
     target_link_libraries( AdaptiveShooter
         ${LUA_LIBRARIES}
     )
 endif()
 
 if( ClanLib_FOUND )
-    include_directories( ${ClanLib_INCLUDE_DIRS} )
     target_link_libraries( AdaptiveShooter
         ${ClanLib_LIBRARIES}
     )
