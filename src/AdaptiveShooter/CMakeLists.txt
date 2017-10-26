@@ -82,3 +82,10 @@ if( ClanLib_FOUND )
 endif()
 
 install( TARGETS AdaptiveShooter RUNTIME DESTINATION ${CMAKE_BINARY_DIR}/bin )
+
+# Copies Script and Data directories to bin directory
+
+add_custom_command( TARGET AdaptiveShooter POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/src/Scripts ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Scripts
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/data ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/data )
+
