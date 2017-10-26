@@ -5,9 +5,13 @@ Adaptive Shooter is a 2D shoot'em up game developed by Bruno Baère Pederassi Lo
 
 The game uses artificial intelligence (dynamic difficulty adaptivity) to detect player performance and adapt enemies stats to better suit the player's skills. The paper generated from this work can be accessed at [Research Gate](https://www.researchgate.net/publication/261550744_Evaluating_dynamic_difficulty_adaptivity_in_shoot%27em_up_games).
 
-Compiling
+Building
 ---------------------
 See [BUILDING.md](BUILDING.md) for details.
+
+| Service | System | Compiler | Status |
+| ------- | ------ | -------- | -----: |
+|[Travis-CI](https://travis-ci.org/killerasus/AdaptiveShooter)| Ubuntu 14.04.5 LTS | gcc 4.8.4 | [![Build Status](https://travis-ci.org/killerasus/AdaptiveShooter.svg?branch=master)](https://travis-ci.org/killerasus/AdaptiveShooter) |
 
 Running the game
 ---------------------
@@ -18,7 +22,7 @@ AdaptiveShooter.exe data/ Scripts/
 
 Dependencies
 ---------------------
-These dependencies should be compiled and included in dependencies directory
+In a Windows build, these dependencies should be compiled and included in dependencies directory
 
 * [ClanLib 3.0](https://github.com/sphair/ClanLib/tree/3.0-stable)
 * [Lua 5.1.4](https://sourceforge.net/projects/luabinaries/files/5.1.4/)
@@ -26,8 +30,8 @@ These dependencies should be compiled and included in dependencies directory
 
 License
 ---------------------
-[![MIT License][license-badge]](LICENSE.md)
-Check the LICENSE file for the legal license.
+[![MIT License][license-badge]](LICENSE)
+Check the [LICENSE](LICENSE) file for the legal license.
 
 Acknowledgements
 ---------------------
