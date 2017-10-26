@@ -29,8 +29,8 @@ before_script:
   - git checkout 3.0-stable
   - ./autogen.sh
   - ./configure
-  - make
-  - sudo make install
+  - make --silent
+  - sudo make install --silent
 
 script:
   - cmake .
