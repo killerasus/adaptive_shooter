@@ -29,7 +29,7 @@ before_script:
   - git checkout 3.0-stable
   - ./autogen.sh
   - ./configure
-  - make --silent
+  - travis_wait make --silent -j8
   - sudo make install --silent
 
 script:
