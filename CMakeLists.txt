@@ -4,7 +4,10 @@ project( AdaptiveShooter )
 
 # ClanLib configuring
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/" ${CMAKE_MODULE_PATH})
+set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/" ${CMAKE_MODULE_PATH} )
+
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" )
+
 
 set( ClanLib_MAJOR_VERSION 3 )
 set( ClanLib_MINOR_VERSION 0 )
