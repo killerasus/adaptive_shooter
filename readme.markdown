@@ -7,17 +7,13 @@ The game uses artificial intelligence (dynamic difficulty adaptivity) to detect 
 
 Compiling
 ---------------------
-Visual Studio 2010 was used to generate solution and project files.
-
-For the ADAPTIVE version, you must define ADAPTIVE in src/Scene/TesteScenePlayer.cpp as 1.
-
-For the NON-ADAPTIVE version, you must define ADAPTIVE in src/Scene/TestScenePlayer.cpp as 0.
+See [BUILDING.md](BUILDING.md) for details.
 
 Running the game
 ---------------------
-In Release mode, the game executable file should be put in a directory with copies of data directory and Scripts directory.
+In Release mode, the game executable file should be put in a directory with copies of data directory and Scripts directory. This is automatic in Linux using `cmake`.
 
-Ex:
+Windows example:
 AdaptiveShooter.exe data/ Scripts/
 
 Dependencies
