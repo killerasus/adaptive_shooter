@@ -6,7 +6,7 @@ Compiling in Linux (tested on Ubuntu 17) requires three steps:
 3. Compiling AdaptiveShooter itself
 
 ## Dependencies
-1. `sudo apt-get install make g++ automake libtool libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev libxrender-dev libasound2-dev doxygen liblua5.2-dev`
+1. `sudo apt-get install make g++ automake libtool libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev libxrender-dev libasound2-dev doxygen liblua5.1-0-dev`
 
 ## ClanLib 3.0
 Most ClanLib components should compile with these settings. ClanSqlite is not necessary, though. AdaptiveShooter is *not* compatible with ClanLib 4.0.
