@@ -19,7 +19,7 @@ before_install:
   - sudo apt-get install -y libasound2-dev
   - sudo apt-get install -y doxygen
   - sudo apt-get install -y cmake
-  - sudo apt-get install -y liblua5.2-dev
+  - sudo apt-get install -y liblua5.1-0-dev
   - sudo apt-get install -y git
 
 before_script:
