@@ -746,7 +746,7 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 	if (lua_istable( l, -1 ))
 	{
 		// Gets the number of waves in scene
-		size_t waves = lua_objlen( l, -1 );
+		size_t waves = lua_rawlen( l, -1 );
 
 		// Lua arrays start at 1
 		for (unsigned int i = 1; i <= waves; i++)
@@ -761,7 +761,7 @@ void TestScenePlayer::loadScene( std::string sceneFile )
 			if (lua_istable( l, -1 ))
 			{
 				// Gets the number of enemies in current wave
-				size_t enemies = lua_objlen( l, -1 );
+				size_t enemies = lua_rawlen( l, -1 );
 
 				for (unsigned int j = 1; j <= enemies; j++)
 				{

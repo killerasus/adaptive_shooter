@@ -14,14 +14,10 @@
 #pragma once
 
 #include <vector>
+#include <lua.hpp>
+
 #include "AIAgent.h"
 #include "PlayerModel.h"
-
-extern "C" {
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
-}
 
 class AIManager
 {

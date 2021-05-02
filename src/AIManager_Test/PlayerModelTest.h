@@ -9,9 +9,7 @@
 	
 	purpose:	Test class (fixture) for PlayerModelImpl for GTest framework
 *********************************************************************/
-
-#ifndef PLAYERMODELTEST_H
-#define PLAYERMODELTEST_H
+#pragma once
 
 #include "gtest/gtest.h"
 #include "PlayerModelImpl.h"
@@ -54,5 +52,3 @@ protected:
 
 private:
 };
-
-#endif

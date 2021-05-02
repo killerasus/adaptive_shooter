@@ -13,30 +13,16 @@
 #include "AIAgentImpl.h"
 
 AIAgentImpl::AIAgentImpl( PlayerModel* player ) :_playerModel(player), _shootingRate(0.5f), _xSpeed(3.0f), _ySpeed(3.0f)
-{
-
-}
-
-
+{}
 
 AIAgentImpl::~AIAgentImpl()
-{
-
-}
-
-
+{}
 
 void AIAgentImpl::updateStats()
 {
 	if (_playerModel->getName() == "Normal")
-	{
 		_shootingRate = 1.0f;
-	}
 }
-
-
 
 float AIAgentImpl::getShootingRate()
-{
-	return _shootingRate;
-}
+{ return _shootingRate; }

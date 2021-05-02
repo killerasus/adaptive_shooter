@@ -21,7 +21,7 @@ GameManager* GameManager::_instance = 0;
 GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sound(), sound_output(44100),
 	_canvas( NULL ), _quit( false ), _player( NULL ), _playerOptions( NULL ), _enemyOptions ( NULL )
 {
-	L = lua_open();
+	L = luaL_newstate();
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 

@@ -1,4 +1,7 @@
-cmake_minimum_required( VERSION 2.8 )
+cmake_minimum_required( VERSION 3.10 )
+
+include(FindLua)
+find_package(Lua REQUIRED)
 
 set( HEADERS
     AIAgent.h
@@ -21,12 +24,9 @@ add_library( AIManager STATIC
     ${HEADERS}
 )
 
-if( LUA51_FOUND )
-    target_link_libraries( AIManager
-        ${LUA_LIBRARIES}
-    ) 
-endif()
+target_include_directories( AIManager PRIVATE ${LUA_INCLUDE_DIR} )
+target_link_libraries( AIManager PRIVATE ${LUA_LIBRARIES} ) 
 
 set_property( TARGET AIManager PROPERTY FOLDER "${CMAKE_BINARY_DIR}/solution/AIManager" )
 
-install( TARGETS AIManager ARCHIVE DESTINATION ${CMAKE_BINARY_DIR}/bin/lib )
+install( TARGETS AIManager ARCHIVE DESTINATION "${CMAKE_BINARY_DIR}/bin/lib" )

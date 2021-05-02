@@ -17,7 +17,7 @@
  * Necessary to print to CLConsole, as ClanLib does not offer a 
  * standard output	
  * @param	  L		Lua state to register this function
- * @return	  int	Number of returns, in acccordance to Lua API
+ * @return	  int	Number of returns, in accordance to Lua API
  */
 static int l_CLconsoleprint (lua_State* L)
 {
@@ -34,7 +34,7 @@ static int l_CLconsoleprint (lua_State* L)
 		s = lua_tostring(L, -1);  /* get result */
 
 		if (s == NULL)
-			return luaL_error(L, LUA_QL("tostring") " must return a string to " LUA_QL("print"));
+			return luaL_error(L, "'tostring' must return a string to 'print'");
 
 		if (i>1) 
 			clan::Console::write("\t");
@@ -47,14 +47,8 @@ static int l_CLconsoleprint (lua_State* L)
 	return 0;
 }
 
-/* Array of functions to be exposed to Lua */
-static const struct luaL_Reg CLHelper [] = {
-	{"ConsolePrint", l_CLconsoleprint},
-	{NULL,NULL} /* sentinel */
-};
-
 int RegisterLuaCLHelper(lua_State* L)
 {
-	luaL_register(L, "CL", CLHelper);
+	lua_register(L, "ConsolePrint", l_CLconsoleprint);
 	return 1;
 }

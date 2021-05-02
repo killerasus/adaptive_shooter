@@ -11,11 +11,7 @@
 *********************************************************************/
 #pragma once 
 
-extern "C" {
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
-}
+#include <lua.hpp>
 
 /**
  * Registers Lua helper functions at a given Lua state under the CL

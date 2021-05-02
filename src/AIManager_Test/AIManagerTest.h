@@ -9,11 +9,9 @@
 	
 	purpose:	Test class for AIManager, holds test implementations following GTest framework
 *********************************************************************/
+#pragma once
 
-#ifndef AIMANAGERTEST_H
-#define AIMANAGERTEST_H
-
-#include "AIManager.h"
+#include "AIManager/AIManager.h"
 #include "AIAgentImpl.h"
 #include "PlayerModelImpl.h"
 #include "gtest/gtest.h"
@@ -47,5 +45,3 @@ protected:
 	AIAgentImpl* _agent3;
 	PlayerModelImpl* _model1;
 };
-
-#endif

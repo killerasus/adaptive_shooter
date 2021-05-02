@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef AIAgentTest_h__
-#define AIAgentTest_h__
+#pragma once
 
 #include "gtest/gtest.h"
 #include "AIAgentImpl.h"
@@ -42,5 +40,3 @@ protected:
 private:
 
 };
-
-#endif // AIAgentTest_h__

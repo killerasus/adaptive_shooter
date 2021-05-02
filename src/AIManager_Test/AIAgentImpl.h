@@ -10,12 +10,10 @@
 	purpose:	
 *********************************************************************/
 
-#ifndef AIAgentImpl_h__
-#define AIAgentImpl_h__
+#pragma once
 
-
-#include "AIAgent.h"
-#include "PlayerModel.h"
+#include "AIManager/AIAgent.h"
+#include "AIManager/PlayerModel.h"
 
 class AIAgentImpl : public AIAgent
 {
@@ -35,5 +33,3 @@ private:
 	float _xSpeed;
 	float _ySpeed;
 };
-
-#endif // AIAgentImpl_h__

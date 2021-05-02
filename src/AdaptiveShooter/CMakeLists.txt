@@ -1,6 +1,25 @@
-cmake_minimum_required( VERSION 2.8 )
+cmake_minimum_required( VERSION 3.10 )
 
-include_directories( "${CMAKE_BINARY_DIR}/src/" )
+include(FindLua)
+find_package(Lua REQUIRED)
+
+set( ClanLib_MAJOR_VERSION 3 )
+set( ClanLib_MINOR_VERSION 0 )
+
+# You MUST define where to find ClanLib
+if(WIN32)
+    set( ClanLib_DIR "${CMAKE_SOURCE_DIR}/dependencies/ClanLib" CACHE STRING "ClanLib directory" )
+else()
+    set( ClanLib_DIR "ClanLib" CACHE STRING "ClanLib directory" )
+endif()
+
+if(NOT WIN32)
+    find_package( ClanLib REQUIRED )
+else()
+    set(CLANLIB_ROOT_DIR  "${CMAKE_SOURCE_DIR}/dependencies/ClanLib/" )
+    set(ClanLib_INCLUDE_DIRS "${CLANLIB_ROOT_DIR}/Include" )
+    find_package( ClanLib REQUIRED )
+endif()
 
 set( HEADERS
     ControllerInterface.h
@@ -65,21 +84,34 @@ add_executable( AdaptiveShooter
 set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD 11 )
 set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD_REQUIRED ON )
 
-# Missing other libraries
-
-target_link_libraries( AdaptiveShooter AIManager )
-
-if( LUA51_FOUND )
-    target_link_libraries( AdaptiveShooter
-        ${LUA_LIBRARIES}
+if(WIN32)
+    set( ClanLib_LIBRARIES 
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanApp-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanCompute-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanCore-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanCSSLayout-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanD3D-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanDatabase-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanDisplay-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanGameIDE-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanGL-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanGUI-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanNetwork-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanPhysics2D-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanPhysics3D-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanScene3D-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanSound-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanSqlite-static-mt.lib"
+"${CLANLIB_ROOT_DIR}/Lib/Win32/clanSWRender-static-mt.lib"
     )
 endif()
 
-if( ClanLib_FOUND )
-    target_link_libraries( AdaptiveShooter
-        ${ClanLib_LIBRARIES}
-    )
-endif()
+message("Aqui")
+message( "${ClanLib_LIBRARIES}" )
+message("Agora aqui")
+
+target_include_directories(AdaptiveShooter PRIVATE ${LUA_INCLUDE_DIR} ${ClanLib_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/src/" )
+target_link_libraries( AdaptiveShooter PRIVATE ${LUA_LIBRARIES} ${ClanLib_LIBRARIES} AIManager )
 
 install( TARGETS AdaptiveShooter RUNTIME DESTINATION ${CMAKE_BINARY_DIR}/bin )
 
@@ -88,4 +120,3 @@ install( TARGETS AdaptiveShooter RUNTIME DESTINATION ${CMAKE_BINARY_DIR}/bin )
 add_custom_command( TARGET AdaptiveShooter POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/src/Scripts ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Scripts
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/data ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/data )
-

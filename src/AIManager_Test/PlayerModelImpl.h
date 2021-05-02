@@ -9,10 +9,9 @@
 	
 	purpose:	Test implementation of PlayerModel abstract class
 *********************************************************************/
-#ifndef PLAYERMODELIMPL_H
-#define PLAYERMODELIMPL_H
+#pragma once
 
-#include "PlayerModel.h"
+#include "AIManager/PlayerModel.h"
 
 class PlayerModelImpl : public PlayerModel
 {
@@ -23,7 +22,6 @@ public:
 		TOTAL_STATS
 	};
 
-	//PlayerModelImpl();
 	PlayerModelImpl(float newValue, float learningRate);
 	virtual ~PlayerModelImpl();
 
@@ -32,5 +30,3 @@ protected:
 	
 private:
 };
-
-#endif
