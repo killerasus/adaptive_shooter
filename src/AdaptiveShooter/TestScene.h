@@ -9,8 +9,7 @@
 	
 	purpose:	Test scene declaration
 *********************************************************************/
-#ifndef TestScene_h__
-#define TestScene_h__
+#pragma once
 
 #include "Scene.h"
 #include "ClanLib/core.h"
@@ -34,5 +33,3 @@ private:
 	clan::Font* _font;
 	clan::Sprite _boatSprite;
 };
-
-#endif // TestScene_h__

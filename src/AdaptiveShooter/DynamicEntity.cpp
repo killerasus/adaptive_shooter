@@ -14,28 +14,16 @@
 #include "GameManager.h"
 
 DynamicEntity::DynamicEntity()
-{
-}
-
-
+{}
 
 DynamicEntity::DynamicEntity( float x, float y, float speedX, float speedY ) : Entity( x, y ), _speed( speedX, speedY )
-{
-}
-
-
+{}
 
 DynamicEntity::DynamicEntity( clan::Vec2f& position, clan::Vec2f& speed ) : Entity( position ), _speed( speed )
-{
-}
-
-
+{}
 
 DynamicEntity::~DynamicEntity()
-{
-}
-
-
+{}
 
 void DynamicEntity::draw()
 {
@@ -44,14 +32,8 @@ void DynamicEntity::draw()
 	_currentSprite.draw( canvas, getPosition().x, getPosition().y );
 }
 
-
-
 clan::Vec2f DynamicEntity::getSpeed() const
-{
-	return _speed;
-}
-
-
+{ return _speed; }
 
 void DynamicEntity::setSpeed( float x, float y )
 {
@@ -59,28 +41,14 @@ void DynamicEntity::setSpeed( float x, float y )
 	_speed.y = y;
 }
 
-
-
 void DynamicEntity::setSpeed( clan::Vec2f& speed )
-{
-	_speed = speed;
-}
-
-
+{ _speed = speed; }
 
 void DynamicEntity::setSpeedX( float x )
-{
-	_speed.x = x;
-}
-
-
+{ _speed.x = x; }
 
 void DynamicEntity::setSpeedY( float y )
-{
-	_speed.y = y;
-}
-
-
+{ _speed.y = y; }
 
 const clan::CollisionOutline& DynamicEntity::getCurrentCollisionOutline() const
 {

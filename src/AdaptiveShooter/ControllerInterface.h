@@ -9,8 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-#ifndef ControllerInterface_h__
-#define ControllerInterface_h__
+#pragma once
 
 class ControllerInterface {
 public:
@@ -75,5 +74,3 @@ public:
 	 */
 	virtual bool isControllerStart() = 0;
 };
-
-#endif // ControllerInterface_h__

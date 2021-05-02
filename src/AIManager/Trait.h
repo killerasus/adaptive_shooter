@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef Trait_h__
-#define Trait_h__
+#pragma once
 
 /** 
  * Trait struct represents a trait with diffent interpretations:
@@ -45,5 +43,3 @@ struct Trait
 	float _currentValue; // Current value in current player model
 	float _weight; // Weight for player model comparison
 };
-
-#endif // Trait_h__

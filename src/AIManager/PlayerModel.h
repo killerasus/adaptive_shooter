@@ -9,9 +9,7 @@
 	
 	purpose:	Interface class for player model used in AIManager framework
 *********************************************************************/
-
-#ifndef PlayerModel_h__
-#define PlayerModel_h__
+#pragma once
 
 #include <string>
 #include <vector>
@@ -186,5 +184,3 @@ private:
 	std::string _name;
 	float _learningRate;
 };
-
-#endif // PlayerModel_h__

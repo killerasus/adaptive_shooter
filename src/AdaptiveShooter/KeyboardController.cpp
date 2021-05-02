@@ -15,71 +15,31 @@
 
 KeyboardController::KeyboardController() : 
 	_keyboard(GameManager::getInstance()->getWindow()->get_ic().get_keyboard())
-{
-
-}
-
-
+{}
 
 KeyboardController::~KeyboardController()
-{
-
-}
-
-
+{}
 
 bool KeyboardController::isControllerUp()
-{
-	return _keyboard.get_keycode( clan::keycode_up );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_up ); }
 
 bool KeyboardController::isControllerDown()
-{
-	return _keyboard.get_keycode( clan::keycode_down );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_down ); }
 
 bool KeyboardController::isControllerLeft()
-{
-	return _keyboard.get_keycode( clan::keycode_left );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_left ); }
 
 bool KeyboardController::isControllerRight()
-{
-	return _keyboard.get_keycode( clan::keycode_right );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_right ); }
 
 bool KeyboardController::isControllerFire()
-{
-	return _keyboard.get_keycode( clan::keycode_z );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_z ); }
 
 bool KeyboardController::isControllerBomb()
-{
-	return _keyboard.get_keycode( clan::keycode_x );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_x ); }
 
 bool KeyboardController::isControllerBack()
-{
-	return _keyboard.get_keycode( clan::keycode_escape );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_escape ); }
 
 bool KeyboardController::isControllerStart()
-{
-	return _keyboard.get_keycode( clan::keycode_enter );
-}
-
-
+{ return _keyboard.get_keycode( clan::keycode_enter ); }

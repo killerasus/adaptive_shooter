@@ -14,11 +14,7 @@
 #include "GameManager.h"
 
 Scene::Scene() : _nextScene( NULL )
-{
-
-}
-
-
+{}
 
 Scene::~Scene()
 {
@@ -29,21 +25,11 @@ Scene::~Scene()
 	}
 }
 
-
-
 void Scene::insertEntity( Entity* entity)
-{
-	_entities.push_back(entity);
-}
-
-
+{ _entities.push_back(entity); }
 
 void Scene::removeEntity( Entity* entity )
-{
-	_entities.remove( entity );
-}
-
-
+{ _entities.remove( entity ); }
 
 Entity* Scene::getEntity( unsigned int i )
 {
@@ -62,8 +48,6 @@ Entity* Scene::getEntity( unsigned int i )
 	return ret;
 }
 
-
-
 void Scene::draw()
 {
 	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
@@ -72,39 +56,23 @@ void Scene::draw()
 	}
 }
 
-
-
 void Scene::update()
 {
 	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
-	{
 		(*it)->update();
-	}
 
 	// Deletes entities pushed into _deleteEntities list
 	for ( std::list<Entity*>::iterator it = _deleteEntities.begin(); it!= _deleteEntities.end(); it++)
-	{
 		removeEntity( (*it) );
-	}
 
 	_deleteEntities.clear();
 }
 
-
-
 Scene* Scene::getNextScene()
-{
-	return _nextScene;
-}
-
-
+{ return _nextScene; }
 
 void Scene::setNextScene( Scene* next )
-{
-	_nextScene = next;
-}
-
-
+{ _nextScene = next; }
 
 void Scene::changeToNextScene()
 {
@@ -113,9 +81,5 @@ void Scene::changeToNextScene()
 	manager->pushScene( _nextScene );
 }
 
-
-
 void Scene::pushEntityToDelete( Entity* entity )
-{
-	_deleteEntities.push_back( entity );
-}
+{ _deleteEntities.push_back( entity ); }

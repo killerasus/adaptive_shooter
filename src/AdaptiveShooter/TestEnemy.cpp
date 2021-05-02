@@ -17,15 +17,12 @@
 
 #include <sstream>
 #include <cmath>
-//#include "logog.hpp"
 
 TestEnemy::TestEnemy() : Enemy(), _weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
 {
 	_weapon->setShotSpeed( 0.0f, GameManager::getInstance()->getEnemyOptions()->shotSpeedY );
 	setCurrentWeapon( _weapon );
 }
-
-
 
 TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string resource) : Enemy ( x, y, speedX, speedY ),
 	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
@@ -46,8 +43,6 @@ TestEnemy::TestEnemy(float x, float y, float speedX, float speedY, std::string r
 	}
 }
 
-
-
 TestEnemy::TestEnemy(clan::Vec2f& position, clan::Vec2f& speed, std::string resource) : Enemy(position, speed),
 	_weapon( new Weapon( "Standard laser", "sprites/roundShotMedium", GameManager::getInstance()->getEnemyOptions()->shotDelay ) )
 {
@@ -67,14 +62,8 @@ TestEnemy::TestEnemy(clan::Vec2f& position, clan::Vec2f& speed, std::string reso
 	}
 }
 
-
-
 TestEnemy::~TestEnemy()
-{
-	delete _weapon;
-}
-
-
+{ delete _weapon; }
 
 #ifdef _DEBUG
 void TestEnemy::draw()
@@ -85,7 +74,6 @@ void TestEnemy::draw()
 		GameManager::getInstance()->getCanvas() );
 }
 #endif
-
 
 void TestEnemy::update()
 {
@@ -116,9 +104,7 @@ void TestEnemy::update()
 	}
 
 	if((_behavior & GODOWN) == GODOWN)
-	{
 		setPositionY( getPosition().y + getSpeed().y * _multiplier * dt * 0.001f );
-	}
 
 	if ((_behavior & SHOOT) == SHOOT)
 	{
@@ -131,14 +117,10 @@ void TestEnemy::update()
 			if (playerOne->getPosition().x >= center - halfRange &&
 				playerOne->getPosition().x + playerOne->getCurrentSprite().get_width() <= center + halfRange &&
 				playerOne->getPosition().y >= getPosition().y)
-			{
 				addShots( _weapon->shoot( this ) );
-			}
 		}
 	}
 }
-
-
 
 void TestEnemy::updateStats()
 {
@@ -166,7 +148,6 @@ void TestEnemy::updateStats()
 			} 
 			else
 			{
-				//LOGOG_ERROR( "\nUnknown difficulty: %s\n", perceptedDifficulty );
 				std::ostringstream text;
 				text << clan::DateTime().get_current_local_time().to_long_time_string().c_str();
 				text <<"\nUnknown difficulty: ";
@@ -178,24 +159,16 @@ void TestEnemy::updateStats()
 	}
 }
 
-
-
 void TestEnemy::addShots( std::vector<Shot*> shots )
 {
 	TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( GameManager::getInstance()->peekScene() );
 
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
-	{
 		currentScene->addEnemyShot( (*it) );
-	}
 
 	if (shots.size() > 0)
-	{
 		GameManager::getInstance()->playSoundEffect(GameManager::SFX_LASER_1);
-	}
 }
-
-
 
 void TestEnemy::correctHorizontalMovement()
 {

@@ -24,13 +24,8 @@ Explosion::Explosion( float x, float y, float speedX, float speedY, std::string 
 	setPosition( x - _currentSprite.get_width()*0.5f, y - _currentSprite.get_height()*0.5f );
 }
 
-
-
 Explosion::~Explosion()
-{
-}
-
-
+{}
 
 void Explosion::update()
 {
@@ -39,7 +34,5 @@ void Explosion::update()
 	_currentSprite.update( static_cast<int>(dt) );
 
 	if (getCurrentSprite().is_finished())
-	{
 		GameManager::getInstance()->peekScene()->pushEntityToDelete( this );
-	}
 }

@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef Explosion_h__
-#define Explosion_h__
+#pragma once
 
 #include "DynamicEntity.h"
 
@@ -37,5 +35,3 @@ protected:
 	
 private:
 };
-
-#endif // Explosion_h__

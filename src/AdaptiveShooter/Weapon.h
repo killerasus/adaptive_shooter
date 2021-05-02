@@ -9,9 +9,7 @@
 	
 	purpose:	This class represents weapon enhancements gained by the Player
 *********************************************************************/
-
-#ifndef Weapon_h__
-#define Weapon_h__
+#pragma once
 
 #include <ClanLib/core.h>
 #include "Shot.h"
@@ -68,21 +66,21 @@ public:
 	/**
 	 * Sets weapon's delay between shoots timer. If delay is negative, it's set to 0.0f.
 	 * 
-	 * @param[in]  delay	Delay in miliseconds
+	 * @param[in]  delay	Delay in milliseconds
 	 */
 	void setDelay( int delay );
 
 	/**
 	 * Gets weapon's current time delay between shoots
 	 * 
-	 * @return	  int	Weapon delay between shoots in miliseconds
+	 * @return	  int	Weapon delay between shoots in milliseconds
 	 */
 	int getDelay() const;
 
 	/**
 	 * Gets current timer
 	 * 
-	 * @return	int	Current timer value in miliseconds
+	 * @return	int	Current timer value in milliseconds
 	 */
 	int getTimer() const;
 
@@ -165,11 +163,9 @@ private:
 	bool _canShoot; // Indicates if weapon is ready to shoot
 	int _damage; // Damage caused by each shot
 	WeaponLevel _level; // Weapon's level
-	int _delay; // Indicates delay between shots in miliseconds
-	int _timer; // Current weapon timer in miliseconds.
+	int _delay; // Indicates delay between shots in milliseconds
+	int _timer; // Current weapon timer in milliseconds.
 	std::string _name; // Weapon's name
 	std::string _shotResource; // Resource file for creating shots
 	clan::Vec2f _shotSpeed; // Current shot's speed in pixels per second
 };
-
-#endif // Weapon_h__

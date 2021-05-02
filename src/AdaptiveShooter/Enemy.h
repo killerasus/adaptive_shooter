@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef Enemy_h__
-#define Enemy_h__
+#pragma once
 
 #include "DynamicEntity.h"
 #include "AIManager/AIAgent.h"
@@ -121,4 +119,3 @@ private:
 	int _points; // Score points value
 	int _health; // Health points
 };
-#endif

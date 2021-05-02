@@ -18,17 +18,12 @@
 #include "TestEnemy.h"
 #include "Explosion.h"
 
-// Logging tool
-//#define LOGOG_USE_PREFIX 1
-//#include "logog.hpp"
-
 #define ADAPTIVE 1
 
 extern "C"
 {
 #include "lua.h"
 };
-
 
 TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _shotsTotal( 0 ),
 	_shotsTotalOnTarget( 0 ), _livesStartWave( 0 ), _livesEndWave( 0 ), _enemiesWave( 0 ), _enemiesWaveWasted( 0 ),
@@ -44,21 +39,12 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 #endif
 }
 
-
-
 TestScenePlayer::~TestScenePlayer()
-{
-	delete _font;
-}
-
-
+{ delete _font; }
 
 void TestScenePlayer::draw()
 {
 	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
-
-	/*CL_Draw::line(gc, 0, 110, 640, 110, CL_Colorf::yellow);
-	_font->draw_text(gc, 100, 100, "Hello World!", CL_Colorf::lightseagreen);*/
 
 	Player* playerOne = GameManager::getInstance()->getPlayer(0);
 	playerOne->draw();

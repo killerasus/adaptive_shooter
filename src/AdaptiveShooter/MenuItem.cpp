@@ -23,38 +23,20 @@ Entity( x, y ), _isSelected( false )
 	_currentSprite = _notSelected;
 }
 
-
-
 MenuItem::~MenuItem()
-{
-}
-
-
+{}
 
 void MenuItem::draw()
-{
-	getCurrentSprite().draw( GameManager::getInstance()->getCanvas(), getPosition().x, getPosition().y );
-}
-
-
+{ getCurrentSprite().draw( GameManager::getInstance()->getCanvas(), getPosition().x, getPosition().y ); }
 
 void MenuItem::update()
-{
-	getCurrentSprite().update( GameManager::getInstance()->getDeltaTime() );
-}
-
-
+{ getCurrentSprite().update( GameManager::getInstance()->getDeltaTime() ); }
 
 void MenuItem::setSelected( bool selected )
 {
 	_isSelected = selected;
-
 	_currentSprite = _isSelected ? _selected : _notSelected;
 }
 
-
-
 bool MenuItem::getSelected()
-{
-	return _isSelected;
-}
+{ return _isSelected; }

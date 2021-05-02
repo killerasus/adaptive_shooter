@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef StaticEntity_h__
-#define StaticEntity_h__
+#pragma once
 
 #include "Entity.h"
 
@@ -29,5 +27,3 @@ protected:
 	
 private:
 };
-
-#endif // TestEntity_h__

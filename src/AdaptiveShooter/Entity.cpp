@@ -14,42 +14,22 @@
 #include "GameManager.h"
 
 Entity::Entity() : _position(0.0f, 0.0f)
-{
-}
-
-
+{}
 
 Entity::Entity( clan::Vec2f& position ): _position(position)
-{
-}
-
-
+{}
 
 Entity::Entity( float x, float y ): _position(x, y)
-{
-}
-
-
+{}
 
 Entity::~Entity()
-{
-}
-
-
+{}
 
 clan::Vec2f Entity::getPosition() const
-{
-	return _position;
-}
-
-
+{ return _position; }
 
 void Entity::setPosition( clan::Vec2f& position )
-{
-	_position = position;
-}
-
-
+{ _position = position; }
 
 void Entity::setPosition( float x, float y )
 {
@@ -57,35 +37,17 @@ void Entity::setPosition( float x, float y )
 	_position.y = y;
 }
 
-
-
 void Entity::setPositionX( float x )
-{
-	_position.x = x;
-}
-
-
+{ _position.x = x; }
 
 void Entity::setPositionY( float y )
-{
-	_position.y = y;
-}
-
-
+{ _position.y = y; }
 
 clan::Sprite& Entity::getCurrentSprite() const
-{
-	return const_cast<clan::Sprite&>(_currentSprite);
-}
-
-
+{ return const_cast<clan::Sprite&>(_currentSprite); }
 
 float Entity::getAlpha() const
-{
-	return _currentSprite.get_alpha();
-}
-
-
+{ return _currentSprite.get_alpha(); }
 
 void Entity::setAlpha(float alpha)
 {
@@ -105,16 +67,10 @@ bool Entity::checkWindowBoundary()
 	bottom = top + _currentSprite.get_height();
 
 	if (bottom < 0.0f || right < 0.0f || top > gc.get_height() || left > gc.get_width())
-	{
 		return false;
-	} 
 	else
-	{
 		return true;
-	}
 }
-
-
 
 unsigned int Entity::boundToScreen()
 {

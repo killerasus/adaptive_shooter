@@ -9,9 +9,7 @@
 	
 	purpose:	Definition of the FadingScene class
 *********************************************************************/
-
-#ifndef FadingScene_h__
-#define FadingScene_h__
+#pragma once
 
 #include "Scene.h"
 #include "ClanLib/core.h"
@@ -63,5 +61,3 @@ private:
 	FadingMode _mode;
 	FadingState _fadingState;
 };
-
-#endif // FadingScene_h__

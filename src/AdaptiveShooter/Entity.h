@@ -9,8 +9,7 @@
 	
 	purpose:	Interface for Entity types
 *********************************************************************/
-#ifndef Entity_h__
-#define Entity_h__
+#pragma once
 
 #include "ClanLib/core.h"
 #include "ClanLib/display.h"
@@ -136,5 +135,3 @@ protected:
 private:
 	clan::Vec2f _position;
 };
-
-#endif // Entity_h__

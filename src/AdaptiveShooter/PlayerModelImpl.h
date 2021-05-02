@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef PlayerModelImpl_h__
-#define PlayerModelImpl_h__
+#pragma once
 
 #include "AIManager/PlayerModel.h"
 
@@ -36,5 +34,3 @@ public:
 	
 private:
 };
-
-#endif // PlayerModelImpl_h__

@@ -9,9 +9,7 @@
 	
 	purpose:	GameManager class definition
 *********************************************************************/
-
-#ifndef GameManager_h__
-#define GameManager_h__
+#pragma once
 
 #include <stack>
 
@@ -28,10 +26,6 @@ extern "C"
 {
 	#include "lua.h"
 };
-
-// Logging tool
-//#define LOGOG_USE_PREFIX 1
-//#include "logog.hpp"
 
 /**
  * GameManager provides a Singleton interface for manipulating elements common to
@@ -163,7 +157,7 @@ public:
 	/**
 	 * Gets current loop delta time
 	 * 
-	 * @return	  float	time since last loop in miliseconds
+	 * @return	  float	time since last loop in milliseconds
 	 */
 	int getDeltaTime();
 
@@ -255,7 +249,6 @@ private:
 
 	FadingScene* _gameOverScene;
 
-	//logog::LogFile* _loggerFile;
 	clan::Logger* _loggerFile;
 
 	PlayerOptions* _playerOptions;
@@ -271,5 +264,3 @@ private:
 	 */
 	void loadOptions();
 };
-
-#endif // GameManager_h__

@@ -9,9 +9,7 @@
 	
 	purpose:	Implementation of gamepad based controller
 *********************************************************************/
-
-#ifndef GamepadController_h__
-#define GamepadController_h__
+#pragma once
 
 #include "ControllerInterface.h"
 #include "ClanLib/core.h"
@@ -75,5 +73,3 @@ private:
 	clan::InputDevice _gamepad;
 	float _deadzone;
 };
-
-#endif // GamepadController_h__

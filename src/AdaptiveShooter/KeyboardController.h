@@ -9,9 +9,7 @@
 	
 	purpose:	Implementation of keyboard based controller
 *********************************************************************/
-
-#ifndef KeyboardController_h__
-#define KeyboardController_h__
+#pragma once
 
 #include "ControllerInterface.h"
 #include "ClanLib/core.h"
@@ -45,5 +43,3 @@ protected:
 private:
 	clan::InputDevice _keyboard;
 };
-
-#endif // KeyboardController_h__

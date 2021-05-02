@@ -29,8 +29,6 @@ Shot::Shot( std::string resource ) : DynamicEntity(), _damage( 0 )
 	}
 }
 
-
-
 Shot::Shot( float x, float y, float speedX, float speedY, std::string resource, int damage ) : DynamicEntity( x, y, speedX, speedY ), _damage( damage )
 {
 	GameManager* manager = GameManager::getInstance();
@@ -45,8 +43,6 @@ Shot::Shot( float x, float y, float speedX, float speedY, std::string resource, 
 		_currentOutlines.push_back( clan::CollisionOutline::load(collisionResource.c_str(), manager->getResourceDocument()) );
 	}
 }
-
-
 
 Shot::Shot( clan::Vec2f& position, clan::Vec2f& speed, std::string resource, int damage ) : DynamicEntity( position, speed ), _damage( damage )
 {
@@ -63,13 +59,8 @@ Shot::Shot( clan::Vec2f& position, clan::Vec2f& speed, std::string resource, int
 	}
 }
 
-
-
 Shot::~Shot()
-{
-}
-
-
+{}
 
 #ifdef _DEBUG
 void Shot::draw()
@@ -81,7 +72,6 @@ void Shot::draw()
 }
 #endif
 
-
 void Shot::update()
 {
 	int dt = GameManager::getInstance()->getDeltaTime();
@@ -89,16 +79,8 @@ void Shot::update()
 	_currentSprite.update( dt );
 }
 
-
-
 void Shot::setDamage( int damage )
-{
-	_damage = damage;
-}
-
-
+{ _damage = damage; }
 
 int Shot::getDamage() const
-{
-	return _damage;
-}
+{ return _damage; }

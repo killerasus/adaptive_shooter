@@ -13,18 +13,10 @@
 #include "PlayerModelImpl.h"
 
 PlayerModelImpl::PlayerModelImpl( float learningRate ) : PlayerModel(TRAITS_SIZE, learningRate)
-{
-	resetTraits();
-}
-
-
+{ resetTraits(); }
 
 PlayerModelImpl::~PlayerModelImpl()
-{
-
-}
-
-
+{}
 
 float PlayerModelImpl::compare( PlayerModel* comparable )
 {
@@ -41,19 +33,13 @@ float PlayerModelImpl::compare( PlayerModel* comparable )
 
 	// Checks if model is under the comparable
 	if (total < totalCompareMin)
-	{
-		return -1.0f;
-	} 
+		return -1.0f; 
 	else
 	{
 		// Checks if model is above comparable
 		if (total > totalCompareMax)
-		{
 			return 1.0f;
-		} 
 		else
-		{
 			return 0.0f;
-		}
 	}
 }

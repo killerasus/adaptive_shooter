@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef Player_h__
-#define Player_h__
+#pragma once
 
 #include "AIManager/PlayerModel.h"
 #include "DynamicEntity.h"
@@ -155,5 +153,3 @@ private:
 	 */
 	void updateInvincibility( int dt );
 };
-
-#endif // Player_h__

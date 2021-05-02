@@ -20,18 +20,10 @@ Weapon::Weapon( std::string name, std::string shotResource, int delay, int damag
 	WeaponLevel level /*= WL_LEVEL_0*/, float speedX /* = 0.0f */, float speedY /* = -300.0f */ )
 	: _canShoot( true ), _damage( damage ), _level( level ), _delay( delay ), _timer ( 0 ), _name( name ),
 	_shotResource( shotResource ), _shotSpeed( speedX, speedY )
-{
-
-}
-
-
+{}
 
 Weapon::~Weapon()
-{
-
-}
-
-
+{}
 
 void Weapon::update()
 {
@@ -42,13 +34,9 @@ void Weapon::update()
 		_timer += dt;
 
 		if (_timer >= _delay)
-		{
 			setCanShoot( true );
-		}
 	}
 }
-
-
 
 void Weapon::setCanShoot( bool can )
 {
@@ -56,62 +44,29 @@ void Weapon::setCanShoot( bool can )
 	_timer = 0;
 }
 
-
-
 bool Weapon::getCanShoot() const
-{
-	return _canShoot;
-}
-
-
+{ return _canShoot; }
 
 void Weapon::setDelay( int delay )
-{
-	_delay = (delay >= 0? delay : 0);
-}
-
-
+{ _delay = (delay >= 0? delay : 0); }
 
 int Weapon::getDelay() const
-{
-	return _delay;
-}
-
-
+{ return _delay; }
 
 int Weapon::getTimer() const
-{
-	return _timer;
-}
-
+{ return _timer; }
 
 void Weapon::setDamage( int damage )
-{
-	_damage = (damage > 0? damage : 1);
-}
-
-
+{ _damage = (damage > 0? damage : 1); }
 
 int Weapon::getDamage() const
-{
-	return _damage;
-}
-
-
+{ return _damage; }
 
 void Weapon::setWeaponLevel( WeaponLevel level )
-{
-	_level = level;
-}
-
-
+{ _level = level; }
 
 Weapon::WeaponLevel Weapon::getWeaponLevel() const
-{
-	return _level;
-}
-
-
+{ return _level; }
 
 std::vector<Shot*> Weapon::shoot( Entity* entity )
 {
@@ -135,21 +90,11 @@ std::vector<Shot*> Weapon::shoot( Entity* entity )
 	return shots;
 }
 
-
-
 void Weapon::setName( std::string name )
-{
-	_name = name;
-}
-
-
+{ _name = name; }
 
 std::string Weapon::getName() const
-{
-	return _name;
-}
-
-
+{ return _name; }
 
 void Weapon::setShotSpeed( float x, float y )
 {
@@ -157,17 +102,8 @@ void Weapon::setShotSpeed( float x, float y )
 	_shotSpeed.y = y;
 }
 
-
-
 void Weapon::setShotSpeed( clan::Vec2f& speed )
-{
-	_shotSpeed = speed;
-}
-
-
-
+{ _shotSpeed = speed; }
 
 clan::Vec2f Weapon::getShotSpeed() const
-{
-	return _shotSpeed;
-}
+{ return _shotSpeed; }

@@ -9,9 +9,7 @@
 	
 	purpose:	Scene interface definition
 *********************************************************************/
-
-#ifndef Scene_h__
-#define Scene_h__
+#pragma once
 
 #include "Entity.h"
 #include <list>
@@ -91,5 +89,3 @@ protected:
 	Scene *_nextScene;
 private:
 };
-
-#endif // Scene_h__

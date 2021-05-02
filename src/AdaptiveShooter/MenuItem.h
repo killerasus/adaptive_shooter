@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef MenuItem_h__
-#define MenuItem_h__
+#pragma once
 
 #include "Entity.h"
 #include <string>
@@ -55,5 +53,3 @@ private:
 	clan::Sprite _notSelected;
 	bool _isSelected;
 };
-
-#endif // MenuItem_h__

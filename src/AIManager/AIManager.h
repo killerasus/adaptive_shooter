@@ -11,8 +11,7 @@
 				and does the adjustment to each agent it manages. It's functionalities are customized via Lua functions
 				implemented by the user-programmer and provided via a Lua state
 *********************************************************************/
-#ifndef AIManager_h__
-#define AIManager_h__
+#pragma once
 
 #include <vector>
 #include "AIAgent.h"
@@ -142,5 +141,3 @@ private:
 	std::vector<PlayerModel*> _playerModels; //Vector of PlayerModels
 	std::vector<AIAgent*> _aiAgents;
 };
-
-#endif // AIManager_h__

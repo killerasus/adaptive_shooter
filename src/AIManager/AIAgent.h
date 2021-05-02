@@ -9,8 +9,7 @@
 	
 	purpose:	AIAgent
 *********************************************************************/
-#ifndef AIAgent_h__
-#define AIAgent_h__
+#pragma once
 
 class AIAgent
 {
@@ -23,5 +22,3 @@ protected:
 private:
 
 };
-
-#endif // AIAgent_h__

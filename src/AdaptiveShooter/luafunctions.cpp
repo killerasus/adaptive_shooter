@@ -13,7 +13,6 @@
 #include "luafunctions.h"
 #include <ClanLib/core.h>
 
-
 /**
  * Necessary to print to CLConsole, as ClanLib does not offer a 
  * standard output	

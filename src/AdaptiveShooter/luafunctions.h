@@ -9,9 +9,7 @@
 	
 	purpose:	Expose ClanLib functions to Lua. Registers a CL table with these functions in a Lua state's global table
 *********************************************************************/
-
-#ifndef LUAFUNCTIONS_H
-#define LUAFUNCTIONS_H
+#pragma once 
 
 extern "C" {
 #include "lua.h"
@@ -27,5 +25,3 @@ extern "C" {
  * @return	  int
  */
 int RegisterLuaCLHelper(lua_State* L);
-
-#endif

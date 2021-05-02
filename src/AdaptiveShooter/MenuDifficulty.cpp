@@ -44,27 +44,16 @@ MenuDifficulty::MenuDifficulty() : Menu(), FadingScene( 0.0f, 1000.f, 0.0f, Fadi
 	_menuItems.push_back( hard );
 }
 
-
-
-
 MenuDifficulty::~MenuDifficulty()
-{
-}
-
-
+{}
 
 /*Override*/
 void MenuDifficulty::draw()
 {
 	if (!_isFading)
-	{
 		Menu::draw();
-	}
 	else
-	{
 		FadingScene::draw();
-	}
-
 
 #ifdef _DEBUG
 	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
@@ -73,9 +62,7 @@ void MenuDifficulty::draw()
 	menuText.precision( 4 );
 
 	for (unsigned int i = 0; i < _menuItems.size(); i++)
-	{
 		menuText << "Menu item " << i << " state: " << _menuItems[i]->getSelected() << std::endl;
-	}
 
 	std::string drawableText = menuText.str();
 	float textX = 640.0f - _font->get_text_size(gc, drawableText).width - 10.f; 
@@ -85,22 +72,14 @@ void MenuDifficulty::draw()
 #endif
 }
 
-
-
 /*Override*/
 void MenuDifficulty::update()
 {
 	if (!_isFading)
-	{
 		Menu::update();
-	} 
 	else
-	{
 		FadingScene::update();
-	}
 }
-
-
 
 void MenuDifficulty::ExecuteState()
 {

@@ -21,22 +21,11 @@ StaticEntity::StaticEntity(float x, float y, std::string resource_id):Entity( x,
 	_currentSprite = clan::Sprite::resource(gc, resource_id, manager->getResourceManager());
 }
 
-
-
 StaticEntity::~StaticEntity()
-{
-}
-
-
+{}
 
 void StaticEntity::draw()
-{
-	_currentSprite.draw( GameManager::getInstance()->getCanvas(), getPosition().x, getPosition().y );
-}
-
-
+{ _currentSprite.draw( GameManager::getInstance()->getCanvas(), getPosition().x, getPosition().y ); }
 
 void StaticEntity::update()
-{
-	_currentSprite.update( GameManager::getInstance()->getDeltaTime() );
-}
+{ _currentSprite.update( GameManager::getInstance()->getDeltaTime() ); }

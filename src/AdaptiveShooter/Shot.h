@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef Shot_h__
-#define Shot_h__
+#pragma once
 
 #include "DynamicEntity.h"
 
@@ -69,5 +67,3 @@ protected:
 private:
 	int _damage;
 };
-
-#endif // Shot_h__

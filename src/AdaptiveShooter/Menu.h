@@ -9,9 +9,7 @@
 	
 	purpose:	Menu and MenuState class definitions
 *********************************************************************/
-
-#ifndef Menu_h__
-#define Menu_h__
+#pragma once
 
 #include "Scene.h"
 #include "MenuItem.h"
@@ -47,9 +45,7 @@ private:
 	unsigned int _menuState;
 	Entity* _menuPointer;
 	ControllerInterface* _controller;
-	float _inputDelay;	// Delay in milisseconds for input check in menu
+	float _inputDelay;	// Delay in milliseconds for input check in menu
 	float _inputeTimer;
 	bool _canExecute;
 };
-
-#endif // Menu_h__

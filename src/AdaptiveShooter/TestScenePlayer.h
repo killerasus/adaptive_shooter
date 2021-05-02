@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef TestScenePlayer_h__
-#define TestScenePlayer_h__
+#pragma once
 
 #include <vector>
 #include <list>
@@ -97,8 +95,8 @@ private:
 	int _enemiesTotal;
 	int _enemiesTotalWasted;
 
-	float _keyDelayTime; // Miliseconds
-	float _timer; // Miliseconds
+	float _keyDelayTime; // Milliseconds
+	float _timer; // Milliseconds
 	bool _canPressKey;
 	unsigned int _waveNumber;
 	bool _waveOn;
@@ -193,5 +191,3 @@ private:
 	 */
 	void loadScene( std::string sceneFile );
 };
-
-#endif // TestScenePlayer_h__

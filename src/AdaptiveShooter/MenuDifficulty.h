@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-#ifndef MenuDifficulty_h__
-#define MenuDifficulty_h__
-
+#pragma once
 
 #include "Menu.h"
 #include "FadingScene.h"
@@ -47,5 +45,3 @@ private:
 	clan::Font* _font;
 #endif
 };
-
-#endif // MenuDifficulty_h__

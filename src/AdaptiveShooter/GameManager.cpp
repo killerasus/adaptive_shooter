@@ -30,7 +30,6 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	_canvas = new clan::Canvas( *_window );
 
 	_aiManager = new AIManager(L);
-	//_loggerFile = new logog::LogFile("test.txt");
 	_loggerFile = new clan::FileLogger("log.txt");
 	_loggerFile->enable();
 	// Player can only be created when there is already a GameManager instantiated
@@ -41,22 +40,14 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	loadOptions();
 }
 
-
-
 GameManager::~GameManager()
-{
-	cleanUp();
-}
-
-
+{ cleanUp(); }
 
 void GameManager::loadXMLResource( std::string resourceFile )
 {
 	_resourceDocument = clan::XMLResourceDocument(resourceFile);
 	_resourceManager = clan::XMLResourceManager::create( _resourceDocument );
 }
-
-
 
 int GameManager::loop()
 {
@@ -75,9 +66,7 @@ int GameManager::loop()
 			update();
 
 			if (_quit)
-			{
 				return 0;
-			}
 
 			draw();
 
@@ -103,14 +92,8 @@ int GameManager::loop()
 	return 0;
 }
 
-
-
 void GameManager::pushScene(Scene* scene)
-{
-	_sceneStack.push(scene);
-}
-
-
+{ _sceneStack.push(scene); }
 
 Scene* GameManager::popScene()
 {
@@ -125,36 +108,26 @@ Scene* GameManager::popScene()
 	return top;
 }
 
-
-
 Scene* GameManager::peekScene()
 {
 	Scene* top = NULL;
 
 	if (!_sceneStack.empty())
-	{
 		top = _sceneStack.top();
-	}
 
 	return top;
 }
-
-
 
 void GameManager::draw()
 {
 	_window->get_gc().clear(clan::Colorf::black);
 
 	if (!_sceneStack.empty() && _sceneStack.top() != NULL)
-	{
 		_sceneStack.top()->draw();
-	}
 
 	// Make the stuff visible:
 	_window->flip();
 }
-
-
 
 void GameManager::update()
 {
@@ -165,73 +138,41 @@ void GameManager::update()
 
 	//Update
 	if (!_sceneStack.empty() && _sceneStack.top() != NULL)
-	{
 		_sceneStack.top()->update();
-	} 
 	else
-	{
 		_quit = true;
-	}
 }
-
-
 
 GameManager* GameManager::getInstance()
 {
 	if(_instance == 0)
-	{
 		_instance = new GameManager();
-	}
 
 	return _instance;
 }
 
-
-
 clan::DisplayWindow* GameManager::getWindow()
-{
-	return _window;
-}
-
-
+{ return _window; }
 
 const clan::ResourceManager& GameManager::getResourceManager() const
-{
-	return _resourceManager;
-}
-
+{ return _resourceManager; }
 
 const clan::XMLResourceDocument& GameManager::getResourceDocument() const
-{
-	return _resourceDocument;
-}
-
+{ return _resourceDocument; }
 
 int GameManager::getDeltaTime()
-{
-	return _time_delta_ms;
-}
-
-
+{ return _time_delta_ms; }
 
 lua_State* GameManager::getLuaState()
-{
-	return L;
-}
-
-
+{ return L; }
 
 void GameManager::getLuaState( lua_State* l )
 {
 	if (L != NULL)
-	{
 		lua_close(L);
-	}
 
 	L = l;
 }
-
-
 
 void GameManager::cleanUp()
 {
@@ -250,12 +191,6 @@ void GameManager::cleanUp()
 	delete _gameOverScene;
 	_gameOverScene = NULL;
 
-	/** @TODO: Check if there is memory leak */
-	/*while(!_sceneStack.empty())
-	{
-		_sceneStack.pop();
-	}*/
-
 	// Closes log operation
 	delete _loggerFile;
 	_loggerFile = NULL;
@@ -264,22 +199,15 @@ void GameManager::cleanUp()
 	_window = NULL;
 }
 
-
-
 /** TODO: Rewrite when more players are supported*/
 Player* GameManager::getPlayer( unsigned int n )
-{
-	return _player;
-}
-
-
+{ return _player; }
 
 void GameManager::setupPlayer( unsigned int n )
 {	
 	clan::Rect windowViewPort = _window->get_viewport();
 	_player = new Player( 0.0f, 0.0f, _playerOptions->speedX, _playerOptions->speedY, n, _playerOptions->resource,
 		new PlayerModelImpl( _playerOptions->learningRate ), _playerOptions->lives );
-	//_player->setupCollisionOutlines();
 	_player->setPositionX( float((windowViewPort.get_width() >> 1) - (_player->getCurrentSprite().get_width() >> 1)) );
 	_player->setPositionY( float(windowViewPort.get_height() - _player->getCurrentSprite().get_height()) );
 
@@ -326,78 +254,38 @@ void GameManager::setupPlayer( unsigned int n )
 	_gameOverScene->insertEntity( newEntity );
 }
 
-
-
 AIManager* GameManager::getAIManager()
-{
-	return _aiManager;
-}
-
-
+{ return _aiManager; }
 
 clan::Logger* GameManager::getLogger()
-{
-	return _loggerFile;
-}
-
-
-
+{ return _loggerFile; }
 
 FadingScene* GameManager::getGameOverScene()
-{
-	return _gameOverScene;
-}
-
-
+{ return _gameOverScene; }
 
 void GameManager::playSoundEffect( SoundEffects sound )
-{
-	_soundEffectSessions[sound] = _soundEffects[sound].play();
-}
-
-
+{ _soundEffectSessions[sound] = _soundEffects[sound].play(); }
 
 bool GameManager::poolSoundEffect( SoundEffects sound )
-{
-	return _soundEffectSessions[sound].is_playing();
-}
-
-
-
+{ return _soundEffectSessions[sound].is_playing(); }
 
 void GameManager::stopSoundEffect( SoundEffects sound )
 {
 	if (poolSoundEffect( sound ))
-	{
 		_soundEffectSessions[sound].stop();
-	}
 }
-
-
 
 void GameManager::playMusic( Musics music )
-{
-	_musicSessions[music] = _musics[music].play();
-}
-
-
+{ _musicSessions[music] = _musics[music].play(); }
 
 bool GameManager::poolMusic( Musics music )
-{
-	return _musicSessions[music].is_playing();
-}
-
-
+{ return _musicSessions[music].is_playing(); }
 
 void GameManager::stopMusic( Musics music )
 {
 	if (poolMusic( music ))
-	{
 		_musicSessions[music].stop();
-	}
 }
-
-
 
 void GameManager::loadSoundEffects()
 {
@@ -423,11 +311,8 @@ void GameManager::loadSoundEffects()
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/laser3.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/slimeball.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Explosion.wav" ) );
-#endif
-	
+#endif	
 }
-
-
 
 void GameManager::loadMusics()
 {
@@ -440,21 +325,11 @@ void GameManager::loadMusics()
 #endif
 }
 
-
-
 GameManager::PlayerOptions* GameManager::getPlayerOptions()
-{
-	return _playerOptions;
-}
-
-
+{ return _playerOptions; }
 
 GameManager::EnemyOptions* GameManager::getEnemyOptions()
-{
-	return _enemyOptions;
-}
-
-
+{ return _enemyOptions; }
 
 void GameManager::loadOptions()
 {
@@ -597,6 +472,4 @@ void GameManager::loadOptions()
 }
 
 clan::Canvas& GameManager::getCanvas()
-{
-	return *_canvas;
-}
+{ return *_canvas; }

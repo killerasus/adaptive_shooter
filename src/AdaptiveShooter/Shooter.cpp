@@ -13,39 +13,19 @@
 #include "Shooter.h"
 
 Shooter::Shooter() : _currentWeapon( NULL )
-{
-
-}
-
-
+{}
 
 Shooter::Shooter( Weapon* weapon ) : _currentWeapon( weapon )
-{
-
-}
-
-
+{}
 
 Shooter::~Shooter()
-{
-
-}
-
-
+{}
 
 void Shooter::setCurrentWeapon( Weapon* newWeapon )
-{
-	_currentWeapon = newWeapon;
-}
-
-
+{ _currentWeapon = newWeapon; }
 
 Weapon* Shooter::getCurrentWeapon() const
-{
-	return _currentWeapon;
-}
-
-
+{ return _currentWeapon; }
 
 void Shooter::update()
 {

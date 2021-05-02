@@ -23,9 +23,7 @@ TestScene::TestScene():_x(0.0f),_y(0.0f),_speed(50.0f)
 }
 
 TestScene::~TestScene()
-{
-	delete _font;
-}
+{ delete _font; }
 
 void TestScene::draw()
 {
@@ -74,4 +72,3 @@ void TestScene::update()
 
 	_boatSprite.update(dt);
 }
-

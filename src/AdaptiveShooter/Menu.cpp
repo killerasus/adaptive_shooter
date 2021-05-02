@@ -22,27 +22,17 @@ Menu::Menu() : Scene(), _menuState( 0 ), _controller( GamepadController::getNewG
 	_sceneState = SS_RUNNING;
 	
 	if (_controller == NULL)
-	{
 		_controller = new KeyboardController();
-	}
 }
-
-
 
 Menu::~Menu()
-{
-	delete _controller;
-}
-
-
+{ delete _controller; }
 
 /* Override */
 void Menu::update()
 {
 	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++)
-	{
 		(*it)->update();
-	}
 
 	if (!_canExecute)
 	{
@@ -55,9 +45,7 @@ void Menu::update()
 			_inputeTimer = 0.0f;
 		}
 		else
-		{
 			return;
-		}
 	}
 
 	if (_controller->isControllerDown())
@@ -80,22 +68,12 @@ void Menu::update()
 	}
 }
 
-
-
 /* Override */
 void Menu::draw()
-{
-	Scene::draw();
-}
-
-
+{ Scene::draw(); }
 
 unsigned int Menu::getMenuState() const
-{
-	return _menuState;
-}
-
-
+{ return _menuState; }
 
 void Menu::StateDown()
 {
@@ -107,8 +85,6 @@ void Menu::StateDown()
 		_menuItems[_menuState]->setSelected( true );
 	}
 }
-
-
 
 void Menu::StateUp()
 {

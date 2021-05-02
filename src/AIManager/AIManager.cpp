@@ -17,8 +17,6 @@ AIManager::AIManager(lua_State* L):_luaState(L)
 	//TODO: Import player models from Lua State
 }
 
-
-
 AIManager::~AIManager()
 {
 	std::vector<PlayerModel*>::iterator it;
@@ -29,8 +27,6 @@ AIManager::~AIManager()
 		it = _playerModels.erase( it );
 	}
 }
-
-
 
 void AIManager::update()
 {
@@ -43,9 +39,7 @@ void AIManager::update()
 
 		// Checks if observed player model is lesser than current comparable player model
 		if (result < 0.0f)
-		{
 			continue;
-		}
 		else
 		{
 			// Checks if observed player model matches current comparable player model
@@ -78,36 +72,20 @@ void AIManager::update()
 	std::vector<AIAgent*>::iterator it;
 
 	for (it = _aiAgents.begin(); it != _aiAgents.end(); it++)
-	{
 		(*it)->updateStats();
-	}
 }
-
-
 
 void AIManager::setLuaState( lua_State* L )
-{
-	_luaState = L;
-}
-
-
+{ _luaState = L; }
 
 lua_State* AIManager::getLuaState() const
-{
-	return _luaState;
-}
-
-
+{ return _luaState; }
 
 void AIManager::insertAgent( AIAgent* agent )
 {
 	if (agent != NULL)
-	{
 		_aiAgents.push_back( agent );
-	}
 }
-
-
 
 bool AIManager::removeAgent( AIAgent* agent )
 {
@@ -123,49 +101,23 @@ bool AIManager::removeAgent( AIAgent* agent )
 	return false;
 }
 
-
-
 unsigned int AIManager::getNumberofAgents() const
-{
-	return _aiAgents.size();
-}
-
-
+{ return _aiAgents.size(); }
 
 void AIManager::setCurrentPlayerModel( PlayerModel* model )
-{
-	_currentObservedPlayerModel = model;
-}
-
-
+{ _currentObservedPlayerModel = model; }
 
 PlayerModel* AIManager::getCurrentPlayerModel() const
-{
-	return _currentObservedPlayerModel;
-}
-
-
+{ return _currentObservedPlayerModel; }
 
 void AIManager::setCurrentReferenceModel( PlayerModel* model )
-{
-	_currentReferenceModel = model;
-}
-
-
+{ _currentReferenceModel = model; }
 
 PlayerModel* AIManager::getCurrentReferenceModel() const
-{
-	return _currentReferenceModel;
-}
-
-
+{ return _currentReferenceModel; }
 
 void AIManager::addPlayerModel( PlayerModel* model )
-{
-	_playerModels.push_back( model );
-}
-
-
+{ _playerModels.push_back( model ); }
 
 bool AIManager::removePlayerModel( PlayerModel* model )
 {
@@ -186,19 +138,11 @@ bool AIManager::removePlayerModel( PlayerModel* model )
 	return result;
 }
 
-
-
 std::vector<PlayerModel*>* AIManager::copyPlayerModelVector() const
-{
-	return new std::vector<PlayerModel*>( _playerModels );
-}
-
-
+{ return new std::vector<PlayerModel*>( _playerModels ); }
 
 void AIManager::updateAgents()
 {
 	for (std::vector<AIAgent*>::iterator it = _aiAgents.begin(); it != _aiAgents.end(); it++ )
-	{
 		(*it)->updateStats();
-	}
 }

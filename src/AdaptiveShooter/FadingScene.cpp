@@ -13,11 +13,7 @@
 #include "GameManager.h"
 
 FadingScene::FadingScene():_fadein(0.0f),_fadeout(0.0f),_waittime(0.0f),_mode(FM_NO_FADE),_fadingState(FS_COMPLETED),_backgroundColor(0,0,0),_timer(0.0f)
-{
-	_sceneState = SS_RUNNING;
-}
-
-
+{ _sceneState = SS_RUNNING; }
 
 FadingScene::FadingScene( float fadein, float fadeout, float waittime, FadingMode mode ):_fadein(fadein),_fadeout(fadeout),_waittime(waittime),_mode(mode),_backgroundColor(0,0,0),_timer(0.0f)
 {
@@ -43,36 +39,20 @@ FadingScene::FadingScene( float fadein, float fadeout, float waittime, FadingMod
 	}
 }
 
-
-
 FadingScene::~FadingScene()
-{
-
-}
-
-
+{}
 
 void FadingScene::SetBackgroundColor( clan::Color color )
-{
-	_backgroundColor = color;
-}
-
-
+{ _backgroundColor = color; }
 
 clan::Color FadingScene::GetBackgroundColor()
-{
-	return _backgroundColor;
-}
-
-
+{ return _backgroundColor; }
 
 /* Override */
 void FadingScene::update()
 {
 	if (_sceneState == SS_COMPLETED)
-	{
 		changeToNextScene();
-	}
 
 	float alpha = 1;
 
@@ -137,13 +117,9 @@ void FadingScene::update()
 	else
 	{
 		if (_mode == FM_FADE_IN)
-		{
 			alpha = 1.0f;
-		} 
 		else
-		{
 			alpha = 0.0f;
-		}//if
 	}//if
 
 	for (std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++)
@@ -151,19 +127,10 @@ void FadingScene::update()
 		(*it)->setAlpha(alpha);
 		(*it)->update();
 	}
-
 }
-
-
 
 void FadingScene::SetFadeMode( FadingMode mode )
-{
-	_mode = mode;
-}
-
-
+{ _mode = mode; }
 
 FadingScene::FadingMode FadingScene::GetFadeMode()
-{
-	return _mode;
-}
+{ return _mode; }

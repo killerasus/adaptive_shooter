@@ -18,10 +18,6 @@
 #include "KeyboardController.h"
 #include "GamepadController.h"
 
-// Logging tool
-//#define LOGOG_USE_PREFIX 1
-//#include "logog.hpp"
-
 Player::Player(float x, float y, float speedX, float speedY, unsigned int number, std::string sprite, PlayerModel* model, 
 	unsigned int lives )
 	: DynamicEntity( x, y, speedX, speedY ), _playerNumber( number ), _lives( lives ), _score( 0 ) ,_model( model ),
@@ -34,9 +30,7 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 		GameManager::getInstance()->getPlayerOptions()->shotSpeedY );
 
 	if (_controller == NULL)
-	{
 		_controller = new KeyboardController();
-	}
 
 	GameManager* manager = GameManager::getInstance();
 	clan::Canvas& gc = manager->getCanvas();
@@ -52,16 +46,12 @@ Player::Player(float x, float y, float speedX, float speedY, unsigned int number
 
 }
 
-
-
 Player::~Player()
 {
 	delete _model;
 	delete _weapon;
 	delete _controller;
 }
-
-
 
 #ifdef _DEBUG
 void Player::draw()
@@ -82,7 +72,6 @@ void Player::draw()
 }
 #endif
 
-
 void Player::update()
 {
 	int dt = GameManager::getInstance()->getDeltaTime();
@@ -94,29 +83,19 @@ void Player::update()
 	if (_controller)
 	{
 		if (_controller->isControllerLeft())
-		{
 			setPositionX( getPosition().x - getSpeed().x * dt * 0.001f );
-		}
 
 		if (_controller->isControllerRight())
-		{
 			setPositionX( getPosition().x + getSpeed().x * dt * 0.001f );
-		}
 
 		if (_controller->isControllerUp())
-		{
 			setPositionY( getPosition().y - getSpeed().y * dt * 0.001f );
-		}
 
 		if (_controller->isControllerDown())
-		{
 			setPositionY( getPosition().y + getSpeed().y * dt * 0.001f );
-		}
 
 		if (_controller->isControllerFire())
-		{
 			addShots( getCurrentWeapon()->shoot( this ) );
-		}
 	}
 
 	_currentSprite.update( dt );
@@ -124,113 +103,57 @@ void Player::update()
 	boundToScreen();
 }
 
-
-
 unsigned int Player::getPlayerNumber() const 
-{ 
-	return _playerNumber; 
-}
-
-
+{ return _playerNumber; }
 
 void Player::setPlayerNumber(unsigned int val) 
-{ 
-	_playerNumber = val; 
-}
-
-
+{ _playerNumber = val; }
 
 unsigned int Player::getLives() const 
-{ 
-	return _lives; 
-}
-
-
+{ return _lives; }
 
 void Player::setLives(unsigned int val) 
-{ 
-	_lives = val; 
-}
-
-
+{  _lives = val;  }
 
 void Player::addLives(unsigned int val)
-{
-	_lives += val;
-}
-
-
+{ _lives += val; }
 
 void Player::subtractLives(unsigned int val)
 {
 	if (val <= _lives)
-	{
 		_lives -= val;
-	}
 	else
-	{
 		_lives = 0;
-	}
 
 	if (_lives == 1)
-	{
 		GameManager::getInstance()->playSoundEffect( GameManager::SFX_WARNING );
-	}
 }
-
-
 
 PlayerModel* Player::getPlayerModel() const
-{
-	return _model;
-}
-
-
+{ return _model; }
 
 void Player::setScore( int score )
-{
-	_score = score;
-}
-
-
+{ _score = score; }
 
 int Player::getScore() const
-{
-	return _score;
-}
-
-
+{ return _score; }
 
 void Player::addToScore( int value )
-{
-	_score += value;
-}
-
-
+{ _score += value; }
 
 void Player::addShots( std::vector<Shot*> shots )
 {
 	TestScenePlayer *currentScene = dynamic_cast<TestScenePlayer*>( GameManager::getInstance()->peekScene() );
 
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end(); it++)
-	{
 		currentScene->addPlayerShot( (*it) );
-	}
 
 	if (shots.size() > 0)
-	{
 		GameManager::getInstance()->playSoundEffect(GameManager::SFX_BLASTER);
-	}
 }
-
-
 
 bool Player::getInvincible()
-{
-	return _invincible;
-}
-
-
+{ return _invincible; }
 
 void Player::setInvincible( bool status )
 {
@@ -249,8 +172,6 @@ void Player::setInvincible( bool status )
 	}
 }
 
-
-
 void Player::updateInvincibility( int dt )
 {
 	static int direction = 1;
@@ -258,9 +179,7 @@ void Player::updateInvincibility( int dt )
 	if (_invincible)
 	{
 		if (_invincibilityTimer >= _invincibilityTimerBase)
-		{
 			setInvincible( false );
-		}
 		else
 		{
 			_invincibilityTimer += dt;

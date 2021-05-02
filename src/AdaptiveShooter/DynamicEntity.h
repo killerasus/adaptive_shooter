@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef DynamicEntity_h__
-#define DynamicEntity_h__
+#pragma once
 
 #include "Entity.h"
 
@@ -93,5 +91,3 @@ protected:
 private:
 	clan::Vec2f _speed;
 };
-
-#endif // DynamicEntity_h__

@@ -9,8 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-#ifndef TestEnemy_h__
-#define TestEnemy_h__
+#pragma once
 
 #include "Enemy.h"
 #include "Shooter.h"
@@ -44,5 +43,3 @@ private:
 
 	void correctHorizontalMovement();
 };
-
-#endif // TestEnemy_h__

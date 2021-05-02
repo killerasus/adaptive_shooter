@@ -18,11 +18,6 @@
 // Std Lib includes
 #include <string>
 
-// Logging tool
-//#define LOGOG_USE_PREFIX 1
-//#include "logog.hpp" 
-
-
 // Project includes
 #include "luafunctions.h"
 #include "GameManager.h"
@@ -54,15 +49,10 @@ public:
 
 		clan::Console::write_line("");
 #endif
-
 		int ret = 0;
-
 
 		try
 		{
-			// Starting logog service
-			//LOGOG_INITIALIZE();
-	
 			GameManager* manager = GameManager::getInstance();
 
 #ifdef _DEBUG
@@ -114,22 +104,10 @@ public:
 
 			return -1;
 		}
-		/*catch(...)
-		{
-			CL_ConsoleWindow console("Console", 80, 160);
-			CL_Console::write_line("Exception caught: " + exception.get_message_and_stack_trace());
-			console.display_close_message()
-			return -1;
-		}*/
-
 
 #ifdef _DEBUG
 		console.display_close_message();
 #endif
-
-		// Ending logog service
-		//LOGOG_SHUTDOWN();
-
 		return ret;
 	}
 };

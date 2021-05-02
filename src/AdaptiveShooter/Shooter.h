@@ -9,9 +9,7 @@
 	
 	purpose:	
 *********************************************************************/
-
-#ifndef Shooter_h__
-#define Shooter_h__
+#pragma once
 
 #include "Weapon.h"
 
@@ -67,5 +65,3 @@ protected:
 private:
 	Weapon* _currentWeapon;
 };
-
-#endif // Shooter_h__
