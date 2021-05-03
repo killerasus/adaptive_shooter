@@ -27,10 +27,12 @@ Except from ClanLib 3.0, the only external dependency Lua 5.1.4 is included in [
 
 ## ClanLib 3.0
 
-1. Clone my fork of [ClanLib 3.0 with VS14 patch](http://github.com/killerasus/ClanLib).
-2. On ClanLib directory `git checkout patch-1`.
-3. Generate VS project files with the `configure.exe` tools.
-4. Compile the solution and copy the ouput directory to `dependencies/clanlib`.
+1. Clone my fork of [ClanLib 3.0](http://github.com/killerasus/ClanLib).
+2. On ClanLib directory
+    1. If using Visual Studio 2017 - `git checkout patch-1`.
+    2. If using Visual Studio 2019 - `git checkout vs2019-patch`.
+4. Generate VS project files with the `configure.exe` tools.
+5. Compile the solution and copy the ouput directory to `dependencies/clanlib`.
 
 ## AdaptiveShooter
 Should be easy to compile using the VS solution files.
