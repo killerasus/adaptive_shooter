@@ -117,7 +117,6 @@ void TestScenePlayer::update()
 {
 	GameManager* manager = GameManager::getInstance();
 	Player* playerOne = manager->getPlayer(0);
-	int dt = manager->getDeltaTime();
 	PlayerModel* model = playerOne->getPlayerModel();
 
 	if (playerOne->getLives() <= 0)
@@ -131,9 +130,6 @@ void TestScenePlayer::update()
 		std::ostringstream text;
 		text << "Player defeated\n";
 		text << time.to_long_time_string().c_str();
-
-		Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
-		PlayerModel* model = playerOne->getPlayerModel();
 
 		text << "\nPlayer defeated\n\n ";
 		text << "Player: ";
@@ -174,9 +170,6 @@ void TestScenePlayer::update()
 			std::ostringstream text;
 			text << time.to_long_time_string().c_str();
 
-			Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
-			PlayerModel* model = playerOne->getPlayerModel();
-
 			text << "\nPlayer succeeded\n\n ";
 			text << "Player: ";
 			text << playerOne->getPlayerNumber() + 1;
@@ -202,9 +195,7 @@ void TestScenePlayer::update()
 	else
 	{
 		if (_enemies.size() == 0)
-		{
 			waveFinish();
-		}
 	}
 
 	// Player updates occur separately because players can drop in or out
@@ -215,57 +206,37 @@ void TestScenePlayer::update()
 
 	clan::InputDevice keyboard = manager->getWindow()->get_ic().get_keyboard();
 
-	const float variation = 0.001f;
+	float variation = 0.001f * manager->getDeltaTime();
 
 	if (keyboard.get_keycode(clan::keycode_y))
-	{
-		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) + dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) + variation);
 
 	if (keyboard.get_keycode(clan::keycode_u))
-	{
-		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) + dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) + variation);
 
 	if (keyboard.get_keycode(clan::keycode_i))
-	{
-		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) + dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) + variation);
 
 	if (keyboard.get_keycode(clan::keycode_o))
-	{
-		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) + dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) +variation);
 
 	if (keyboard.get_keycode(clan::keycode_h))
-	{
-		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) - dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::ACCURACY, model->getTraitValue(PlayerModelImpl::ACCURACY) - variation);
 
 	if (keyboard.get_keycode(clan::keycode_j))
-	{
-		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) - dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::LIVES_VARIATION, model->getTraitValue(PlayerModelImpl::LIVES_VARIATION) - variation);
 
 	if (keyboard.get_keycode(clan::keycode_k))
-	{
-		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) - dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_WAVE) - variation);
 
 	if (keyboard.get_keycode(clan::keycode_l))
-	{
-		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) - dt*variation);
-	}
+		model->setTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL, model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL) - variation);
 
 	if (keyboard.get_keycode(clan::keycode_p))
-	{
 		model->resetTraits();
-	}
 
 	if (keyboard.get_keycode(clan::keycode_e))
-	{
 		createDebugEnemy();
-	}
 
 	if (keyboard.get_keycode(clan::keycode_space))
 	{
@@ -274,10 +245,6 @@ void TestScenePlayer::update()
 		// Updates player model observed
 		AIManager* aimanager = GameManager::getInstance()->getAIManager();
 		aimanager->update();
-		
-		/*LOGOG_INFO( "Player: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
-			playerOne->getPlayerNumber() + 1, playerOne->getPlayerModel()->getTraitValue(PlayerModelImpl::ACCURACY), model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),
-			model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL),	modelName.c_str(), playerOne->getPlayerModel()->getName().c_str() );*/
 	}
 
 #endif
@@ -357,10 +324,10 @@ void TestScenePlayer::computeShotsCollision()
 		// Checks if inside window boundaries
 		if (!(*shotIt)->checkWindowBoundary())
 		{
-			Shot* remove = *shotIt;
+			Shot* shotRemove = *shotIt;
 			shotIt++;
-			removePlayerShot( remove );
-			delete remove;
+			removePlayerShot(shotRemove);
+			delete shotRemove;
 			continue;
 		}
 
@@ -400,10 +367,7 @@ void TestScenePlayer::computeShotsCollision()
 			delete shotRemove;
 		} 
 		else
-		{
 			shotIt++;
-		}
-
 	}
 
 	// As currently there is just one player...
@@ -427,10 +391,10 @@ void TestScenePlayer::computeShotsCollision()
 		// Checks if inside window boundaries
 		if (!(*shotIt)->checkWindowBoundary())
 		{
-			Shot* remove = *shotIt;
+			Shot* shotRemove = *shotIt;
 			shotIt++;
-			removeEnemyShot( remove );
-			delete remove;
+			removeEnemyShot(shotRemove);
+			delete shotRemove;
 			continue;
 		}
 
@@ -463,8 +427,6 @@ void TestScenePlayer::computeShotsCollision()
 	player.set_translation(0.0f, 0.0f);
 }
 
-
-
 void TestScenePlayer::computePlayerEnemyCollision()
 {
 	Player* playerOne = GameManager::getInstance()->getPlayer( 0 );
@@ -496,10 +458,8 @@ void TestScenePlayer::computePlayerEnemyCollision()
 		enemyOutline.set_translation(pos.x, pos.y);
 
 		if (enemyOutline.collide( playerOutline ))
-		{
 			if (!playerOne->getInvincible())
 				computePlayerEnemyCollisionDamage( playerOne, (*enemyIt) );
-		}
 		
 		enemyOutline.set_translation( 0.0f, 0.0f );
 		enemyIt++;
@@ -509,8 +469,6 @@ void TestScenePlayer::computePlayerEnemyCollision()
 	playerOutline.set_scale( 1.0f, 1.0f );
 	playerOutline.set_translation( 0.0f, 0.0f );
 }
-
-
 
 void TestScenePlayer::waveBegin()
 {
@@ -523,8 +481,6 @@ void TestScenePlayer::waveBegin()
 	
 	_waveOn = true;
 }
-
-
 
 void TestScenePlayer::waveFinish()
 {
@@ -583,16 +539,9 @@ void TestScenePlayer::waveFinish()
 
 	GameManager::getInstance()->getLogger()->log("Update", text.str());
 
-	/*LOGOG_INFO( "\nWave %d Finish: %s\n\nPlayer: %d\nStats:\n Accuracy %f\tLives var %f\tEnemies total %f\nModel name before update: %s\nModel name after update: %s\n",
-		_waveNumber, time.to_long_time_string().c_str(), playerOne->getPlayerNumber() + 1, model->getTraitValue(PlayerModelImpl::ACCURACY),
-		model->getTraitValue(PlayerModelImpl::LIVES_VARIATION),	model->getTraitValue(PlayerModelImpl::ENEMIES_WASTED_TOTAL), model->getName().c_str(),
-		playerOne->getPlayerModel()->getName().c_str() );*/
-
 	_waveNumber++;
 	_waveOn = false;
 }
-
-
 
 void TestScenePlayer::validateEnemies()
 {
@@ -634,14 +583,10 @@ void TestScenePlayer::validateEnemies()
 				delete enemy;
 			} 
 			else
-			{
 				enemyIt++;
-			}
 		}
 	}
 }
-
-
 
 void TestScenePlayer::addWaveEnemy( Enemy* enemy )
 {
@@ -658,8 +603,6 @@ void TestScenePlayer::addWaveEnemy( Enemy* enemy )
 	_enemiesWave++;
 }
 
-
-
 void TestScenePlayer::computeShotHitEnemy( Shot* shot, Enemy* enemy )
 {
 	enemy->setHealth( enemy->getHealth() - shot->getDamage() );
@@ -667,15 +610,11 @@ void TestScenePlayer::computeShotHitEnemy( Shot* shot, Enemy* enemy )
 	_shotsTotalOnTarget++;
 }
 
-
-
 void TestScenePlayer::computeShotHitPlayer( Shot* shot, Player* player )
 {
 	player->subtractLives( 1 );
 	player->setInvincible( true );
 }
-
-
 
 void TestScenePlayer::computePlayerEnemyCollisionDamage( Player* player, Enemy* enemy )
 {
@@ -684,8 +623,6 @@ void TestScenePlayer::computePlayerEnemyCollisionDamage( Player* player, Enemy* 
 	player->subtractLives( 1 );
 	player->setInvincible( true );
 }
-
-
 
 #ifdef _DEBUG
 void TestScenePlayer::createDebugEnemy()
@@ -701,15 +638,13 @@ void TestScenePlayer::createDebugEnemy()
 }
 #endif // _DEBUG
 
-
-
 void TestScenePlayer::createWave( int i )
 {
 	Wave wave = _waves[i];
 
-	for (unsigned int i = 0; i < wave.enemies.size(); i++)
+	for (unsigned int j = 0; j < wave.enemies.size(); j++)
 	{
-		EnemyDescription desc = wave.enemies[i];
+		EnemyDescription desc = wave.enemies[j];
 		TestEnemy* enemy = new TestEnemy( desc.startPositionX, desc.startPositionY, desc.speedX, desc.speedY, desc.resource );
 		enemy->setBehavior( desc.behavior );
 		enemy->setAmplitudeLimit( 200.f );
@@ -719,8 +654,6 @@ void TestScenePlayer::createWave( int i )
 	// Updates enemies to match current observed player model
 	GameManager::getInstance()->getAIManager()->updateAgents();
 }
-
-
 
 void TestScenePlayer::loadScene( std::string sceneFile )
 {

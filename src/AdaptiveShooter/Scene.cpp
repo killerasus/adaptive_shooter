@@ -34,7 +34,7 @@ void Scene::removeEntity( Entity* entity )
 Entity* Scene::getEntity( unsigned int i )
 {
 	Entity* ret = NULL;
-	int j = 0;
+	unsigned int j = 0;
 
 	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++, j++ )
 	{
@@ -51,9 +51,7 @@ Entity* Scene::getEntity( unsigned int i )
 void Scene::draw()
 {
 	for ( std::list<Entity*>::iterator it = _entities.begin(); it != _entities.end(); it++ )
-	{
 		(*it)->draw();
-	}
 }
 
 void Scene::update()
