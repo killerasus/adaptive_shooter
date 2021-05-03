@@ -8,8 +8,13 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" )
 
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 
-if( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" )
+if(MSVC)
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4" )
+    set( CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" )
+    #add_compile_options( $<$<CONFIG:Release>:/MT> # Runtime library: Multi-threaded
+    #                     $<$<CONFIG:RelWithDebInfo>:/MT> # Runtime library: Multi-threaded                           
+    #                     $<$<CONFIG:Debug>:/MTd> # Runtime library: Multi-threaded Debug
+    #                   )
 elseif( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" )
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall" )
 endif()

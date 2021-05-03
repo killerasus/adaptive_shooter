@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.10 )
+cmake_minimum_required( VERSION 3.15 )
 
 include(FindLua)
 find_package(Lua REQUIRED)
@@ -8,6 +8,7 @@ set( ClanLib_MINOR_VERSION 0 )
 
 # You MUST define where to find ClanLib
 if(WIN32)
+    unset( _DLL )
     set( ClanLib_DIR "${CMAKE_SOURCE_DIR}/dependencies/ClanLib" CACHE STRING "ClanLib directory" )
 else()
     set( ClanLib_DIR "ClanLib" CACHE STRING "ClanLib directory" )
@@ -86,31 +87,29 @@ set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD_REQUIRED ON )
 
 if(WIN32)
     set( ClanLib_LIBRARIES 
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanApp-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanCompute-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanCore-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanCSSLayout-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanD3D-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanDatabase-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanDisplay-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanGameIDE-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanGL-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanGUI-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanNetwork-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanPhysics2D-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanPhysics3D-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanScene3D-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanSound-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanSqlite-static-mt.lib"
-"${CLANLIB_ROOT_DIR}/Lib/Win32/clanSWRender-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanApp-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanCompute-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanCore-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanCSSLayout-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanD3D-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanDatabase-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanDisplay-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanGameIDE-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanGL-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanGUI-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanNetwork-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanPhysics2D-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanPhysics3D-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanScene3D-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanSound-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanSqlite-static-mt.lib"
+            "${CLANLIB_ROOT_DIR}/Lib/Win32/clanSWRender-static-mt.lib"
     )
+
+    set_property(TARGET AdaptiveShooter PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 
-message("Aqui")
-message( "${ClanLib_LIBRARIES}" )
-message("Agora aqui")
-
-target_include_directories(AdaptiveShooter PRIVATE ${LUA_INCLUDE_DIR} ${ClanLib_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/src/" )
+target_include_directories( AdaptiveShooter PRIVATE ${LUA_INCLUDE_DIR} ${ClanLib_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/src/" )
 target_link_libraries( AdaptiveShooter PRIVATE ${LUA_LIBRARIES} ${ClanLib_LIBRARIES} AIManager )
 
 install( TARGETS AdaptiveShooter RUNTIME DESTINATION ${CMAKE_BINARY_DIR}/bin )
