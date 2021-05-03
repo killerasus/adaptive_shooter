@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_GL1|Win32">
+      <Configuration>Debug_GL1</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_GL1|Win32">
+      <Configuration>Release_GL1</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1DCC8E86-41F4-46CA-815F-7C704A59EA85}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AdaptiveShooter</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_GL1|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_GL1|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_GL1|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_GL1|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\build\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>..\..\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_GL1|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\build\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>..\..\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\build\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>..\..\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_GL1|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\build\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>..\..\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\dependencies\clanlib\include;..\..\src;..\..\dependencies\lua\include;$(DXSDK_DIR)\Include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\dependencies\clanlib\lib\$(Platform);..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependencies\lua\lib\$(Platform);$(DXSDK_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua.lib;AIManager.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_GL1|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_GL1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\AIManager;..\..\dependences\clanlib2.3.6\include;..\..\dependences\external\include;..\..\src;..\..\dependences\lua\include;$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\dependences\logog\lib\$(Platform);..\..\dependences\clanlib2.3.6\lib\$(Platform);..\..\dependences\external\lib\$(Platform);..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependences\lua\lib\$(Platform);$(DXSDK_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua51.lib;AIManager.lib;logogd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\dependencies\clanlib\Include;..\..\src;..\..\dependencies\lua\include;$(DXSDK_DIR)\Include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\dependencies\clanlib\Lib\$(Platform);..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependencies\lua\lib\$(Platform);$(DXSDK_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua.lib;AIManager.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_GL1|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_GL1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\dependences\clanlib2.3.6\include;..\..\dependences\external\include;..\..\src;..\..\dependences\lua\include;$(DXSDK_DIR)\Include;..\AIManager;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\dependences\logog\lib\$(Platform);..\..\dependences\clanlib2.3.6\lib\$(Platform);..\..\dependences\external\lib\$(Platform);..\..\build\$(Platform)\$(Configuration)\AIManager\lib;..\..\dependences\lua\lib\$(Platform);$(DXSDK_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua51.lib;AIManager.lib;logog.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\AdaptiveShooter\DynamicEntity.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Enemy.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Entity.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Explosion.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\FadingScene.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\GameManager.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\GamepadController.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\KeyboardController.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\luafunctions.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\main.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Menu.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\MenuDifficulty.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\MenuItem.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Player.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\PlayerModelImpl.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Scene.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Shooter.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Shot.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\StaticEntity.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestEnemy.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestScene.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\TestScenePlayer.cpp" />
+    <ClCompile Include="..\..\src\AdaptiveShooter\Weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\AdaptiveShooter\ControllerInterface.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\DynamicEntity.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Enemy.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Entity.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Explosion.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\FadingScene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\GameManager.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\GamepadController.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\KeyboardController.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\luafunctions.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Menu.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\MenuDifficulty.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\MenuItem.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Player.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\PlayerModelImpl.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Scene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Shooter.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Shot.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\StaticEntity.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestEnemy.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestScene.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\TestScenePlayer.h" />
+    <ClInclude Include="..\..\src\AdaptiveShooter\Weapon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\data\resources.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\src\Scripts\config.lua" />
+    <None Include="..\..\src\Scripts\demoscene.lua" />
+    <None Include="..\..\src\Scripts\test.lua" />
+    <None Include="Adaptive Shooter.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
