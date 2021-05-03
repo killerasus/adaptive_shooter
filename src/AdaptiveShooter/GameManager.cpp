@@ -30,7 +30,8 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	_canvas = new clan::Canvas( *_window );
 
 	_aiManager = new AIManager(L);
-	_loggerFile = new clan::FileLogger("log.txt");
+	std::string filename = "log";
+	_loggerFile = new clan::FileLogger(filename);
 	_loggerFile->enable();
 	// Player can only be created when there is already a GameManager instantiated
 
