@@ -26,10 +26,10 @@ jobs:
       uses: rlalik/setup-cpp-compiler@v1.1
     
     - name: Configure
-      run: sudo apt-get install -y make automake libtool libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev libxrender-dev libasound2-dev doxygen liblua5.1-0-dev
+      run: sudo apt-get install -y libfontconfig1-dev libgl1-mesa-dev libasound2-dev doxygen liblua5.1-0-dev
       
     - name: Configure ClanLib
-      run: git clone https://github.com/sphair/ClanLib.git && cd ClanLib && git checkout 3.0-stable && ./autogen.sh && ./configure && sudo make install --silent && cd .. && rm -rf ClanLib
+      run: git clone https://github.com/sphair/ClanLib.git && cd ClanLib && git checkout 3.0-stable && ./autogen.sh && ./configure && sudo make install --silent && cd ..
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
