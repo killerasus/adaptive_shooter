@@ -62,6 +62,10 @@ add_executable( AdaptiveShooter
     ${SOURCES}
 )
 
+include_directories(
+    ../
+)
+
 set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD 11 )
 set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD_REQUIRED ON )
 
