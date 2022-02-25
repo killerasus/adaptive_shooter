@@ -11,7 +11,7 @@ See [BUILDING.md](BUILDING.md) for details.
 
 | Service | System | Compiler | Status |
 | ------- | ------ | -------- | -----: |
-|[Travis-CI](https://travis-ci.org/killerasus/adaptive_shooter)| Ubuntu 14.04.5 LTS | gcc 4.8.4 | [![Build Status](https://travis-ci.org/killerasus/adaptive_shooter.svg?branch=master)](https://travis-ci.org/killerasus/adaptive_shooter) |
+|[Travis-CI](https://app.travis-ci.com/github/killerasus/adaptive_shooter)| Ubuntu 16.04.7 LTS | gcc 5.4.0 | [![Build Status](https://app.travis-ci.com/killerasus/adaptive_shooter.svg?branch=master)](https://app.travis-ci.com/github/killerasus/adaptive_shooter) |
 
 Running the game
 ---------------------
