@@ -16,12 +16,10 @@ elseif( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" )
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall" )
 endif()
 
+find_package( Lua51 REQUIRED )
+
 if( LUA51_FOUND )
     include_directories( ${LUA_INCLUDE_DIR} )
-endif()
-
-if( ClanLib_FOUND )
-    include_directories( ${ClanLib_INCLUDE_DIRS} )
 endif()
 
 add_subdirectory( src/AIManager )
