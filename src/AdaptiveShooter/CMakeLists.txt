@@ -1,6 +1,21 @@
-cmake_minimum_required( VERSION 2.8 )
+cmake_minimum_required( VERSION 3.10 )
 
-include_directories( "${CMAKE_BINARY_DIR}/src/" )
+set( ClanLib_MAJOR_VERSION 3 )
+set( ClanLib_MINOR_VERSION 0 )
+
+# You MUST define where to find ClanLib
+set( ClanLib_DIR "ClanLib" CACHE STRING "ClanLib directory" )
+
+find_package( ClanLib REQUIRED )
+
+if( ClanLib_FOUND )
+    include_directories( ${ClanLib_INCLUDE_DIRS} )
+endif()
+
+include_directories(
+    "${CMAKE_BINARY_DIR}/src/"
+    ../
+)
 
 set( HEADERS
     ControllerInterface.h
@@ -60,10 +75,6 @@ source_group( "sources" FILES ${SOURCES} )
 add_executable( AdaptiveShooter
     ${HEADERS}
     ${SOURCES}
-)
-
-include_directories(
-    ../
 )
 
 set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD 11 )
