@@ -39,6 +39,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      
+    - name: Install dependencies
+      uses: leafo/gh-actions-lua@master
+      with:
+        luaVersion: 5.3
+        luaCompileFlags: LUA_CFLAGS="-DLUA_INT_TYPE=LUA_INT_INT"
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
