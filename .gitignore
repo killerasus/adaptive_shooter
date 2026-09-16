@@ -1,8 +1,14 @@
 
 # Created by https://www.gitignore.io/api/c++,visualstudio
 
-# Dependencies directory
-dependencies/
+# Dependencies directory (submodules tracked)
+dependencies/*
+!dependencies/clanlib
+!dependencies/lua
+!dependencies/gtest-1.6.0
+dependencies/**/build/
+dependencies/**/bin/
+dependencies/**/intermediate/
 
 ### C++ ###
 # Prerequisites
