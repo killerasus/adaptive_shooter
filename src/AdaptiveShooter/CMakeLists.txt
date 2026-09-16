@@ -1,21 +1,9 @@
-cmake_minimum_required( VERSION 3.10 )
+cmake_minimum_required( VERSION 3.12 )
 
 set( ClanLib_MAJOR_VERSION 3 )
 set( ClanLib_MINOR_VERSION 0 )
 
-# You MUST define where to find ClanLib
-set( ClanLib_DIR "ClanLib" CACHE STRING "ClanLib directory" )
-
-find_package( ClanLib REQUIRED )
-
-if( ClanLib_FOUND )
-    include_directories( ${ClanLib_INCLUDE_DIRS} )
-endif()
-
-include_directories(
-    "${CMAKE_BINARY_DIR}/src/"
-    ../
-)
+find_package( ClanLib REQUIRED COMPONENTS App Display GL Sound )
 
 set( HEADERS
     ControllerInterface.h
@@ -77,30 +65,31 @@ add_executable( AdaptiveShooter
     ${SOURCES}
 )
 
-set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD 11 )
-set_property( TARGET AdaptiveShooter PROPERTY CXX_STANDARD_REQUIRED ON )
+target_include_directories( AdaptiveShooter PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${ClanLib_INCLUDE_DIRS}
+)
 
-# Missing other libraries
-
-target_link_libraries( AdaptiveShooter AIManager )
+target_link_libraries( AdaptiveShooter PRIVATE
+    AIManager
+)
 
 if( LUA51_FOUND )
-    target_link_libraries( AdaptiveShooter
+    target_link_libraries( AdaptiveShooter PRIVATE
         ${LUA_LIBRARIES}
     )
 endif()
 
 if( ClanLib_FOUND )
-    target_link_libraries( AdaptiveShooter
+    target_link_libraries( AdaptiveShooter PRIVATE
         ${ClanLib_LIBRARIES}
     )
 endif()
 
 install( TARGETS AdaptiveShooter RUNTIME DESTINATION ${CMAKE_BINARY_DIR}/bin )
 
-# Copies Script and Data directories to bin directory
-
+# Copies Script and Data directories to output directory next to binary (handles both single- and multi-config generators)
 add_custom_command( TARGET AdaptiveShooter POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/src/Scripts ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Scripts
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/data ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/data )
-
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/src/Scripts $<TARGET_FILE_DIR:AdaptiveShooter>/Scripts
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/data $<TARGET_FILE_DIR:AdaptiveShooter>/data
+)
