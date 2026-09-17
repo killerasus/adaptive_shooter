@@ -1,7 +1,7 @@
 [submodule "dependencies/clanlib"]
 	path = dependencies/clanlib
 	url = https://github.com/killerasus/ClanLib.git
-	branch = vs2019-patch
+	branch = freetype-patch
 
 [submodule "dependencies/lua"]
 	path = dependencies/lua
