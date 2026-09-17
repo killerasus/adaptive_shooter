@@ -139,6 +139,7 @@ if( NOT ClanLib_FOUND )
                         --disable-clanSqlite  --disable-clanNetwork
                         --disable-clanMikMod  --disable-clanVorbis
                         --disable-clanRegExp  --disable-shared --enable-static
+                        --enable-clanApp --enable-clanDisplay --enable-clanGL --enable-clanSound
                     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
                     RESULT_VARIABLE _res )
                 if( NOT _res EQUAL 0 )
@@ -176,7 +177,7 @@ if( NOT ClanLib_FOUND )
 
         set( CLANLIB_ROOT_DIR "${_CLANLIB_PREFIX}" CACHE PATH "ClanLib install prefix" FORCE )
 
-    # ---- Windows: run configure.exe then MSBuild ----
+    # ---- Windows: configure.exe then MSBuild ----
     elseif( WIN32 AND (
             EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.exe" OR
             EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/ClanLib.sln" OR
@@ -205,7 +206,7 @@ if( NOT ClanLib_FOUND )
                 execute_process(
                     COMMAND ${_VSWHERE} -latest -requires Microsoft.Component.MSBuild
                         -find "MSBuild/**/Bin/MSBuild.exe"
-                    OUTPUT_VARIABLE _VSWHERE_OUT OUTPUT_STRIP_TRAILING_WHITESPACE )
+                    OUTPUT_VARIABLE _VSWHERE_OUT )
                 if( EXISTS "${_VSWHERE_OUT}" )
                     set( MSBUILD_EXE "${_VSWHERE_OUT}" )
                 endif()
@@ -220,18 +221,27 @@ if( NOT ClanLib_FOUND )
                 COMMAND "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.exe"
                 WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
                 RESULT_VARIABLE _res )
+            if( NOT _res EQUAL 0 )
+                message( WARNING "[ClanLib] configure.exe failed (${_res})." )
+            endif()
         endif()
 
-        # Build with MSBuild
+        # Build with MSBuild - try Win32 platform first (fixes "Release|x64 is invalid" error),
+        # fallback to x64 if needed. configure.exe typically generates Win32 configs.
         if( EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/ClanLib.sln" AND MSBUILD_EXE )
-            message( STATUS "[ClanLib] MSBuild ${_CONFIG}|${_PLATFORM}..." )
+            message( STATUS "[ClanLib] MSBuild Release|Win32..." )
             execute_process(
                 COMMAND ${MSBUILD_EXE} ClanLib.sln
-                    /p:Configuration=${_CONFIG} /p:Platform=${_PLATFORM} /m
+                    /p:Configuration=${_CONFIG} /p:Platform=Win32 /m
                 WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                RESULT_VARIABLE _res )
+                RESULT VARIABLE _res )
             if( NOT _res EQUAL 0 )
-                message( WARNING "[ClanLib] MSBuild exited with ${_res}." )
+                message( STATUS "[ClanLib] Win32 build failed, trying x64..." )
+                execute_process(
+                    COMMAND ${MSBUILD_EXE} ClanLib.sln
+                        /p:Configuration=${_CONFIG} /p:Platform=x64 /m
+                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
+                    RESULT VARIABLE _res )
             endif()
         endif()
 
@@ -239,7 +249,6 @@ if( NOT ClanLib_FOUND )
              CACHE PATH "ClanLib install prefix" FORCE )
 
     endif()
-
 endif()
 
 # Final import — required
