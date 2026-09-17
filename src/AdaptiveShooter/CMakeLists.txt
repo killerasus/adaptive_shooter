@@ -68,6 +68,7 @@ add_executable( AdaptiveShooter
 target_include_directories( AdaptiveShooter PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${ClanLib_INCLUDE_DIRS}
+    ${CMAKE_SOURCE_DIR}/src
 )
 
 target_link_libraries( AdaptiveShooter PRIVATE
@@ -82,7 +83,11 @@ endif()
 
 if( ClanLib_FOUND )
     target_link_libraries( AdaptiveShooter PRIVATE
-        ${ClanLib_LIBRARIES}
+        clanApp
+        clanCore
+        clanDisplay
+        clanGL
+	clanSound
     )
 endif()
 

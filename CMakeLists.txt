@@ -96,7 +96,7 @@ if( NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.ac" AND
         if( GIT_FOUND )
             message( STATUS "Cloning ClanLib 3.0 into dependencies/clanlib..." )
             execute_process(
-                COMMAND ${GIT_EXECUTABLE} clone --depth 1 -b vs2019-patch
+                COMMAND ${GIT_EXECUTABLE} clone --depth 1 -b freetype-patch
                     https://github.com/killerasus/ClanLib.git
                     "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
                 WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
