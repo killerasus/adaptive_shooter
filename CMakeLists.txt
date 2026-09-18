@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.12 )
+cmake_minimum_required( VERSION 3.15 )
 
 project( AdaptiveShooter LANGUAGES C CXX )
 
@@ -75,184 +75,97 @@ endif()
 include_directories( ${LUA_INCLUDE_DIR} )
 
 # ==============================================================================
-# ClanLib 3.0 Dependency Management
+# ClanLib 3.0 Dependency Management (branch: cmake, CMake-native, no configure.exe)
 # ==============================================================================
+# ClanLib is built in-tree from the bundled `cmake`-branch submodule via
+# add_subdirectory(). No autotools/configure, no configure.exe, no manual
+# MSBuild invocation on any platform.
 
-# Auto-fetch ClanLib submodule if missing
-if( NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.ac" AND
-    NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/ClanLib.sln" AND
-    NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/Sources" )
+set( CLANLIB_SUBMODULE_DIR "${CMAKE_SOURCE_DIR}/dependencies/clanlib" )
+
+# Auto-initialize submodules if the ClanLib CMake project is not yet present
+if( NOT EXISTS "${CLANLIB_SUBMODULE_DIR}/CMakeLists.txt" )
     if( GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git" )
-        message( STATUS "Fetching ClanLib 3.0 via git submodule update..." )
+        message( STATUS "Running 'git submodule update --init --recursive'..." )
         execute_process(
             COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
             RESULT_VARIABLE _git_res
         )
     endif()
-    # Fallback: shallow clone if submodule wasn't registered in git index
-    if( NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.ac" AND
-        NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/Sources" )
-        if( GIT_FOUND )
-            message( STATUS "Cloning ClanLib 3.0 into dependencies/clanlib..." )
-            execute_process(
-                COMMAND ${GIT_EXECUTABLE} clone --depth 1 -b freetype-patch
-                    https://github.com/killerasus/ClanLib.git
-                    "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                RESULT_VARIABLE _git_res
-            )
-        endif()
+    # Fallback: shallow clone of the cmake branch if the submodule wasn't registered
+    if( NOT EXISTS "${CLANLIB_SUBMODULE_DIR}/CMakeLists.txt" AND GIT_FOUND )
+        message( STATUS "Cloning ClanLib (branch cmake) into dependencies/clanlib..." )
+        execute_process(
+            COMMAND ${GIT_EXECUTABLE} clone --depth 1 -b cmake
+                https://github.com/killerasus/ClanLib.git
+                "${CLANLIB_SUBMODULE_DIR}"
+            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+            RESULT_VARIABLE _git_res
+        )
     endif()
 endif()
 
-# Check if ClanLib is already available (system install or cached prefix)
+# A system-installed (or custom -DCLANLIB_ROOT_DIR=...) ClanLib is still
+# honored when found; otherwise the bundled submodule is built in-tree.
 find_package( ClanLib QUIET COMPONENTS App Display GL Sound )
 
 if( NOT ClanLib_FOUND )
-
-    # ---- Linux / UNIX: autobuild into local prefix ----
-    if( UNIX AND ( EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.ac" OR
-                   EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/autogen.sh" ) )
-
-        set( _CLANLIB_PREFIX "${CMAKE_BINARY_DIR}/external/clanlib" )
-
-        if( NOT EXISTS "${_CLANLIB_PREFIX}/include/ClanLib/core.h" )
-            message( STATUS "============================================================" )
-            message( STATUS "ClanLib 3.0: compiling from submodule → ${_CLANLIB_PREFIX}" )
-            message( STATUS "============================================================" )
-            file( MAKE_DIRECTORY "${_CLANLIB_PREFIX}" )
-
-            if( NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure" )
-                message( STATUS "[ClanLib] Running ./autogen.sh ..." )
-                execute_process(
-                    COMMAND ./autogen.sh
-                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                    RESULT_VARIABLE _res )
-            endif()
-
-            if( EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure" )
-                message( STATUS "[ClanLib] Running ./configure ..." )
-                execute_process(
-                    COMMAND ./configure
-                        --prefix=${_CLANLIB_PREFIX}
-                        --disable-clanSqlite  --disable-clanNetwork
-                        --disable-clanMikMod  --disable-clanVorbis
-                        --disable-clanRegExp  --disable-shared --enable-static
-                        --enable-clanApp --enable-clanDisplay --enable-clanGL --enable-clanSound
-                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                    RESULT_VARIABLE _res )
-                if( NOT _res EQUAL 0 )
-                    message( FATAL_ERROR "[ClanLib] ./configure failed (${_res}). "
-                        "Ensure prerequisites are installed:\n"
-                        "  sudo apt-get install automake libtool "
-                        "libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev "
-                        "libxrender-dev libasound2-dev" )
-                endif()
-
-                include( ProcessorCount )
-                ProcessorCount( _NPROC )
-                if( NOT _NPROC OR _NPROC EQUAL 0 )
-                    set( _NPROC 2 )
-                endif()
-                message( STATUS "[ClanLib] make -j${_NPROC} ..." )
-                execute_process(
-                    COMMAND make -j${_NPROC}
-                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                    RESULT_VARIABLE _res )
-                if( NOT _res EQUAL 0 )
-                    message( FATAL_ERROR "[ClanLib] make failed (${_res})." )
-                endif()
-
-                message( STATUS "[ClanLib] make install → ${_CLANLIB_PREFIX}" )
-                execute_process(
-                    COMMAND make install
-                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                    RESULT_VARIABLE _res )
-                if( NOT _res EQUAL 0 )
-                    message( FATAL_ERROR "[ClanLib] make install failed (${_res})." )
-                endif()
-            endif()
-        endif()
-
-        set( CLANLIB_ROOT_DIR "${_CLANLIB_PREFIX}" CACHE PATH "ClanLib install prefix" FORCE )
-
-    # ---- Windows: configure.exe then MSBuild ----
-    elseif( WIN32 AND (
-            EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.exe" OR
-            EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/ClanLib.sln" OR
-            EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/Sources" ) )
-
-        message( STATUS "============================================================" )
-        message( STATUS "ClanLib 3.0: setting up for Windows..." )
-        message( STATUS "============================================================" )
-
-        set( _PLATFORM "Win32" )
-        if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
-            set( _PLATFORM "x64" )
-        endif()
-
-        set( _CONFIG "Release" )
-        if( CMAKE_BUILD_TYPE MATCHES "Debug" )
-            set( _CONFIG "Debug" )
-        endif()
-
-        # Locate MSBuild via vswhere
-        find_program( MSBUILD_EXE msbuild )
-        if( NOT MSBUILD_EXE )
-            find_program( _VSWHERE vswhere
-                PATHS "$ENV{ProgramFiles\(x86\)}/Microsoft Visual Studio/Installer" )
-            if( _VSWHERE )
-                execute_process(
-                    COMMAND ${_VSWHERE} -latest -requires Microsoft.Component.MSBuild
-                        -find "MSBuild/**/Bin/MSBuild.exe"
-                    OUTPUT_VARIABLE _VSWHERE_OUT )
-                if( EXISTS "${_VSWHERE_OUT}" )
-                    set( MSBUILD_EXE "${_VSWHERE_OUT}" )
-                endif()
-            endif()
-        endif()
-
-        # Run configure.exe (GUI-less, background) only when ClanLib.sln absent
-        if( EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.exe" AND
-            NOT EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/ClanLib.sln" )
-            message( STATUS "[ClanLib] Generating ClanLib.sln via configure.exe..." )
-            execute_process(
-                COMMAND "${CMAKE_SOURCE_DIR}/dependencies/clanlib/configure.exe"
-                WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                RESULT_VARIABLE _res )
-            if( NOT _res EQUAL 0 )
-                message( WARNING "[ClanLib] configure.exe failed (${_res})." )
-            endif()
-        endif()
-
-        # Build with MSBuild - try Win32 platform first (fixes "Release|x64 is invalid" error),
-        # fallback to x64 if needed. configure.exe typically generates Win32 configs.
-        if( EXISTS "${CMAKE_SOURCE_DIR}/dependencies/clanlib/ClanLib.sln" AND MSBUILD_EXE )
-            message( STATUS "[ClanLib] MSBuild Release|Win32..." )
-            execute_process(
-                COMMAND ${MSBUILD_EXE} ClanLib.sln
-                    /p:Configuration=${_CONFIG} /p:Platform=Win32 /m
-                WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                RESULT VARIABLE _res )
-            if( NOT _res EQUAL 0 )
-                message( STATUS "[ClanLib] Win32 build failed, trying x64..." )
-                execute_process(
-                    COMMAND ${MSBUILD_EXE} ClanLib.sln
-                        /p:Configuration=${_CONFIG} /p:Platform=x64 /m
-                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-                    RESULT VARIABLE _res )
-            endif()
-        endif()
-
-        set( CLANLIB_ROOT_DIR "${CMAKE_SOURCE_DIR}/dependencies/clanlib"
-             CACHE PATH "ClanLib install prefix" FORCE )
-
+    if( NOT EXISTS "${CLANLIB_SUBMODULE_DIR}/CMakeLists.txt" )
+        message( FATAL_ERROR
+            "\nClanLib CMake project not found in dependencies/clanlib.\n"
+            "This project now depends on the 'cmake' branch of ClanLib.\n"
+            "Run:  git submodule set-branch --branch cmake dependencies/clanlib\n"
+            "      git submodule update --init --recursive\n" )
     endif()
+
+    # The game needs App/Display/GL/Sound (upstream defaults to Core only).
+    # NOTE: must use CLANLIB_BUILD_ALL — the submodule's own CMakeLists does
+    # plain set(CLANLIB_BUILD_<module> OFF), which shadows per-module cache
+    # values, while nothing overrides CLANLIB_BUILD_ALL.
+    set( CLANLIB_BUILD_ALL ON CACHE BOOL "" FORCE )
+    add_subdirectory( ${CLANLIB_SUBMODULE_DIR} )
+
+    # The game includes umbrella headers as "ClanLib/<module>.h" while the
+    # submodule keeps them as Sources/API/<module>.h. Generate a small shim
+    # include tree so no game source needs to change.
+    # NOTE: angle brackets are required — a quoted include would resolve to
+    # the shim file itself (same basename) and #pragma-once into emptiness.
+    set( CLANLIB_SHIM_DIR "${CMAKE_BINARY_DIR}/clanlib-shim" )
+    file( MAKE_DIRECTORY "${CLANLIB_SHIM_DIR}/ClanLib" )
+    foreach( _hdr core display gl sound application )
+        file( WRITE "${CLANLIB_SHIM_DIR}/ClanLib/${_hdr}.h"
+            "#pragma once\n#include <${_hdr}.h>\n" )
+    endforeach()
+
+    set( ClanLib_FOUND TRUE )
+    set( ClanLib_INCLUDE_DIRS
+        "${CLANLIB_SHIM_DIR}"
+        "${CLANLIB_SUBMODULE_DIR}/Sources/API"
+    )
+    set( ClanLib_LIBRARIES
+        clan30App clan30Core clan30Display clan30GL clan30Sound
+    )
+
+    # On Windows the ClanLib targets are DLLs; place them next to the game
+    # binary so the loader finds them (per-config subdirs handled by CMake).
+    foreach( _tgt clan30App clan30Core clan30Display clan30GL clan30Sound clan30Compute )
+        if( TARGET ${_tgt} )
+            set_target_properties( ${_tgt} PROPERTIES
+                RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}" )
+        endif()
+    endforeach()
 endif()
 
-# Final import — required
-find_package( ClanLib REQUIRED COMPONENTS App Display GL Sound )
+if( NOT ClanLib_FOUND )
+    message( FATAL_ERROR
+        "\nClanLib 3.0 was not found!\n"
+        "If using git submodules, make sure the 'cmake' branch is checked out:\n"
+        "    git submodule set-branch --branch cmake dependencies/clanlib\n"
+        "    git submodule update --init --recursive\n"
+        "You can also specify a system ClanLib location with:\n"
+        "    cmake -B build -DCLANLIB_ROOT_DIR=<path-to-clanlib>\n" )
+endif()
 
 # ==============================================================================
 # Project Subdirectories

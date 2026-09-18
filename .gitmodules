@@ -1,7 +1,7 @@
 [submodule "dependencies/clanlib"]
 	path = dependencies/clanlib
 	url = https://github.com/killerasus/ClanLib.git
-	branch = freetype-patch
+	branch = cmake
 
 [submodule "dependencies/lua"]
 	path = dependencies/lua

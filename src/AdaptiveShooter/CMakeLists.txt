@@ -1,9 +1,11 @@
-cmake_minimum_required( VERSION 3.12 )
+cmake_minimum_required( VERSION 3.15 )
 
 set( ClanLib_MAJOR_VERSION 3 )
 set( ClanLib_MINOR_VERSION 0 )
 
-find_package( ClanLib REQUIRED COMPONENTS App Display GL Sound )
+# ClanLib is resolved by the top-level CMakeLists (bundled cmake-branch
+# submodule via add_subdirectory, or a system install). No find_package here:
+# the imported targets / variables are already in scope.
 
 set( HEADERS
     ControllerInterface.h
@@ -81,13 +83,50 @@ if( LUA51_FOUND )
     )
 endif()
 
-if( ClanLib_FOUND )
+# Prefer the in-tree cmake-branch targets; fall back to whatever a system
+# FindClanLib module resolved (ClanLib_LIBRARIES).
+if( TARGET clan30Core )
     target_link_libraries( AdaptiveShooter PRIVATE
-        clanApp
-        clanCore
-        clanDisplay
-        clanGL
-	clanSound
+        clan30App
+        clan30Core
+        clan30Display
+        clan30GL
+        clan30Sound
+    )
+    if( WIN32 )
+        # Consumers of the ClanLib DLLs must see dllimport declarations
+        # (otherwise cross-DLL data like Colorf::black is expected statically).
+        target_compile_definitions( AdaptiveShooter PRIVATE CL_API_DLL )
+    endif()
+    if( MSVC )
+        # Neutralize legacy autotools `#pragma comment(lib, "clan*-*.lib")`
+        # auto-link directives in ClanLib headers (e.g. clanCore-static-mtdll.lib,
+        # which the CMake build never produces). Mirrors the NODEFAULTLIB list
+        # in the ClanLib cmake branch; our explicit target_link_libraries above
+        # is what actually links. Must live here (not upstream) because
+        # add_link_options/target_link_options do not cross directory scope.
+        set( _clan_autolink_libs
+            Core App Display GL Sound Database Sqlite Network GUI CSSLayout
+            Scene3D Physics3D Physics2D GameIDE SWRender Compute D3D MySQL GL1 )
+        foreach( _clan ${_clan_autolink_libs} )
+            foreach( _variant
+                "-dll.lib" "-static-mtdll.lib" "-static-mt.lib"
+                "-dll-debug.lib" "-static-mtdll-debug.lib" "-static-mt-debug.lib" )
+                target_link_options( AdaptiveShooter PRIVATE "/NODEFAULTLIB:clan${_clan}${_variant}" )
+            endforeach()
+        endforeach()
+        foreach( _variant
+            "-dll.lib" "-static-mtdll.lib" "-static-mt.lib"
+            "-dll-debug.lib" "-static-mtdll-debug.lib" "-static-mt-debug.lib" )
+            target_link_options( AdaptiveShooter PRIVATE "/NODEFAULTLIB:clanCSSLayout${_variant}" )
+        endforeach()
+        # Entry point is WinMain from clan30App (classic ClanLib pattern:
+        # `clan::Application app(&MyApp::main);` — the game defines no main()).
+        target_link_options( AdaptiveShooter PRIVATE "/SUBSYSTEM:WINDOWS" )
+    endif()
+elseif( ClanLib_FOUND )
+    target_link_libraries( AdaptiveShooter PRIVATE
+        ${ClanLib_LIBRARIES}
     )
 endif()
 
