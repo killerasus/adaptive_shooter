@@ -5,7 +5,7 @@
 	file path:	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertacao\AdaptiveShooter\src\AdaptiveShooter
 	file base:	TestScenePlayer
 	file ext:	cpp
-	author:		Bruno Baère Pederassi Lomba de Araujo
+	author:		Bruno Baï¿½re Pederassi Lomba de Araujo
 	
 	purpose:	
 *********************************************************************/
@@ -37,11 +37,7 @@ TestScenePlayer::TestScenePlayer() : _shotsWave( 0 ), _shotsWaveOnTarget( 0 ), _
 	clan::Canvas& gc = GameManager::getInstance()->getCanvas();
 	_font = new clan::Font( gc, "Tahoma", 16 );
 
-#ifdef _DEBUG
-	loadScene( "../../src/Scripts/demoscene.lua" );
-#else
 	loadScene( "./Scripts/demoscene.lua" );
-#endif
 }
 
 

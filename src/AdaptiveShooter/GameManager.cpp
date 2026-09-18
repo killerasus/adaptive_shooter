@@ -1,11 +1,11 @@
 /********************************************************************
 	created:	2011/11/29
 	created:	29:11:2011   9:15
-	filename: 	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\src\AdaptiveShooter\GameManager.cpp
-	file path:	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\src\AdaptiveShooter
+	filename: 	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertaï¿½ï¿½o\AdaptiveShooter\src\AdaptiveShooter\GameManager.cpp
+	file path:	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertaï¿½ï¿½o\AdaptiveShooter\src\AdaptiveShooter
 	file base:	GameManager
 	file ext:	cpp
-	author:		Bruno Baère Pederassi Lomba de Araujo
+	author:		Bruno Baï¿½re Pederassi Lomba de Araujo
 	
 	purpose:	GameManager implementation
 *********************************************************************/
@@ -403,17 +403,6 @@ void GameManager::loadSoundEffects()
 {
 	_soundEffectSessions.resize( SFX_VECTOR_SIZE );
 
-#ifdef _DEBUG
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/Attention.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/PrepareForAction.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/Warning.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/MENU_Select.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/MENU_Pick.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/laser1.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/laser3.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/slimeball.wav" ) );
-	_soundEffects.push_back( clan::SoundBuffer( "../../data/sounds/Explosion.wav" ) );
-#else
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Attention.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/PrepareForAction.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Warning.wav" ) );
@@ -423,7 +412,6 @@ void GameManager::loadSoundEffects()
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/laser3.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/slimeball.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Explosion.wav" ) );
-#endif
 	
 }
 
@@ -433,11 +421,7 @@ void GameManager::loadMusics()
 {
 	_musicSessions.resize( MUSIC_VECTOR_SIZE );
 
-#ifdef _DEBUG
-	_musics.push_back( clan::SoundBuffer( "../../data/musics/DIGITAL_MEMORIES.ogg", false ) );
-#else
 	_musics.push_back( clan::SoundBuffer( "./data/musics/DIGITAL_MEMORIES.ogg", false ) );
-#endif
 }
 
 
@@ -479,11 +463,7 @@ void GameManager::loadOptions()
 	_enemyOptions->normalMultiplier = 1.0f;
 	_enemyOptions->hardMultiplier = 1.5f;
 
-#ifdef _DEBUG
-	int loadResult = luaL_dofile( L, "../../src/Scripts/config.lua" );
-#else
 	int loadResult = luaL_dofile( L, "./Scripts/config.lua" );
-#endif
 
 	if (!loadResult)
 	{

@@ -1,11 +1,11 @@
 /********************************************************************
 	created:	2011/11/24
 	created:	24:11:2011   2:01
-	filename: 	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\src\AdaptiveShooter\main.cpp
-	file path:	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertação\AdaptiveShooter\src\AdaptiveShooter
+	filename: 	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertaï¿½ï¿½o\AdaptiveShooter\src\AdaptiveShooter\main.cpp
+	file path:	C:\Users\Bruno\Documents\Mestrado\2011.2\Dissertaï¿½ï¿½o\AdaptiveShooter\src\AdaptiveShooter
 	file base:	main
 	file ext:	cpp
-	author:		Bruno Baère Pederassi Lomba de Araujo
+	author:		Bruno Baï¿½re Pederassi Lomba de Araujo
 	
 	purpose:	Main entry for Adaptive Shooter
 *********************************************************************/
@@ -65,11 +65,7 @@ public:
 	
 			GameManager* manager = GameManager::getInstance();
 
-#ifdef _DEBUG
-			manager->loadXMLResource("../../data/resources.xml");
-#else
 			manager->loadXMLResource("./data/resources.xml");
-#endif
 
 			manager->setupPlayer(0);
 	
