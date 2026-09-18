@@ -9,24 +9,34 @@ Building
 ---------------------
 See [BUILDING.md](BUILDING.md) for details.
 
-| Service | System | Compiler | Status |
-| ------- | ------ | -------- | -----: |
-|[Travis-CI](https://app.travis-ci.com/github/killerasus/adaptive_shooter)| Ubuntu 16.04.7 LTS | gcc 5.4.0 | [![Build Status](https://app.travis-ci.com/killerasus/adaptive_shooter.svg?branch=master)](https://app.travis-ci.com/github/killerasus/adaptive_shooter) |
+| Service | Status |
+| ------- | -----: |
+| GitHub Actions (CMake) | [![CMake](https://github.com/killerasus/adaptive_shooter/actions/workflows/cmake.yml/badge.svg?branch=master)](https://github.com/killerasus/adaptive_shooter/actions/workflows/cmake.yml) |
 
 Running the game
 ---------------------
-In Release mode, the game executable file should be put in a directory with copies of data directory and Scripts directory. This is automatic in Linux using `cmake`.
+The game executable must run with copies of the `data/` directory and the `Scripts/` directory
+alongside it. CMake's post-build step copies both automatically, in Debug and Release alike —
+just launch the executable from its own folder:
+
+Linux example:
+```bash
+./build/bin/AdaptiveShooter
+```
 
 Windows example:
-AdaptiveShooter.exe data/ Scripts/
+```cmd
+.\build\bin\Release\AdaptiveShooter.exe
+```
 
 Dependencies
 ---------------------
-In a Windows build, these dependencies should be compiled and included in dependencies directory
+All dependencies are bundled with the repository and built automatically by CMake —
+no manual compilation step:
 
-* [ClanLib 3.0](https://github.com/sphair/ClanLib/tree/3.0-stable)
-* [Lua 5.1.4](https://sourceforge.net/projects/luabinaries/files/5.1.4/)
-* [Google Test Framework 1.6](https://github.com/google/googletest)
+* [ClanLib 3.0](https://github.com/killerasus/ClanLib/tree/cmake) (`cmake` branch, built in-tree)
+* [Lua 5.1.4](https://www.lua.org) (sources vendored under `dependencies/lua/`, built as static `lua51`)
+* [Google Test Framework 1.6](https://github.com/google/googletest) (`dependencies/gtest-1.6.0/`)
 
 License
 ---------------------

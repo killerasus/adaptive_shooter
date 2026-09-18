@@ -3,6 +3,8 @@
 AdaptiveShooter is a 2D space shooter with dynamic AI difficulty adjustment powered by Lua and ClanLib.
 
 External dependencies (**ClanLib 3.0** and **Lua 5.1.4**) are managed via **Git submodules** and built **transparently and automatically** by CMake.
+ClanLib is consumed from the **`cmake` branch** of https://github.com/killerasus/ClanLib and built
+in-tree with `add_subdirectory()` — no autotools/`configure`, no `configure.exe`, on any platform.
 
 ---
 
@@ -22,6 +24,13 @@ If you already cloned without `--recurse-submodules`:
 git submodule update --init --recursive
 ```
 
+### Switching an older checkout to the `cmake` branch
+Older checkouts pin `dependencies/clanlib` to a different branch. Switch once:
+```bash
+git submodule set-branch --branch cmake dependencies/clanlib
+git submodule update --init --recursive --remote
+```
+
 ---
 
 ## 2. Linux Build Instructions
@@ -29,12 +38,12 @@ git submodule update --init --recursive
 Tested on Ubuntu / Debian distributions.
 
 ### Step 1: Install System Prerequisites
-Install the compiler toolchain, CMake, and ClanLib library dependencies:
+Install the compiler toolchain, CMake, and the system libraries ClanLib links against:
 ```bash
 sudo apt-get update
-sudo apt-get install -y make g++ automake libtool cmake \
+sudo apt-get install -y make g++ cmake pkg-config \
     libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev \
-    libxrender-dev libasound2-dev
+    libx11-dev libxrender-dev libasound2-dev
 ```
 
 ### Step 2: Configure & Build
@@ -45,10 +54,14 @@ cmake --build build -j$(nproc)
 ```
 
 > [!NOTE]
-> During the initial `cmake -B build`, CMake detects the `dependencies/clanlib` submodule and compiles it locally into a dedicated sandbox prefix (`build/external/clanlib`). No manual compilation, root permissions, or global `sudo make install` are required!
+> During the initial `cmake -B build`, CMake builds the `dependencies/clanlib` submodule in-tree
+> with `add_subdirectory()` (modules App/Display/GL/Sound + Core). No manual compilation, root
+> permissions, or global `sudo make install` are required!
 
 ### Step 3: Run the Game
-Game assets (`data/` and `src/Scripts/`) are automatically copied next to the executable:
+Game assets (`data/` and `src/Scripts/`) are automatically copied next to the executable.
+Debug and Release share the same exe-relative asset layout — launch the binary from its
+own folder:
 ```bash
 ./build/bin/AdaptiveShooter
 ```
@@ -77,8 +90,10 @@ cmake --build build --config Release
 ```
 
 ### Run the Game
+Launch the executable from its own folder so it finds `data/` and `Scripts/`:
 ```cmd
 .\build\bin\Release\AdaptiveShooter.exe
+.\build\bin\Debug\AdaptiveShooter.exe
 ```
 
 ---
@@ -87,12 +102,14 @@ cmake --build build --config Release
 
 Everything is handled transparently behind the scenes:
 
-### ClanLib 3.0 (`dependencies/clanlib`)
-- Managed via `cmake/ManageClanLib.cmake`.
-- If ClanLib 3.0 is not already installed on the system, CMake detects the submodule and:
-  - **On Linux**: Automatically runs `./autogen.sh`, `./configure`, and compiles ClanLib locally into `build/external/clanlib`.
-  - **On Windows**: Generates the Visual Studio project files and compiles the required ClanLib libraries automatically via MSBuild.
-- The compiled ClanLib libraries are then automatically linked to `AdaptiveShooter`.
+### ClanLib 3.0 (`dependencies/clanlib`, branch `cmake`)
+- Managed directly in the root `CMakeLists.txt` (there is no `cmake/ManageClanLib.cmake`).
+- Unless a system ClanLib is found, CMake builds the submodule in-tree with `add_subdirectory()`,
+  with `CLANLIB_BUILD_ALL=ON` (upstream per-module cache vars are shadowed by its own defaults, so ALL is the reliable switch):
+  - **On Linux**: plain `cmake --build` compiles the modules; needs X11/OpenGL/ALSA dev packages (see step 1).
+  - **On Windows**: the same `cmake --build` compiles the modules with MSBuild; ClanLib DLLs are placed
+    next to `AdaptiveShooter.exe` automatically. **No `configure.exe` is used.**
+- A system-installed ClanLib is still honored when `find_package(ClanLib)` finds one (e.g. via `-DCLANLIB_ROOT_DIR=`).
 
 ### Lua 5.1.4 (`dependencies/lua`)
 - Managed via `dependencies/lua/CMakeLists.txt`.
@@ -119,5 +136,18 @@ Yes. You can pass the ClanLib installation path directly to CMake:
 cmake -B build -DCLANLIB_ROOT_DIR=/path/to/clanlib
 ```
 
+#### Q: Build fails with `lua_open` / `luaL_register` / `LUA_QL` "identifier not found"
+The game requires the Lua 5.1 API, but CMake picked up a newer Lua (e.g. vcpkg's). That happens
+when the vendored sources under `dependencies/lua/src/` are missing — verify `lapi.c` is there.
+If the files were deleted, restore them with `git restore --source=HEAD -- dependencies/lua`
+(or re-clone), then re-run cmake with a fresh cache (`cmake -B build --fresh`): the message
+`Lua 5.1: building from submodule` confirms the right Lua is used.
+
 #### Q: The game crashes on startup with asset missing errors
 Ensure that `data/` and `Scripts/` are located in the same directory as the executable. CMake's post-build command copies them automatically, but if you launch the executable from a custom working directory, verify that those folders are present.
+
+#### Q: Release runs, but Debug can't find sounds/images/scripts
+This was caused by `#ifdef _DEBUG` asset-path variants (`../../data/...`) left over from the
+old hand-maintained Visual Studio solution. Those are gone: all configurations now use the
+same exe-relative paths (`./data/...`, `./Scripts/...`). If you see this again, check for
+reintroduced `_DEBUG` path branches in `main.cpp`, `GameManager.cpp`, or `TestScenePlayer.cpp`.
