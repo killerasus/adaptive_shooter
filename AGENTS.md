@@ -62,6 +62,7 @@ cmake --build build -j$(nproc)
 ## Key Conventions
 
 - C++11 standard with `-Wall` (GNU/Clang) or `/W4` (MSVC) warnings enabled
+- `ccache` is auto-used as compiler launcher when installed (`-DADAPTIVESHOOTER_USE_CCACHE=OFF` to disable); CI persists `~/.cache/ccache` via `actions/cache`
 - Static library `AIManager` links publicly to Lua when `LUA51_FOUND`
 - Game assets (`data/`, `scripts/`) must reside alongside executable; CMake post-build copies them automatically
 - Asset paths in game code must stay exe-relative (`./data/...`, `./Scripts/...`) in both configs — do not reintroduce `#ifdef _DEBUG` path variants (old `../../` Debug paths predate the CMake build and break Debug asset loading)

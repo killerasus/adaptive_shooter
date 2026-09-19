@@ -22,6 +22,18 @@ elseif( CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang" )
     add_compile_options( -Wall )
 endif()
 
+# ccache: speed up recompilation when available (disable with
+# -DADAPTIVESHOOTER_USE_CCACHE=OFF). Must be set before any target is created.
+option( ADAPTIVESHOOTER_USE_CCACHE "Use ccache as compiler launcher when available" ON )
+if( ADAPTIVESHOOTER_USE_CCACHE )
+    find_program( CCACHE_PROGRAM ccache )
+    if( CCACHE_PROGRAM )
+        message( STATUS "Using ccache: ${CCACHE_PROGRAM}" )
+        set( CMAKE_C_COMPILER_LAUNCHER "${CCACHE_PROGRAM}" )
+        set( CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_PROGRAM}" )
+    endif()
+endif()
+
 # ==============================================================================
 # Lua 5.1 Dependency Resolution
 # ==============================================================================

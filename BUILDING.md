@@ -56,6 +56,12 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 ```
 
+> [!TIP]
+> If `ccache` is installed, CMake uses it automatically to speed up rebuilds
+> (ClanLib is big — this helps a lot). Disable with
+> `cmake -B build -DADAPTIVESHOOTER_USE_CCACHE=OFF`. CI caches `~/.cache/ccache`
+> between runs for the same effect.
+
 > [!NOTE]
 > During the initial `cmake -B build`, CMake builds the `dependencies/clanlib` submodule in-tree
 > with `add_subdirectory()` (modules App/Display/GL/Sound + Core). No manual compilation, root

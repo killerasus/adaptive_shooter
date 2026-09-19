@@ -8,6 +8,8 @@ on:
 
 env:
   BUILD_TYPE: Release
+  CCACHE_DIR: ~/.cache/ccache
+  CCACHE_MAXSIZE: 500M
 
 jobs:
   build:
@@ -21,13 +23,29 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y g++ cmake pkg-config \
-          libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev \
-          libx11-dev libxrender-dev libasound2-dev
+        sudo apt-get install -y g++ cmake pkg-config ccache \
+          libx11-dev libxrender-dev libfreetype-dev libfontconfig-dev \
+          libgl1-mesa-dev libasound2-dev
+
+    - name: Restore ccache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ccache
+        key: ccache-${{ runner.os }}-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          ccache-${{ runner.os }}-${{ github.ref }}-
+          ccache-${{ runner.os }}-
 
     - name: Configure
       # ClanLib (cmake branch) and Lua 5.1 are built in-tree automatically.
-      run: cmake -B build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+      # ccache is picked up via CMAKE_C/CXX_COMPILER_LAUNCHER when present.
+      run: |
+        ccache -z
+        cmake -B build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
 
     - name: Build
       run: cmake --build build -j$(nproc)
+
+    - name: Show ccache stats
+      run: ccache -s
+      if: always()
