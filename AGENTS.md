@@ -32,6 +32,7 @@ cmake --build build -j$(nproc)
 
 - **ClanLib 3.0**: `dependencies/clanlib/` on branch **`cmake`** (see `.gitmodules`) - Built in-tree via `add_subdirectory()` with `CLANLIB_BUILD_ALL=ON` (upstream per-module cache vars are shadowed by its own defaults, so ALL is the reliable switch) on both Linux and Windows. No autotools, no `configure.exe`. A system ClanLib is still honored if `find_package` finds one (e.g. `-DCLANLIB_ROOT_DIR=`).
 - **Upstream fixes on the `cmake` branch** (commit `d196a8e`, required for this build): root `CMakeLists.txt` uses `CMAKE_CURRENT_SOURCE_DIR` + appends real include roots (upstream used `CMAKE_SOURCE_DIR`, broken under `add_subdirectory`); `Sources/App/Win32/clanapp.cpp` exports `WinMain` via `/EXPORT` pragma for DLL consumers. Must be pushed to origin for fresh clones to get them.
+- **`cmake/FindXrender.cmake` is ours, not upstream's**: the ClanLib `cmake` branch calls `find_package(Xrender REQUIRED)` but no finder ships with CMake or libxrender-dev, so Linux configure fails without it (needs `pkg-config` + `libxrender-dev` at build time).
 - **Windows DLL consumption** (see `src/AdaptiveShooter/CMakeLists.txt`): game defines `CL_API_DLL`, sets `/SUBSYSTEM:WINDOWS` (entry is ClanLib's `WinMain`; game has no `main()`), and `NODEFAULTLIB`s the legacy `clan*-*.lib` pragma names.
 - **Lua 5.1.4**: `dependencies/lua/` - Compiled from source submodule. CMake auto-detects and builds.
 

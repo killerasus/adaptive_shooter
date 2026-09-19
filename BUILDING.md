@@ -38,13 +38,16 @@ git submodule update --init --recursive --remote
 Tested on Ubuntu / Debian distributions.
 
 ### Step 1: Install System Prerequisites
-Install the compiler toolchain, CMake, and the system libraries ClanLib links against:
+Install the compiler toolchain, CMake, and the system libraries ClanLib links against
+(X11/Xrender for Display, FreeType/Fontconfig for fonts, Mesa GL, ALSA for sound):
 ```bash
-sudo apt-get update
-sudo apt-get install -y make g++ cmake pkg-config \
-    libfreetype6-dev libfontconfig1-dev libgl1-mesa-dev \
-    libx11-dev libxrender-dev libasound2-dev
+sudo apt install build-essential cmake pkg-config \
+  libx11-dev libxrender-dev libfreetype-dev libfontconfig-dev \
+  libgl1-mesa-dev libasound2-dev
 ```
+No `libsqlite3-dev` needed (ClanLib bundles the SQLite amalgamation), and no
+`automake`/`libtool` (the `cmake` branch does not use autotools). The `Xrender`
+CMake finder that upstream lacks ships in-repo as `cmake/FindXrender.cmake`.
 
 ### Step 2: Configure & Build
 Both ClanLib 3.0 and Lua 5.1.4 are built automatically by CMake:
