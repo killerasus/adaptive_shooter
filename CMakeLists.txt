@@ -6,6 +6,9 @@ set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/" "${CMAKE_SOURCE_DIR}/cmake" ${CMAK
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" )
 
+# Emit build/compile_commands.json for IDEs and clang-based tooling.
+set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
+
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 
 # C++ Standard configuration
