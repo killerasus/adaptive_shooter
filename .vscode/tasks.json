@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "linux": {
+                "command": "cmake -B build/Release -DCMAKE_BUILD_TYPE=Release && cmake --build build/Release -j$(nproc)",
+                "problemMatcher": "$gcc"
+            },
+            "windows": {
+                "command": "cmake -B build; cmake --build build --config Release",
+                "problemMatcher": "$msCompile"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "linux": {
+                "command": "cmake -B build/Debug -DCMAKE_BUILD_TYPE=Debug && cmake --build build/Debug -j$(nproc)",
+                "problemMatcher": "$gcc"
+            },
+            "windows": {
+                "command": "cmake -B build; cmake --build build --config Debug",
+                "problemMatcher": "$msCompile"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Clean All",
+            "type": "shell",
+            "linux": {
+                "command": "rm -rf build/Release build/Debug"
+            },
+            "windows": {
+                "command": "Remove-Item -Recurse -Force build -ErrorAction SilentlyContinue"
+            }
+        }
+    ]
+}

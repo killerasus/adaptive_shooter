@@ -1,0 +1,57 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Release (Windows)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Release/AdaptiveShooter.exe",
+            "cwd": "${workspaceFolder}/build/bin/Release",
+            "preLaunchTask": "Build Release",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Debug (Windows)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/AdaptiveShooter.exe",
+            "cwd": "${workspaceFolder}/build/bin/Debug",
+            "preLaunchTask": "Build Debug",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Release (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Release/bin/AdaptiveShooter",
+            "cwd": "${workspaceFolder}/build/Release/bin",
+            "MIMode": "gdb",
+            "preLaunchTask": "Build Release",
+            "stopAtEntry": false,
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Debug (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/bin/AdaptiveShooter",
+            "cwd": "${workspaceFolder}/build/Debug/bin",
+            "MIMode": "gdb",
+            "preLaunchTask": "Build Debug",
+            "stopAtEntry": false,
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
