@@ -352,6 +352,12 @@ FadingScene* GameManager::getGameOverScene()
 
 void GameManager::playSoundEffect( SoundEffects sound )
 {
+	// No audio device (e.g. headless/WSL box): run silent instead of throwing.
+	if ( sound_output.is_null() )
+	{
+		return;
+	}
+
 	_soundEffectSessions[sound] = _soundEffects[sound].play();
 }
 
@@ -359,6 +365,11 @@ void GameManager::playSoundEffect( SoundEffects sound )
 
 bool GameManager::poolSoundEffect( SoundEffects sound )
 {
+	if ( sound_output.is_null() )
+	{
+		return false;
+	}
+
 	return _soundEffectSessions[sound].is_playing();
 }
 
@@ -367,6 +378,11 @@ bool GameManager::poolSoundEffect( SoundEffects sound )
 
 void GameManager::stopSoundEffect( SoundEffects sound )
 {
+	if ( sound_output.is_null() )
+	{
+		return;
+	}
+
 	if (poolSoundEffect( sound ))
 	{
 		_soundEffectSessions[sound].stop();
@@ -377,6 +393,12 @@ void GameManager::stopSoundEffect( SoundEffects sound )
 
 void GameManager::playMusic( Musics music )
 {
+	// No audio device (e.g. headless/WSL box): run silent instead of throwing.
+	if ( sound_output.is_null() )
+	{
+		return;
+	}
+
 	_musicSessions[music] = _musics[music].play();
 }
 
@@ -384,6 +406,11 @@ void GameManager::playMusic( Musics music )
 
 bool GameManager::poolMusic( Musics music )
 {
+	if ( sound_output.is_null() )
+	{
+		return false;
+	}
+
 	return _musicSessions[music].is_playing();
 }
 
@@ -391,6 +418,11 @@ bool GameManager::poolMusic( Musics music )
 
 void GameManager::stopMusic( Musics music )
 {
+	if ( sound_output.is_null() )
+	{
+		return;
+	}
+
 	if (poolMusic( music ))
 	{
 		_musicSessions[music].stop();
@@ -402,6 +434,13 @@ void GameManager::stopMusic( Musics music )
 void GameManager::loadSoundEffects()
 {
 	_soundEffectSessions.resize( SFX_VECTOR_SIZE );
+
+	// No audio device (e.g. headless/WSL box): skip loading and run silent.
+	if ( sound_output.is_null() )
+	{
+		clan::Console::write_line( "No audio device found, running without sound." );
+		return;
+	}
 
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/Attention.wav" ) );
 	_soundEffects.push_back( clan::SoundBuffer( "./data/sounds/PrepareForAction.wav" ) );
@@ -420,6 +459,12 @@ void GameManager::loadSoundEffects()
 void GameManager::loadMusics()
 {
 	_musicSessions.resize( MUSIC_VECTOR_SIZE );
+
+	// No audio device (e.g. headless/WSL box): skip loading and run silent.
+	if ( sound_output.is_null() )
+	{
+		return;
+	}
 
 	_musics.push_back( clan::SoundBuffer( "./data/musics/DIGITAL_MEMORIES.ogg", false ) );
 }
