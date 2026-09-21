@@ -25,8 +25,13 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
-	// Creates window
-	_window = new clan::DisplayWindow("Adaptive Shooter - Bruno Baere", 640, 480);
+	// Creates window at an explicit on-screen position. Relying on the
+	// default (-1,-1) position is not safe: some X servers/compositors
+	// report bogus virtual desktop sizes or place unmanaged windows
+	// off-screen (seen at +1919/+3527 on XWayland/WSLg).
+	clan::DisplayWindowDescription window_desc(
+		"Adaptive Shooter - Bruno Baere", clan::Rect(100, 100, 740, 580), false);
+	_window = new clan::DisplayWindow(window_desc);
 	_canvas = new clan::Canvas( *_window );
 
 	_aiManager = new AIManager(L);
