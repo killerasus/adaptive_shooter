@@ -83,6 +83,15 @@ if( LUA51_FOUND )
     )
 endif()
 
+if( UNIX AND NOT APPLE )
+    # GameManager queries the mouse pointer (XQueryPointer) to anchor the
+    # window on a visible output; needs X11 headers and lib (libx11-dev).
+    find_package( X11 REQUIRED )
+    target_link_libraries( AdaptiveShooter PRIVATE
+        X11::X11
+    )
+endif()
+
 # Prefer the in-tree cmake-branch targets; fall back to whatever a system
 # FindClanLib module resolved (ClanLib_LIBRARIES).
 if( TARGET clan30Core )

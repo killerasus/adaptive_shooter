@@ -16,6 +16,10 @@
 #include "StaticEntity.h"
 #include "ClanLib/core.h"
 
+#ifdef __linux__
+#include <X11/Xlib.h>
+#endif
+
 GameManager* GameManager::_instance = 0;
 
 GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sound(), sound_output(44100),
@@ -25,12 +29,31 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	luaL_openlibs(L);
 	RegisterLuaCLHelper(L);
 
-	// Creates window at an explicit on-screen position. Relying on the
-	// default (-1,-1) position is not safe: some X servers/compositors
-	// report bogus virtual desktop sizes or place unmanaged windows
-	// off-screen (seen at +1919/+3527 on XWayland/WSLg).
+	// Creates window at an explicit on-screen position. Neither the default
+	// (-1,-1) centering (bogus virtual screen sizes) nor the window manager
+	// placement can be trusted on multi-monitor / XWayland setups (window
+	// ended up at +1919, +3527, +106 - all outside the visible output), so
+	// anchor near the mouse pointer, which is always on a visible output.
+	int window_x = 100, window_y = 100;
+#ifdef __linux__
+	if (Display *x_display = XOpenDisplay(NULL))
+	{
+		Window root_return, child_return;
+		int root_x, root_y, win_x, win_y;
+		unsigned int mask;
+		if (XQueryPointer(x_display, DefaultRootWindow(x_display),
+			&root_return, &child_return,
+			&root_x, &root_y, &win_x, &win_y, &mask))
+		{
+			window_x = (root_x > 320) ? (root_x - 320) : 0;
+			window_y = (root_y > 240) ? (root_y - 240) : 0;
+		}
+		XCloseDisplay(x_display);
+	}
+#endif
 	clan::DisplayWindowDescription window_desc(
-		"Adaptive Shooter - Bruno Baere", clan::Rect(100, 100, 740, 580), false);
+		"Adaptive Shooter - Bruno Baere",
+		clan::Rect(window_x, window_y, window_x + 640, window_y + 480), false);
 	_window = new clan::DisplayWindow(window_desc);
 	_canvas = new clan::Canvas( *_window );
 
