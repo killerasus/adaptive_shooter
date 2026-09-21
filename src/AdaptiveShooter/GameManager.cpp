@@ -18,6 +18,7 @@
 
 #ifdef __linux__
 #include <X11/Xlib.h>
+#include <X11/extensions/Xrandr.h>
 #endif
 
 GameManager* GameManager::_instance = 0;
@@ -32,21 +33,82 @@ GameManager::GameManager(): setup_core(), setup_display(), setup_gl(), setup_sou
 	// Creates window at an explicit on-screen position. Neither the default
 	// (-1,-1) centering (bogus virtual screen sizes) nor the window manager
 	// placement can be trusted on multi-monitor / XWayland setups (window
-	// ended up at +1919, +3527, +106 - all outside the visible output), so
-	// anchor near the mouse pointer, which is always on a visible output.
+	// ended up at +1919, +3527, +106 while the visible output starts at
+	// +2560), so center inside a really connected RandR output: the one
+	// under the mouse pointer when possible, else the first suitable one.
 	int window_x = 100, window_y = 100;
 #ifdef __linux__
 	if (Display *x_display = XOpenDisplay(NULL))
 	{
-		Window root_return, child_return;
-		int root_x, root_y, win_x, win_y;
-		unsigned int mask;
-		if (XQueryPointer(x_display, DefaultRootWindow(x_display),
-			&root_return, &child_return,
-			&root_x, &root_y, &win_x, &win_y, &mask))
+		Window root_window = DefaultRootWindow(x_display);
+		int event_base = 0, error_base = 0;
+		if (XRRQueryExtension(x_display, &event_base, &error_base))
 		{
-			window_x = (root_x > 320) ? (root_x - 320) : 0;
-			window_y = (root_y > 240) ? (root_y - 240) : 0;
+			if (XRRScreenResources *res =
+				XRRGetScreenResources(x_display, root_window))
+			{
+				Window root_ret, child_ret;
+				int ptr_x = -1, ptr_y = -1, dummy, mask_dummy;
+				unsigned int mask;
+				if (XQueryPointer(x_display, root_window, &root_ret,
+					&child_ret, &ptr_x, &ptr_y, &dummy, &dummy, &mask))
+				{
+					// Found pointer position; otherwise ptr stays negative.
+				}
+
+				int best_x = 0, best_y = 0, best_w = 0, best_h = 0;
+				bool have_best = false;
+				for (int i = 0; i < res->noutput; ++i)
+				{
+					XRROutputInfo *out = XRRGetOutputInfo(
+						x_display, res, res->outputs[i]);
+					if (!out)
+						continue;
+
+					int cur_x = 0, cur_y = 0, cur_w = 0, cur_h = 0;
+					bool usable = false;
+					if (out->connection == RR_Connected && out->crtc)
+					{
+						if (XRRCrtcInfo *crtc = XRRGetCrtcInfo(
+							x_display, res, out->crtc))
+						{
+							if (crtc->width >= 640 && crtc->height >= 480)
+							{
+								cur_x = crtc->x;
+								cur_y = crtc->y;
+								cur_w = crtc->width;
+								cur_h = crtc->height;
+								usable = true;
+							}
+							XRRFreeCrtcInfo(crtc);
+						}
+					}
+					bool under_pointer = usable && ptr_x >= cur_x &&
+						ptr_x < cur_x + cur_w && ptr_y >= cur_y &&
+						ptr_y < cur_y + cur_h;
+					XRRFreeOutputInfo(out);
+
+					if (!usable)
+						continue;
+					if (!have_best || under_pointer)
+					{
+						best_x = cur_x;
+						best_y = cur_y;
+						best_w = cur_w;
+						best_h = cur_h;
+						have_best = true;
+						if (under_pointer)
+							break;
+					}
+				}
+				XRRFreeScreenResources(res);
+
+				if (have_best)
+				{
+					window_x = best_x + (best_w - 640) / 2;
+					window_y = best_y + (best_h - 480) / 2;
+				}
+			}
 		}
 		XCloseDisplay(x_display);
 	}

@@ -84,11 +84,20 @@ if( LUA51_FOUND )
 endif()
 
 if( UNIX AND NOT APPLE )
-    # GameManager queries the mouse pointer (XQueryPointer) to anchor the
-    # window on a visible output; needs X11 headers and lib (libx11-dev).
+    # GameManager centers the window inside a really connected RandR output
+    # (XQueryPointer + XRRGetScreenResources); needs X11 and Xrandr
+    # (libx11-dev, libxrandr-dev).
     find_package( X11 REQUIRED )
     target_link_libraries( AdaptiveShooter PRIVATE
         X11::X11
+    )
+    if( NOT X11_Xrandr_FOUND )
+        message( FATAL_ERROR
+            "Xrandr not found (FindX11 reports no X11_Xrandr_LIB). "
+            "Install libxrandr-dev:  sudo apt install libxrandr-dev" )
+    endif()
+    target_link_libraries( AdaptiveShooter PRIVATE
+        ${X11_Xrandr_LIB}
     )
 endif()
 

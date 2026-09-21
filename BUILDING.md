@@ -42,7 +42,7 @@ Install the compiler toolchain, CMake, and the system libraries ClanLib links ag
 (X11/Xrender for Display, FreeType/Fontconfig for fonts, Mesa GL, ALSA for sound):
 ```bash
 sudo apt install build-essential cmake pkg-config \
-  libx11-dev libxrender-dev libfreetype-dev libfontconfig-dev \
+  libx11-dev libxrender-dev libxrandr-dev libfreetype-dev libfontconfig-dev \
   libgl1-mesa-dev libasound2-dev
 ```
 No `libsqlite3-dev` needed (ClanLib bundles the SQLite amalgamation), and no
